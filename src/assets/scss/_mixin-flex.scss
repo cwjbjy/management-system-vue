@@ -1,0 +1,28 @@
+%cross_center {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+%main_center {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+%center {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+%space_between {
+    display: flex;
+    justify-content: space-between;
+}
+
+%space_around {
+    display: flex;
+    justify-content: space-around;
+}

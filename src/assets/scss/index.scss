@@ -1,0 +1,35 @@
+//字体css设置
+$color-font:#FFF;
+$color-font_active:#0078dc;
+//按钮输入框等css设置
+$color-bg:#0f5fb9;
+$color-bg-hover:#14a9ff;
+$color-border:#bbf2ff;
+$color-box-shadow:#02d5d7;
+//悬浮图标样式
+$c_pointer:pointer;
+
+$themes: (
+  theme-red: (
+    font-color: #fff,
+    header-background:red
+  ),
+  theme-green: (
+    font-color: #fff,
+    header-background:green
+  ),
+  theme-blue: (
+    font-color: #fff,
+    font-active-color:#0078dc,
+    header-background:#3742fa,
+    color-bg:#0f5fb9,
+    color-bg-hover:#14a9ff,
+    color-border:#bbf2ff,
+  ),
+);
+
+@import './_mixin-flex';
+@import './themes.scss';
+
+@import './_el-dropdown';
+@import './_el-message';
