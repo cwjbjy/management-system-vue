@@ -1,8 +1,9 @@
 //客户端自带WebSocket通信
 export default {
-    websocketFun() {
+    websocketConnect() {
         const baseUrl = "ws://127.0.0.1:3000";
         let ws = new WebSocket(baseUrl);
+        console.log('ws',ws)
         ws.onclose = function () {
             console.error("web channel closed");
         };

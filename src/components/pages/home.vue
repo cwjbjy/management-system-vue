@@ -9,6 +9,7 @@
 <script>
 import API from "../../server/api";
 import HomeHeader from "../home/HomeHeader";
+
 export default {
   components: {
     HomeHeader
@@ -25,13 +26,13 @@ export default {
     return {
       title: "文杰的仓库",
       msg: "Dynamic Themes",
-      theme: "blue"
+      theme: "blue",
     };
   },
 
   created() {
-    API.getData().then(res => {
-      console.log(res.data);
+    API.getData().then(() => {
+     
     });
   },
   beforeDestroy(){
@@ -43,7 +44,7 @@ export default {
         data: 2
       });
       console.log(this.count);
-    }
+    },
   }
 };
 </script>
