@@ -19,11 +19,12 @@ export default {
   top: 0;
   bottom: 0;
   width: 100%;
+  cursor: $c_pointer;
 }
 body {
   margin: 0;
   padding: 0;
-  font-size:16px;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
 }
 .fade-enter-active,

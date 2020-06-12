@@ -1,6 +1,7 @@
-const Home = () => import('../components/pages/home.vue')
-const Login = () => import('../components/pages/login.vue')
-const notFound = () =>import('../components/pages/404.vue')
+const Home = () => import('../components/layout/home.vue')
+const Login = () => import('../components/layout/login.vue')
+const notFound = () => import('../components/layout/404.vue')
+const Fleet = () => import('../components/pages/fleet.vue')
 const routes = [
     {
         path:'/',
@@ -10,7 +11,13 @@ const routes = [
         path:'/home',
         meta:{title:'home'},
         component:Home,
-        children:[]
+        children:[
+            {
+               path:'/fleet',
+               meta:{title:'fleet'},
+               component:Fleet
+            }
+        ]
     },
     {
         path:'/login',

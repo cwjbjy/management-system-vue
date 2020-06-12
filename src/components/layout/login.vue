@@ -4,7 +4,7 @@
     <div id="stars2" style="position: absolute"></div>
     <div id="stars3" style="position: absolute"></div>
     <div class="login_top">
-      <span class="login_title">XXXX管理系统</span>
+      <span class="login_title">PC端管理系统</span>
     </div>
     <!-- <button @click="aa">点击</button> -->
     <div class="login_main">
@@ -53,15 +53,6 @@
             <el-form-item prop="reg_name">
               <el-input prefix-icon="el-icon-phone" v-model="reg.reg_name" placeholder="手机号"></el-input>
             </el-form-item>
-            <el-form-item prop="verification">
-              <el-input
-                prefix-icon="el-icon-lock"
-                v-model="reg.verification"
-                placeholder="验证码"
-                class="verification_class"
-              ></el-input>
-              <el-button>获取验证码</el-button>
-            </el-form-item>
             <el-form-item prop="rge_pass">
               <el-input
                 prefix-icon="el-icon-lock"
@@ -70,10 +61,8 @@
                 show-password
               ></el-input>
             </el-form-item>
-            <el-form-item label>
-              <el-button type="primary" style="width:100%">注册</el-button>
-            </el-form-item>
           </el-form>
+           <Verify @success="alert('success')" @error="alert('error')" :type="1" fontSize="20px" height="40px" width="55%"></Verify>
         </div>
       </div>
     </div>
@@ -81,7 +70,11 @@
 </template>
 
 <script>
+import Verify from "vue2-verify";
 export default {
+  components: {
+    Verify
+  },
   data() {
     return {
       title: "登陆",
@@ -125,6 +118,9 @@ export default {
       this.$cookies.set("token", "qwqwswd");
       this.$router.push("/home");
       this.status = false;
+    },
+    alert(text) {
+      console.log(text);
     }
   },
   mounted() {}
@@ -135,9 +131,8 @@ export default {
 @import "../../assets/css/starrun.css";
 // @import "../../assets/scss";
 .login {
-  height: 100%;
-  color:$color-font;
-  cursor: $c_pointer;
+  height: 100vh;
+  color: $color-font;
   background: radial-gradient(
     220% 105% at top center,
     #70a1ff 10%,
@@ -183,7 +178,7 @@ export default {
       text-align: center;
       font-size: 16px;
       color: #999;
-      &:hover{
+      &:hover {
         color: $color-font_active;
       }
     }

@@ -1,22 +1,19 @@
 <template>
   <div class="home-header">
     <div class="box1">
-
+      PC端后台管理系统
     </div>
-    <div class="box2">
-
-    </div>
+    <div class="box2"></div>
   </div>
 </template>
 <script>
-
 export default {
-    name:'HomeHeader',
+  name: "HomeHeader",
   data() {
     return {
       collapse: false,
       fullscreen: false,
-      username:'文杰',
+      username: "文杰"
     };
   },
   methods: {
@@ -66,9 +63,24 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss">
- @include dropdown;
-.home-header{
 
+<style scoped lang="scss">
+.home-header {
+  @include themify($themes) {
+    background-color: themed("header-background");
+  }
+  height: 70px;
+  width: 100%;
+  display: inline-block;
+  .box1{
+    width: 50%;
+    height:inherit;
+    line-height: 70px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-indent:14px;
+  }
 }
+</style>
+<style lang="scss">
 </style>
