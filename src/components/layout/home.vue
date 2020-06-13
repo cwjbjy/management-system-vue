@@ -4,9 +4,11 @@
       <home-header></home-header>
       <div class="app-main">
         <menus></menus>
+        <div class="app-content">
         <transition name="fade" mode="out-in">
           <router-view />
         </transition>
+        </div>
       </div>
     </div>
   </div>
@@ -64,6 +66,11 @@ export default {
   }
   .el-menu{
     border: none;
+  }
+  .app-content{
+    height:inherit;
+    width: calc(100vw - 250px);
+    overflow: auto;
   }
 }
 </style>

@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "echarts-gl": "^1.1.1",
     "element-ui": "^2.13.1",
     "sass-resources-loader": "^2.0.3",
     "vue": "^2.6.11",
