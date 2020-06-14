@@ -9,9 +9,9 @@ HttpClient.instance = axios.create({
   // headers:{}
 });
 
-// HttpClient.instance1 = axios.create({
-//   baseURL:'/juhe'
-// })
+HttpClient.instance1 = axios.create({
+  
+})
 
 HttpClient.instance.interceptors.request.use(config =>{
   if(config.method === 'post'){

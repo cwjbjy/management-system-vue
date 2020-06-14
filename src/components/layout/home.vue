@@ -1,14 +1,19 @@
 <template>
   <div v-title="title" class="app-root" :class="themeClass">
     <div class="app-container">
-      <home-header></home-header>
+      <header class="header">
+        <home-header></home-header>
+      </header>
+
       <div class="app-main">
-        <menus></menus>
-        <div class="app-content">
-        <transition name="fade" mode="out-in">
-          <router-view />
-        </transition>
-        </div>
+        <aside class="aside">
+          <menus></menus>
+        </aside>
+        <section class="app-content">
+          <transition name="fade" mode="out-in">
+            <router-view />
+          </transition>
+        </section>
       </div>
     </div>
   </div>
@@ -55,20 +60,35 @@ export default {
 </script>
 
 <style lang="scss">
+
 .app-container {
   @include themify($themes) {
     color: themed("font-color");
     background-color: themed("main-background");
   }
-  .app-main{
-    display:flex;
+  .app-main {
+    display: flex;
     height: calc(100vh - 70px);
   }
-  .el-menu{
+  .el-menu {
     border: none;
   }
-  .app-content{
-    height:inherit;
+  .header {
+    @include themify($themes) {
+      background-color: themed("header-background");
+    }
+    height: 70px;
+    width: 100%;
+  }
+  .aside {
+    width: 250px;
+    height: inherit;
+    @include themify($themes) {
+      background-color: themed("menus-background");
+    }
+  }
+  .app-content {
+    height: inherit;
     width: calc(100vw - 250px);
     overflow: auto;
   }

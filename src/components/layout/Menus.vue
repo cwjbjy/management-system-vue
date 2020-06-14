@@ -11,10 +11,9 @@
       active-text-color="#ffd04b"
       router
     >
-    <template v-for="item in menus">
+      <template v-for="item in menus">
         <el-menu-item :index="item.path" :key="item.name">{{item.name}}</el-menu-item>
-    </template>
-      
+      </template>
     </el-menu>
   </div>
 </template>
@@ -24,16 +23,23 @@ export default {
   name: "menus",
   data() {
     return {
-      defaultActive:'/fleet',
-      menus : [
-    {
-        name:'飞机',
-        key:'fleet',
-        path:'/fleet',
-        icon:'',
-        children:[]
-    }
-]
+      defaultActive: "/fleet",
+      menus: [
+        {
+          name: "航线",
+          key: "fleet",
+          path: "/fleet",
+          icon: "",
+          children: []
+        },
+        {
+          name: "地球",
+          key: "earth",
+          path: "/earth",
+          icon: "",
+          children: []
+        }
+      ]
     };
   },
   methods: {
@@ -43,7 +49,7 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
-    handleSelect(index){
+    handleSelect(index) {
       this.defaultActive = index;
     }
   }
@@ -52,9 +58,6 @@ export default {
 
 <style scoped lang="scss">
 .menus {
-  width: 250px;
-  @include themify($themes) {
-    background-color: themed("menus-background");
-  }
+
 }
 </style>

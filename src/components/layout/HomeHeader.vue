@@ -66,12 +66,9 @@ export default {
 
 <style scoped lang="scss">
 .home-header {
-  @include themify($themes) {
-    background-color: themed("header-background");
-  }
-  height: 70px;
-  width: 100%;
   display: inline-block;
+  width: 100%;
+  height:inherit;
   .box1{
     width: 50%;
     height:inherit;

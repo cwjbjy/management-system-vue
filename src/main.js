@@ -8,10 +8,6 @@ Vue.config.productionTip = false;
 import directive from "./directive"
 Vue.use(directive)
 
-
-// import eChartsGL from 'echarts-gl'
-// Vue.prototype.$eCharstGL = eChartsGL;
-
 import 'element-ui/lib/theme-chalk/index.css';
 import {
   Button,
@@ -21,7 +17,9 @@ import {
   Menu,
   Submenu,
   MenuItem,
-  MenuItemGroup
+  MenuItemGroup,
+  Table,
+  TableColumn
 } from 'element-ui';
 Vue.use(Button)
   .use(Input)
@@ -30,7 +28,9 @@ Vue.use(Button)
   .use(Menu)
   .use(Submenu)
   .use(MenuItem)
-  .use(MenuItemGroup);
+  .use(MenuItemGroup)
+  .use(Table)
+  .use(TableColumn);
 
 window.eventBus = new Vue();
 

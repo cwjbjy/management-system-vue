@@ -2,6 +2,7 @@ const Home = () => import('../components/layout/home.vue')
 const Login = () => import('../components/layout/login.vue')
 const notFound = () => import('../components/layout/404.vue')
 const Fleet = () => import('../components/pages/fleet.vue')
+const Earth = () => import('../components/pages/earth.vue')
 const routes = [
     {
         path:'/',
@@ -16,6 +17,10 @@ const routes = [
                path:'/fleet',
                meta:{title:'fleet'},
                component:Fleet
+            },{
+                path:'/earth',
+                meta:{title:'earth'},
+                component:Earth
             }
         ]
     },
