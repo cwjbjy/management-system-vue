@@ -56,7 +56,7 @@ export default {
         return res;
       };
       var option = {
-        // backgroundColor: "rgba(16,33,62,0.1)",
+        backgroundColor: "rgb(6,42,88)",
         title: {
           text: "模拟航线",
           subtext: "数据纯属虚构",

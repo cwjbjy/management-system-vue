@@ -26,6 +26,13 @@ export default {
       defaultActive: "/fleet",
       menus: [
         {
+          name: "系统首页",
+          key: "homePage",
+          path: "/homePage",
+          icon: "",
+          children: []
+        },
+        {
           name: "航线",
           key: "fleet",
           path: "/fleet",
