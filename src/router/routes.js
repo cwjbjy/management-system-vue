@@ -7,7 +7,7 @@ const Earth = () => import('../components/pages/earth.vue')
 const routes = [
     {
         path:'/',
-        redirect:'/home'
+        redirect:'/homePage'
     },
     {
         path:'/home',

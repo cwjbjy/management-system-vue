@@ -19,7 +19,15 @@ import {
   MenuItem,
   MenuItemGroup,
   Table,
-  TableColumn
+  TableColumn,
+  Row,
+  Col,
+  Card,
+  Progress,
+  Icon,
+  Checkbox,
+  CheckboxButton,
+  CheckboxGroup
 } from 'element-ui';
 Vue.use(Button)
   .use(Input)
@@ -30,7 +38,15 @@ Vue.use(Button)
   .use(MenuItem)
   .use(MenuItemGroup)
   .use(Table)
-  .use(TableColumn);
+  .use(TableColumn)
+  .use(Row)
+  .use(Col)
+  .use(Card)
+  .use(Progress)
+  .use(Icon)
+  .use(Checkbox)
+  .use(CheckboxButton)
+  .use(CheckboxGroup);
 
 window.eventBus = new Vue();
 

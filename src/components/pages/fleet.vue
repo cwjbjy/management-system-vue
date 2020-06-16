@@ -1,7 +1,7 @@
 <template>
   <div class="fleet">
-    <div id="stars" style="position: absolute;"></div>
-    <div id="stars2" style="position: absolute"></div>
+    <!-- <div id="stars" style="position: absolute;"></div>
+    <div id="stars2" style="position: absolute"></div> -->
     <fleet-model :model="geoData"></fleet-model>
     <div class="fleet-box box2">
       <el-table
@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import lineModel from "../echarts/line";
+
 import fleetModel from "../echarts/fleetModel";
 import localData from "../../server/localData";
 export default {
   name: "fleet",
   components: {
-    lineModel,
+
     fleetModel
   },
   data() {
@@ -80,8 +80,8 @@ export default {
 </style>
 
 <style lang="scss">
-@import "../../assets/css/el-table.css";
-@import "../../assets/css/scroll.css";
+// @import "../../assets/css/el-table.css";
+// @import "../../assets/css/scroll.css";
 @import "../../assets/css/starrun.css";
 .pane::before {
   position: absolute;

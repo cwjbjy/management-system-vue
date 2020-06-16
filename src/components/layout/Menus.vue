@@ -23,7 +23,7 @@ export default {
   name: "menus",
   data() {
     return {
-      defaultActive: "/fleet",
+      defaultActive: "/homePage",
       menus: [
         {
           name: "系统首页",

@@ -38,13 +38,13 @@
           </div>
           <div class="img_list">
             <div>
-              <img src="../../assets/images/QQ.png" />
+              <img src="../../assets/images/login/QQ.png" />
             </div>
             <div>
-              <img src="../../assets/images/wb.png" />
+              <img src="../../assets/images/login/wb.png" />
             </div>
             <div>
-              <img src="../../assets/images/wx.png" />
+              <img src="../../assets/images/login/wx.png" />
             </div>
           </div>
         </div>

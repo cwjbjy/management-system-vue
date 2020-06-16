@@ -26,3 +26,11 @@
     display: flex;
     justify-content: space-around;
 }
+
+%column_center{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column
+}

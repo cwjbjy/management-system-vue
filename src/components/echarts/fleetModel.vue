@@ -10,7 +10,7 @@ export default {
   props: {
     model: {
       type: Object,
-      default: function() {}
+      default:{}
     }
   },
   data() {

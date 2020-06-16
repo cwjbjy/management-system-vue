@@ -88,7 +88,7 @@ export default {
     }
   }
   .app-content {
-    height: inherit;
+    height: calc(100vh - 70px);
     width: calc(100vw - 250px);
     overflow: auto;
   }
