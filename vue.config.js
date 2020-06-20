@@ -6,7 +6,7 @@ module.exports = {
   devServer: {
     open: true, //加载完自动打开浏览器
     host: '127.0.0.1',
-    port: 8080,
+    port: 8083,
     // proxy: {
     //     '/api':{
     //         target:'http://jsonplaceholder.typicode.com',

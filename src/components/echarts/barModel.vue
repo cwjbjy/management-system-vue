@@ -20,13 +20,13 @@ export default {
   },
   methods: {
     prepareDomain(model) {
-      var echartsInstance = echarts.init(this.$refs.echarts);
+      let echartsInstance = echarts.init(this.$refs.echarts);
       echartsInstance.clear();
-      var option = {
+      let option = {
         title: {
           text: "2019年销售水量和主营业务收入对比",
-        
-          left:'center'
+
+          left: "center"
         },
         tooltip: {
           trigger: "axis",
@@ -40,7 +40,7 @@ export default {
         legend: {
           data: ["销售水量", "主营业务"],
           top: "10%",
-          left:'center',
+          left: "center"
         },
         xAxis: {
           data: [
@@ -60,8 +60,8 @@ export default {
             show: true //隐藏X轴刻度
           },
           axisLabel: {
-            show: true,
-          },
+            show: true
+          }
         },
         yAxis: [
           {
@@ -80,10 +80,9 @@ export default {
               show: true
             },
             axisLabel: {
-              show: true,
+              show: true
             },
-            axisLine: {
-            }
+            axisLine: {}
           },
           {
             type: "value",
@@ -103,7 +102,7 @@ export default {
             },
             axisLabel: {
               show: true,
-              formatter: "{value} %", //右侧Y轴文字显示
+              formatter: "{value} %" //右侧Y轴文字显示
             }
           },
           {
@@ -206,20 +205,45 @@ export default {
         ]
       };
       echartsInstance.setOption(option);
-      window.onresize = function() {
+    },
+    autoSize() {
+      let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
+      this.$nextTick(() => {
         echartsInstance.resize();
-      };
+      });
     }
   },
   mounted() {
     this.prepareDomain(this.model);
+    window.addEventListener(
+      "resize",
+      () => {
+        this.autoSize();
+      },
+      false
+    );
+    window.eventBus.$on("collapse", () => {
+      setTimeout(() => {
+       this.autoSize()
+      }, 400);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener(
+      "resize",
+      () => {
+        this.autoSize();
+      },
+      false
+    );
+    window.eventBus.$off("collapse")
   }
 };
 </script>
 
 <style scoped>
-.myChart{
-    width: 100%;
-    height: 300px;
+.myChart {
+  width: 100%;
+  height: 300px;
 }
 </style>

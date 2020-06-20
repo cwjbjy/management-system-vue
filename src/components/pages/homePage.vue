@@ -188,7 +188,6 @@ export default {
   }
   .user {
     height: 252px;
-    min-width: 344px;
     display: block;
     margin-bottom: 20px;
     &-area1 {
@@ -197,8 +196,10 @@ export default {
       border-bottom: 2px solid #ccc;
       margin-bottom: 20px;
       .user-img {
-        width: 120px;
-        height: 120px;
+        width: 90%;
+        height: 90%;
+        max-width: 120px;
+        max-width: 120px;
         border-radius: 50%;
       }
       .user-area {

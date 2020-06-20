@@ -13,6 +13,20 @@
           <transition name="fade" mode="out-in">
             <router-view />
           </transition>
+          <el-backtop target=".app-content" :bottom="100">
+            <!-- <div
+              style="{
+        height: 100%;
+        width: 100%;
+        background-color: #f2f5f6;
+        box-shadow: 0 0 6px rgba(0,0,0, .12);
+        text-align: center;
+        line-height: 40px;
+        color: #1989fa;
+        font-size: 14px;
+      }"
+            >顶部</div> -->
+          </el-backtop>
         </section>
       </div>
     </div>
@@ -60,7 +74,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .app-container {
   @include themify($themes) {
     color: themed("font-color");
@@ -81,7 +94,6 @@ export default {
     width: 100%;
   }
   .aside {
-    width: 250px;
     height: inherit;
     @include themify($themes) {
       background-color: themed("menus-background");
@@ -89,7 +101,7 @@ export default {
   }
   .app-content {
     height: calc(100vh - 70px);
-    width: calc(100vw - 250px);
+    width: 100%;
     overflow: auto;
   }
 }

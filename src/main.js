@@ -27,7 +27,8 @@ import {
   Icon,
   Checkbox,
   CheckboxButton,
-  CheckboxGroup
+  CheckboxGroup,
+  Backtop
 } from 'element-ui';
 Vue.use(Button)
   .use(Input)
@@ -46,7 +47,8 @@ Vue.use(Button)
   .use(Icon)
   .use(Checkbox)
   .use(CheckboxButton)
-  .use(CheckboxGroup);
+  .use(CheckboxGroup)
+  .use(Backtop);
 
 window.eventBus = new Vue();
 

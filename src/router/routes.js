@@ -13,6 +13,7 @@ const routes = [
         path:'/home',
         meta:{title:'home'},
         component:Home,
+        redirect:'/homePage',
         children:[
             {
                 path:'/homePage',

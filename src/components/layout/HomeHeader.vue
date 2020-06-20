@@ -1,7 +1,11 @@
 <template>
   <div class="home-header">
     <div class="box1">
-      PC端后台管理系统
+      <div @click="collapseChage">
+        <i v-if="!collapse" class="el-icon-s-fold"></i>
+        <i v-else class="el-icon-s-unfold"></i>
+      </div>
+      <span style="margin-left:10px">PC端后台管理系统</span>
     </div>
     <div class="box2"></div>
   </div>
@@ -11,7 +15,7 @@ export default {
   name: "HomeHeader",
   data() {
     return {
-      collapse: false,
+      collapse: true,
       fullscreen: false,
       username: "文杰"
     };
@@ -27,6 +31,7 @@ export default {
     // 侧边栏折叠
     collapseChage() {
       this.collapse = !this.collapse;
+      window.eventBus.$emit('collapse',this.collapse)
     },
     // 全屏事件
     handleFullScreen() {
@@ -68,14 +73,15 @@ export default {
 .home-header {
   display: inline-block;
   width: 100%;
-  height:inherit;
-  .box1{
+  height: inherit;
+  .box1 {
     width: 50%;
-    height:inherit;
+    height: inherit;
     line-height: 70px;
     font-size: 24px;
     letter-spacing: 2px;
-    text-indent:14px;
+    text-indent: 10px;
+    display: inline-flex;
   }
 }
 </style>

@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     prepareDomain(model) {
-      var echartsInstance = echarts.init(this.$refs.echarts);
+      let echartsInstance = echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       var legendData = ["车辆数", "设计车位"]; //图例
       var indicator = [
@@ -54,12 +54,12 @@ export default {
         {
           value: [4300, 4700, 3600, 3900, 3800, 4200],
           name: legendData[0],
-        //   label: {
-        //     show: true,
-        //     formatter: function(params) {
-        //       return params.value;
-        //     }
-        //   },
+          //   label: {
+          //     show: true,
+          //     formatter: function(params) {
+          //       return params.value;
+          //     }
+          //   },
           itemStyle: {
             normal: {
               lineStyle: {
@@ -184,13 +184,38 @@ export default {
         ]
       };
       echartsInstance.setOption(option);
-      window.onresize = function() {
+    },
+    autoSize() {
+      let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
+      this.$nextTick(() => {
         echartsInstance.resize();
-      };
+      });
     }
   },
   mounted() {
     this.prepareDomain(this.model);
+    window.addEventListener(
+      "resize",
+      () => {
+        this.autoSize();
+      },
+      false
+    );
+    window.eventBus.$on("collapse", () => {
+      setTimeout(() => {
+        this.autoSize();
+      }, 400);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener(
+      "resize",
+      () => {
+        this.autoSize();
+      },
+      false
+    );
+    window.eventBus.$off("collapse")
   }
 };
 </script>
