@@ -5,7 +5,7 @@
         <el-card shadow="hover" class="user">
           <el-row class="user-area1">
             <el-col :span="12">
-              <img src="../../assets/images/home/user.jpg" class="user-img" />
+              <img src="../../assets/images/home/userlogo.png" class="user-img" />
             </el-col>
             <el-col :span="12" class="user-area">
               <div class="user-name">{{userName}}</div>
@@ -116,15 +116,13 @@
 </template>
 
 <script>
-import barModel from "../echarts/barModel";
-import radarModel from "../echarts/radarModel"
-// import moveDiv from "../echarts/moveDiv";
+import barModel from "../echartsModel/barLineModel";
+import radarModel from "../echartsModel/radarModel"
 export default {
   name: "HomePage",
   components: {
     barModel,
     radarModel
-    // moveDiv,
   },
   computed: {
     role() {
@@ -181,7 +179,7 @@ export default {
 
 <style scoped lang="scss">
 .home {
-  height: calc(100vh - 70px - 20px);
+  height: calc(100vh - 70px - 10px);
   padding: 10px 0 0 10px;
   .home-area1 {
     padding: 0 10px;
@@ -284,4 +282,5 @@ export default {
 </style>
 
 <style lang="scss">
+
 </style>

@@ -20,8 +20,8 @@
 
 <script>
 
-import fleetModel from "../echarts/fleetModel";
-import localData from "../../server/localData";
+import fleetModel from "../../echartsModel/fleetModel";
+import localData from "../../../server/localData";
 export default {
   name: "fleet",
   components: {
@@ -53,6 +53,7 @@ export default {
 
 
 <style lang="scss" scoped>
+@import "../../../assets/css/el-table.css";
 .fleet {
   height: inherit;
   position: relative;
@@ -80,27 +81,4 @@ export default {
 </style>
 
 <style lang="scss">
-// @import "../../assets/css/el-table.css";
-// @import "../../assets/css/scroll.css";
-@import "../../assets/css/starrun.css";
-.pane::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid #02a6b5;
-  border-left: 2px solid #02a6b5;
-}
-.pane::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid #02a6b5;
-  border-right: 2px solid #02a6b5;
-}
 </style>

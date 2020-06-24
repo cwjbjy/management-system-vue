@@ -207,36 +207,24 @@ export default {
       echartsInstance.setOption(option);
     },
     autoSize() {
-      let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
       this.$nextTick(() => {
+        let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
         echartsInstance.resize();
       });
     }
   },
   mounted() {
     this.prepareDomain(this.model);
-    window.addEventListener(
-      "resize",
-      () => {
-        this.autoSize();
-      },
-      false
-    );
+    window.addEventListener("resize", this.autoSize, false);
     window.eventBus.$on("collapse", () => {
       setTimeout(() => {
-       this.autoSize()
+        this.autoSize();
       }, 400);
     });
   },
   beforeDestroy() {
-    window.removeEventListener(
-      "resize",
-      () => {
-        this.autoSize();
-      },
-      false
-    );
-    window.eventBus.$off("collapse")
+    window.removeEventListener("resize", this.autoSize, false);
+    window.eventBus.$off("collapse");
   }
 };
 </script>

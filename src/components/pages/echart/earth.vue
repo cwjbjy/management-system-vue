@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import earthModel from "../echarts/earthModel";
+import earthModel from "../../echartsModel/earthModel";
 export default {
   name: "earth",
   components: {

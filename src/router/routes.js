@@ -2,8 +2,16 @@ const Home = () => import('../components/layout/home.vue')
 const Login = () => import('../components/layout/login.vue')
 const notFound = () => import('../components/layout/404.vue')
 const HomePage = () => import('../components/pages/homePage.vue')
-const Fleet = () => import('../components/pages/fleet.vue')
-const Earth = () => import('../components/pages/earth.vue')
+
+const Fleet = () => import('../components/pages/echart/fleet.vue')
+const baseEcharts = () => import("../components/pages/echart/baseEcharts.vue")
+
+const positionChart = () => import("../components/pages/chart/positionChart.vue")
+const commonChart = ()=> import("../components/pages/chart/commonChart.vue")
+const foldChart = () => import("../components/pages/chart/foldChart.vue")
+
+// const Earth = () => import('../components/pages/earth.vue')
+
 const routes = [
     {
         path:'/',
@@ -24,10 +32,26 @@ const routes = [
                path:'/fleet',
                meta:{title:'fleet'},
                component:Fleet
-            },{
-                path:'/earth',
-                meta:{title:'earth'},
-                component:Earth
+            },
+            {
+                path:'/commonChart',
+                meta:{title:'commonChart'},
+                component:commonChart
+            },
+            {
+                path:'/positionChart',
+                meta:{title:'positionChart'},
+                component:positionChart
+            },
+            {
+                path:'/foldChart',
+                meta:{title:'foldChart'},
+                component:foldChart
+            },
+            {
+                path:'/baseEcharts',
+                meta:{title:'baseEcharts'},
+                component:baseEcharts
             }
         ]
     },
