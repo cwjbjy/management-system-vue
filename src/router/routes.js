@@ -1,14 +1,14 @@
-const Home = () => import('../components/layout/home.vue')
-const Login = () => import('../components/layout/login.vue')
-const notFound = () => import('../components/layout/404.vue')
-const HomePage = () => import('../components/pages/homePage.vue')
+const Home = () => import(/* webpackChunkName: "Home" */'../components/layout/home.vue')
+const Login = () => import(/* webpackChunkName: "Login" */'../components/layout/login.vue')
+const notFound = () => import(/* webpackChunkName: "notFound" */'../components/layout/404.vue')
+const HomePage = () => import(/* webpackChunkName: "HomePage" */'../components/pages/homePage.vue')
 
-const Fleet = () => import('../components/pages/echart/fleet.vue')
-const baseEcharts = () => import("../components/pages/echart/baseEcharts.vue")
+const Fleet = () => import(/* webpackChunkName: "Fleet" */'../components/pages/echart/fleet.vue')
+const baseEcharts = () => import(/* webpackChunkName: "baseEcharts" */"../components/pages/echart/baseEcharts.vue")
 
-const positionChart = () => import("../components/pages/chart/positionChart.vue")
-const commonChart = ()=> import("../components/pages/chart/commonChart.vue")
-const foldChart = () => import("../components/pages/chart/foldChart.vue")
+const positionChart = () => import(/* webpackChunkName: "positionChart" */"../components/pages/chart/positionChart.vue")
+const commonChart = ()=> import(/* webpackChunkName: "commonChart" */"../components/pages/chart/commonChart.vue")
+const foldChart = () => import(/* webpackChunkName: "foldChart" */"../components/pages/chart/foldChart.vue")
 
 // const Earth = () => import('../components/pages/earth.vue')
 

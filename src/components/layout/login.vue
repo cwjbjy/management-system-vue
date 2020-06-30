@@ -37,13 +37,13 @@
             <h3>第三方账号登录</h3>
           </div>
           <div class="img_list">
-            <div>
+            <div class="icon">
               <img src="../../assets/images/login/QQ.png" />
             </div>
-            <div>
+            <div class="icon">
               <img src="../../assets/images/login/wb.png" />
             </div>
-            <div>
+            <div class="icon">
               <img src="../../assets/images/login/wx.png" />
             </div>
           </div>
@@ -62,7 +62,7 @@
               ></el-input>
             </el-form-item>
           </el-form>
-           <Verify @success="alert('success')" @error="alert('error')" :type="1" fontSize="20px" height="40px" width="55%"></Verify>
+           <!-- <Verify @success="alert('success')" @error="alert('error')" :type="1" fontSize="20px" height="40px" width="55%"></Verify> -->
         </div>
       </div>
     </div>
@@ -70,11 +70,11 @@
 </template>
 
 <script>
-import Verify from "vue2-verify";
+// import Verify from "vue2-verify";
 export default {
-  components: {
-    Verify
-  },
+  // components: {
+  //   Verify
+  // },
   data() {
     return {
       title: "登陆",
@@ -129,7 +129,6 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/css/starrun.css";
-// @import "../../assets/scss";
 .login {
   height: 100vh;
   color: $color-font;

@@ -1,7 +1,5 @@
 <template>
   <div class="fleet">
-    <!-- <div id="stars" style="position: absolute;"></div>
-    <div id="stars2" style="position: absolute"></div> -->
     <fleet-model :model="geoData"></fleet-model>
     <div class="fleet-box box2">
       <el-table
@@ -53,7 +51,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import "../../../assets/css/el-table.css";
 .fleet {
   height: inherit;
   position: relative;

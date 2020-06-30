@@ -1,3 +1,8 @@
+// const CompressionPlugin = require('compression-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+new HtmlWebpackPlugin({
+  inject:'body'
+})
 module.exports = {
   productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
   publicPath: './',
@@ -34,11 +39,23 @@ module.exports = {
     // 是否启用 CSS modules for all css / pre-processor files.
     requireModuleExtension: true
   },
-  configureWebpack: config => { //增加webpack配置
-    if (process.env.NODE_ENV === 'production') {
-      config.mode = 'production'
-    } else {
-      config.mode = 'development'
+  chainWebpack: config => {
+    // 移除 prefetch 插件
+    config.plugins.delete('prefetch')
+    config.plugins.delete('preload')
+    config.plugin('webpack-bundle-analyzer')
+      .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+  },
+
+  configureWebpack: {
+    //externals中的key是用于import，value表示在全局中访问到该对象，就是window.echarts
+    externals: {
+      'echarts': 'echarts',
+      'element-ui': 'ELEMENT',
+      'axios':'axios',
+      'vue':'Vue',
+      'vuex':'Vuex',
+      'vue-router':'VueRouter'
     }
-  }
+  },
 }

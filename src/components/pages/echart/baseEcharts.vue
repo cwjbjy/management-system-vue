@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="12" class="echarts-box">
         <el-card shadow="hover">
-           <water-model :model="options"></water-model>
+           
          
         </el-card>
       </el-col>
@@ -45,7 +45,7 @@ import lineModel from "@/components/echartsModel/lineModel";
 import cylinderModel from "@/components/echartsModel/cylinderModel";
 import pieModel from "@/components/echartsModel/pieModel";
 import scatterModel from "@/components/echartsModel/scatterModel";
-import waterModel from "@/components/echartsModel/waterModel";
+// import waterModel from "@/components/echartsModel/waterModel";
 import PictorialBarModel from "@/components/echartsModel/PictorialBarModel";
 export default {
   components: {
@@ -53,7 +53,7 @@ export default {
     cylinderModel,
     pieModel,
     scatterModel,
-    waterModel,
+    // waterModel,
     PictorialBarModel
   },
   data() {
