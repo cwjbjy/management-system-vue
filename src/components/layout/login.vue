@@ -6,7 +6,6 @@
     <div class="login_top">
       <span class="login_title">PC端管理系统</span>
     </div>
-    <!-- <button @click="aa">点击</button> -->
     <div class="login_main">
       <div class="login_form">
         <div class="tab">
@@ -37,13 +36,13 @@
             <h3>第三方账号登录</h3>
           </div>
           <div class="img_list">
-            <div class="icon">
+            <div class="icon" @click="thirdLogin">
               <img src="../../assets/images/login/QQ.png" />
             </div>
-            <div class="icon">
+            <div class="icon" @click="thirdLogin">
               <img src="../../assets/images/login/wb.png" />
             </div>
-            <div class="icon">
+            <div class="icon" @click="thirdLogin">
               <img src="../../assets/images/login/wx.png" />
             </div>
           </div>
@@ -51,18 +50,30 @@
         <div v-show="!flag">
           <el-form :model="reg" :rules="rules_reg" ref="reg" class="demo-ruleForm">
             <el-form-item prop="reg_name">
-              <el-input prefix-icon="el-icon-phone" v-model="reg.reg_name" placeholder="手机号"></el-input>
+              <el-input prefix-icon="el-icon-user" v-model="reg.reg_name" placeholder="请输入用户名"></el-input>
             </el-form-item>
             <el-form-item prop="rge_pass">
               <el-input
                 prefix-icon="el-icon-lock"
                 v-model="reg.rge_pass"
-                placeholder="请输入密码"
+                placeholder="请输入8-16位由数字与字母组成的密码"
+                show-password
+              ></el-input>
+            </el-form-item>
+            <el-form-item prop="rge_passAgain">
+              <el-input
+                prefix-icon="el-icon-lock"
+                v-model="reg.rge_passAgain"
+                placeholder="请再次输入密码"
                 show-password
               ></el-input>
             </el-form-item>
           </el-form>
-           <!-- <Verify @success="alert('success')" @error="alert('error')" :type="1" fontSize="20px" height="40px" width="55%"></Verify> -->
+          <div class="verification_class">
+            <el-input v-model="authCode" placeholder="请输入验证码"></el-input>
+            <div id="v_container" style="width: 200px;height: 50px;"></div>
+          </div>
+          <el-button type="primary" style="width:100%" @click="register">注册</el-button>
         </div>
       </div>
     </div>
@@ -70,41 +81,52 @@
 </template>
 
 <script>
-// import Verify from "vue2-verify";
+import API from "../../server/api";
+import rules from "@/js/rules";
 export default {
-  // components: {
-  //   Verify
-  // },
   data() {
+    var validatePass = (rule, value, callback) => {
+      if (!rules.isValidPass(value)) {
+        callback(new Error("请输入8-16位由数字与字母组成的密码"));
+      } else {
+        callback();
+      }
+    };
+    var validatePass2 = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("请再次输入密码"));
+      } else if (value !== this.reg.rge_pass) {
+        callback(new Error("两次输入密码不一致!"));
+      } else {
+        callback();
+      }
+    };
     return {
       title: "登陆",
       flag: true,
       status: false,
+      verifyCode: null,
+      authCode: "",
       ruleForm: {
-        name: "18351071268",
-        pass: "18351071268"
+        name: "cwj18351071268",
+        pass: "cwj18351071268"
       },
       reg: {
         reg_name: "",
         verification: "",
-        rge_pass: ""
+        rge_pass: "",
+        rge_passAgain: ""
       },
       rules: {
-        name: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-          { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" }
-        ],
+        name: [{ required: true, message: "请输入用户名", trigger: "blur" }],
         pass: [{ required: true, message: "请输入密码", trigger: "blur" }]
       },
       rules_reg: {
         reg_name: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-          { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" }
+          { required: true, message: "请输入用户名", trigger: "blur" }
         ],
-        verification: [
-          { required: true, message: "请输入验证码", trigger: "blur" }
-        ],
-        rge_pass: [{ required: true, message: "请输入密码", trigger: "blur" }]
+        rge_pass: [{ validator: validatePass, trigger: "blur" }],
+        rge_passAgain: [{ validator: validatePass2, trigger: "blur" }]
       }
     };
   },
@@ -113,17 +135,73 @@ export default {
       this.flag = !this.flag;
     },
     login() {
-      this.status = true;
-      this.$cookies.set("username", "cwj");
-      this.$cookies.set("token", "qwqwswd");
-      this.$router.push("/home");
-      this.status = false;
+      this.$refs.ruleForm.validate(valid => {
+        if (valid) {
+          this.status = true;
+          let params = {
+            userName: this.ruleForm.name,
+            passWord: this.ruleForm.pass
+          };
+          API.login(params)
+            .then(res => {
+              this.$cookies.set("token", res.data.value);
+              this.$router.push("/home");
+            })
+            .catch(err => {
+              if (err.response.status === 400) {
+                this.$message.error("密码错误");
+              } else if (err.response.status === 401) {
+                this.$message.error("用户名错误");
+              }
+            });
+          this.status = false;
+        } else {
+          this.$message.error("请检查输入内容");
+        }
+      });
+    },
+    register() {
+      this.$refs.reg.validate(valid => {
+        if (valid) {
+          var res = this.verifyCode.validate(this.authCode);
+          if (res) {
+            let params = {
+              userName: this.reg.reg_name,
+              passWord: this.reg.rge_pass,
+              authority: "2"
+            };
+            API.register(params)
+              .then(res => {
+                this.$message.success(res.data.message);
+                this.flag = true;
+              })
+              .catch(err => {
+                if (err.response.status === 403) {
+                  this.$message.error("用户名已存在，请重新选择用户名");
+                }
+              });
+          } else {
+            this.$message.error("验证码错误");
+          }
+        } else {
+          this.$message.error("请检查输入内容");
+        }
+      });
+    },
+    thirdLogin() {
+      this.$message.warning("功能未开发，请使用用户注册");
     },
     alert(text) {
       console.log(text);
     }
   },
-  mounted() {}
+  mounted() {
+    this.verifyCode = new GVerify("v_container");
+    //数组去重，Set数据是用来去重的，map数据是键值对
+    // let a = [1,2,4,3,3,3]
+    // let b = [...new Set(a)]
+    // console.log(b)
+  }
 };
 </script>
 
@@ -217,9 +295,15 @@ export default {
       @extend %space_around;
     }
   }
-  .verification_class {
-    width: 64%;
-    margin-right: 10px;
+}
+</style>
+
+<style lang="scss">
+.verification_class {
+  // @extend %center;
+  display: flex;
+  .el-input__inner {
+    width: 200px;
   }
 }
 </style>

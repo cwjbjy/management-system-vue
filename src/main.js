@@ -11,7 +11,7 @@ Vue.config.productionTip = false;
 import directive from "./directive"
 import Vue from 'vue'
 Vue.use(directive)
-
+import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ELEMENT)
 
 window.eventBus = new Vue();

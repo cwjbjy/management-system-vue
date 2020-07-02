@@ -13,8 +13,8 @@ router.beforeEach((to, from, next) => {
         Vue.$cookies.keys().forEach(item => Vue.$cookies.remove(item))
         next();
     }
-    let user = Vue.$cookies.get('username');
-    if (!user && to.path !== '/login') {
+    let token = Vue.$cookies.get('token');
+    if (!token && to.path !== '/login') {
         next({
             path: '/login'
         })
