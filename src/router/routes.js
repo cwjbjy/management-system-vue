@@ -1,16 +1,17 @@
-const Home = () => import(/* webpackChunkName: "Home" */'../components/layout/home.vue')
-const Login = () => import(/* webpackChunkName: "Login" */'../components/layout/login.vue')
-const notFound = () => import(/* webpackChunkName: "notFound" */'../components/layout/404.vue')
-const HomePage = () => import(/* webpackChunkName: "HomePage" */'../components/pages/homePage.vue')
+const Login = () => import(/* webpackChunkName: "Login" */'@/views/login.vue')
+const Home = () => import(/* webpackChunkName: "Home" */'@/views/home.vue')
+const notFound = () => import(/* webpackChunkName: "notFound" */'@/views/404.vue')
 
-const Fleet = () => import(/* webpackChunkName: "Fleet" */'../components/pages/echart/fleet.vue')
-const baseEcharts = () => import(/* webpackChunkName: "baseEcharts" */"../components/pages/echart/baseEcharts.vue")
+const firstItem = () => import(/* webpackChunkName: "HomePage" */'@/views/firstItem.vue')
 
-const positionChart = () => import(/* webpackChunkName: "positionChart" */"../components/pages/chart/positionChart.vue")
-const commonChart = ()=> import(/* webpackChunkName: "commonChart" */"../components/pages/chart/commonChart.vue")
-const foldChart = () => import(/* webpackChunkName: "foldChart" */"../components/pages/chart/foldChart.vue")
+const Fleet = () => import(/* webpackChunkName: "Fleet" */'@/views/fleetLine.vue')
+const baseEcharts = () => import(/* webpackChunkName: "baseEcharts" */"@/views/baseEcharts.vue")
 
-// const Earth = () => import('../components/pages/earth.vue')
+const positionChart = () => import(/* webpackChunkName: "positionChart" */"@/views/flowChart/positionChart.vue")
+const commonChart = ()=> import(/* webpackChunkName: "commonChart" */"@/views/flowChart/commonChart.vue")
+const foldChart = () => import(/* webpackChunkName: "foldChart" */"@/views/flowChart/foldChart.vue")
+
+const manage = () => import(/* webpackChunkName: "manage" */"@/views/manage.vue")
 
 const routes = [
     {
@@ -24,9 +25,9 @@ const routes = [
         redirect:'/homePage',
         children:[
             {
-                path:'/homePage',
-                meta:{title:'HomePage'},
-                component:HomePage
+                path:'/firstItem',
+                meta:{title:'firstItem'},
+                component:firstItem
             },
             {
                path:'/fleet',
@@ -52,6 +53,11 @@ const routes = [
                 path:'/baseEcharts',
                 meta:{title:'baseEcharts'},
                 component:baseEcharts
+            },
+            {
+                path:'/manage',
+                meta:{title:'manage'},
+                component:manage
             }
         ]
     },

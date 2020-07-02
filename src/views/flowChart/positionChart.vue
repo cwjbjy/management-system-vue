@@ -67,9 +67,9 @@ export default {
       }
 
       // define Converters to be used for Bindings
-      function theNationFlagConverter(nation) {
-        return require("../../../assets/images/chart/" + nation + ".png");
-      }
+      // function theNationFlagConverter(nation) {
+      //   return require("../../../assets/images/chart/" + nation + ".png");
+      // }
 
       // define the Node template
       this.mySelf.myDiagram.nodeTemplate = $(

@@ -18,8 +18,8 @@
 
 <script>
 
-import fleetModel from "../../echartsModel/fleetModel";
-import localData from "../../../server/localData";
+import fleetModel from "@/components/echartsModel/fleetModel";
+import localData from "@/services/localData";
 export default {
   name: "fleet",
   components: {

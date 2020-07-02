@@ -7,7 +7,7 @@
 
       <div class="app-main">
         <aside class="aside">
-          <menus></menus>
+          <sider-bar/>
         </aside>
         <section class="app-content">
           <transition name="fade" mode="out-in">
@@ -34,13 +34,13 @@
 </template>
 
 <script>
-import API from "../../server/api";
-import HomeHeader from "./HomeHeader";
-import Menus from "./Menus";
+import API from "@/services/api";
+import homeHeader from "@/components/layout/homeHeader";
+import siderBar from "@/components/layout/siderBar";
 export default {
   components: {
-    HomeHeader,
-    Menus
+    homeHeader,
+    siderBar
   },
   computed: {
     themeClass() {

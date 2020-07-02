@@ -37,13 +37,13 @@
           </div>
           <div class="img_list">
             <div class="icon" @click="thirdLogin">
-              <img src="../../assets/images/login/QQ.png" />
+              <img src="@/assets/images/login/QQ.png" />
             </div>
             <div class="icon" @click="thirdLogin">
-              <img src="../../assets/images/login/wb.png" />
+              <img src="@/assets/images/login/wb.png" />
             </div>
             <div class="icon" @click="thirdLogin">
-              <img src="../../assets/images/login/wx.png" />
+              <img src="@/assets/images/login/wx.png" />
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import API from "../../server/api";
+import API from "@/services/api";
 import rules from "@/js/rules";
 export default {
   data() {
@@ -138,11 +138,10 @@ export default {
       this.$refs.ruleForm.validate(valid => {
         if (valid) {
           this.status = true;
-          let params = {
-            userName: this.ruleForm.name,
-            passWord: this.ruleForm.pass
-          };
-          API.login(params)
+          let fd = new FormData();
+          fd.append("userName",this.ruleForm.name);
+          fd.append("passWord",this.ruleForm.pass)
+          API.login(fd)
             .then(res => {
               this.$cookies.set("token", res.data.value);
               this.$router.push("/home");
@@ -206,7 +205,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/css/starrun.css";
+@import "../assets/css/starrun.css";
 .login {
   height: 100vh;
   color: $color-font;

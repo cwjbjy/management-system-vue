@@ -40,7 +40,7 @@ module.exports = {
     requireModuleExtension: true
   },
   chainWebpack: config => {
-    // 移除 prefetch 插件
+    // 移除 prefetch 插件,取消预加载，启动懒加载
     config.plugins.delete('prefetch')
     config.plugins.delete('preload')
     config.plugin('webpack-bundle-analyzer')

@@ -1,5 +1,5 @@
 <template>
-  <!-- 圆柱 -->
+  <!-- 柱状图 -->
   <div ref="echarts" class="myChart"></div>
 </template>
 
@@ -26,31 +26,44 @@ export default {
       var black = "#2f3542";
       var blue = "#70a1ff";
       var option = {
+        color: ["#3398DB"],
         title: {
-          text: "水滴图",
+          text: "柱状图",
           left: "center"
         },
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            // 坐标轴指示器，坐标轴触发有效
+            type: "shadow" // 默认为直线，可选为：'line' | 'shadow'
+          }
+        },
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true
+        },
+        xAxis: [
+          {
+            type: "category",
+            data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            axisTick: {
+              alignWithLabel: true
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: "value"
+          }
+        ],
         series: [
           {
-            type: "liquidFill",
-            radius: "55%",
-            center: ["50%", "60%"],
-            data: [0.5, 0.5], // data个数代表波浪数
-            backgroundStyle: {
-              borderWidth: 1,
-              color: "rgb(255,0,255,0.1)"
-            },
-            label: {
-              normal: {
-                formatter: (0.5 * 100).toFixed(2) + "%",
-                textStyle: {
-                  fontSize: 30
-                }
-              }
-            },
-            outline: {
-              show: false
-            }
+            name: "直接访问",
+            type: "bar",
+            barWidth: "60%",
+            data: [10, 52, 200, 334, 390, 330, 220]
           }
         ]
       };

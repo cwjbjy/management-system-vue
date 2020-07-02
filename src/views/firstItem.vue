@@ -5,7 +5,7 @@
         <el-card shadow="hover" class="user">
           <el-row class="user-area1">
             <el-col :span="12">
-              <img src="../../assets/images/home/userlogo.png" class="user-img" />
+              <img src="@/assets/images/home/userlogo.png" class="user-img" />
             </el-col>
             <el-col :span="12" class="user-area">
               <div class="user-name">{{userName}}</div>
@@ -116,8 +116,8 @@
 </template>
 
 <script>
-import barModel from "../echartsModel/barLineModel";
-import radarModel from "../echartsModel/radarModel"
+import barModel from "@/components/echartsModel/barLineModel";
+import radarModel from "@/components/echartsModel/radarModel"
 export default {
   name: "HomePage",
   components: {

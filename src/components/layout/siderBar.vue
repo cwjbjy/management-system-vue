@@ -46,12 +46,12 @@ export default {
   name: "menus",
   data() {
     return {
-      defaultActive: "/homePage",
+      defaultActive: "/firstItem",
       isCollapse: false,
       menus: [
         {
           name: "首页",
-          path: "/homePage",
+          path: "/firstItem",
           icon: require("../../assets/images/menus/home.png")
         },
         {
@@ -85,6 +85,11 @@ export default {
         {
           name: "放大镜",
           icon: require("../../assets/images/menus/magnifying.png")
+        },
+        {
+          name:"后台管理",
+          icon:require("../../assets/images/menus/magnifying.png"),
+          path:'/manage'
         }
       ]
     };

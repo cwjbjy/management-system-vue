@@ -19,7 +19,7 @@ HttpClient.instance.interceptors.request.use(config =>{
   if(!config.headers){
     config.headers = {}
   }
-  config.headers['Authorization'] = 'Bearer' + token
+  config.headers['Authorization'] = 'Bearer ' + token
   return config
 },error => {
   // Message.error("网络错误，请稍后重试");
