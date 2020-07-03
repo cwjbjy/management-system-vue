@@ -52,21 +52,21 @@ export default {
         {
           name: "首页",
           path: "/firstItem",
-          icon: require("../../assets/images/menus/home.png")
+          icon: require("@/assets/images/menus/home.png")
         },
         {
           name: "航线",
           path: "/fleet",
-          icon: require("../../assets/images/menus/echarts_heatmap.png")
+          icon: require("@/assets/images/menus/echarts_heatmap.png")
         },
         {
           name: "图表",
           path: "/baseEcharts",
-          icon: require("../../assets/images/menus/echarts.png"),
+          icon: require("@/assets/images/menus/echarts.png"),
         },
         {
           name: "流程图",
-          icon: require("../../assets/images/menus/flowChart.png"),
+          icon: require("@/assets/images/menus/flowChart.png"),
           children: [
             {
               name: "一般流程图",
@@ -84,11 +84,12 @@ export default {
         },
         {
           name: "放大镜",
-          icon: require("../../assets/images/menus/magnifying.png")
+          icon: require("@/assets/images/menus/magnifying.png"),
+          path:'/magnifying'
         },
         {
           name:"后台管理",
-          icon:require("../../assets/images/menus/magnifying.png"),
+          icon:require("@/assets/images/menus/manage.png"),
           path:'/manage'
         }
       ]
@@ -121,7 +122,7 @@ export default {
   width: 250px;
 }
 .icon {
-  margin-right: 5px;
+  margin-right: 10px;
   width: 18px;
   // text-align: center;
   height: 18px;

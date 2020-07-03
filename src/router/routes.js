@@ -11,7 +11,8 @@ const positionChart = () => import(/* webpackChunkName: "positionChart" */"@/vie
 const commonChart = ()=> import(/* webpackChunkName: "commonChart" */"@/views/flowChart/commonChart.vue")
 const foldChart = () => import(/* webpackChunkName: "foldChart" */"@/views/flowChart/foldChart.vue")
 
-const manage = () => import(/* webpackChunkName: "manage" */"@/views/manage.vue")
+const magnifying = () => import(/* webpackChunkName: "magnifying" */"@/views/magnifying.vue")
+const manage = () => import(/* webpackChunkName: "manage" */"@/views/userManage.vue")
 
 const routes = [
     {
@@ -22,7 +23,7 @@ const routes = [
         path:'/home',
         meta:{title:'home'},
         component:Home,
-        redirect:'/homePage',
+        redirect:'/firstItem',
         children:[
             {
                 path:'/firstItem',
@@ -53,6 +54,11 @@ const routes = [
                 path:'/baseEcharts',
                 meta:{title:'baseEcharts'},
                 component:baseEcharts
+            },
+            {
+                path:'/magnifying',
+                meta:{title:'magnifying'},
+                component:magnifying
             },
             {
                 path:'/manage',

@@ -1,0 +1,133 @@
+
+//设置表格为透明
+// .el-table, .el-table__expanded-cell {
+//     background-color: rgba(63, 92, 109, 0);
+//   }
+//   .special_table td, .special_table th.is-leaf {
+//     border-bottom: 1px solid #388acc;
+//   }
+//   .special_table tr ,.special_table td{
+//     border-bottom: 1px solid #388acc;
+//     border-right: 1px solid #6ba1cc;
+//   }
+  //左侧线条颜色
+//   .el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left ~ .el-table__fixed {
+//     border-right: 1px solid #6ba1cc;
+//   }
+  .special_table th{
+    background:#f5f7fa !important;
+    font-size: 17px;
+  }
+//   .special_table tr{
+//     background:rgba(0,254,255,0.02);
+//     font-size: 16px;
+//   }
+  .special_table td ,.special_table th{
+    text-align: center;
+  }
+  //下拉时，下面线的颜色
+//   .special_table::before {
+//     background-color: #388acc;
+//   }
+  .el-table--enable-row-hover .el-table__body tr:hover>td {
+    background:#f5f7fa !important;
+  }
+  /*暂无显示数据*/
+  .el-table__empty-text {
+    color: #FFF;
+    font-size: 20px;
+    //background-color: rgb(12,48,89);
+    font-family: "Microsoft YaHei";
+  }
+  //沟槽右边的样式
+//   .el-table--border::after, .el-table--group::after{
+//     width: 1px ;
+//     background-color: rgba(0,100,106,.8);
+//   }
+  
+  /*分页按钮显示条数*/
+  .el-pagination__total {
+    color: #FFFFFF;
+    font-size: 17px;
+  }
+  /*分页具体页数*/
+  .el-pager, .el-pager li {
+    background: rgba(1, 88, 155, 0);
+    color: #00d2c8;
+  }
+  .el-pagination.is-background .el-pager li.active {
+    background-color: #054278;
+    color: #00c1ff;
+  }
+  /*分页上一页和下一页按钮*/
+  .btn-prev, .btn-next {
+    background: rgba(1, 88, 155, 0);
+    color:#00d2c8;
+  }
+  .paging .el-pagination__jump {
+    margin-left: 24px;
+    font-size: 16px;
+    color: #FFFFFF;
+  }
+  .paging .el-input__inner {
+    width: 50px;
+    height: 22px;
+    background: #008aec;
+    color: #FFFFFF;
+    font-size: 15px;
+    box-shadow: none;
+    border: 0 solid #0b3356;
+  }
+  .el-pagination button:disabled {
+    color: #FFFFFF;
+    background-color: #008aec;
+    cursor: not-allowed;
+  }
+  .row-bg {
+    background: rgba(1, 88, 155, 0.1);
+  }
+  .el-pagination.is-background .btn-next.disabled, .el-pagination.is-background .btn-next:disabled, .el-pagination.is-background .btn-prev.disabled, .el-pagination.is-background .btn-prev:disabled, .el-pagination.is-background .el-pager li.disabled {
+    color: rgba(102,204,255,0.5);
+  }
+  .el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li{
+    background: rgba(1, 88, 155, 0.5);
+    color: #00c1ff;
+  }
+  .btn-prev, .btn-next {
+    background: rgba(1, 88, 155, 0);
+    color: #00c1ff;
+  }
+  .el-pagination .btn-next, .el-pagination .btn-prev {
+    background: center center no-repeat #008aec;
+    background-size: 16px;
+    cursor: pointer;
+    margin: 0;
+    color: #FFFFFF;
+  }
+  //分页未选中的字体颜色
+  .el-pager, .el-pager li {
+    background: rgba(1, 88, 155, 0);
+    color: #FFFFFF;
+  }
+  .el-pager li.btn-quicknext, .el-pager li.btn-quickprev {
+    line-height: 28px;
+    color: #FFFFFF;
+  }
+  //分页样式
+  .el-pagination {
+    white-space: nowrap;
+    padding: 8px 4%;
+    color: #303133;
+    font-weight: 700;
+  }
+  //多级表头的样式
+//   .el-table--border th, .el-table__fixed-right-patch {
+//     border-bottom: 1px solid #3f9394;
+//   }
+//   .el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed {
+//     border-right: 1px solid #388acc;
+//   }
+  //查看详情
+  .particulars{
+    cursor: pointer;
+  }

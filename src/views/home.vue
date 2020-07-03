@@ -59,9 +59,6 @@ export default {
   },
 
   created() {
-    API.getData().then((res) => {
-      console.log('res',res)
-    });
   },
   beforeDestroy() {},
   methods: {

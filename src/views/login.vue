@@ -83,6 +83,7 @@
 <script>
 import API from "@/services/api";
 import rules from "@/js/rules";
+import comfun from "@/js/comFunc";
 export default {
   data() {
     var validatePass = (rule, value, callback) => {
@@ -140,7 +141,7 @@ export default {
           this.status = true;
           let fd = new FormData();
           fd.append("userName",this.ruleForm.name);
-          fd.append("passWord",this.ruleForm.pass)
+          fd.append("passWord",this.ruleForm.pass);
           API.login(fd)
             .then(res => {
               this.$cookies.set("token", res.data.value);
@@ -167,12 +168,15 @@ export default {
             let params = {
               userName: this.reg.reg_name,
               passWord: this.reg.rge_pass,
-              authority: "2"
+              authority: "2",
+              createTime:comfun.getTime()
             };
             API.register(params)
               .then(res => {
                 this.$message.success(res.data.message);
                 this.flag = true;
+                this.ruleForm.name = "";
+                this.ruleForm.pass = "";
               })
               .catch(err => {
                 if (err.response.status === 403) {
