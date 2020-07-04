@@ -88,6 +88,11 @@ export default {
           path:'/magnifying'
         },
         {
+          name:"文档预览",
+          icon: require("@/assets/images/menus/pdf.png"),
+          path:'/pdf'
+        },
+        {
           name:"后台管理",
           icon:require("@/assets/images/menus/manage.png"),
           path:'/manage'

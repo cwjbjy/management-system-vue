@@ -12,6 +12,7 @@ const commonChart = ()=> import(/* webpackChunkName: "commonChart" */"@/views/fl
 const foldChart = () => import(/* webpackChunkName: "foldChart" */"@/views/flowChart/foldChart.vue")
 
 const magnifying = () => import(/* webpackChunkName: "magnifying" */"@/views/magnifying.vue")
+const pdf = () => import(/* webpackChunkName: "pdf.vue" */"@/views/pdf.vue")
 const manage = () => import(/* webpackChunkName: "manage" */"@/views/userManage.vue")
 
 const routes = [
@@ -59,6 +60,11 @@ const routes = [
                 path:'/magnifying',
                 meta:{title:'magnifying'},
                 component:magnifying
+            },
+            {
+                path:'/pdf',
+                meta:{title:'pdf'},
+                component:pdf
             },
             {
                 path:'/manage',

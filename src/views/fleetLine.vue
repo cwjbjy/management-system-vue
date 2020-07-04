@@ -1,7 +1,7 @@
 <template>
   <div class="fleet">
     <fleet-model :model="geoData"></fleet-model>
-    <div class="fleet-box box2">
+    <!-- <div class="fleet-box box2">
       <el-table
         :data="tableData"
         class="special_table leavel"
@@ -12,7 +12,7 @@
         <el-table-column prop="fromName" label="出发城市"></el-table-column>
         <el-table-column prop="toName" label="到达城市"></el-table-column>
       </el-table>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
   },
   created() {
     localData.getAirData().then(res => {
-      console.log("res.data", res.data);
+      // console.log("res.data", res.data);
       this.geoData = res.data;
       this.tableData = res.data.apiData;
     });
