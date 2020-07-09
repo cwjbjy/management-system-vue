@@ -14,6 +14,7 @@ router.beforeEach((to, from, next) => {
         next();
     }
     let token = Vue.$cookies.get('token');
+    console.log('token',token)
     if (!token && to.path !== '/login') {
         next({
             path: '/login'

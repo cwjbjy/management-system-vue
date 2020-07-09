@@ -204,6 +204,9 @@ export default {
     // let a = [1,2,4,3,3,3]
     // let b = [...new Set(a)]
     // console.log(b)
+  },
+  created(){
+   
   }
 };
 </script>

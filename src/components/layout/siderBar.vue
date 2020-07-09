@@ -60,8 +60,13 @@ export default {
           icon: require("@/assets/images/menus/echarts_heatmap.png")
         },
         {
-          name: "图表",
+          name: "echarts图表",
           path: "/baseEcharts",
+          icon: require("@/assets/images/menus/echarts.png"),
+        },
+        {
+          name: "基础表格",
+          path: "/baseTable",
           icon: require("@/assets/images/menus/echarts.png"),
         },
         {
@@ -86,6 +91,11 @@ export default {
           name: "放大镜",
           icon: require("@/assets/images/menus/magnifying.png"),
           path:'/magnifying'
+        },
+        {
+          name:'文件上传',
+           icon: require("@/assets/images/menus/magnifying.png"),
+          path:'/fileUp'
         },
         {
           name:"文档预览",

@@ -25,8 +25,5 @@ API.updateUser = (params) =>{
   return HttpClient.instance.put('/updateUser', params)
 }
 
-// API.getCaipuData = (params) =>{
-//   return HttpClient.instance1.get('/cook/query.php',{params:params});
-// };
 
 export default API

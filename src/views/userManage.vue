@@ -1,10 +1,7 @@
 <template>
   <div class="table-content">
     <el-card shadow="hover">
-      <h4>管理员登陆方可看到后台管理页面；该基础表格包含排序，筛选，搜索，编辑，下载功能；注册时间旁按钮为排序，筛选功能；上述功能均已实现</h4>
-      <div class="download">
-        <el-button type="primary" @click="download">下载表格</el-button>
-      </div>
+      <h4>管理员登陆方可看到后台管理页面；该基础表格包含排序，筛选，搜索，编辑功能；表格中注册时间旁按钮为排序，筛选功能；上述功能均已实现</h4>
       <el-table
         :data="tableData.filter(data => !search || data.user_name.toLowerCase().includes(search.toLowerCase()))"
         :default-sort="{prop: 'createTime', order: 'ascending'}"
@@ -72,8 +69,7 @@
 
 <script>
 import API from "@/services/api";
-import FileSaver from "file-saver";
-import XLSX from "xlsx";
+
 // import comfun from "@/js/comFunc"
 export default {
   data() {
@@ -158,36 +154,6 @@ export default {
       const property = column["property"];
       return row[property] === value;
     },
-    download(e) {
-      var outTable = XLSX.utils.table_to_book(
-        document.querySelector("#out-table")
-      );
-      var downloadTable = XLSX.write(outTable, { bookType: "xlsx", type: "binary" });
-      FileSaver.saveAs(
-        new Blob([this.s2ab(downloadTable)], {
-          type: "application/octet-stream"
-        }),
-        '人员信息表.xlsx'
-      );
-    },
-    s2ab(s) {
-      var cuf;
-      var i;
-      if (typeof ArrayBuffer !== "undefined") {
-        cuf = new ArrayBuffer(s.length);
-        var view = new Uint8Array(cuf);
-        for (i = 0; i !== s.length; i++) {
-          view[i] = s.charCodeAt(i) & 0xff;
-        }
-        return cuf;
-      } else {
-        cuf = new Array(s.length);
-        for (i = 0; i !== s.length; ++i) {
-          cuf[i] = s.charCodeAt(i) & oxFF;
-        }
-        return cuf;
-      }
-    }
   },
   created() {
     this.init();

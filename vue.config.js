@@ -13,19 +13,26 @@ module.exports = {
     host: '127.0.0.1',
     port: 8083,
     // proxy: {
-    //     '/api':{
-    //         target:'http://jsonplaceholder.typicode.com',
+    //     '/juhe':{
+    //         target:'http://v.juhe.cn',
     //         changeOrigin:true,
     //         pathRewrite:{
-    //             '/api':''
+    //           "^/juhe":""
     //         }
+    //     },
+    //     'v1':{
+    //       target:'http://v.juhe.cn',
+    //       changeOrigin:true,
+    //       pathRewrite:{
+    //         "^/v1":""
+    //       }
     //     }
     // }
   },
   // css相关配置
   css: {
     // 是否分离css（开发时注释掉，否则修改CSS样式无法触发热更新）
-    // extract: true,
+    extract: false,
     sourceMap: false,
     // css预设器配置项
     loaderOptions: {

@@ -6,19 +6,22 @@ const firstItem = () => import(/* webpackChunkName: "HomePage" */'@/views/firstI
 
 const Fleet = () => import(/* webpackChunkName: "Fleet" */'@/views/fleetLine.vue')
 const baseEcharts = () => import(/* webpackChunkName: "baseEcharts" */"@/views/baseEcharts.vue")
+const baseTable = () =>import(/* webpackChunkName: "baseTable" */"@/views/baseTable")
 
 const positionChart = () => import(/* webpackChunkName: "positionChart" */"@/views/flowChart/positionChart.vue")
 const commonChart = ()=> import(/* webpackChunkName: "commonChart" */"@/views/flowChart/commonChart.vue")
 const foldChart = () => import(/* webpackChunkName: "foldChart" */"@/views/flowChart/foldChart.vue")
 
 const magnifying = () => import(/* webpackChunkName: "magnifying" */"@/views/magnifying.vue")
+const fileUp = () => import(/* webpackChunkName: "fileUp" */"@/views/fileUp.vue")
+
 const pdf = () => import(/* webpackChunkName: "pdf.vue" */"@/views/pdf.vue")
 const manage = () => import(/* webpackChunkName: "manage" */"@/views/userManage.vue")
 
 const routes = [
     {
         path:'/',
-        redirect:'/homePage'
+        redirect:'/firstItem'
     },
     {
         path:'/home',
@@ -42,6 +45,11 @@ const routes = [
                 component:commonChart
             },
             {
+                path:'/baseTable',
+                meta:{title:'baseTable'},
+                component:baseTable
+            },
+            {
                 path:'/positionChart',
                 meta:{title:'positionChart'},
                 component:positionChart
@@ -60,6 +68,11 @@ const routes = [
                 path:'/magnifying',
                 meta:{title:'magnifying'},
                 component:magnifying
+            },
+            {
+                path:'/fileUp',
+                meta:{title:'fileUp'},
+                component:fileUp
             },
             {
                 path:'/pdf',
