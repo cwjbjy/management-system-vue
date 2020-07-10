@@ -1,5 +1,5 @@
 // import axios from 'axios'
-// import qs from 'qs'
+import qs from 'qs'
 // import {Message} from "element-ui";
 
 var HttpClient = {};
@@ -30,7 +30,10 @@ HttpClient.instance.interceptors.request.use(config =>{
   if(!config.headers){
     config.headers = {}
   }
-  config.headers['Authorization'] = 'Bearer ' + token
+  config.headers['Authorization'] = 'Bearer ' + token;
+  // if(config.method == 'post'){
+  //   config.data = qs.stringify(config.data)
+  // }
   return config
 },error => {
   // Message.error("网络错误，请稍后重试");

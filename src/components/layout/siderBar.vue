@@ -67,7 +67,7 @@ export default {
         {
           name: "基础表格",
           path: "/baseTable",
-          icon: require("@/assets/images/menus/echarts.png"),
+          icon: require("@/assets/images/menus/baseTable.png"),
         },
         {
           name: "流程图",
@@ -94,7 +94,7 @@ export default {
         },
         {
           name:'文件上传',
-           icon: require("@/assets/images/menus/magnifying.png"),
+           icon: require("@/assets/images/menus/upload.png"),
           path:'/fileUp'
         },
         {

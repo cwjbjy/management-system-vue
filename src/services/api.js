@@ -25,5 +25,10 @@ API.updateUser = (params) =>{
   return HttpClient.instance.put('/updateUser', params)
 }
 
+//获取上传图片
+API.getImage = (params) =>{
+  return HttpClient.instance.get('/getImage',{params:params})
+}
+
 
 export default API

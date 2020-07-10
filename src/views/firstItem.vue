@@ -5,7 +5,7 @@
         <el-card shadow="hover" class="user">
           <el-row class="user-area1">
             <el-col :span="12">
-              <img src="@/assets/images/home/userlogo.png" class="user-img" />
+              <img :src="imageUrl" class="user-img" />
             </el-col>
             <el-col :span="12" class="user-area">
               <div class="user-name">{{userName}}</div>
@@ -116,8 +116,9 @@
 </template>
 
 <script>
+import API from "@/services/api"
 import barModel from "@/components/echartsModel/barLineModel";
-import radarModel from "@/components/echartsModel/radarModel"
+import radarModel from "@/components/echartsModel/radarModel";
 export default {
   name: "HomePage",
   components: {
@@ -132,6 +133,8 @@ export default {
   data() {
     return {
       userName: "admin",
+      imageUrl:"",
+      user_name:"",
       todoList: [
         {
           title: "今天要修复100个bug",
@@ -162,6 +165,15 @@ export default {
     };
   },
   methods: {
+        getImage() {
+      let params = {
+        user_name: this.user_name
+      };
+      API.getImage(params).then(res => {
+        let fileName = res.data.Data[0].photo;
+        this.imageUrl = `//127.0.0.1:9000/images/${fileName}`;
+      });
+    },
     format(percentage) {
       if (percentage >= 90) {
         return "精通";
@@ -173,6 +185,10 @@ export default {
         return "了解";
       }
     }
+  },
+  created(){
+    this.user_name = localStorage.getItem('user_name')
+    this.getImage()
   }
 };
 </script>

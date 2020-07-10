@@ -142,9 +142,14 @@ export default {
           let fd = new FormData();
           fd.append("userName",this.ruleForm.name);
           fd.append("passWord",this.ruleForm.pass);
+          // let fd = {
+          //   userName:this.ruleForm.name,
+          //   passWord:this.ruleForm.pass
+          // }
           API.login(fd)
             .then(res => {
               this.$cookies.set("token", res.data.value);
+              localStorage.setItem("user_name", this.ruleForm.name);
               this.$router.push("/home");
             })
             .catch(err => {
@@ -169,13 +174,14 @@ export default {
               userName: this.reg.reg_name,
               passWord: this.reg.rge_pass,
               authority: "2",
-              createTime:comfun.getTime()
+              createTime:comfun.getTime(),
+              photo:'userlogo.png'
             };
             API.register(params)
               .then(res => {
                 this.$message.success(res.data.message);
                 this.flag = true;
-                this.ruleForm.name = "";
+                this.ruleForm.name = this.reg.reg_name;
                 this.ruleForm.pass = "";
               })
               .catch(err => {
