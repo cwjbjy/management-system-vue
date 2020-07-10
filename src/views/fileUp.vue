@@ -40,7 +40,6 @@ export default {
     getUrl() {
       const env = process.env.NODE_ENV;
       let baseURL = "";
-
       switch (env) {
         case "development":
           baseURL = "//127.0.0.1:9000/api/uploadImage";
@@ -50,6 +49,19 @@ export default {
           break;
       }
       return baseURL;
+    },
+    baseURL() {
+      const env = process.env.NODE_ENV;
+      let url = "";
+      switch (env) {
+        case "development":
+          url = "//127.0.0.1:9000/images/";
+          break;
+        case "production":
+          url = "https://wen.cwjbjy.online/images/";
+          break;
+      }
+      return url
     }
   },
   methods: {
@@ -64,7 +76,7 @@ export default {
       };
       API.getImage(params).then(res => {
         let fileName = res.data.Data[0].photo;
-        this.imageUrl = `//127.0.0.1:9000/images/${fileName}`;
+        this.imageUrl = `${this.baseURL}${fileName}`;
       });
     },
     beforeAvatarUpload(file) {

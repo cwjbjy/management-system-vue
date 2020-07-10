@@ -116,7 +116,7 @@
 </template>
 
 <script>
-import API from "@/services/api"
+import API from "@/services/api";
 import barModel from "@/components/echartsModel/barLineModel";
 import radarModel from "@/components/echartsModel/radarModel";
 export default {
@@ -128,13 +128,26 @@ export default {
   computed: {
     role() {
       return this.userName == "admin" ? "超级管理员" : "普通用户";
+    },
+    baseURL() {
+      const env = process.env.NODE_ENV;
+      let url = "";
+      switch (env) {
+        case "development":
+          url = "//127.0.0.1:9000/images/";
+          break;
+        case "production":
+          url = "https://wen.cwjbjy.online/images/";
+          break;
+      }
+      return url
     }
   },
   data() {
     return {
       userName: "admin",
+      user_name: "",
       imageUrl:"",
-      user_name:"",
       todoList: [
         {
           title: "今天要修复100个bug",
@@ -165,13 +178,13 @@ export default {
     };
   },
   methods: {
-        getImage() {
+    getImage() {
       let params = {
         user_name: this.user_name
       };
       API.getImage(params).then(res => {
         let fileName = res.data.Data[0].photo;
-        this.imageUrl = `//127.0.0.1:9000/images/${fileName}`;
+        this.imageUrl = `${this.baseURL}${fileName}`;
       });
     },
     format(percentage) {
@@ -186,9 +199,9 @@ export default {
       }
     }
   },
-  created(){
-    this.user_name = localStorage.getItem('user_name')
-    this.getImage()
+  created() {
+    this.user_name = localStorage.getItem("user_name");
+    this.getImage();
   }
 };
 </script>
@@ -298,5 +311,4 @@ export default {
 </style>
 
 <style lang="scss">
-
 </style>
