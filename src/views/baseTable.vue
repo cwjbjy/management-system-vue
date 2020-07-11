@@ -119,12 +119,10 @@ export default {
       let elm = event.path[2];
       elm.className = "cell";
     }
-  }
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
 
 <style lang="scss">
 .baseTable {

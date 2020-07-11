@@ -22,7 +22,7 @@ HttpClient.instance = axios.create({
 });
 
 HttpClient.instance1 = axios.create({
-  baseURL:'http://v.juhe.cn'
+ 
 })
 
 HttpClient.instance.interceptors.request.use(config =>{

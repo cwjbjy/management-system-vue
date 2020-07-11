@@ -126,6 +126,10 @@ export default {
     radarModel
   },
   computed: {
+    userName(){
+      let user = localStorage.getItem('user_name');
+      return user == 'cwj18351071268' ? 'admin' : 'consumer'
+    },
     role() {
       return this.userName == "admin" ? "超级管理员" : "普通用户";
     },
@@ -145,7 +149,6 @@ export default {
   },
   data() {
     return {
-      userName: "admin",
       user_name: "",
       imageUrl:"",
       todoList: [
@@ -202,6 +205,10 @@ export default {
   created() {
     this.user_name = localStorage.getItem("user_name");
     this.getImage();
+  },
+  mounted(){
+    // console.log('1',document.documentElement.clientWidth)
+    // console.log('2',window.innerWidth)
   }
 };
 </script>

@@ -13,6 +13,11 @@
       >
         <el-table-column label="序号" type="index" width="80"></el-table-column>
         <el-table-column label="用户名" prop="user_name"></el-table-column>
+        <el-table-column label="头像(查看大图)">
+          <template slot-scope="scope">
+            <el-image class="table-td-thumb" :src="`${baseURL}${scope.row.photo}`" :preview-src-list="[`${baseURL}${scope.row.photo}`]"></el-image>
+          </template>
+        </el-table-column>
         <el-table-column label="角色描述">
           <template slot-scope="scope">
             <span
@@ -89,6 +94,21 @@ export default {
       filtersData: []
     };
   },
+  computed:{
+    baseURL() {
+      const env = process.env.NODE_ENV;
+      let url = "";
+      switch (env) {
+        case "development":
+          url = "//127.0.0.1:9000/images/";
+          break;
+        case "production":
+          url = "https://wen.cwjbjy.online/images/";
+          break;
+      }
+      return url
+    }
+  },
   methods: {
     //获取数据
     init() {
@@ -153,7 +173,7 @@ export default {
     filterHandler(value, row, column) {
       const property = column["property"];
       return row[property] === value;
-    },
+    }
   },
   created() {
     this.init();
@@ -182,5 +202,11 @@ export default {
   .el-dialog {
     width: 35%;
   }
+}
+.table-td-thumb {
+  display: block;
+  margin: auto;
+  width: 40px;
+  height: 40px;
 }
 </style>

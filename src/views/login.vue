@@ -142,10 +142,6 @@ export default {
           let fd = new FormData();
           fd.append("userName",this.ruleForm.name);
           fd.append("passWord",this.ruleForm.pass);
-          // let fd = {
-          //   userName:this.ruleForm.name,
-          //   passWord:this.ruleForm.pass
-          // }
           API.login(fd)
             .then(res => {
               this.$cookies.set("token", res.data.value);
@@ -200,12 +196,17 @@ export default {
     thirdLogin() {
       this.$message.warning("功能未开发，请使用用户注册");
     },
-    alert(text) {
-      console.log(text);
+    keyDown(){
+      let key = window.event.keyCode;
+      if(key === 13){
+        this.login()
+      }
     }
   },
   mounted() {
     this.verifyCode = new GVerify("v_container");
+    let that = this;
+    document.addEventListener("keydown",that.keyDown)
     //数组去重，Set数据是用来去重的，map数据是键值对
     // let a = [1,2,4,3,3,3]
     // let b = [...new Set(a)]
@@ -213,6 +214,10 @@ export default {
   },
   created(){
    
+  },
+  beforeDestroy(){
+    let that = this;
+    document.removeEventListener("keydown",that.keyDown)
   }
 };
 </script>
