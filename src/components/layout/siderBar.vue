@@ -10,6 +10,7 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
+      unique-opened
       router
     >
       <template v-for="item in menus">
@@ -60,14 +61,24 @@ export default {
           icon: require("@/assets/images/menus/echarts_heatmap.png")
         },
         {
+          name: "图片上传",
+          icon: require("@/assets/images/menus/upload.png"),
+          path: "/fileUp"
+        },
+        {
+          name: "文件预览",
+          icon: require("@/assets/images/menus/pdf.png"),
+          path: "/pdf"
+        },
+        {
           name: "echarts图表",
           path: "/baseEcharts",
-          icon: require("@/assets/images/menus/echarts.png"),
+          icon: require("@/assets/images/menus/echarts.png")
         },
         {
           name: "基础表格",
           path: "/baseTable",
-          icon: require("@/assets/images/menus/baseTable.png"),
+          icon: require("@/assets/images/menus/baseTable.png")
         },
         {
           name: "流程图",
@@ -90,22 +101,26 @@ export default {
         {
           name: "放大镜",
           icon: require("@/assets/images/menus/magnifying.png"),
-          path:'/magnifying'
+          path: "/magnifying"
         },
         {
-          name:'文件上传',
-           icon: require("@/assets/images/menus/upload.png"),
-          path:'/fileUp'
+          name: "拖拽组件",
+          icon: require("@/assets/images/menus/drag.png"),
+          children: [
+            {
+              name: "拖拽列表",
+              path: "/dragList"
+            },
+            {
+              name: "拖拽弹框",
+              path: "/dragDialog"
+            },
+          ]
         },
         {
-          name:"文档预览",
-          icon: require("@/assets/images/menus/pdf.png"),
-          path:'/pdf'
-        },
-        {
-          name:"后台管理",
-          icon:require("@/assets/images/menus/manage.png"),
-          path:'/manage'
+          name: "后台管理",
+          icon: require("@/assets/images/menus/manage.png"),
+          path: "/manage"
         }
       ]
     };
@@ -133,6 +148,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.menus{
+  height: inherit;
+      overflow-y: auto;
+    overflow-x:hidden;
+}
 .sidebar-el-menu:not(.el-menu--collapse) {
   width: 250px;
 }

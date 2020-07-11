@@ -18,6 +18,10 @@ const fileUp = () => import(/* webpackChunkName: "fileUp" */"@/views/fileUp.vue"
 const pdf = () => import(/* webpackChunkName: "pdf.vue" */"@/views/pdf.vue")
 const manage = () => import(/* webpackChunkName: "manage" */"@/views/userManage.vue")
 
+const dragDiv = () =>import(/* webpackChunkName: "dragDiv" */"@/views/drag/moveDiv")
+const dragDialog = () =>import(/* webpackChunkName: "dragDialog" */"@/views/drag/dragDialog")
+const dragList = () => import(/* webpackChunkName: "dragList" */"@/views/drag/dragList")
+
 const routes = [
     {
         path:'/',
@@ -83,7 +87,22 @@ const routes = [
                 path:'/manage',
                 meta:{title:'manage'},
                 component:manage
-            }
+            },
+            {
+                path:'/dragDiv',
+                meta:{title:'dragDiv'},
+                component:dragDiv
+            },
+            {
+                path:'/dragDialog',
+                meta:{title:'dragDialog'},
+                component:dragDialog
+            },
+            {
+                path:'/dragList',
+                meta:{title:'dragList'},
+                component:dragList
+            },
         ]
     },
     {

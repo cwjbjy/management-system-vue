@@ -1,6 +1,9 @@
 <template>
   <!-- 移动圆形 -->
-  <div id="dv"></div>
+  <div>
+ <div id="dv"></div>
+  </div>
+ 
 </template>
 
 <script>
@@ -61,7 +64,6 @@ export default {
   height: 100px;
   background-color: blue;
   border-radius: 50%;
-
   position: absolute;
 }
 </style>

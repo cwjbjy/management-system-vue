@@ -11,7 +11,8 @@
     "core-js": "^3.6.4",
     "element-ui": "^2.13.2",
     "sass-resources-loader": "^2.0.3",
-    "vue-cookies": "^1.7.0"
+    "vue-cookies": "^1.7.0",
+    "vuedraggable": "^2.24.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
