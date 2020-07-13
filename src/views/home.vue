@@ -7,7 +7,7 @@
 
       <div class="app-main">
         <aside class="aside">
-          <sider-bar/>
+          <sider-bar />
         </aside>
         <section class="app-content">
           <transition name="fade" mode="out-in">
@@ -25,7 +25,7 @@
         color: #1989fa;
         font-size: 14px;
       }"
-            >顶部</div> -->
+            >顶部</div>-->
           </el-backtop>
         </section>
       </div>
@@ -37,6 +37,7 @@
 import API from "@/services/api";
 import homeHeader from "@/components/layout/homeHeader";
 import siderBar from "@/components/layout/siderBar";
+
 export default {
   components: {
     homeHeader,
@@ -45,9 +46,6 @@ export default {
   computed: {
     themeClass() {
       return `theme-${this.theme}`;
-    },
-    count() {
-      return this.$store.state.count;
     }
   },
   data() {
@@ -57,18 +55,8 @@ export default {
       theme: "blue"
     };
   },
-
-  created() {
-  },
   beforeDestroy() {},
-  methods: {
-    a() {
-      this.$store.commit("set_count", {
-        data: 2
-      });
-      console.log(this.count);
-    }
-  }
+  methods: {}
 };
 </script>
 

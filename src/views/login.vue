@@ -23,6 +23,7 @@
                 v-model="ruleForm.pass"
                 placeholder="请输入密码"
                 show-password
+                clearable
               ></el-input>
             </el-form-item>
             <el-form-item label>
@@ -84,7 +85,7 @@
 import API from "@/services/api";
 import rules from "@/js/rules";
 import comfun from "@/js/comFunc";
-import {route_admin,route_user} from "@/router/routes.js"
+import { route_admin, route_user } from "@/router/routes";
 export default {
   data() {
     var validatePass = (rule, value, callback) => {
@@ -141,19 +142,20 @@ export default {
         if (valid) {
           this.status = true;
           let fd = new FormData();
-          fd.append("userName",this.ruleForm.name);
-          fd.append("passWord",this.ruleForm.pass);
+          fd.append("userName", this.ruleForm.name);
+          fd.append("passWord", this.ruleForm.pass);
           API.login(fd)
             .then(res => {
-              this.$cookies.set("authMenus",res.data.auth)
+              if (this.ruleForm.name === "cwj18351071268") {
+                this.$router.addRoutes(route_admin);
+              } else {
+                this.$router.addRoutes(route_user);
+              }
+              this.$cookies.set("authMenus", res.data.auth);
               this.$cookies.set("token", res.data.value);
               localStorage.setItem("user_name", this.ruleForm.name);
-              if(this.ruleForm.name == 'cwj18351071268'){
-                this.$router.addRoutes(route_admin)
-              }else{
-                this.$router.addRoutes(route_user)
-              }
-              this.$router.push("/home");
+              this.$store.commit("set_user_name", { data: this.ruleForm.name });
+              this.$router.push("/firstItem");
             })
             .catch(err => {
               if (err.response.status === 400) {
@@ -177,8 +179,8 @@ export default {
               userName: this.reg.reg_name,
               passWord: this.reg.rge_pass,
               authority: "2",
-              createTime:comfun.getTime(),
-              photo:'userlogo.png'
+              createTime: comfun.getTime(),
+              photo: "userlogo.png"
             };
             API.register(params)
               .then(res => {
@@ -203,28 +205,28 @@ export default {
     thirdLogin() {
       this.$message.warning("功能未开发，请使用用户注册");
     },
-    keyDown(){
+    keyDown() {
       let key = window.event.keyCode;
-      if(key === 13){
-        this.login()
+      if (key === 13) {
+        this.login();
       }
     }
   },
   mounted() {
     this.verifyCode = new GVerify("v_container");
     let that = this;
-    document.addEventListener("keydown",that.keyDown)
+    document.addEventListener("keydown", that.keyDown);
     //数组去重，Set数据是用来去重的，map数据是键值对
     // let a = [1,2,4,3,3,3]
     // let b = [...new Set(a)]
     // console.log(b)
   },
-  created(){
-   
+  created() {
+    localStorage.removeItem("user_name");
   },
-  beforeDestroy(){
+  beforeDestroy() {
     let that = this;
-    document.removeEventListener("keydown",that.keyDown)
+    document.removeEventListener("keydown", that.keyDown);
   }
 };
 </script>

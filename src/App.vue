@@ -7,14 +7,32 @@
 </template>
 
 <script>
+import { route_admin, route_user } from "@/router/routes";
 export default {
-  name: "App"
+  name: "App",
+  computed: {
+    userName() {
+      return this.$store.state.user_name;
+    }
+  },
+  created() {
+    if (this.userName == "" && this.$route.path !== '/login' && this.$route.path !== '/') {
+      console.log('this.route.path',this.$route.path)
+      let user_name = localStorage.getItem("user_name");
+      if (user_name === "cwj18351071268") {
+        this.$router.addRoutes(route_admin);
+      } else{
+        this.$router.addRoutes(route_user);
+      }
+    }
+  }
 };
 </script>
 
 <style lang="scss">
 #app {
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   position: absolute;
   top: 0;
   bottom: 0;

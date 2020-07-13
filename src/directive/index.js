@@ -6,7 +6,6 @@ let directive = function (Vue) {
     })
     Vue.directive('focus', {
         inserted: function (el, binding) {
-            console.log('el',el)
             el.getElementsByTagName('input')[0].focus();
         },
     });

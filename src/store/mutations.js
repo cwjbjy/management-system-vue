@@ -2,8 +2,8 @@ const mutations = {
     set_count(state, payload) {
         state.count = payload.data
     },
-    set_authMenus(state,payload){
-        state.authMenus = payload.data
+    set_user_name(state,payload){
+        state.user_name = payload.data
     }
 }
 

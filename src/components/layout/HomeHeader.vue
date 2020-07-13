@@ -7,7 +7,9 @@
       </div>
       <span style="margin-left:10px">PC端后台管理系统</span>
     </div>
-    <div class="box2"></div>
+    <div class="box2">
+      <el-button @click="out">退出</el-button>
+    </div>
   </div>
 </template>
 <script>
@@ -21,6 +23,10 @@ export default {
     };
   },
   methods: {
+    out(){
+      this.$router.push('/login');
+       location.reload()
+    },
     // 用户名下拉菜单选择事件
     handleCommand(command) {
       if (command == "loginout") {
@@ -71,7 +77,7 @@ export default {
 
 <style scoped lang="scss">
 .home-header {
-  display: inline-block;
+  display: flex;
   width: 100%;
   height: inherit;
   .box1 {
@@ -82,6 +88,12 @@ export default {
     letter-spacing: 2px;
     text-indent: 10px;
     display: inline-flex;
+  }
+  .box2{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 const state = {
     count: 0,
-    authMenus:[]
+    user_name:"",
 }
 export default state

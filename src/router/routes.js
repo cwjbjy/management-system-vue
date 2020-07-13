@@ -38,11 +38,7 @@ export const routes = [
         path:'/404',
         meta:{title:'404'},
         component:notFound
-    },
-    {
-        path:'*',
-        redirect:'/login'
-    },
+    }
 ]
 
 export const route_admin = [
@@ -129,6 +125,10 @@ export const route_admin = [
             },
         ]
     },
+    {
+        path:'*',
+        redirect:'/404'
+    },
 ]
 
 export const route_user = [
@@ -204,6 +204,10 @@ export const route_user = [
                 component:I18n
             },
         ]
+    },
+    {
+        path:'*',
+        redirect:'/404'
     },
 ]
 
