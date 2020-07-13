@@ -84,6 +84,7 @@
 import API from "@/services/api";
 import rules from "@/js/rules";
 import comfun from "@/js/comFunc";
+import {route_admin,route_user} from "@/router/routes.js"
 export default {
   data() {
     var validatePass = (rule, value, callback) => {
@@ -144,8 +145,14 @@ export default {
           fd.append("passWord",this.ruleForm.pass);
           API.login(fd)
             .then(res => {
+              this.$cookies.set("authMenus",res.data.auth)
               this.$cookies.set("token", res.data.value);
               localStorage.setItem("user_name", this.ruleForm.name);
+              if(this.ruleForm.name == 'cwj18351071268'){
+                this.$router.addRoutes(route_admin)
+              }else{
+                this.$router.addRoutes(route_user)
+              }
               this.$router.push("/home");
             })
             .catch(err => {

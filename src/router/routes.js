@@ -24,11 +24,28 @@ const dragList = () => import(/* webpackChunkName: "dragList" */"@/views/drag/dr
 
 const I18n = () => import(/* webpackChunkName: "I18n.vue" */"@/views/I18n.vue")
 
-const routes = [
+export const routes = [
     {
         path:'/',
         redirect:'/firstItem'
     },
+    {
+        path:'/login',
+        meta:{title:'login'},
+        component:Login
+    },
+    {
+        path:'/404',
+        meta:{title:'404'},
+        component:notFound
+    },
+    {
+        path:'*',
+        redirect:'/login'
+    },
+]
+
+export const route_admin = [
     {
         path:'/home',
         meta:{title:'home'},
@@ -112,20 +129,81 @@ const routes = [
             },
         ]
     },
+]
+
+export const route_user = [
     {
-        path:'/login',
-        meta:{title:'login'},
-        component:Login
-    },
-    {
-        path:'/404',
-        meta:{title:'404'},
-        component:notFound
-    },
-    {
-        path:'*',
-        redirect:'/404'
+        path:'/home',
+        meta:{title:'home'},
+        component:Home,
+        redirect:'/firstItem',
+        children:[
+            {
+                path:'/firstItem',
+                meta:{title:'firstItem'},
+                component:firstItem
+            },
+            {
+               path:'/fleet',
+               meta:{title:'fleet'},
+               component:Fleet
+            },
+            {
+                path:'/commonChart',
+                meta:{title:'commonChart'},
+                component:commonChart
+            },
+            {
+                path:'/baseTable',
+                meta:{title:'baseTable'},
+                component:baseTable
+            },
+            {
+                path:'/positionChart',
+                meta:{title:'positionChart'},
+                component:positionChart
+            },
+            {
+                path:'/foldChart',
+                meta:{title:'foldChart'},
+                component:foldChart
+            },
+            {
+                path:'/baseEcharts',
+                meta:{title:'baseEcharts'},
+                component:baseEcharts
+            },
+            {
+                path:'/magnifying',
+                meta:{title:'magnifying'},
+                component:magnifying
+            },
+            {
+                path:'/fileUp',
+                meta:{title:'fileUp'},
+                component:fileUp
+            },
+            {
+                path:'/dragDiv',
+                meta:{title:'dragDiv'},
+                component:dragDiv
+            },
+            {
+                path:'/dragDialog',
+                meta:{title:'dragDialog'},
+                component:dragDialog
+            },
+            {
+                path:'/dragList',
+                meta:{title:'dragList'},
+                component:dragList
+            },
+            {
+                path:'/I18n',
+                meta:{title:'I18n'},
+                component:I18n
+            },
+        ]
     },
 ]
 
-export default routes

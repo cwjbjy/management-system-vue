@@ -13,7 +13,7 @@
       unique-opened
       router
     >
-      <template v-for="item in menus">
+      <template v-for="item in newMenus">
         <el-submenu :index="item.name" :key="item.name" v-if="item.children">
           <template slot="title">
             <img :src="item.icon" class="icon" />
@@ -45,6 +45,7 @@
 <script>
 export default {
   name: "menus",
+  coumpted: {},
   data() {
     return {
       defaultActive: "/firstItem",
@@ -53,81 +54,98 @@ export default {
         {
           name: "首页",
           path: "/firstItem",
+          key: "firstItem",
           icon: require("@/assets/images/menus/home.png")
         },
         {
           name: "航线",
           path: "/fleet",
+          key: "fleet",
           icon: require("@/assets/images/menus/echarts_heatmap.png")
         },
         {
           name: "图片上传",
-          icon: require("@/assets/images/menus/upload.png"),
-          path: "/fileUp"
+          path: "/fileUp",
+          key: "fileUp",
+          icon: require("@/assets/images/menus/upload.png")
         },
         {
           name: "文件预览",
-          icon: require("@/assets/images/menus/pdf.png"),
-          path: "/pdf"
+          path: "/pdf",
+          key: "pdf",
+          icon: require("@/assets/images/menus/pdf.png")
         },
         {
           name: "echarts图表",
           path: "/baseEcharts",
+          key: "baseEcharts",
           icon: require("@/assets/images/menus/echarts.png")
         },
         {
           name: "基础表格",
           path: "/baseTable",
+          key: "baseTable",
           icon: require("@/assets/images/menus/baseTable.png")
         },
         {
           name: "流程图",
+          key: "flowChart",
           icon: require("@/assets/images/menus/flowChart.png"),
           children: [
             {
               name: "一般流程图",
-              path: "/commonChart"
+              path: "/commonChart",
+              key: "commonChart"
             },
             {
               name: "定位流程图",
-              path: "/positionChart"
+              path: "/positionChart",
+              key: "positionChart"
             },
             {
               name: "折叠流程图",
-              path: "/foldChart"
+              path: "/foldChart",
+              key: "foldChart"
             }
           ]
         },
         {
           name: "放大镜",
-          icon: require("@/assets/images/menus/magnifying.png"),
-          path: "/magnifying"
+          path: "/magnifying",
+          key: "magnifying",
+          icon: require("@/assets/images/menus/magnifying.png")
         },
         {
           name: "拖拽组件",
+          key: "drag",
           icon: require("@/assets/images/menus/drag.png"),
           children: [
             {
               name: "拖拽列表",
-              path: "/dragList"
+              path: "/dragList",
+              key: "dragList"
             },
             {
               name: "拖拽弹框",
-              path: "/dragDialog"
+              path: "/dragDialog",
+              key: "dragDialog"
             }
           ]
         },
         {
           name: "国际化功能",
           icon: require("@/assets/images/menus/I18n.png"),
-          path: "/I18n"
+          path: "/I18n",
+          key: "I18n"
         },
         {
           name: "后台管理",
           icon: require("@/assets/images/menus/manage.png"),
-          path: "/manage"
+          path: "/manage",
+          key: "manage"
         }
-      ]
+      ],
+      newMenus: []
     };
   },
   methods: {
@@ -140,6 +158,14 @@ export default {
     handleSelect(index) {
       this.defaultActive = index;
     }
+  },
+  created() {
+    let authMenus = this.$cookies.get("authMenus").split(",");
+    this.menus.forEach(item => {
+      if (item.key && authMenus.includes(item.key)) {
+        this.newMenus.push(item);
+      }
+    });
   },
   mounted() {
     window.eventBus.$on("collapse", value => {
