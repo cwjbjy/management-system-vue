@@ -71,7 +71,7 @@
         </el-row>
         <el-row style="padding:0 10px;margin-bottom: 20px;">
           <el-card shadow="hover" style="height:406px;">
-            <div slot="header" class="clearfix">
+            <div slot="header">
               <span>待办事项</span>
               <el-button style="float: right; padding: 3px 0" type="text">添加</el-button>
             </div>

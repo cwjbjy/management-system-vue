@@ -12,6 +12,7 @@
     "element-ui": "^2.13.2",
     "sass-resources-loader": "^2.0.3",
     "vue-cookies": "^1.7.0",
+    "vue-i18n": "^8.18.2",
     "vuedraggable": "^2.24.0"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 <template>
   <div class="dragList">
     <el-card shadow="hover">
-        <h4>可通过拖拽进行分组与排序</h4>
+      <h4>可通过拖拽进行分组与排序</h4>
       <div class="drag-box">
         <div class="drag-box-item">
           <div class="item-title">todo</div>

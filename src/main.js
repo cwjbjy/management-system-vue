@@ -1,25 +1,28 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
-import VueCookies from 'vue-cookies'
-Vue.use(VueCookies)
-
-Vue.config.productionTip = false;
-
 import directive from "./directive"
-import Vue from 'vue'
-Vue.use(directive)
+import VueCookies from 'vue-cookies'
 import 'element-ui/lib/theme-chalk/index.css';
+import { messages } from '../public/utils/i18n';
+import VueI18n from 'vue-i18n';
+Vue.use(VueI18n);
+Vue.use(VueCookies)
+Vue.use(directive)
 Vue.use(ELEMENT)
 
+const i18n = new VueI18n({
+  locale: 'zh',
+  messages
+});
+
+Vue.config.productionTip = false;
 window.eventBus = new Vue();
-
-
 
 new Vue({
   router,
+  i18n,
   store,
   render: h => h(App),
 }).$mount('#app')

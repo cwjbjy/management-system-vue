@@ -22,6 +22,8 @@ const dragDiv = () =>import(/* webpackChunkName: "dragDiv" */"@/views/drag/moveD
 const dragDialog = () =>import(/* webpackChunkName: "dragDialog" */"@/views/drag/dragDialog")
 const dragList = () => import(/* webpackChunkName: "dragList" */"@/views/drag/dragList")
 
+const I18n = () => import(/* webpackChunkName: "I18n.vue" */"@/views/I18n.vue")
+
 const routes = [
     {
         path:'/',
@@ -102,6 +104,11 @@ const routes = [
                 path:'/dragList',
                 meta:{title:'dragList'},
                 component:dragList
+            },
+            {
+                path:'/I18n',
+                meta:{title:'I18n'},
+                component:I18n
             },
         ]
     },

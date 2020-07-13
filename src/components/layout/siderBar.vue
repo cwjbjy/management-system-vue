@@ -1,5 +1,5 @@
 <template>
-  <div class="menus">
+  <div class="sideBar">
     <el-menu
       :default-active="defaultActive"
       class="sidebar-el-menu"
@@ -114,8 +114,13 @@ export default {
             {
               name: "拖拽弹框",
               path: "/dragDialog"
-            },
+            }
           ]
+        },
+        {
+          name: "国际化功能",
+          icon: require("@/assets/images/menus/I18n.png"),
+          path: "/I18n"
         },
         {
           name: "后台管理",
@@ -148,10 +153,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.menus{
+.sideBar {
   height: inherit;
-      overflow-y: auto;
-    overflow-x:hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.sideBar::-webkit-scrollbar {
+  width: 0;
 }
 .sidebar-el-menu:not(.el-menu--collapse) {
   width: 250px;
