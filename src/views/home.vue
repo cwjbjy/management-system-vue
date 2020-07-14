@@ -35,12 +35,12 @@
 
 <script>
 import API from "@/services/api";
-import homeHeader from "@/components/layout/homeHeader";
+import HomeHeader from "@/components/layout/HomeHeader";
 import siderBar from "@/components/layout/siderBar";
 
 export default {
   components: {
-    homeHeader,
+    HomeHeader,
     siderBar
   },
   computed: {

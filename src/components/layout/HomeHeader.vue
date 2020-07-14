@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-  name: "HomeHeader",
+  // name: "HomeHeader",
   data() {
     return {
       collapse: true,
