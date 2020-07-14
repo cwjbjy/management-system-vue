@@ -17,7 +17,6 @@ export default {
   },
   created() {
     if (this.userName == "" && this.$route.path !== '/login' && this.$route.path !== '/') {
-      console.log('this.route.path',this.$route.path)
       let user_name = localStorage.getItem("user_name");
       if (user_name === "cwj18351071268") {
         this.$router.addRoutes(route_admin);
@@ -37,7 +36,6 @@ export default {
   top: 0;
   bottom: 0;
   width: 100%;
-  cursor: $c_pointer;
 }
 body {
   margin: 0;
