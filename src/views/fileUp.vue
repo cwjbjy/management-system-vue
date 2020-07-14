@@ -24,6 +24,7 @@
 <script>
 import API from "@/services/api";
 export default {
+  name:'fileUp',
   data() {
     return {
       imageUrl: "",

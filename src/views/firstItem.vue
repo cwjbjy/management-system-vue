@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="firstItem">
     <el-row>
-      <el-col :span="8" class="home-area1">
+      <el-col :span="8" class="firstItem-area1">
         <el-card shadow="hover" class="user">
           <el-row class="user-area1">
             <el-col :span="12">
@@ -120,7 +120,7 @@ import API from "@/services/api";
 import barModel from "@/components/echartsModel/barLineModel";
 import radarModel from "@/components/echartsModel/radarModel";
 export default {
-  name: "HomePage",
+  name: "firstItem",
   components: {
     barModel,
     radarModel
@@ -203,21 +203,33 @@ export default {
     }
   },
   created() {
+    // console.log('created')
     this.user_name = localStorage.getItem("user_name");
     this.getImage();
   },
-  mounted(){
-    // console.log('1',document.documentElement.clientWidth)
-    // console.log('2',window.innerWidth)
-  }
+  // mounted(){
+  //   console.log('mounted')
+  // },
+  // beforDestroy(){
+  //   console.log('beforeDestroy')
+  // },
+  // destroyed(){
+  //   console.log('destroyed')
+  // },
+  // activated(){
+  //   console.log('activated')
+  // },
+  // deactivated(){
+  //   console.log('deactivated')
+  // }
 };
 </script>
 
 <style scoped lang="scss">
-.home {
+.firstItem {
   height: calc(100vh - 70px - 10px);
   padding: 10px 0 0 10px;
-  .home-area1 {
+  .firstItem-area1 {
     padding: 0 10px;
   }
   .user {

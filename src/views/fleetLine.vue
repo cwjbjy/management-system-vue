@@ -21,7 +21,7 @@
 import fleetModel from "@/components/echartsModel/fleetModel";
 import localData from "@/services/localData";
 export default {
-  name: "fleet",
+  name: "fleetLine",
   components: {
 
     fleetModel

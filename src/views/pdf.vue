@@ -12,6 +12,7 @@
  
 <script>
 export default {
+  name:'pdf',
   data() {
     return {
       src: "/utils/cwj.pdf",

@@ -47,6 +47,7 @@ import scatterModel from "@/components/echartsModel/scatterModel";
 import barModel from "@/components/echartsModel/barModel";
 import PictorialBarModel from "@/components/echartsModel/PictorialBarModel";
 export default {
+  name:'baseEcharts',
   components: {
     lineModel,
     cylinderModel,

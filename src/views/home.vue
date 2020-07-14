@@ -4,14 +4,16 @@
       <header class="header">
         <home-header></home-header>
       </header>
-
       <div class="app-main">
         <aside class="aside">
           <sider-bar />
         </aside>
         <section class="app-content">
+          <tags @update:change="tagChange"></tags>
           <transition name="fade" mode="out-in">
-            <router-view />
+            <keep-alive :include="keepList" :max="8">
+              <router-view />
+            </keep-alive>
           </transition>
           <el-backtop target=".app-content" :bottom="100">
             <!-- <div
@@ -37,11 +39,12 @@
 import API from "@/services/api";
 import HomeHeader from "@/components/layout/HomeHeader";
 import siderBar from "@/components/layout/siderBar";
-
+import Tags from "@/components/layout/Tags"
 export default {
   components: {
     HomeHeader,
-    siderBar
+    siderBar,
+    Tags
   },
   computed: {
     themeClass() {
@@ -52,11 +55,19 @@ export default {
     return {
       title: "文杰的仓库",
       msg: "Dynamic Themes",
-      theme: "blue"
+      theme: "blue",
+      keepList: []
     };
   },
   beforeDestroy() {},
-  methods: {}
+  methods: {
+    tagChange(val){
+      this.keepList = [];
+      val.forEach(element => {
+        this.keepList.push(element.name);
+      });
+    }
+  }
 };
 </script>
 

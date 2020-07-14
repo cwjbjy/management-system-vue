@@ -52,4 +52,8 @@ body {
 .fade-leave-active {
   opacity: 0;
 }
+
+a {
+    text-decoration: none;
+}
 </style>

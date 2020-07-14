@@ -35,7 +35,7 @@
 <script>
 import draggable from "vuedraggable";
 export default {
-  name: "draglist",
+  name: "dragList",
   data() {
     return {
       dragOptions: {

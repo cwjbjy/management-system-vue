@@ -74,7 +74,6 @@ export default {
     // 侧边栏折叠
     collapseChage() {
       this.collapse = !this.collapse;
-      console.log('this.collapse',this.collapse)
       window.eventBus.$emit("collapse", this.collapse);
     },
     // 全屏事件

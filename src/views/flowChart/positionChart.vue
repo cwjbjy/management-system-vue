@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name:'positionChart',
   data() {
     return {
       mySelf: {}

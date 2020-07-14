@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  name:'I18n',
   data() {
     return {};
   }

@@ -77,6 +77,7 @@ import API from "@/services/api";
 
 // import comfun from "@/js/comFunc"
 export default {
+  name:'userManage',
   data() {
     return {
       tableData: [],

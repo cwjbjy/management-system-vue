@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name:'magnifying',
   data() {
     return {
       src:
