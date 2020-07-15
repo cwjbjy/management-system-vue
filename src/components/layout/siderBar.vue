@@ -1,11 +1,9 @@
 <template>
-  <div class="sideBar">
+  <nav>
     <el-menu
       :default-active="defaultActive"
       class="sidebar-el-menu"
       @select="handleSelect"
-      @open="handleOpen"
-      @close="handleClose"
       :collapse="isCollapse"
       background-color="#545c64"
       text-color="#fff"
@@ -39,26 +37,25 @@
         </el-menu-item>
       </template>
     </el-menu>
-  </div>
+  </nav>
 </template>
 
 <script>
 export default {
   name: "menus",
-  coumpted: {},
   data() {
     return {
       defaultActive: "/firstItem",
       isCollapse: false,
       menus: [
         {
-          name: "首页",
+          name: "系统首页",
           path: "/firstItem",
           key: "firstItem",
           icon: require("@/assets/images/menus/home.png")
         },
         {
-          name: "航线",
+          name: "模拟航线",
           path: "/fleet",
           key: "fleet",
           icon: require("@/assets/images/menus/echarts_heatmap.png")
@@ -76,7 +73,7 @@ export default {
           icon: require("@/assets/images/menus/pdf.png")
         },
         {
-          name: "echarts图表",
+          name: "基础图表",
           path: "/baseEcharts",
           key: "baseEcharts",
           icon: require("@/assets/images/menus/echarts.png")
@@ -86,6 +83,29 @@ export default {
           path: "/baseTable",
           key: "baseTable",
           icon: require("@/assets/images/menus/baseTable.png")
+        },
+        {
+          name: "拖拽组件",
+          key: "drag",
+          icon: require("@/assets/images/menus/drag.png"),
+          children: [
+            {
+              name: "拖拽列表",
+              path: "/dragList",
+              key: "dragList"
+            },
+            {
+              name: "拖拽弹框",
+              path: "/dragDialog",
+              key: "dragDialog"
+            }
+          ]
+        },
+        {
+          name: "语言转换",
+          icon: require("@/assets/images/menus/I18n.png"),
+          path: "/I18n",
+          key: "I18n"
         },
         {
           name: "流程图",
@@ -116,29 +136,6 @@ export default {
           icon: require("@/assets/images/menus/magnifying.png")
         },
         {
-          name: "拖拽组件",
-          key: "drag",
-          icon: require("@/assets/images/menus/drag.png"),
-          children: [
-            {
-              name: "拖拽列表",
-              path: "/dragList",
-              key: "dragList"
-            },
-            {
-              name: "拖拽弹框",
-              path: "/dragDialog",
-              key: "dragDialog"
-            }
-          ]
-        },
-        {
-          name: "国际化功能",
-          icon: require("@/assets/images/menus/I18n.png"),
-          path: "/I18n",
-          key: "I18n"
-        },
-        {
           name: "后台管理",
           icon: require("@/assets/images/menus/manage.png"),
           path: "/manage",
@@ -147,17 +144,6 @@ export default {
       ],
       newMenus: []
     };
-  },
-  methods: {
-    handleOpen(key, keyPath) {
-      // console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      // console.log(key, keyPath);
-    },
-    handleSelect(index) {
-      this.defaultActive = index;
-    }
   },
   created() {
     let authMenus = this.$cookies.get("authMenus").split(",");
@@ -174,17 +160,22 @@ export default {
   },
   beforeDestroy() {
     window.eventBus.$off("collapse");
+  },
+  methods: {
+    handleSelect(index) {
+      this.defaultActive = index;
+    }
   }
 };
 </script>
 
 <style scoped lang="scss">
-.sideBar {
+nav {
   height: inherit;
   overflow-y: auto;
   overflow-x: hidden;
 }
-.sideBar::-webkit-scrollbar {
+nav::-webkit-scrollbar {
   width: 0;
 }
 .sidebar-el-menu:not(.el-menu--collapse) {
@@ -193,8 +184,6 @@ export default {
 .icon {
   margin-right: 10px;
   width: 18px;
-  // text-align: center;
   height: 18px;
-  // vertical-align: middle;
 }
 </style>

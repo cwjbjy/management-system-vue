@@ -1,5 +1,5 @@
 <template>
-  <div class="table-content">
+  <section>
     <el-card shadow="hover">
       <h4>管理员登陆方可看到后台管理页面；该基础表格包含排序，筛选，搜索，编辑功能；表格中注册时间旁按钮为排序，筛选功能；上述功能均已实现</h4>
       <el-table
@@ -15,7 +15,11 @@
         <el-table-column label="用户名" prop="user_name"></el-table-column>
         <el-table-column label="头像(查看大图)">
           <template slot-scope="scope">
-            <el-image class="table-td-thumb" :src="`${baseURL}${scope.row.photo}`" :preview-src-list="[`${baseURL}${scope.row.photo}`]"></el-image>
+            <el-image
+              class="table-td-thumb"
+              :src="`${baseURL}${scope.row.photo}`"
+              :preview-src-list="[`${baseURL}${scope.row.photo}`]"
+            ></el-image>
           </template>
         </el-table-column>
         <el-table-column label="角色描述">
@@ -69,15 +73,14 @@
         <el-button type="primary" @click="changeUser">确 定</el-button>
       </div>
     </el-dialog>
-  </div>
+  </section>
 </template>
 
 <script>
 import API from "@/services/api";
-
-// import comfun from "@/js/comFunc"
+import { getURL } from "@/js/mixin";
 export default {
-  name:'userManage',
+  name: "userManage",
   data() {
     return {
       tableData: [],
@@ -95,20 +98,9 @@ export default {
       filtersData: []
     };
   },
-  computed:{
-    baseURL() {
-      const env = process.env.NODE_ENV;
-      let url = "";
-      switch (env) {
-        case "development":
-          url = "//127.0.0.1:9000/images/";
-          break;
-        case "production":
-          url = "https://wen.cwjbjy.online/images/";
-          break;
-      }
-      return url
-    }
+  mixins: [getURL],
+  created() {
+    this.init();
   },
   methods: {
     //获取数据
@@ -175,17 +167,11 @@ export default {
       const property = column["property"];
       return row[property] === value;
     }
-  },
-  created() {
-    this.init();
   }
 };
 </script>
 
 <style scoped lang="scss">
-.table-content {
-  padding: 10px;
-}
 .blue {
   color: blue;
 }

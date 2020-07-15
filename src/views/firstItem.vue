@@ -1,9 +1,9 @@
 <template>
-  <div class="firstItem">
+  <section class="firstItem">
     <el-row>
-      <el-col :span="8" class="firstItem-area1">
+      <el-col :span="8">
         <el-card shadow="hover" class="user">
-          <el-row class="user-area1">
+          <el-row class="user-top">
             <el-col :span="12">
               <img :src="imageUrl" class="user-img" />
             </el-col>
@@ -12,7 +12,7 @@
               <div class="user-info">{{role}}</div>
             </el-col>
           </el-row>
-          <el-row class="user-area2">
+          <el-row class="user-bottom">
             <div class="user-info-list">
               <span>上次登录时间：</span>
               <span>2020-6-16</span>
@@ -112,45 +112,24 @@
         </el-card>
       </el-col>
     </el-row>
-  </div>
+  </section>
 </template>
 
 <script>
 import API from "@/services/api";
 import barModel from "@/components/echartsModel/barLineModel";
 import radarModel from "@/components/echartsModel/radarModel";
+import { getURL } from "@/js/mixin";
 export default {
   name: "firstItem",
   components: {
     barModel,
     radarModel
   },
-  computed: {
-    userName(){
-      let user = localStorage.getItem('user_name');
-      return user == 'cwj18351071268' ? 'admin' : 'consumer'
-    },
-    role() {
-      return this.userName == "admin" ? "超级管理员" : "普通用户";
-    },
-    baseURL() {
-      const env = process.env.NODE_ENV;
-      let url = "";
-      switch (env) {
-        case "development":
-          url = "//127.0.0.1:9000/images/";
-          break;
-        case "production":
-          url = "https://wen.cwjbjy.online/images/";
-          break;
-      }
-      return url
-    }
-  },
   data() {
     return {
       user_name: "",
-      imageUrl:"",
+      imageUrl: "",
       todoList: [
         {
           title: "今天要修复100个bug",
@@ -180,6 +159,19 @@ export default {
       options: {}
     };
   },
+  computed: {
+    userName() {
+      return this.user_name == "cwj18351071268" ? "admin" : "consumer";
+    },
+    role() {
+      return this.userName == "admin" ? "超级管理员" : "普通用户";
+    }
+  },
+  mixins: [getURL],
+  created() {
+    this.user_name = localStorage.getItem("user_name");
+    this.getImage();
+  },
   methods: {
     getImage() {
       let params = {
@@ -201,42 +193,18 @@ export default {
         return "了解";
       }
     }
-  },
-  created() {
-    // console.log('created')
-    this.user_name = localStorage.getItem("user_name");
-    this.getImage();
-  },
-  // mounted(){
-  //   console.log('mounted')
-  // },
-  // beforDestroy(){
-  //   console.log('beforeDestroy')
-  // },
-  // destroyed(){
-  //   console.log('destroyed')
-  // },
-  // activated(){
-  //   console.log('activated')
-  // },
-  // deactivated(){
-  //   console.log('deactivated')
-  // }
+  }
 };
 </script>
 
 <style scoped lang="scss">
 .firstItem {
-  height: calc(100vh - 70px - 10px);
   padding: 10px 0 0 10px;
-  .firstItem-area1 {
-    padding: 0 10px;
-  }
   .user {
     height: 252px;
     display: block;
-    margin-bottom: 20px;
-    &-area1 {
+    margin: 0 10px 20px 10px;
+    &-top {
       align-items: center;
       padding-bottom: 20px;
       border-bottom: 2px solid #ccc;
@@ -250,7 +218,6 @@ export default {
       }
       .user-area {
         height: 120px;
-        display: flex;
         @extend %column_center;
       }
       .user-name {
@@ -258,14 +225,18 @@ export default {
       }
       .user-info {
         font-size: 14px;
-        color: #999;
+        @include themify($themes) {
+          color: themed("card-font");
+        }
       }
     }
-    &-area2 {
+    &-bottom {
       .user-info-list {
         font-size: 14px;
-        color: #999;
         line-height: 25px;
+        @include themify($themes) {
+          color: themed("card-font");
+        }
         @extend %space_between;
       }
     }
@@ -281,7 +252,6 @@ export default {
       .icon-info {
         flex: 1;
         text-align: center;
-        color: #999;
         @extend %column_center;
         .grid-num {
           font-size: 30px;
@@ -321,7 +291,9 @@ export default {
   }
   .todo-item-del {
     text-decoration: line-through;
-    color: #999;
+    @include themify($themes) {
+      color: themed("card-font");
+    }
   }
   .echarts-box {
     padding: 0 10px;

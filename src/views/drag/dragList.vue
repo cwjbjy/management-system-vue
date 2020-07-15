@@ -1,35 +1,50 @@
 <template>
-  <div class="dragList">
+  <section>
     <el-card shadow="hover">
       <h4>可通过拖拽进行分组与排序</h4>
       <div class="drag-box">
         <div class="drag-box-item">
           <div class="item-title">todo</div>
-          <draggable v-model="todo" @remove="removeHandle" :options="dragOptions">
+          <draggable
+            v-model="todo"
+            @remove="removeHandle"
+            group="sortlist"
+            ghostClass="ghost-style"
+          >
             <transition-group tag="div" id="todo" class="item-ul">
-              <div v-for="item in todo" class="drag-list" :key="item.id">{{item.content}}</div>
+              <div v-for="item in todo" class="drag-list pointer" :key="item.id">{{item.content}}</div>
             </transition-group>
           </draggable>
         </div>
         <div class="drag-box-item">
           <div class="item-title">doing</div>
-          <draggable v-model="doing" @remove="removeHandle" :options="dragOptions">
+          <draggable
+            v-model="doing"
+            @remove="removeHandle"
+            group="sortlist"
+            ghostClass="ghost-style"
+          >
             <transition-group tag="div" id="doing" class="item-ul">
-              <div v-for="item in doing" class="drag-list" :key="item.id">{{item.content}}</div>
+              <div v-for="item in doing" class="drag-list pointer" :key="item.id">{{item.content}}</div>
             </transition-group>
           </draggable>
         </div>
         <div class="drag-box-item">
           <div class="item-title">done</div>
-          <draggable v-model="done" @remove="removeHandle" :options="dragOptions">
+          <draggable
+            v-model="done"
+            @remove="removeHandle"
+            group="sortlist"
+            ghostClass="ghost-style"
+          >
             <transition-group tag="div" id="done" class="item-ul">
-              <div v-for="item in done" class="drag-list" :key="item.id">{{item.content}}</div>
+              <div v-for="item in done" class="drag-list pointer" :key="item.id">{{item.content}}</div>
             </transition-group>
           </draggable>
         </div>
       </div>
     </el-card>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -38,12 +53,6 @@ export default {
   name: "dragList",
   data() {
     return {
-      dragOptions: {
-        animation: 120,
-        scroll: true,
-        group: "sortlist",
-        ghostClass: "ghost-style"
-      },
       todo: [
         {
           id: 1,
@@ -93,36 +102,32 @@ export default {
   },
   methods: {
     removeHandle(event) {
-      console.log(event);
+      // console.log(event);
       this.$message.success(`从 ${event.from.id} 移动到 ${event.to.id} `);
     }
   }
 };
 </script>
 
-<style scoped>
-.dragList {
-  color: #24292e;
-  padding: 10px;
-}
+<style scoped lang="scss">
 .drag-box {
   display: flex;
-  user-select: none;
-}
-.drag-box-item {
-  flex: 1;
-  max-width: 330px;
-  min-width: 300px;
-  background-color: #eff1f5;
-  margin-right: 16px;
-  border-radius: 6px;
-  border: 1px #e1e4e8 solid;
+  &-item {
+    flex: 1;
+    max-width: 330px;
+    min-width: 300px;
+    margin-right: 16px;
+    border-radius: 6px;
+    @include themify($themes) {
+      background-color: themed("drag-background");
+      border: 1px solid themed("card-border");
+    }
+  }
 }
 .item-title {
   padding: 8px 8px 8px 12px;
   font-size: 14px;
   line-height: 1.5;
-  color: #24292e;
   font-weight: 600;
 }
 .item-ul {
@@ -134,25 +139,25 @@ export default {
   width: 0;
 }
 .drag-list {
-  border: 1px #e1e4e8 solid;
+  border: 1px solid;
   padding: 10px;
   margin: 5px 0 10px;
   list-style: none;
-  background-color: #fff;
   border-radius: 6px;
-  cursor: pointer;
-  -webkit-transition: border 0.3s ease-in;
-  transition: border 0.3s ease-in;
+  @include themify($themes) {
+    background: themed("card-background");
+  }
 }
 .drag-list:hover {
-  border: 1px solid #20a0ff;
+  @include themify($themes) {
+    border: 1px solid themed("card-active-border");
+  }
 }
 .drag-title {
   font-weight: 400;
   line-height: 25px;
   margin: 10px 0;
   font-size: 22px;
-  color: #1f2f3d;
 }
 .ghost-style {
   display: block;

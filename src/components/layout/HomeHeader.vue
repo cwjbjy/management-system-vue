@@ -1,24 +1,24 @@
 <template>
-  <div class="home-header">
-    <div class="box1">
+  <div class="header">
+    <div class="header_left">
       <div @click="collapseChage" class="pointer">
         <i v-if="!collapse" class="el-icon-s-fold"></i>
         <i v-else class="el-icon-s-unfold"></i>
       </div>
       <span style="margin-left:10px">PC端后台管理系统</span>
     </div>
-    <div class="box2">
+    <div class="header_right">
       <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
         <img
           src="@/assets/images/home/fullScreen.png"
-          class="imageBox pointer"
+          class="fullScreen pointer"
           @click="handleFullScreen"
         />
       </el-tooltip>
       <img :src="imageUrl" class="user-img" />
       <!-- 用户名下拉菜单 -->
       <el-dropdown class="user-name" trigger="click" @command="handleCommand">
-        <span class="el-dropdown-link">
+        <span>
           {{userName}}
           <i class="el-icon-caret-bottom"></i>
         </span>
@@ -34,8 +34,9 @@
 </template>
 <script>
 import API from "@/services/api";
+import { getURL } from "@/js/mixin";
 export default {
-  // name: "HomeHeader",
+  name: "HomeHeader",
   data() {
     return {
       collapse: false,
@@ -45,23 +46,14 @@ export default {
     };
   },
   computed: {
-       userName(){
-      let user = localStorage.getItem('user_name');
-      return user == 'cwj18351071268' ? 'admin' : 'consumer'
-    },
-    baseURL() {
-      const env = process.env.NODE_ENV;
-      let url = "";
-      switch (env) {
-        case "development":
-          url = "//127.0.0.1:9000/images/";
-          break;
-        case "production":
-          url = "https://wen.cwjbjy.online/images/";
-          break;
-      }
-      return url;
+    userName() {
+      return this.user_name == "cwj18351071268" ? "admin" : "consumer";
     }
+  },
+  mixins: [getURL],
+  created() {
+    this.user_name = localStorage.getItem("user_name");
+    this.getImage();
   },
   methods: {
     // 用户名下拉菜单选择事件
@@ -113,58 +105,40 @@ export default {
         this.imageUrl = `${this.baseURL}${fileName}`;
       });
     }
-  },
-  mounted(){
-    //根据屏幕大小，决定是收缩菜单栏
-    // this.$nextTick(()=>{
-    //   if (document.body.clientWidth < 1500) {
-    //   this.collapseChage();
-    // }
-    // })
-  },
-  created() {
-    this.user_name = localStorage.getItem("user_name");
-    this.getImage();
-  },
+  }
 };
 </script>
 
 <style scoped lang="scss">
-.home-header {
+.header {
   display: flex;
   width: 100%;
   height: inherit;
-  .box1 {
+  &_left {
     width: 50%;
-    height: inherit;
     line-height: 70px;
     font-size: 24px;
     letter-spacing: 2px;
     text-indent: 10px;
     display: inline-flex;
   }
-  .box2 {
+  &_right {
     width: 50%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  .imageBox {
-    width: 22px;
-    height: 20px;
-    padding: 10px;
-  }
-  .pointer {
-    cursor: $c_pointer;
-  }
-  .user-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    padding: 5px;
-  }
-  .user-name{
-    padding: 5px;
+    @extend %main_centerRight;
+    .fullScreen {
+      width: 22px;
+      height: 20px;
+      padding: 10px;
+    }
+    .user-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 5px;
+    }
+    .user-name {
+      padding: 5px;
+    }
   }
 }
 </style>

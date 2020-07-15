@@ -50,58 +50,33 @@ export const route_admin = [
         children:[
             {
                 path:'/firstItem',
-                meta:{title:'firstItem'},
+                meta:{title:'系统首页'},
                 component:firstItem
             },
             {
                path:'/fleet',
-               meta:{title:'fleet'},
+               meta:{title:'模拟航线'},
                component:Fleet
             },
             {
-                path:'/commonChart',
-                meta:{title:'commonChart'},
-                component:commonChart
-            },
-            {
-                path:'/baseTable',
-                meta:{title:'baseTable'},
-                component:baseTable
-            },
-            {
-                path:'/positionChart',
-                meta:{title:'positionChart'},
-                component:positionChart
-            },
-            {
-                path:'/foldChart',
-                meta:{title:'foldChart'},
-                component:foldChart
-            },
-            {
-                path:'/baseEcharts',
-                meta:{title:'baseEcharts'},
-                component:baseEcharts
-            },
-            {
-                path:'/magnifying',
-                meta:{title:'magnifying'},
-                component:magnifying
-            },
-            {
                 path:'/fileUp',
-                meta:{title:'fileUp'},
+                meta:{title:'图片上传'},
                 component:fileUp
             },
             {
                 path:'/pdf',
-                meta:{title:'pdf'},
+                meta:{title:'文件预览'},
                 component:pdf
             },
             {
-                path:'/manage',
-                meta:{title:'manage'},
-                component:manage
+                path:'/baseEcharts',
+                meta:{title:'基础图表'},
+                component:baseEcharts
+            },
+            {
+                path:'/baseTable',
+                meta:{title:'基础表格'},
+                component:baseTable
             },
             {
                 path:'/dragDiv',
@@ -110,18 +85,43 @@ export const route_admin = [
             },
             {
                 path:'/dragDialog',
-                meta:{title:'dragDialog'},
+                meta:{title:'拖拽弹框'},
                 component:dragDialog
             },
             {
                 path:'/dragList',
-                meta:{title:'dragList'},
+                meta:{title:'拖拽列表'},
                 component:dragList
             },
             {
                 path:'/I18n',
-                meta:{title:'I18n'},
+                meta:{title:'语言转换'},
                 component:I18n
+            },
+            {
+                path:'/commonChart',
+                meta:{title:'一般流程图'},
+                component:commonChart
+            },
+            {
+                path:'/positionChart',
+                meta:{title:'定位流程图'},
+                component:positionChart
+            },
+            {
+                path:'/foldChart',
+                meta:{title:'折叠流程图'},
+                component:foldChart
+            },
+            {
+                path:'/magnifying',
+                meta:{title:'放大镜'},
+                component:magnifying
+            },
+            {
+                path:'/manage',
+                meta:{title:'后台管理'},
+                component:manage
             },
         ]
     },
@@ -140,68 +140,63 @@ export const route_user = [
         children:[
             {
                 path:'/firstItem',
-                meta:{title:'firstItem'},
+                meta:{title:'系统首页'},
                 component:firstItem
             },
             {
                path:'/fleet',
-               meta:{title:'fleet'},
+               meta:{title:'模拟航线'},
                component:Fleet
             },
             {
-                path:'/commonChart',
-                meta:{title:'commonChart'},
-                component:commonChart
-            },
-            {
-                path:'/baseTable',
-                meta:{title:'baseTable'},
-                component:baseTable
-            },
-            {
-                path:'/positionChart',
-                meta:{title:'positionChart'},
-                component:positionChart
-            },
-            {
-                path:'/foldChart',
-                meta:{title:'foldChart'},
-                component:foldChart
-            },
-            {
-                path:'/baseEcharts',
-                meta:{title:'baseEcharts'},
-                component:baseEcharts
-            },
-            {
-                path:'/magnifying',
-                meta:{title:'magnifying'},
-                component:magnifying
-            },
-            {
                 path:'/fileUp',
-                meta:{title:'fileUp'},
+                meta:{title:'图片上传'},
                 component:fileUp
             },
             {
-                path:'/dragDiv',
-                meta:{title:'dragDiv'},
-                component:dragDiv
+                path:'/baseEcharts',
+                meta:{title:'基础图表'},
+                component:baseEcharts
+            },
+            {
+                path:'/baseTable',
+                meta:{title:'基础表格'},
+                component:baseTable
             },
             {
                 path:'/dragDialog',
-                meta:{title:'dragDialog'},
+                meta:{title:'拖拽弹框'},
                 component:dragDialog
             },
             {
                 path:'/dragList',
-                meta:{title:'dragList'},
+                meta:{title:'拖拽列表'},
                 component:dragList
             },
             {
                 path:'/I18n',
-                meta:{title:'I18n'},
+                meta:{title:'语言转换'},
                 component:I18n
+            },
+            {
+                path:'/commonChart',
+                meta:{title:'一般流程图'},
+                component:commonChart
+            },
+            {
+                path:'/positionChart',
+                meta:{title:'定位流程图'},
+                component:positionChart
+            },
+            {
+                path:'/foldChart',
+                meta:{title:'折叠流程图'},
+                component:foldChart
+            },
+            {
+                path:'/magnifying',
+                meta:{title:'放大镜'},
+                component:magnifying
             },
         ]
     },

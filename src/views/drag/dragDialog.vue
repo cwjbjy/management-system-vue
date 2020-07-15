@@ -1,5 +1,5 @@
 <template>
-<div class="dragDialog">
+<section>
     <el-card shadow="hover">
         <h4>点击按钮，鼠标移动到弹框头部"拖拽弹框"处，可实现拖拽功能。</h4>
         <el-button type="primary" @click="visible = true;">点我弹框</el-button>
@@ -11,7 +11,7 @@
             </span>
         </el-dialog>
     </el-card>
-</div>
+</section>
 </template>
 
 <script>
@@ -25,8 +25,3 @@ export default {
 }
 </script>
 
-<style>
-.dragDialog{
-    padding: 10px;
-}
-</style>

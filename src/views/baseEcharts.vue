@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <el-row>
       <el-col :span="12" class="echarts-box">
         <el-card shadow="hover">
@@ -36,7 +36,7 @@
         </el-card>
       </el-col>
     </el-row>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -68,7 +68,4 @@ export default {
 .echarts-box {
   padding: 10px;
 }
-</style>
-
-<style lang="scss">
 </style>

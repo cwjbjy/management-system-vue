@@ -56,4 +56,12 @@ body {
 a {
     text-decoration: none;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+section{
+  padding: 10px;
+}
 </style>

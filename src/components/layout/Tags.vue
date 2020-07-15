@@ -1,8 +1,8 @@
 <template>
-  <div class="tags" v-if="showTags">
+  <nav class="tags" v-if="showTags">
     <ul>
       <li
-        class="tags-li"
+        class="tags-li pointer"
         v-for="(item,index) in tagsList"
         :class="{'active': isActive(item.path)}"
         :key="index"
@@ -25,7 +25,7 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
@@ -95,78 +95,55 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
 .tags {
   position: relative;
   height: 30px;
   overflow: hidden;
-  background: #fff;
-  padding-right: 120px;
-  box-shadow: 0 5px 10px #ddd;
-}
-
-.tags ul {
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.tags-li {
-  float: left;
-  margin: 3px 5px 2px 3px;
-  border-radius: 3px;
-  font-size: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  height: 23px;
-  line-height: 23px;
-  border: 1px solid #e9eaec;
-  background: #fff;
-  padding: 0 5px 0 12px;
-  vertical-align: middle;
-  color: #666;
-  -webkit-transition: all 0.3s ease-in;
-  -moz-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
-}
-
-.tags-li:not(.active):hover {
-  background: #f8f8f8;
-}
-
-.tags-li.active {
-  border: 1px solid #409eff;
-  background-color: #409eff;
-  color: #fff;
-}
-
-.tags-li-title {
-  float: left;
-  max-width: 80px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin-right: 5px;
-  color: #666;
-}
-
-.tags-li.active .tags-li-title {
-  color: #fff;
-}
-
-.tags-close-box {
-  position: absolute;
-  right: 0;
-  top: 0;
-  box-sizing: border-box;
-  padding-top: 1px;
-  text-align: center;
-  width: 110px;
-  height: 30px;
-  background: #fff;
-  box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  @include themify($themes) {
+    background-color: themed("card-background");
+    box-shadow: 0 5px 10px themed("box-shadow-color");
+  }
+  &-li {
+    display: inline-flex;
+    margin: 3px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 12px;
+    @include themify($themes) {
+      border: 1px solid themed("card-border");
+      color: themed("card-font");
+    }
+  }
+  &-li.active {
+    @include themify($themes) {
+      background: themed("card-active-background");
+      border: 1px solid themed("card-active-border");
+      color: themed("font-color");
+    }
+    .tags-li-title {
+      @include themify($themes) {
+        color: themed("font-color");
+      }
+    }
+  }
+  &-li-title {
+    max-width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 5px;
+    @include themify($themes) {
+      color: themed("card-font");
+    }
+  }
+  &-close-box {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 1px;
+  }
 }
 </style>

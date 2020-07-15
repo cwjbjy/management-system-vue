@@ -1,5 +1,5 @@
 <template>
-  <div class="baseTable">
+  <section>
     <el-card shadow="hover">
       <h4>双击表格中的单元格可实现修改当前单元格功能（表头不可修改）；</h4>
       <el-table
@@ -53,13 +53,12 @@
         </el-table-column>
       </el-table>
     </el-card>
-  </div>
+  </section>
 </template>
-
 
 <script>
 export default {
-  name:'baseTable',
+  name: "baseTable",
   data() {
     return {
       tableData: [
@@ -120,50 +119,46 @@ export default {
       let elm = event.path[2];
       elm.className = "cell";
     }
-  },
+  }
 };
 </script>
 
-
 <style lang="scss">
-.baseTable {
-  padding: 10px;
-  .special_table td,
-  .special_table th {
-    text-align: center;
-  }
-  .el-table .cell {
+.special_table td,
+.special_table th {
+  text-align: center;
+}
+.el-table .cell {
+  padding: 0;
+}
+.cell-p0 {
+  padding: 0;
+  div {
     padding: 0;
   }
-  .cell-p0 {
-    padding: 0;
-    div {
-      padding: 0;
+  span {
+    display: block;
+    padding: 12px;
+  }
+  .cell-content {
+    border-top: 1px solid #ebeef5;
+  }
+
+  .cell-content:nth-of-type(1) {
+    border-top: none;
+  }
+  .none {
+    display: none;
+  }
+  .spanContent {
+    cursor: pointer;
+  }
+  .cell-content-active {
+    .el-input {
+      display: block;
     }
     span {
-      display: block;
-      padding: 12px;
-    }
-    .cell-content {
-      border-top: 1px solid #ebeef5;
-    }
-
-    .cell-content:nth-of-type(1) {
-      border-top: none;
-    }
-    .none {
       display: none;
-    }
-    .spanContent {
-      cursor: pointer;
-    }
-    .cell-content-active {
-      .el-input {
-        display: block;
-      }
-      span {
-        display: none;
-      }
     }
   }
 }

@@ -20,13 +20,16 @@ $themes: (
   ),
   theme-blue: (
     font-color: #fff,
-    font-active-color:#0078dc,
     header-background:#2f3542,
-    menus-background:#545c64,
+    aside-background:#545c64,
     main-background:#f0f0f0,
-    color-bg:#0f5fb9,
-    color-bg-hover:#14a9ff,
-    color-border:#bbf2ff,
+    box-shadow-color:#ddd,
+    card-background:#fff,
+    card-border:#e9eaec,
+    card-font:#666,
+    card-active-background:#409eff,
+    card-active-border:#409eff,
+    drag-background:#eff1f5,
   ),
 );
 
@@ -34,4 +37,3 @@ $themes: (
 @import './themes.scss';
 
 @import './_el-dropdown';
-@import './_el-message';

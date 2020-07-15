@@ -1,37 +1,36 @@
 <template>
-  <div class="fileUp">
+  <section>
     <el-card shadow="hover">
       <h4>上传头像功能，上传完可点击首页观看效果</h4>
       <el-upload
-      class="avatar-uploader"
-      :action="getUrl"
-      :on-success="onSuccess"
-      :show-file-list="false"
-      :data="user"
-      :headers="headers"
-      :before-upload="beforeAvatarUpload"
-      :on-change="onChange"
-    >
-      <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-      <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过2MB</div>
-    </el-upload>
+        class="avatar-uploader"
+        :action="getUrl"
+        :on-success="onSuccess"
+        :show-file-list="false"
+        :data="user"
+        :headers="headers"
+        :before-upload="beforeAvatarUpload"
+        :on-change="onChange"
+      >
+        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过2MB</div>
+      </el-upload>
     </el-card>
-  </div>
+  </section>
 </template>
-
 
 <script>
 import API from "@/services/api";
+import { getURL } from "@/js/mixin";
 export default {
-  name:'fileUp',
+  name: "fileUp",
   data() {
     return {
       imageUrl: "",
       user: {
-        user_name: "cwj18351071268"
+        user_name: ""
       },
-      user_name:"",
       headers: {
         Authorization: ""
       }
@@ -50,30 +49,23 @@ export default {
           break;
       }
       return baseURL;
-    },
-    baseURL() {
-      const env = process.env.NODE_ENV;
-      let url = "";
-      switch (env) {
-        case "development":
-          url = "//127.0.0.1:9000/images/";
-          break;
-        case "production":
-          url = "https://wen.cwjbjy.online/images/";
-          break;
-      }
-      return url
     }
+  },
+  mixins: [getURL],
+  created() {
+    let token = Vue.$cookies.get("token");
+    this.headers.Authorization = token;
+    this.user.user_name = localStorage.getItem("user_name");
+    this.getImage();
   },
   methods: {
     onSuccess(response, file) {
-      console.log('file',file)
       this.$message.success(response.message);
       this.getImage();
     },
     getImage() {
       let params = {
-        user_name: this.user_name
+        user_name: this.user.user_name
       };
       API.getImage(params).then(res => {
         let fileName = res.data.Data[0].photo;
@@ -81,7 +73,7 @@ export default {
       });
     },
     beforeAvatarUpload(file) {
-      const isJPG = (file.type === "image/jpeg" || file.type === "image/png");
+      const isJPG = file.type === "image/jpeg" || file.type === "image/png";
       const isLt2M = file.size / 1024 / 1024 < 2;
       if (!isJPG) {
         this.$message.error("上传头像图片只能是 JPG/PNG 格式!");
@@ -91,21 +83,12 @@ export default {
       }
       return isJPG && isLt2M;
     }
-  },
-  created() {
-    let token = Vue.$cookies.get("token");
-    this.headers.Authorization = token;
-    this.user_name = localStorage.getItem('user_name')
-    this.getImage();
-  },
-  mounted() {}
+  }
 };
 </script>
 
 <style>
-.fileUp{
-  padding: 10px;
-}
+
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;

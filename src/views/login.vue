@@ -326,7 +326,6 @@ export default {
 
 <style lang="scss">
 .verification_class {
-  // @extend %center;
   display: flex;
   .el-input__inner {
     width: 200px;

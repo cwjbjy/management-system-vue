@@ -1,5 +1,5 @@
 <template>
-  <div class="I18n">
+  <section>
     <el-card shadow="hover">
       <div class="container">
         <el-button
@@ -12,7 +12,7 @@
         <p>{{$t('i18n.p2')}}</p>
       </div>
     </el-card>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -25,13 +25,5 @@ export default {
 </script>
 
 <style scoped>
-.I18n {
-  padding: 10px;
-}
-.list p {
-  margin-bottom: 20px;
-}
-a {
-  color: #409eff;
-}
+
 </style>

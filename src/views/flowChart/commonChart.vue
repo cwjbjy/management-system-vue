@@ -1,12 +1,15 @@
 <template>
-    <div ref="mygoChart" class="mygoChart"></div>
+  <div ref="mygoChart" class="mygoChart"></div>
 </template>
 
 <script>
 export default {
-  name:'commonChart',
+  name: "commonChart",
   data() {
     return {};
+  },
+  mounted() {
+    this.dealShow();
   },
   methods: {
     dealShow: function() {
@@ -35,7 +38,7 @@ export default {
       myDiagram.addDiagramListener("ObjectSingleClicked", function(e) {});
       //上颜色
       function colorBrushConverter(color) {
-        if (color) return color; 
+        if (color) return color;
         return "orange";
       }
       myDiagram.nodeTemplate = $(
@@ -58,8 +61,12 @@ export default {
             $(go.Placeholder)
           )
         },
-        $(go.Shape, "RoundedRectangle", { fill: "#90CAF9", strokeWidth: 0 },
-         new go.Binding("fill", "color", colorBrushConverter)),
+        $(
+          go.Shape,
+          "RoundedRectangle",
+          { fill: "#90CAF9", strokeWidth: 0 },
+          new go.Binding("fill", "color", colorBrushConverter)
+        ),
         $(
           //Panel平板布局
           go.Panel,
@@ -111,180 +118,83 @@ export default {
         }
       );
       let myModel = $(go.TreeModel);
-      myModel.nodeDataArray =
-        //这里就是要传的数据
-        [
-          {
-            key: "1",
-            name: "总经理",
-            color:"#70a1ff",
-            img: require("@/assets/images/home/user.jpg")
-          },
-          // {
-          //   key: "2",
-          //   parent: "1",
-          //   name: "秘书",
-          //   linktext:"是",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "3",
-          //   parent: "1",
-          //   name: "CEO",
-          //   linktext:"否",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          {
-            key: "2",
-            parent: "1",
-            name: "厂部",
-            img: require("@/assets/images/home/user.jpg")
-          },
-          // {
-          //   key: "3",
-          //   parent: "1",
-          //   name: "技术开发中心",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          {
-            key: "4",
-            parent: "1",
-            name: "财务部",
-            img: require("@/assets/images/home/user.jpg")
-          },
-          {
-            key: "5",
-            parent: "2",
-            name: "行政人事办",
-            img: require("@/assets/images/home/user.jpg")
-          },
-          {
-            key: "6",
-            parent: "2",
-            name: "采购",
-            img: require("@/assets/images/home/user.jpg")
-          },
-          // {
-          //   key: "7",
-          //   parent: "2",
-          //   name: "生产办",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "8",
-          //   parent: "2",
-          //   name: "仓库",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "9",
-          //   parent: "3",
-          //   name: "研发",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "10",
-          //   parent: "3",
-          //   name: "现场品管",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "11",
-          //   parent: "3",
-          //   name: "化验",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          {
-            key: "12",
-            parent: "4",
-            name: "会计",
-            img: require("@/assets/images/home/user.jpg")
-          },
-          {
-            key: "13",
-            parent: "4",
-            name: "出纳",
-            img: require("@/assets/images/home/user.jpg")
-          },
-          {
-            key: "14",
-            parent: "5",
-            name: "行政人事文员",
-            img: require("@/assets/images/home/user.jpg")
-          },
-          {
-            key: "15",
-            parent: "5",
-            name: "行政后勤",
-            img: require("@/assets/images/home/user.jpg")
-          },
-          {
-            key: "16",
-            parent: "5",
-            name: "包装设计",
-            img: require("@/assets/images/home/user.jpg")
-          },
-          {
-            key: "24",
-            parent: "16",
-            name: "工厂加工",
-            img: require("@/assets/images/home/user.jpg")
-          }
-          // {
-          //   key: "17",
-          //   parent: "7",
-          //   name: "操作组",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "18",
-          //   parent: "7",
-          //   name: "包装组",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "19",
-          //   parent: "7",
-          //   name: "机电组",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "20",
-          //   parent: "7",
-          //   name: "巡检员",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "21",
-          //   parent: "8",
-          //   name: "原材料",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "22",
-          //   parent: "8",
-          //   name: "辅料",
-          //   img: require("@/assets/images/home/user.jpg")
-          // },
-          // {
-          //   key: "23",
-          //   parent: "8",
-          //   name: "成品",
-          //   img: require("@/assets/images/home/user.jpg")
-          // }
-        ];
+      myModel.nodeDataArray = [
+        {
+          key: "1",
+          name: "总经理",
+          color: "#70a1ff",
+          img: require("@/assets/images/home/user.jpg")
+        },
+        {
+          key: "2",
+          parent: "1",
+          name: "厂部",
+          img: require("@/assets/images/home/user.jpg")
+        },
+        {
+          key: "4",
+          parent: "1",
+          name: "财务部",
+          img: require("@/assets/images/home/user.jpg")
+        },
+        {
+          key: "5",
+          parent: "2",
+          name: "行政人事办",
+          img: require("@/assets/images/home/user.jpg")
+        },
+        {
+          key: "6",
+          parent: "2",
+          name: "采购",
+          img: require("@/assets/images/home/user.jpg")
+        },
+        {
+          key: "12",
+          parent: "4",
+          name: "会计",
+          img: require("@/assets/images/home/user.jpg")
+        },
+        {
+          key: "13",
+          parent: "4",
+          name: "出纳",
+          img: require("@/assets/images/home/user.jpg")
+        },
+        {
+          key: "14",
+          parent: "5",
+          name: "行政人事文员",
+          img: require("@/assets/images/home/user.jpg")
+        },
+        {
+          key: "15",
+          parent: "5",
+          name: "行政后勤",
+          img: require("@/assets/images/home/user.jpg")
+        },
+        {
+          key: "16",
+          parent: "5",
+          name: "包装设计",
+          img: require("@/assets/images/home/user.jpg")
+        },
+        {
+          key: "24",
+          parent: "16",
+          name: "工厂加工",
+          img: require("@/assets/images/home/user.jpg")
+        }
+      ];
       myDiagram.model = myModel;
       myDiagram.commandHandler.zoomToFit(); //自适应，能看到流程图全部
     }
-  },
-  mounted() {
-    this.dealShow();
   }
 };
 </script>
 
 <style scoped>
-.mygoChart{
+.mygoChart {
   height: inherit;
   width: 100%;
 }

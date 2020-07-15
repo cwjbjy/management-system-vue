@@ -1,22 +1,25 @@
 <template>
-  <div class="content">
+  <section>
     <el-card shadow="hover">
       <h4>请将鼠标移动到图片上，体验效果</h4>
       <div class="block" id="small_Box">
         <img :src="src" class="imageBox" />
       </div>
     </el-card>
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
-  name:'magnifying',
+  name: "magnifying",
   data() {
     return {
       src:
         "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
     };
+  },
+  mounted() {
+    this.init();
   },
   methods: {
     init() {
@@ -66,17 +69,11 @@ export default {
         span.style.display = "none";
       };
     }
-  },
-  mounted() {
-    this.init();
   }
 };
 </script>
 
 <style scoped>
-.content {
-  padding: 10px;
-}
 .block {
   width: 500px;
   height: 309px;

@@ -3,19 +3,22 @@
     <div id="myDiagramDiv"></div>
     <div id="myOverviewDiv"></div>
     <div class="search">
-    <input type="search" id="mySearch" onkeypress="if (event.keyCode === 13) searchDiagram()" />
-    <el-button @click="searchDiagram()">查询</el-button>
+      <input type="search" id="mySearch" onkeypress="if (event.keyCode === 13) searchDiagram()" />
+      <el-button @click="searchDiagram()">查询</el-button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name:'positionChart',
+  name: "positionChart",
   data() {
     return {
       mySelf: {}
     };
+  },
+  mounted() {
+    this.dealShow();
   },
   methods: {
     dealShow: function() {
@@ -30,34 +33,20 @@ export default {
         {
           initialDocumentSpot: go.Spot.Top,
           initialViewportSpot: go.Spot.Top,
-           isReadOnly:true,
+          isReadOnly: true,
           layout: $(
             go.TreeLayout, // use a TreeLayout to position all of the nodes
             {
               isOngoing: false, // 当面板展开/折叠时，不要继电器
               treeStyle: go.TreeLayout.StyleLastParents,
-              // properties for most of the tree:
               angle: 90,
               layerSpacing: 80,
               alternateAngle: 90,
-              alternateAlignment: go.TreeLayout.AlignmentBus,
-              // properties for the "last parents":
-              // alternateAngle: 0, //内错角
-              // alternateAlignment: go.TreeLayout.AlignmentStart,
-              // alternateNodeIndent: 15,
-              // alternateNodeIndentPastParent: 1,
-              // alternateNodeSpacing: 15,
-              // alternateLayerSpacing: 40,
-              // alternateLayerSpacingParentOverlap: 1,
-              // alternatePortSpot: new go.Spot(0.001, 1, 20, 0),
-              // alternateChildPortSpot: go.Spot.Left
+              alternateAlignment: go.TreeLayout.AlignmentBus
             }
           )
         }
       );
-
-      // This function provides a common style for most of the TextBlocks.
-      // Some of these values may be overridden in a particular TextBlock.
       function textStyle(field) {
         return [
           {
@@ -127,7 +116,7 @@ export default {
                   maxSize: new go.Size(160, NaN)
                 },
                 new go.Binding("text", "name")
-              ),
+              )
               // $(
               //   go.TextBlock,
               //   textStyle("title"),
@@ -183,11 +172,14 @@ export default {
       // define the Link template, a simple orthogonal line
       this.mySelf.myDiagram.linkTemplate = $(
         go.Link,
-        {routing: go.Link.Orthogonal, corner: 15, selectable: false },
+        { routing: go.Link.Orthogonal, corner: 15, selectable: false },
         $(go.Shape, { strokeWidth: 3, stroke: "#424242" }),
         $(go.Shape, { toArrow: "Standard", fill: "#424242", stroke: null }),
-        $(go.TextBlock, { stroke: "red", font: "20px" }, //线条上字体
-          new go.Binding("text", "linktext"))
+        $(
+          go.TextBlock,
+          { stroke: "red", font: "20px" }, //线条上字体
+          new go.Binding("text", "linktext")
+        )
       ); // dark gray, rounded corner links
 
       // set up the nodeDataArray, describing each person/position
@@ -320,14 +312,14 @@ export default {
           boss: 12,
           name: "生活垃圾",
           nation: "India",
-         headOf: "社会防控工作流程图"
+          headOf: "社会防控工作流程图"
         },
         {
           key: 37,
           boss: 12,
           name: "出现症状",
           nation: "TrinidadAndTobago",
-           headOf: "社会防控工作流程图"
+          headOf: "社会防控工作流程图"
         },
         {
           key: 38,
@@ -362,7 +354,7 @@ export default {
           boss: 21,
           name: "定点医院就医",
           nation: "Malaysia",
-          linktext:"出现症状",
+          linktext: "出现症状",
           title: "Chairman of the Editorial Committee",
           headOf: "社会防控工作流程图"
         },
@@ -379,7 +371,7 @@ export default {
           boss: 18,
           name: "家庭消毒",
           nation: "Mauritius",
-         headOf: "社会防控工作流程图"
+          headOf: "社会防控工作流程图"
         },
         {
           key: 25,
@@ -407,7 +399,7 @@ export default {
           boss: 27,
           name: "按规定转诊就医",
           nation: "Portugal",
-         headOf: "社会防控工作流程图"
+          headOf: "社会防控工作流程图"
         },
         {
           key: 8,
@@ -457,44 +449,37 @@ export default {
       this.mySelf.myDiagram.startTransaction("highlight search");
 
       if (input.value) {
-        // search four different data properties for the string, any of which may match for success
-        // create a case insensitive RegExp from what the user typed
         var regex = new RegExp(input.value, "i");
         var results = this.mySelf.myDiagram.findNodesByExample({ name: regex });
         this.mySelf.myDiagram.highlightCollection(results);
-        // try to center the diagram at the first node that was found
         if (results.count > 0)
           this.mySelf.myDiagram.centerRect(results.first().actualBounds);
       } else {
-        // empty string only clears highlighteds collection
         this.mySelf.myDiagram.clearHighlighteds();
       }
 
       this.mySelf.myDiagram.commitTransaction("highlight search");
     }
-  },
-  mounted() {
-    this.dealShow();
   }
 };
 </script>
 
 <style scoped>
-#sample{
+#sample {
   position: relative;
   height: inherit;
 }
-#myDiagramDiv{
+#myDiagramDiv {
   height: inherit;
   width: 100%;
   border: solid 1px black;
   box-sizing: border-box;
 }
-#mySearch{
+#mySearch {
   width: 75%;
 }
-.search{
-   position: absolute;
+.search {
+  position: absolute;
   width: 200px;
   height: 40px;
   top: 120px;

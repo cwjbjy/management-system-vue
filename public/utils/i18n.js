@@ -4,7 +4,7 @@ export const messages = {
             btn: '切换英文',
             title: '技术栈：HTML5,Vue,Echarts,Element,SCSS,Nodejs,MySQL',
             title1: '产品介绍',
-            p1:'权限管理：文件预览，后台管理需管理员登录方可看到',
+            p1:'权限管理：文件预览，后台管理；需管理员登录方可看到',
             p2:'图片上传：上传图片到云服务器，可在首页与后台管理中查看效果',
         }
     },
