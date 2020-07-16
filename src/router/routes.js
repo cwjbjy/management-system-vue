@@ -24,6 +24,8 @@ const dragList = () => import(/* webpackChunkName: "dragList" */"@/views/drag/dr
 
 const I18n = () => import(/* webpackChunkName: "I18n.vue" */"@/views/I18n.vue")
 
+const chatRoom = () => import(/* webpackChunkName: "chatRoom.vue" */"@/views/chatRoom.vue")
+
 export const routes = [
     {
         path:'/',
@@ -119,6 +121,11 @@ export const route_admin = [
                 component:magnifying
             },
             {
+                path:'/chatRoom',
+                meta:{title:'聊天室'},
+                component:chatRoom
+            },
+            {
                 path:'/manage',
                 meta:{title:'后台管理'},
                 component:manage
@@ -197,6 +204,11 @@ export const route_user = [
                 path:'/magnifying',
                 meta:{title:'放大镜'},
                 component:magnifying
+            },
+            {
+                path:'/chatRoom',
+                meta:{title:'聊天室'},
+                component:chatRoom
             },
         ]
     },

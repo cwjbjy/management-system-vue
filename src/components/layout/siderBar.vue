@@ -136,6 +136,12 @@ export default {
           icon: require("@/assets/images/menus/magnifying.png")
         },
         {
+          name: "聊天室",
+          path: "/chatRoom",
+          key: "chatRoom",
+          icon: require("@/assets/images/menus/chat.png")
+        },
+        {
           name: "后台管理",
           icon: require("@/assets/images/menus/manage.png"),
           path: "/manage",
@@ -144,9 +150,9 @@ export default {
       ],
       newMenus: [],
       themeColor: "",
-      bgColor:"#545c64",
-      textColor:"#fff",
-      activeTextColor:"#ffd04b"
+      bgColor: "#545c64",
+      textColor: "#fff",
+      activeTextColor: "#ffd04b"
     };
   },
   watch: {
