@@ -14,7 +14,6 @@ export default {
   name: "positionChart",
   data() {
     return {
-      mySelf: {}
     };
   },
   mounted() {
@@ -27,7 +26,7 @@ export default {
       var mt8 = new go.Margin(8, 0, 0, 0);
       var mr8 = new go.Margin(0, 8, 0, 0);
       var ml8 = new go.Margin(0, 0, 0, 8);
-      this.mySelf.myDiagram = $(
+      var myDiagram = $(
         go.Diagram,
         "myDiagramDiv", // the DIV HTML element
         {
@@ -55,14 +54,8 @@ export default {
           }
         ];
       }
-
-      // define Converters to be used for Bindings
-      // function theNationFlagConverter(nation) {
-      //   return require("../../../assets/images/chart/" + nation + ".png");
-      // }
-
       // define the Node template
-      this.mySelf.myDiagram.nodeTemplate = $(
+      myDiagram.nodeTemplate = $(
         go.Node,
         "Auto",
         {
@@ -170,7 +163,7 @@ export default {
       );
 
       // define the Link template, a simple orthogonal line
-      this.mySelf.myDiagram.linkTemplate = $(
+      myDiagram.linkTemplate = $(
         go.Link,
         { routing: go.Link.Orthogonal, corner: 15, selectable: false },
         $(go.Shape, { strokeWidth: 3, stroke: "#424242" }),
@@ -429,16 +422,16 @@ export default {
       ];
 
       // create the Model with data for the tree, and assign to the Diagram
-      this.mySelf.myDiagram.model = $(go.TreeModel, {
+      myDiagram.model = $(go.TreeModel, {
         nodeParentKeyProperty: "boss", // this property refers to the parent node data
         nodeDataArray: nodeDataArray
       });
 
       // Overview
-      this.mySelf.myOverview = $(
+      var myOverview = $(
         go.Overview,
         "myOverviewDiv", // the HTML DIV element for the Overview
-        { observed: this.mySelf.myDiagram, contentAlignment: go.Spot.Center }
+        { observed: myDiagram, contentAlignment: go.Spot.Center }
       ); // tell it which Diagram to show and pan
     },
     searchDiagram() {
@@ -446,19 +439,19 @@ export default {
       if (!input) return;
       input.focus();
 
-      this.mySelf.myDiagram.startTransaction("highlight search");
+      myDiagram.startTransaction("highlight search");
 
       if (input.value) {
         var regex = new RegExp(input.value, "i");
-        var results = this.mySelf.myDiagram.findNodesByExample({ name: regex });
-        this.mySelf.myDiagram.highlightCollection(results);
+        var results = myDiagram.findNodesByExample({ name: regex });
+        myDiagram.highlightCollection(results);
         if (results.count > 0)
-          this.mySelf.myDiagram.centerRect(results.first().actualBounds);
+          myDiagram.centerRect(results.first().actualBounds);
       } else {
-        this.mySelf.myDiagram.clearHighlighteds();
+        myDiagram.clearHighlighteds();
       }
 
-      this.mySelf.myDiagram.commitTransaction("highlight search");
+      myDiagram.commitTransaction("highlight search");
     }
   }
 };

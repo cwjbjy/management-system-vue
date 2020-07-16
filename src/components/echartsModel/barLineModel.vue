@@ -205,6 +205,7 @@ export default {
         ]
       };
       echartsInstance.setOption(option);
+      // echartsInstance.resize();
     },
     autoSize() {
       this.$nextTick(() => {

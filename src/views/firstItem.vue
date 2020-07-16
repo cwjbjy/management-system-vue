@@ -1,7 +1,7 @@
 <template>
   <section class="firstItem">
-    <el-row>
-      <el-col :span="8">
+    <div class="firstItem-top">
+      <div>
         <el-card shadow="hover" class="user">
           <el-row class="user-top">
             <el-col :span="12">
@@ -32,8 +32,8 @@
           <el-progress :percentage="88" :format="format"></el-progress>HTML
           <el-progress :percentage="87" color="#f56c6c" :format="format"></el-progress>
         </el-card>
-      </el-col>
-      <el-col :span="16">
+      </div>
+      <div class="tableContent"> 
         <el-row class="icon-area" style="margin-bottom: 20px;">
           <el-col :span="8" class="icon-box">
             <el-card shadow="hover" :body-style="{padding: '0px'}">
@@ -98,8 +98,8 @@
             </el-table>
           </el-card>
         </el-row>
-      </el-col>
-    </el-row>
+      </div>
+    </div>
     <el-row style="margin-bottom: 20px;">
       <el-col :span="12" class="echarts-box">
         <el-card shadow="hover">
@@ -200,8 +200,16 @@ export default {
 <style scoped lang="scss">
 .firstItem {
   padding: 10px 0 0 10px;
+  &-top{
+    display:inline-flex;
+    width: 100%;
+  }
+  .tableContent{
+    width: 100%;
+  }
   .user {
     height: 252px;
+    width: 340px;
     display: block;
     margin: 0 10px 20px 10px;
     &-top {

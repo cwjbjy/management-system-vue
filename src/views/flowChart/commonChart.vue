@@ -15,7 +15,7 @@ export default {
     dealShow: function() {
       const $ = go.GraphObject.make;
       var myDiagram = $(go.Diagram, this.$refs.mygoChart, {
-        initialContentAlignment: go.Spot.Top, // 顶格显示
+        initialContentAlignment:go.Spot.Center, // 顶格显示
         "undoManager.isEnabled": true, // 支持 Ctrl-Z 和 Ctrl-Y 操作
         "toolManager.hoverDelay": 100, //tooltip提示显示延时
         "toolManager.toolTipDuration": 10000, //tooltip持续显示时间

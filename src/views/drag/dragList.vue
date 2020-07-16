@@ -114,7 +114,6 @@ export default {
   display: flex;
   &-item {
     flex: 1;
-    max-width: 330px;
     min-width: 300px;
     margin-right: 16px;
     border-radius: 6px;
