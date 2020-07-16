@@ -10,6 +10,8 @@ export const getURL = {
                 case "production":
                     url = "https://wen.cwjbjy.online/images/";
                     break;
+                default:
+                    break;
             }
             return url;
         }

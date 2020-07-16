@@ -5,8 +5,7 @@
     .#{$theme} & {
      
       $theme-map: () !global;
-      //为什么不能这么写？
-      // $theme-map:map-merge($theme-map, $map);
+
       @each $key, $value in $map {
         $theme-map: map-merge($theme-map, ($key: $value)) !global;
       }

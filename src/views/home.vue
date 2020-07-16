@@ -2,7 +2,7 @@
   <div v-title="title" :class="themeClass">
     <div class="app-container">
       <header>
-        <home-header></home-header>
+        <home-header @update:color-change="colorChange"></home-header>
       </header>
       <main class="app-main">
         <aside>
@@ -38,7 +38,7 @@ export default {
     return {
       title: "文杰的仓库",
       msg: "Dynamic Themes",
-      theme: "blue",
+      theme: "gray",
       keepList: []
     };
   },
@@ -48,12 +48,15 @@ export default {
     }
   },
   methods: {
+    colorChange(val){
+      this.theme = val;
+    },
     tagChange(val) {
       this.keepList = [];
       val.forEach(element => {
         this.keepList.push(element.name);
       });
-    }
+    },
   }
 };
 </script>

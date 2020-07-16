@@ -10,6 +10,7 @@
         <h4>{{$t('i18n.title1')}}</h4>
         <p>{{$t('i18n.p1')}}</p>
         <p>{{$t('i18n.p2')}}</p>
+        <p>{{$t('i18n.p3')}}</p>
       </div>
     </el-card>
   </section>

@@ -5,9 +5,9 @@
       class="sidebar-el-menu"
       @select="handleSelect"
       :collapse="isCollapse"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
+      :background-color="bgColor"
+      :text-color="textColor"
+      :active-text-color="activeTextColor"
       unique-opened
       router
     >
@@ -142,8 +142,26 @@ export default {
           key: "manage"
         }
       ],
-      newMenus: []
+      newMenus: [],
+      themeColor: "",
+      bgColor:"#545c64",
+      textColor:"#fff",
+      activeTextColor:"#ffd04b"
     };
+  },
+  watch: {
+    themeColor(newValue) {
+      switch (newValue) {
+        case "gray":
+          this.bgColor = "#545c64";
+          break;
+        case "blue":
+          this.bgColor = "#336ea9";
+          break;
+        default:
+          break;
+      }
+    }
   },
   created() {
     let authMenus = this.$cookies.get("authMenus").split(",");
@@ -157,9 +175,13 @@ export default {
     window.eventBus.$on("collapse", value => {
       this.isCollapse = value;
     });
+    window.eventBus.$on("colorChange", value => {
+      this.themeColor = value;
+    });
   },
   beforeDestroy() {
     window.eventBus.$off("collapse");
+    window.eventBus.$off("colorChange");
   },
   methods: {
     handleSelect(index) {

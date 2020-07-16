@@ -15,9 +15,19 @@
           @click="handleFullScreen"
         />
       </el-tooltip>
+      <!-- 切换主题色 -->
+      <el-dropdown class="user-drop" @command="switchColor">
+        <span>
+          {{themeColor}}
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="gray">浅灰</el-dropdown-item>
+          <el-dropdown-item  command="blue">浅蓝</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
       <img :src="imageUrl" class="user-img" />
       <!-- 用户名下拉菜单 -->
-      <el-dropdown class="user-name" trigger="click" @command="handleCommand">
+      <el-dropdown class="user-drop" @command="handleCommand">
         <span>
           {{userName}}
           <i class="el-icon-caret-bottom"></i>
@@ -42,7 +52,8 @@ export default {
       collapse: false,
       fullscreen: false,
       imageUrl: "",
-      user_name: ""
+      user_name: "",
+      themeColor:"浅灰"
     };
   },
   computed: {
@@ -62,6 +73,22 @@ export default {
         this.$router.push("/login");
         location.reload();
       }
+    },
+    //切换主题色
+    switchColor(command){
+      switch(command){
+        case "gray":
+          this.themeColor = "浅灰";
+          break;
+        case "blue":
+          this.themeColor = "浅蓝";
+          break;
+        default:
+          this.themeColor = "浅灰";
+          break;
+      }
+      this.$emit('update:color-change',command);
+      window.eventBus.$emit('colorChange',command)
     },
     // 侧边栏折叠
     collapseChage() {
@@ -136,7 +163,7 @@ export default {
       border-radius: 50%;
       padding: 5px;
     }
-    .user-name {
+    .user-drop {
       padding: 5px;
     }
   }
