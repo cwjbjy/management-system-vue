@@ -87,6 +87,7 @@ import rules from "@/js/rules";
 import comfun from "@/js/comFunc";
 import { route_admin, route_user } from "@/router/routes";
 export default {
+  name: "Login",
   data() {
     var validatePass = (rule, value, callback) => {
       if (!rules.isValidPass(value)) {
@@ -132,6 +133,23 @@ export default {
         rge_passAgain: [{ validator: validatePass2, trigger: "blur" }]
       }
     };
+  },
+  created() {
+    localStorage.removeItem("user_name");
+  },
+  mounted() {
+    this.verifyCode = new GVerify("v_container");
+    let that = this;
+    document.addEventListener("keydown", that.keyDown);
+    //数组去重
+    // let a = [1,2,4,3,3,3]
+    // let b = [...new Set(a)]
+    // console.log(b)
+  },
+
+  beforeDestroy() {
+    let that = this;
+    document.removeEventListener("keydown", that.keyDown);
   },
   methods: {
     tabActive() {
@@ -211,22 +229,6 @@ export default {
         this.login();
       }
     }
-  },
-  mounted() {
-    this.verifyCode = new GVerify("v_container");
-    let that = this;
-    document.addEventListener("keydown", that.keyDown);
-    //数组去重，Set数据是用来去重的，map数据是键值对
-    // let a = [1,2,4,3,3,3]
-    // let b = [...new Set(a)]
-    // console.log(b)
-  },
-  created() {
-    localStorage.removeItem("user_name");
-  },
-  beforeDestroy() {
-    let that = this;
-    document.removeEventListener("keydown", that.keyDown);
   }
 };
 </script>
