@@ -1,7 +1,17 @@
 export default {
     websocketFun(params) {
-        const baseUrl = "ws://127.0.0.1:3999";
-        // const baseUrl = "wss://wss.cwjbjy.online";
+        const env = process.env.NODE_ENV;
+        let baseUrl = "";
+        switch (env) {
+            case "development":
+                baseUrl = "ws://127.0.0.1:3999";
+                break;
+            case "production":
+                baseUrl = "wss://wss.cwjbjy.online";
+                break;
+            default:
+                break;
+        }
         let ws = new WebSocket(baseUrl);
         ws.onclose = function () {
             console.error("web channel closed");

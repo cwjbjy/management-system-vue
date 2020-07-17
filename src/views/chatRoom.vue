@@ -32,7 +32,7 @@
         </div>
       </div>
     </el-card>
-    <el-dialog title="效果图" :visible.sync="dialogVisible" width="90%" top="2vh">
+    <el-dialog title="效果图" :visible.sync="dialogVisible" width="90%" top="2vh" class="chatDialog">
       <img src="@/assets/images/home/chatShow.png" />
     </el-dialog>
   </section>
@@ -97,7 +97,7 @@ export default {
     },
     send() {
       if (!this.connectFlag) {
-        this.$toast.fail("请先连接");
+        this.$message.error("请先连接");
       }
       if (this.msg == "") return;
       let message = {
@@ -142,5 +142,11 @@ img {
 .chart-button {
   display: inline-flex;
   width: 100%;
+}
+.chatDialog {
+  .el-dialog__body {
+    height: 76vh;
+    overflow: auto;
+  }
 }
 </style>
