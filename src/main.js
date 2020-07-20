@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import directive from "./directive"
 import VueCookies from 'vue-cookies'
-// import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/index.css';
 import { messages } from '../public/utils/i18n';
 import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
