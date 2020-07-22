@@ -172,6 +172,9 @@ export default {
     this.user_name = localStorage.getItem("user_name");
     this.getImage();
   },
+  activated() {
+    this.getImage();
+  },
   methods: {
     getImage() {
       let params = {

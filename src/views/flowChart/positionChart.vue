@@ -14,6 +14,7 @@ export default {
   name: "positionChart",
   data() {
     return {
+       myDiagram: null
     };
   },
   mounted() {
@@ -26,7 +27,7 @@ export default {
       var mt8 = new go.Margin(8, 0, 0, 0);
       var mr8 = new go.Margin(0, 8, 0, 0);
       var ml8 = new go.Margin(0, 0, 0, 8);
-      var myDiagram = $(
+      this.myDiagram = $(
         go.Diagram,
         "myDiagramDiv", // the DIV HTML element
         {
@@ -55,7 +56,7 @@ export default {
         ];
       }
       // define the Node template
-      myDiagram.nodeTemplate = $(
+      this.myDiagram.nodeTemplate = $(
         go.Node,
         "Auto",
         {
@@ -163,7 +164,7 @@ export default {
       );
 
       // define the Link template, a simple orthogonal line
-      myDiagram.linkTemplate = $(
+      this.myDiagram.linkTemplate = $(
         go.Link,
         { routing: go.Link.Orthogonal, corner: 15, selectable: false },
         $(go.Shape, { strokeWidth: 3, stroke: "#424242" }),
@@ -422,7 +423,7 @@ export default {
       ];
 
       // create the Model with data for the tree, and assign to the Diagram
-      myDiagram.model = $(go.TreeModel, {
+      this.myDiagram.model = $(go.TreeModel, {
         nodeParentKeyProperty: "boss", // this property refers to the parent node data
         nodeDataArray: nodeDataArray
       });
@@ -431,7 +432,7 @@ export default {
       var myOverview = $(
         go.Overview,
         "myOverviewDiv", // the HTML DIV element for the Overview
-        { observed: myDiagram, contentAlignment: go.Spot.Center }
+        { observed: this.myDiagram, contentAlignment: go.Spot.Center }
       ); // tell it which Diagram to show and pan
     },
     searchDiagram() {
@@ -439,33 +440,32 @@ export default {
       if (!input) return;
       input.focus();
 
-      myDiagram.startTransaction("highlight search");
+      this.myDiagram.startTransaction("highlight search");
 
       if (input.value) {
         var regex = new RegExp(input.value, "i");
-        var results = myDiagram.findNodesByExample({ name: regex });
-        myDiagram.highlightCollection(results);
+        var results = this.myDiagram.findNodesByExample({ name: regex });
+        this.myDiagram.highlightCollection(results);
         if (results.count > 0)
-          myDiagram.centerRect(results.first().actualBounds);
+          this.myDiagram.centerRect(results.first().actualBounds);
       } else {
-        myDiagram.clearHighlighteds();
+        this.myDiagram.clearHighlighteds();
       }
 
-      myDiagram.commitTransaction("highlight search");
+      this.myDiagram.commitTransaction("highlight search");
     }
   }
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #sample {
   position: relative;
-  height: inherit;
+  height: calc(100vh - 100px);
 }
 #myDiagramDiv {
   height: inherit;
   width: 100%;
-  border: solid 1px black;
   box-sizing: border-box;
 }
 #mySearch {

@@ -65,6 +65,13 @@ export default {
   created() {
     this.user_name = localStorage.getItem("user_name");
     this.getImage();
+    //上传完图片后及时更新
+    window.eventBus.$on('update:img',()=>{
+      this.getImage();
+    })
+  },
+  beforeDestroy() {
+    window.eventBus.$off('update:img')
   },
   methods: {
     // 用户名下拉菜单选择事件

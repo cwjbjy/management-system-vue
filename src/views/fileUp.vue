@@ -62,6 +62,8 @@ export default {
     onSuccess(response, file) {
       this.$message.success(response.message);
       this.getImage();
+      //更换头部图片
+      window.eventBus.$emit('update:img')
     },
     getImage() {
       let params = {

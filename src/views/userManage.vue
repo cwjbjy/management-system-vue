@@ -102,6 +102,9 @@ export default {
   created() {
     this.init();
   },
+  activated() {
+     this.init();
+  },
   methods: {
     //获取数据
     init() {
