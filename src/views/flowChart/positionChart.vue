@@ -19,6 +19,10 @@ export default {
   },
   mounted() {
     this.dealShow();
+    let doc = document.querySelector("#myDiagramDiv").lastElementChild;
+    let str = doc.getAttribute("style");
+    str = str.replace("overflow: auto","overflow: hidden");
+    doc.setAttribute("style",str)
   },
   methods: {
     dealShow: function() {
