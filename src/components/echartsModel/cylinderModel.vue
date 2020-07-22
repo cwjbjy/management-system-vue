@@ -19,6 +19,19 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    this.prepareDomain(this.model);
+    window.addEventListener("resize", this.autoSize, false);
+    window.eventBus.$on("collapse", () => {
+      setTimeout(() => {
+        this.autoSize();
+      }, 400);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.autoSize, false);
+    window.eventBus.$off("collapse");
+  },
   methods: {
     prepareDomain(model) {
       let echartsInstance = echarts.init(this.$refs.echarts);
@@ -149,19 +162,6 @@ export default {
         echartsInstance.resize();
       });
     }
-  },
-  mounted() {
-    this.prepareDomain(this.model);
-    window.addEventListener("resize", this.autoSize, false);
-    window.eventBus.$on("collapse", () => {
-      setTimeout(() => {
-        this.autoSize();
-      }, 400);
-    });
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.autoSize, false);
-    window.eventBus.$off("collapse");
   }
 };
 </script>

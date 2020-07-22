@@ -7,7 +7,7 @@
         :class="{'active': isActive(item.path)}"
         :key="index"
       >
-        <router-link :to="item.path" class="tags-li-title">{{item.title}}</router-link>
+        <span class="tags-li-title" @click="routerClick(item.path)">{{item.title}}</span>
         <span class="tags-li-icon" @click="closeTags(index)">
           <i class="el-icon-close"></i>
         </span>
@@ -76,6 +76,10 @@ export default {
     },
     handleTags(command) {
       command === "other" ? this.closeOther() : this.closeAll();
+    },
+    routerClick(value){
+      this.$router.push(value)
+      window.eventBus.$emit('update:router',value)
     }
   },
   computed: {

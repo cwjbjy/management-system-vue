@@ -20,6 +20,21 @@ export default {
       this.prepareDomain(model);
     }
   },
+  mounted() {
+    this.prepareDomain();
+    //监听浏览器窗口onsize事件
+    window.addEventListener("resize", this.autoSize, false);
+    //监听element-ui菜单栏收缩动画事件
+    window.eventBus.$on("collapse", () => {
+      setTimeout(() => {
+        this.autoSize();
+      }, 400);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.autoSize, false);
+    window.eventBus.$off("collapse");
+  },
   methods: {
     prepareDomain(model) {
       var echartsInstance = echarts.init(this.$refs.echarts);
@@ -159,21 +174,6 @@ export default {
         echartsInstance.resize();
       });
     }
-  },
-  mounted() {
-    this.prepareDomain();
-    //监听浏览器窗口onsize事件
-    window.addEventListener("resize", this.autoSize, false);
-    //监听element-ui菜单栏收缩动画事件
-    window.eventBus.$on("collapse", () => {
-      setTimeout(() => {
-        this.autoSize();
-      }, 400);
-    });
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.autoSize, false);
-    window.eventBus.$off("collapse");
   }
 };
 </script>

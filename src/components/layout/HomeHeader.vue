@@ -17,12 +17,10 @@
       </el-tooltip>
       <!-- 切换主题色 -->
       <el-dropdown class="user-drop" @command="switchColor">
-        <span>
-          {{themeColor}}
-        </span>
+        <span>{{themeColor}}</span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="gray">浅灰</el-dropdown-item>
-          <el-dropdown-item  command="blue">浅蓝</el-dropdown-item>
+          <el-dropdown-item command="blue">浅蓝</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <img :src="imageUrl" class="user-img" />
@@ -53,7 +51,7 @@ export default {
       fullscreen: false,
       imageUrl: "",
       user_name: "",
-      themeColor:"浅灰"
+      themeColor: "浅灰"
     };
   },
   computed: {
@@ -65,13 +63,15 @@ export default {
   created() {
     this.user_name = localStorage.getItem("user_name");
     this.getImage();
+  },
+  mounted() {
     //上传完图片后及时更新
-    window.eventBus.$on('update:img',()=>{
+    window.eventBus.$on("update:img", () => {
       this.getImage();
-    })
+    });
   },
   beforeDestroy() {
-    window.eventBus.$off('update:img')
+    window.eventBus.$off("update:img");
   },
   methods: {
     // 用户名下拉菜单选择事件
@@ -82,8 +82,8 @@ export default {
       }
     },
     //切换主题色
-    switchColor(command){
-      switch(command){
+    switchColor(command) {
+      switch (command) {
         case "gray":
           this.themeColor = "浅灰";
           break;
@@ -94,8 +94,8 @@ export default {
           this.themeColor = "浅灰";
           break;
       }
-      this.$emit('update:color-change',command);
-      window.eventBus.$emit('colorChange',command)
+      this.$emit("update:color-change", command);
+      window.eventBus.$emit("update:color", command);
     },
     // 侧边栏折叠
     collapseChage() {

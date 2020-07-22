@@ -184,13 +184,17 @@ export default {
     window.eventBus.$on("collapse", value => {
       this.isCollapse = value;
     });
-    window.eventBus.$on("colorChange", value => {
+    window.eventBus.$on("update:color", value => {
       this.themeColor = value;
     });
+    window.eventBus.$on("update:router",value =>{
+      this.defaultActive = value;
+    })
   },
   beforeDestroy() {
     window.eventBus.$off("collapse");
-    window.eventBus.$off("colorChange");
+    window.eventBus.$off("update:color");
+    window.eventBus.$off("update:router")
   },
   methods: {
     handleSelect(index) {

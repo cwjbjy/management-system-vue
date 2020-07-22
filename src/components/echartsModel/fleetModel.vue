@@ -10,7 +10,7 @@ export default {
   props: {
     model: {
       type: Object,
-      default:{}
+      default: {}
     }
   },
   data() {
@@ -20,6 +20,18 @@ export default {
     model: function(newData) {
       this.prepareDomain(newData);
     }
+  },
+  mounted() {
+    window.addEventListener("resize", this.autoSize, false);
+    window.eventBus.$on("collapse", () => {
+      setTimeout(() => {
+        this.autoSize();
+      }, 400);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.autoSize, false);
+    window.eventBus.$off("collapse");
   },
   methods: {
     prepareDomain(model) {
@@ -230,12 +242,14 @@ export default {
         });
       });
       return arr;
+    },
+    autoSize() {
+      this.$nextTick(() => {
+        let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
+        echartsInstance.resize();
+      });
     }
-  },
-  mounted: function() {
-    // this.prepareDomain(this.model);
-  },
-  created() {}
+  }
 };
 </script>
 
