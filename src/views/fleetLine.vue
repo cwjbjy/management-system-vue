@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fleetLine">
     <fleet-model :model="geoData"></fleet-model>
   </div>
 </template>
@@ -28,3 +28,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.fleetLine{
+  background-color: rgb(6,42,88);
+}
+</style>
