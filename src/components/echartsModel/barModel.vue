@@ -28,6 +28,9 @@ export default {
       }, 400);
     });
   },
+  activated() {
+    this.autoSize();
+  },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
     window.eventBus.$off("collapse");

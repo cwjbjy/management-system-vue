@@ -11,7 +11,7 @@
         <article class="app-content">
           <tags @update:change="tagChange"></tags>
           <transition name="fade" mode="out-in">
-            <keep-alive :include="keepList" :max="8">
+            <keep-alive :include="keepList" :exclude="exList" :max="8">
               <router-view />
             </keep-alive>
           </transition>
@@ -39,7 +39,8 @@ export default {
       title: "文杰的仓库",
       msg: "Dynamic Themes",
       theme: "gray",
-      keepList: []
+      keepList: [],
+      exList:["fleetLine"]
     };
   },
   computed: {

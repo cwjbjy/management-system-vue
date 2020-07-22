@@ -21,17 +21,12 @@ export default {
       this.prepareDomain(newData);
     }
   },
-  mounted() {
-    window.addEventListener("resize", this.autoSize, false);
-    window.eventBus.$on("collapse", () => {
-      setTimeout(() => {
-        this.autoSize();
-      }, 400);
-    });
-  },
   beforeDestroy() {
-    window.removeEventListener("resize", this.autoSize, false);
-    window.eventBus.$off("collapse");
+    //销毁实例，释放内存
+    let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
+    if (echartsInstance) {
+      echarts.dispose(echartsInstance);
+    }
   },
   methods: {
     prepareDomain(model) {
@@ -243,12 +238,12 @@ export default {
       });
       return arr;
     },
-    autoSize() {
-      this.$nextTick(() => {
-        let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
-        echartsInstance.resize();
-      });
-    }
+    // autoSize() {
+    //   this.$nextTick(() => {
+    //     let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
+    //     echartsInstance.resize();
+    //   });
+    // }
   }
 };
 </script>
