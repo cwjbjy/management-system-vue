@@ -8,13 +8,13 @@
       <span style="margin-left:10px">PC端后台管理系统</span>
     </div>
     <div class="header_right">
-      <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
+      <!-- <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
         <img
           src="@/assets/images/home/fullScreen.png"
           class="fullScreen pointer"
           @click="handleFullScreen"
         />
-      </el-tooltip>
+      </el-tooltip> -->
       <!-- 切换主题色 -->
       <el-dropdown class="user-drop" @command="switchColor">
         <span>{{themeColor}}</span>
