@@ -100,6 +100,12 @@ export default {
   components: {
     draggable
   },
+  created() {
+    document.body.ondrop = function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+    };
+  },
   methods: {
     removeHandle(event) {
       // console.log(event);
