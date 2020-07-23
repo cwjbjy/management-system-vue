@@ -53,6 +53,10 @@ export default {
       dialogVisible: false
     };
   },
+  created() {
+    var ua = navigator.userAgent.toLowerCase();  
+    console.log('ua',ua)
+  },
   mounted() {
     this.mess = document.getElementById("mess");
     let that = this;

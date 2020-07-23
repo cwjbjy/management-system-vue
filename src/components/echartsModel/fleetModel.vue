@@ -157,9 +157,9 @@ export default {
             },
             itemStyle: {
               normal: {
-                color: "#0ff7eefa",
+                color: "rgba(102,204,255,0.9)",
                 shadowBlur: 10,
-                shadowColor: "#0ff7eefa"
+                shadowColor: "#0ff7ee"
               },
               emphasis: {
                 areaColor: "#2B91B7"

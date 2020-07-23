@@ -1,7 +1,7 @@
 <template>
   <section>
     <el-card shadow="hover">
-      <h4>双击表格中的单元格可实现修改当前单元格功能（表头不可修改）；</h4>
+      <h4>双击表格中的值可实现修改当前单元格功能（表头不可修改）；</h4>
       <el-table
         :data="tableData"
         style="width: 100%"
@@ -106,18 +106,18 @@ export default {
       console.log("event", event);
       if (event.target.dataset.type == "view") {
         //点击span区域
-        event.path[1].className += " cell-content-active";
-        event.path[1].querySelector("input").focus();
-      } else {
-        //点击单元格cell非span区域 （由于点击的元素不同，path也不同）
-        event.path[0].children[0].className += " cell-content-active";
-        event.path[0].children[0].querySelector("input").focus();
+        let doc = event.target.parentNode;//div cell
+        doc.setAttribute("class", "cell cell-content-active");
+        doc.querySelector("input").focus();
+        //ie浏览器input获取焦点光标默认在最左边，这里设置为最右边
+        let input = event.target.previousElementSibling.firstElementChild;
+        input.setSelectionRange(input.value.length, input.value.length,"forward")
       }
     },
     inputBlur(row) {
       console.log(event);
-      let elm = event.path[2];
-      elm.className = "cell";
+      let doc = event.target.parentNode.parentNode;
+      doc.setAttribute("class", "cell");
     }
   }
 };
