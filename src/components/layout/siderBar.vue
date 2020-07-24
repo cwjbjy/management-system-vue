@@ -170,6 +170,8 @@ export default {
     }
   },
   created() {
+    var ua = navigator.userAgent.toLowerCase();  
+    console.log('ua',ua)
     let authMenus = this.$cookies.get("authMenus").split(",");
     this.menus.forEach(item => {
       if (item.key && authMenus.includes(item.key)) {

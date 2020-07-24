@@ -75,7 +75,7 @@
               <span>待办事项</span>
               <el-button style="float: right; padding: 3px 0" type="text">添加</el-button>
             </div>
-            <el-table :show-header="false" :data="todoList" style="width:100%;">
+            <el-table :show-header="false" :data="todoList" style="width:100%;" ref="table">
               <el-table-column width="40">
                 <template slot-scope="scope">
                   <el-checkbox v-model="scope.row.status"></el-checkbox>
@@ -171,6 +171,10 @@ export default {
   created() {
     this.user_name = localStorage.getItem("user_name");
     this.getImage();
+    //解决IE浏览器渲染过慢，表格宽度出现BUG（DOM树生成的太慢，element的js已经开始计算）
+    this.$nextTick(()=>{
+      this.$refs.table.doLayout()
+    })
   },
   activated() {
     this.getImage();
