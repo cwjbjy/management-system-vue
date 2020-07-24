@@ -16,14 +16,9 @@ let directive = function (Vue) {
 
             dialogHeaderEl.style.cssText += ';cursor:move;'
             dragDom.style.cssText += ';top:0px;'
-
-            // 获取原有属性 ie dom元素.currentStyle 火狐谷歌 window.getComputedStyle(dom元素, null);
+            
             const sty = (() => {
-                if (window.document.currentStyle) {
-                    return (dom, attr) => dom.currentStyle[attr];
-                } else {
-                    return (dom, attr) => getComputedStyle(dom, false)[attr];
-                }
+                return (dom,attr) => dom.style[attr]
             })()
 
             dialogHeaderEl.onmousedown = (e) => {
@@ -47,7 +42,7 @@ let directive = function (Vue) {
                 // 获取到的值带px 正则匹配替换
                 let styL = sty(dragDom, 'left');
                 let styT = sty(dragDom, 'top');
-
+            
                 // 注意在ie中 第一次获取到的值为组件自带50% 移动之后赋值为px
                 if (styL.includes('%')) {
                     styL = +document.body.clientWidth * (+styL.replace(/\%/g, '') / 100);
@@ -74,7 +69,6 @@ let directive = function (Vue) {
                     } else if (top > maxDragDomTop) {
                         top = maxDragDomTop;
                     }
-
                     // 移动当前元素
                     dragDom.style.cssText += `;left:${left + styL}px;top:${top + styT}px;`;
                 };

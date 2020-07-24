@@ -104,6 +104,9 @@ export default {
   position: relative;
   height: 30px;
   overflow: hidden;
+  ul{
+    height: 30px;
+  }
   @include themify($themes) {
     background-color: themed("card-background");
     // box-shadow: 0 5px 10px themed("box-shadow-color");
