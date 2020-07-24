@@ -23,7 +23,6 @@
                 v-model="ruleForm.pass"
                 placeholder="请输入密码"
                 show-password
-                clearable
               ></el-input>
             </el-form-item>
             <el-form-item label>
@@ -283,6 +282,7 @@ export default {
       text-align: center;
       font-size: 16px;
       color: #999;
+      cursor:$c_pointer;
       &:hover {
         color: $color-font_active;
       }

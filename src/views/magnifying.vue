@@ -1,7 +1,7 @@
 <template>
   <section>
     <el-card shadow="hover">
-      <span class="title">请将鼠标移动到图片上，体验效果 <br/> IE、Edge浏览器由于浏览器本身性能问题，无法正常体验，请更换其他浏览器体验该效果 </span>
+      <span class="title">请将鼠标移动到图片上，体验效果 <br/> IE、Edge浏览器无法正常体验，请更换其他浏览器体验该效果 </span>
       <div class="block" id="small_Box">
         <img :src="src" class="imageBox" />
       </div>
