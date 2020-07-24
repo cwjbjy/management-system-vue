@@ -14,7 +14,7 @@
       <template v-for="item in newMenus">
         <el-submenu :index="item.name" :key="item.name" v-if="item.children">
           <template slot="title">
-            <img :src="item.icon" class="icon" />
+            <img :src="item.icon" class="icon" alt="加载失败"/>
             <span slot="title">{{ item.name }}</span>
           </template>
           <template v-for="item1 in item.children">
@@ -32,7 +32,7 @@
           </template>
         </el-submenu>
         <el-menu-item :index="item.path" :key="item.name" v-else>
-          <img :src="item.icon" class="icon" />
+          <img :src="item.icon" class="icon" alt="加载失败"/>
           <span slot="title">{{item.name}}</span>
         </el-menu-item>
       </template>

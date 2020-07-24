@@ -12,7 +12,7 @@
         :before-upload="beforeAvatarUpload"
         :on-change="onChange"
       >
-        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+        <img v-if="imageUrl" :src="imageUrl" class="avatar" alt="加载失败"/>
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过2MB</div>
       </el-upload>

@@ -1,8 +1,8 @@
 <template>
   <div class="login" v-title="title">
-    <div id="stars" style="position: absolute"></div>
+    <!-- <div id="stars" style="position: absolute"></div>
     <div id="stars2" style="position: absolute"></div>
-    <div id="stars3" style="position: absolute"></div>
+    <div id="stars3" style="position: absolute"></div> -->
     <div class="login_top">
       <span class="login_title">PC端管理系统</span>
     </div>
@@ -37,13 +37,13 @@
           </div>
           <div class="img_list">
             <div class="icon" @click="thirdLogin">
-              <img src="@/assets/images/login/QQ.png" />
+              <img src="@/assets/images/login/QQ.png" alt="加载失败"/>
             </div>
             <div class="icon" @click="thirdLogin">
-              <img src="@/assets/images/login/wb.png" />
+              <img src="@/assets/images/login/wb.png" alt="加载失败"/>
             </div>
             <div class="icon" @click="thirdLogin">
-              <img src="@/assets/images/login/wx.png" />
+              <img src="@/assets/images/login/wx.png" alt="加载失败" />
             </div>
           </div>
         </div>
@@ -233,17 +233,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/css/starrun.css";
+// @import "../assets/css/starrun.css";
 .login {
   height: 100vh;
   color: $color-font;
-  background: radial-gradient(
-    220% 105% at top center,
-    #70a1ff 10%,
-    #1e90ff 40%,
-    #5352ed 65%,
-    #3742fa
-  );
+  background-color: #1e90ff ;
+  // background: radial-gradient(
+  //   220% 105% at top center,
+  //   #70a1ff 10%,
+  //   #1e90ff 40%,
+  //   #5352ed 65%,
+  //   #3742fa
+  // );
   &_top {
     width: 100%;
     height: 20vh;

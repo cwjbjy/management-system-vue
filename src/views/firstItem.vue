@@ -5,7 +5,7 @@
         <el-card shadow="hover" class="user">
           <el-row class="user-top">
             <el-col :span="12">
-              <img :src="imageUrl" class="user-img" />
+              <img :src="imageUrl" class="user-img" alt="加载失败"/>
             </el-col>
             <el-col :span="12" class="user-area">
               <div class="user-name">{{userName}}</div>

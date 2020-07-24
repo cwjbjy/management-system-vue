@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
-    <title>登录</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>  
-    <script src="https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js"></script>
-    <script src="https://cdn.bootcss.com/vue-router/3.1.6/vue-router.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"></script>
-    <script src="https://cdn.bootcss.com/element-ui/2.13.1/index.js"></script>
-    <script src="./utils/china.js"></script>
-    <script src="./utils//go.js"></script>
-    <script src="./utils/authCode.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+  <title>登录</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js"></script>
+  <script src="https://cdn.bootcss.com/vue-router/3.1.6/vue-router.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"></script>
+  <script src="https://cdn.bootcss.com/element-ui/2.13.1/index.js"></script>
+  <script src="./utils/china.js"></script>
+  <script src="./utils/go.js"></script>
+  <script src="./utils/authCode.js"></script>
+  <!-- <script>
+    window.onload = function () {
+      setTimeout(function () {
+        let t = performance.timing
+        console.log('DNS查询耗时 ：' + (t.domainLookupEnd - t.domainLookupStart).toFixed(0))
+        console.log('TCP链接耗时 ：' + (t.connectEnd - t.connectStart).toFixed(0))
+        console.log('request请求耗时 ：' + (t.responseEnd - t.responseStart).toFixed(0))
+        console.log('解析dom树耗时 ：' + (t.domComplete - t.domInteractive).toFixed(0))
+        console.log('白屏时间 ：' + (t.responseStart - t.navigationStart).toFixed(0))
+        console.log('domready时间 ：' + (t.domContentLoadedEventEnd - t.navigationStart).toFixed(0))
+        console.log('onload时间 ：' + (t.loadEventEnd - t.navigationStart).toFixed(0))
+        if (t = performance.memory) {
+          console.log('js内存使用占比 ：' + (t.usedJSHeapSize / t.totalJSHeapSize * 100).toFixed(2) + '%')
+        }
+      })
+    }
+  </script> -->
+</body>
+
 </html>

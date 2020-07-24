@@ -3,7 +3,7 @@
     <el-card shadow="hover">
       <span class="title">请将鼠标移动到图片上，体验效果 <br/> IE、Edge浏览器无法正常体验，请更换其他浏览器体验该效果 </span>
       <div class="block" id="small_Box">
-        <img :src="src" class="imageBox" />
+        <img :src="src" class="imageBox" alt="加载失败"/>
       </div>
     </el-card>
   </section>
@@ -38,6 +38,7 @@ export default {
       span.style.cursor = "pointer";
       box.appendChild(span);
       img.setAttribute("src", this.src);
+      img.setAttribute("alt","加载失败")
       img.style.width = scale * boxWidth + "px";
       img.style.height = scale * boxHeight + "px";
       box.onmouseover = function(e) {

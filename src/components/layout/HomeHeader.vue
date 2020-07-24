@@ -23,7 +23,7 @@
           <el-dropdown-item command="blue">浅蓝</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <img :src="imageUrl" class="user-img" />
+      <img :src="imageUrl" class="user-img" alt="加载失败"/>
       <!-- 用户名下拉菜单 -->
       <el-dropdown class="user-drop" @command="handleCommand">
         <span>

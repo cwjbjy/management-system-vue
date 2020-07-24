@@ -94,7 +94,7 @@ export default {
           {
             doubleClick: function(e, node) {
               //在Panel块，双击获取当前节点的信息
-              console.log("111", node.part.data);
+              // console.log("111", node.part.data);
             }
           }
         )

@@ -32,7 +32,7 @@ module.exports = {
   // css相关配置
   css: {
     // 是否分离css（开发时注释掉，否则修改CSS样式无法触发热更新）
-    extract: false,
+    extract: true,
     sourceMap: false,
     // css预设器配置项
     loaderOptions: {

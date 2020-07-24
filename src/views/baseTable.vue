@@ -103,7 +103,7 @@ export default {
       return "cell-p0";
     },
     dbClick(row, column, cell, event) {
-      console.log("event", event);
+      // console.log("event", event);
       if (event.target.dataset.type == "view") {
         //点击span区域
         let doc = event.target.parentNode;//div cell
@@ -115,7 +115,7 @@ export default {
       }
     },
     inputBlur(row) {
-      console.log(event);
+      // console.log(event);
       let doc = event.target.parentNode.parentNode;
       doc.setAttribute("class", "cell");
     }

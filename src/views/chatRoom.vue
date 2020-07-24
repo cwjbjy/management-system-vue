@@ -33,7 +33,7 @@
       </div>
     </el-card>
     <el-dialog title="效果图" :visible.sync="dialogVisible" width="90%" top="2vh" class="chatDialog">
-      <img src="@/assets/images/home/chatShow.png" />
+      <img src="@/assets/images/home/chatShow.png" alt="加载失败"/>
     </el-dialog>
   </section>
 </template>
