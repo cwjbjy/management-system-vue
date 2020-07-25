@@ -22,7 +22,7 @@
 
 <script>
 import API from "@/services/api";
-import { getURL } from "@/js/mixin";
+import { getURL } from "@/mixin";
 export default {
   name: "fileUp",
   data() {

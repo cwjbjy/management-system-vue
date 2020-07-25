@@ -15,7 +15,7 @@
           <el-row class="user-bottom">
             <div class="user-info-list">
               <span>上次登录时间：</span>
-              <span>2020-6-16</span>
+              <span>{{1595658500|formDate}}</span>
             </div>
             <div class="user-info-list">
               <span>上次登录地点：</span>
@@ -119,7 +119,7 @@
 import API from "@/services/api";
 import barModel from "@/components/echartsModel/barLineModel";
 import radarModel from "@/components/echartsModel/radarModel";
-import { getURL } from "@/js/mixin";
+import { getURL } from "@/mixin";
 export default {
   name: "firstItem",
   components: {

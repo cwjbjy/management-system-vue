@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import directive from "./directive"
+import filters from "./filter"
 import VueCookies from 'vue-cookies'
 import 'element-ui/lib/theme-chalk/index.css';
 import { messages } from '../public/utils/i18n';
@@ -10,6 +11,7 @@ import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
 Vue.use(VueCookies)
 Vue.use(directive)
+Vue.use(filters) 
 import ElementUI from 'element-ui';
 Vue.use(ElementUI);
 const i18n = new VueI18n({
