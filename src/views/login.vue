@@ -50,7 +50,7 @@
         <div v-show="!flag">
           <el-form :model="reg" :rules="rules_reg" ref="reg" class="demo-ruleForm">
             <el-form-item prop="reg_name">
-              <el-input prefix-icon="el-icon-user" v-model="reg.reg_name" placeholder="请输入用户名"></el-input>
+              <el-input prefix-icon="el-icon-user" v-model.trim="reg.reg_name" placeholder="请输入用户名"></el-input>
             </el-form-item>
             <el-form-item prop="rge_pass">
               <el-input

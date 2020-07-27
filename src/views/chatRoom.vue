@@ -10,7 +10,7 @@
       </ol>
       <el-form :inline="true" class="demo-form-inline">
         <el-form-item label="用户名">
-          <el-input v-model="user" placeholder="请输入昵称" center></el-input>
+          <el-input v-model.trim="user" placeholder="请输入昵称" center></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="connect" :disabled="connectFlag">连接</el-button>
