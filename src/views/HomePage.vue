@@ -117,8 +117,8 @@
 
 <script>
 import API from "@/services/api";
-import barModel from "@/components/echartsModel/barLineModel";
-import radarModel from "@/components/echartsModel/radarModel";
+import barModel from "@/components/EchartsModel/BarLineModel";
+import radarModel from "@/components/EchartsModel/RadarModel";
 import { getURL } from "@/mixin";
 export default {
   name: "firstItem",

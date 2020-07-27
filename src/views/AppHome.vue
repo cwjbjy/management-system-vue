@@ -24,9 +24,9 @@
 
 <script>
 import API from "@/services/api";
-import HomeHeader from "@/components/layout/HomeHeader";
-import siderBar from "@/components/layout/siderBar";
-import Tags from "@/components/layout/Tags";
+import HomeHeader from "@/components/Layout/TheHeader";
+import siderBar from "@/components/Layout/TheSiderBar";
+import Tags from "@/components/Layout/TheTags";
 export default {
   name: "home",
   components: {

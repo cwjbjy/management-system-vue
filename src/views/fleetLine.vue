@@ -6,7 +6,7 @@
 
 <script>
 
-import fleetModel from "@/components/echartsModel/fleetModel";
+import fleetModel from "@/components/EchartsModel/FleetModel";
 import localData from "@/services/localData";
 export default {
   name: "fleetLine",

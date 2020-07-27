@@ -40,12 +40,12 @@
 </template>
 
 <script>
-import lineModel from "@/components/echartsModel/lineModel";
-import cylinderModel from "@/components/echartsModel/cylinderModel";
-import pieModel from "@/components/echartsModel/pieModel";
-import scatterModel from "@/components/echartsModel/scatterModel";
-import barModel from "@/components/echartsModel/barModel";
-import PictorialBarModel from "@/components/echartsModel/PictorialBarModel";
+import lineModel from "@/components/EchartsModel/LineModel";
+import cylinderModel from "@/components/EchartsModel/CylinderModel";
+import pieModel from "@/components/EchartsModel/PieModel";
+import scatterModel from "@/components/EchartsModel/ScatterModel";
+import barModel from "@/components/EchartsModel/BarModel";
+import PictorialBarModel from "@/components/EchartsModel/PictorialBarModel";
 export default {
   name:'baseEcharts',
   components: {

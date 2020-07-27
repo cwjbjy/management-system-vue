@@ -1,30 +1,33 @@
-const Login = () => import(/* webpackChunkName: "Login" */'@/views/login.vue')
-const Home = () => import(/* webpackChunkName: "Home" */'@/views/home.vue')
-const notFound = () => import(/* webpackChunkName: "notFound" */'@/views/404.vue')
+const Login = () => import(/* webpackChunkName: "Login" */'@/views/AppLogin.vue')
+const notFound = () => import(/* webpackChunkName: "notFound" */'@/views/NotFound.vue')
+const Home = () => import(/* webpackChunkName: "Home" */'@/views/AppHome.vue')
 
-const firstItem = () => import(/* webpackChunkName: "HomePage" */'@/views/firstItem.vue')
+const firstItem = () => import(/* webpackChunkName: "HomePage" */'@/views/HomePage.vue')
 
-const Fleet = () => import(/* webpackChunkName: "Fleet" */'@/views/fleetLine.vue')
-const baseEcharts = () => import(/* webpackChunkName: "baseEcharts" */"@/views/baseEcharts.vue")
-const baseTable = () =>import(/* webpackChunkName: "baseTable" */"@/views/baseTable")
+const Fleet = () => import(/* webpackChunkName: "Fleet" */'@/views/FleetLine.vue')
 
-const positionChart = () => import(/* webpackChunkName: "positionChart" */"@/views/flowChart/positionChart.vue")
-const commonChart = ()=> import(/* webpackChunkName: "commonChart" */"@/views/flowChart/commonChart.vue")
-const foldChart = () => import(/* webpackChunkName: "foldChart" */"@/views/flowChart/foldChart.vue")
+const baseEcharts = () => import(/* webpackChunkName: "baseEcharts" */"@/views/BaseEcharts.vue")
 
-const magnifying = () => import(/* webpackChunkName: "magnifying" */"@/views/magnifying.vue")
-const fileUp = () => import(/* webpackChunkName: "fileUp" */"@/views/fileUp.vue")
+const baseTable = () =>import(/* webpackChunkName: "baseTable" */"@/views/BaseTable")
 
-const pdf = () => import(/* webpackChunkName: "pdf.vue" */"@/views/pdf.vue")
-const manage = () => import(/* webpackChunkName: "manage" */"@/views/userManage.vue")
+const positionChart = () => import(/* webpackChunkName: "positionChart" */"@/views/FlowChart/PositionChart.vue")
+const commonChart = ()=> import(/* webpackChunkName: "commonChart" */"@/views/FlowChart/CommonChart.vue")
+const foldChart = () => import(/* webpackChunkName: "foldChart" */"@/views/FlowChart/FoldChart.vue")
 
-const dragDiv = () =>import(/* webpackChunkName: "dragDiv" */"@/views/drag/moveDiv")
-const dragDialog = () =>import(/* webpackChunkName: "dragDialog" */"@/views/drag/dragDialog")
-const dragList = () => import(/* webpackChunkName: "dragList" */"@/views/drag/dragList")
+const magnifying = () => import(/* webpackChunkName: "magnifying" */"@/views/Magnifying.vue")
+const fileUp = () => import(/* webpackChunkName: "fileUp" */"@/views/FileUp.vue")
+
+const pdf = () => import(/* webpackChunkName: "pdf.vue" */"@/views/PDFPreview.vue")
+
+const dragDiv = () =>import(/* webpackChunkName: "dragDiv" */"@/views/DragComponents/DragDiv")
+const dragDialog = () =>import(/* webpackChunkName: "dragDialog" */"@/views/DragComponents/DragDialog")
+const dragList = () => import(/* webpackChunkName: "dragList" */"@/views/DragComponents/DragList")
 
 const I18n = () => import(/* webpackChunkName: "I18n.vue" */"@/views/I18n.vue")
 
-const chatRoom = () => import(/* webpackChunkName: "chatRoom.vue" */"@/views/chatRoom.vue")
+const chatRoom = () => import(/* webpackChunkName: "chatRoom.vue" */"@/views/ChatRoom.vue")
+
+const manage = () => import(/* webpackChunkName: "manage" */"@/views/UserManage.vue")
 
 export const routes = [
     {
