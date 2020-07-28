@@ -40,22 +40,17 @@
 </template>
 
 <script>
-import lineModel from "@/components/EchartsModel/LineModel";
-import cylinderModel from "@/components/EchartsModel/CylinderModel";
-import pieModel from "@/components/EchartsModel/PieModel";
-import scatterModel from "@/components/EchartsModel/ScatterModel";
-import barModel from "@/components/EchartsModel/BarModel";
-import PictorialBarModel from "@/components/EchartsModel/PictorialBarModel";
+/* 基础组件的自动化全局注册 */
+const path = require('path')
+const files = require.context('@/components/BaseEchartsModel', false, /\.vue$/)
+const modules = {}
+files.keys().forEach(key => {
+  const name = path.basename(key, '.vue')
+  modules[name] = files(key).default || files(key)
+})
 export default {
   name:'baseEcharts',
-  components: {
-    lineModel,
-    cylinderModel,
-    pieModel,
-    scatterModel,
-    barModel,
-    PictorialBarModel
-  },
+  components:modules,
   data() {
     return {
       options: {}
