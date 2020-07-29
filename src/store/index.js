@@ -1,15 +1,17 @@
 
 Vue.use(Vuex)
 
-import state from './state.js'
-import mutations from './mutations.js'
-import actions from './actions.js'
+import state from './State.js'
+import mutations from './Mutation.js'
+import actions from './Action.js'
+import getters from './Getter'
 
 const store = new Vuex.Store(
 {
     state,
     mutations,
     actions,
+    getters
 }
 )
 export default store;

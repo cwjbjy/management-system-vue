@@ -8,13 +8,10 @@
 
 <script>
 import { route_admin, route_user } from "@/router/routes";
+import {vuexConfig} from "@/mixin"
 export default {
   name: "App",
-  computed: {
-    userName() {
-      return this.$store.state.user_name;
-    }
-  },
+  mixins:[vuexConfig],
   created() {
     if (this.userName == "" && this.$route.path !== '/login' && this.$route.path !== '/') {
       let user_name = localStorage.getItem("user_name");

@@ -1,3 +1,37 @@
+import {
+    mapState,
+    mapMutations,
+    mapActions,
+    mapGetters 
+} from 'vuex'
+export const vuexConfig = {
+    computed: {
+        /*将this.user_name映射为this.$store.state.userName*/
+        ...mapState([
+            'count',
+            'userName',
+            'todoList'
+        ]),
+        /* 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`*/
+        ...mapGetters([
+            'doneTodosCount',
+            // ...
+          ])
+    },
+    methods: {
+        /*将this.set_userName({data:value}) 映射为 
+        this.$store.commit('set_userName',{data:value})*/
+        ...mapMutations([
+            'set_userName',
+        ]),
+        /*将this.setCount(amount) 映射为
+         this.$store.dispatch('setCount',amount)*/
+        ...mapActions([
+            'setCount',
+        ])
+    }
+}
+
 export const getURL = {
     computed: {
         baseURL() {

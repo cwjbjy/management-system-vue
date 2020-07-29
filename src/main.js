@@ -20,6 +20,7 @@ const i18n = new VueI18n({
 });
 
 Vue.config.productionTip = false;
+Vue.config.devtools = true;
 window.eventBus = new Vue();
 
 new Vue({

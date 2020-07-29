@@ -85,6 +85,7 @@ import API from "@/services/api";
 import rules from "@/js/rules";
 import comfun from "@/js/comFunc";
 import { route_admin, route_user } from "@/router/routes";
+import {vuexConfig} from "@/mixin"
 export default {
   name: "Login",
   data() {
@@ -133,6 +134,7 @@ export default {
       }
     };
   },
+  mixins:[vuexConfig],
   created() {
     localStorage.removeItem("user_name");
   },
@@ -171,7 +173,8 @@ export default {
               this.$cookies.set("authMenus", res.data.auth);
               this.$cookies.set("token", res.data.value);
               localStorage.setItem("user_name", this.ruleForm.name);
-              this.$store.commit("set_user_name", { data: this.ruleForm.name });
+              this.set_userName({data: this.ruleForm.name})
+              // this.$store.commit("set_user_name", { data: this.ruleForm.name });
               this.$router.push("/firstItem");
             })
             .catch(err => {

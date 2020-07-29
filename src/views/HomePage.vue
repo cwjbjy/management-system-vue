@@ -1,11 +1,11 @@
 <template>
   <section class="firstItem">
-     <el-row>
+    <el-row>
       <el-col :span="8">
         <el-card shadow="hover" class="user">
           <el-row class="user-top">
             <el-col :span="12">
-              <img :src="imageUrl" class="user-img" alt="加载失败"/>
+              <img :src="imageUrl" class="user-img" alt="加载失败" />
             </el-col>
             <el-col :span="12" class="user-area">
               <div class="user-name">{{userName}}</div>
@@ -98,7 +98,7 @@
             </el-table>
           </el-card>
         </el-row>
-     </el-col>
+      </el-col>
     </el-row>
     <el-row style="margin-bottom: 20px;">
       <el-col :span="12" class="echarts-box">
@@ -119,44 +119,18 @@
 import API from "@/services/api";
 import barModel from "@/components/EchartsModel/BarLineModel";
 import radarModel from "@/components/EchartsModel/RadarModel";
-import { getURL } from "@/mixin";
+import { getURL, vuexConfig } from "@/mixin";
 export default {
   name: "firstItem",
   components: {
     barModel,
-    radarModel
+    radarModel,
   },
   data() {
     return {
       user_name: "",
       imageUrl: "",
-      todoList: [
-        {
-          title: "今天要修复100个bug",
-          status: false
-        },
-        {
-          title: "今天要修复100个bug",
-          status: false
-        },
-        {
-          title: "今天要写100行代码加几个bug吧",
-          status: false
-        },
-        {
-          title: "今天要修复100个bug",
-          status: false
-        },
-        {
-          title: "今天要修复100个bug",
-          status: true
-        },
-        {
-          title: "今天要写100行代码加几个bug吧",
-          status: true
-        }
-      ],
-      options: {}
+      options: {},
     };
   },
   computed: {
@@ -165,16 +139,19 @@ export default {
     },
     role() {
       return this.userName == "admin" ? "超级管理员" : "普通用户";
-    }
+    },
   },
-  mixins: [getURL],
+  mixins: [getURL, vuexConfig],
   created() {
     this.user_name = localStorage.getItem("user_name");
     this.getImage();
     //解决IE浏览器渲染过慢，表格宽度出现BUG（DOM树生成的太慢，element的js已经开始计算）
-    this.$nextTick(()=>{
-      this.$refs.table.doLayout()
-    })
+    this.$nextTick(() => {
+      this.$refs.table.doLayout();
+    });
+    this.setCount({ data: 4 }).then(() => {
+      console.log(this.$store.state.count);
+    });
   },
   activated() {
     this.getImage();
@@ -182,9 +159,9 @@ export default {
   methods: {
     getImage() {
       let params = {
-        user_name: this.user_name
+        user_name: this.user_name,
       };
-      API.getImage(params).then(res => {
+      API.getImage(params).then((res) => {
         let fileName = res.data.Data[0].photo;
         this.imageUrl = `${this.baseURL}${fileName}`;
       });
@@ -199,8 +176,8 @@ export default {
       } else {
         return "了解";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
