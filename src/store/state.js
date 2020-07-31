@@ -3,31 +3,32 @@ const state = {
     userName:'',//用来判断页面是否刷新
     todoList: [
         {
-          title: "今天要修复100个bug",
+          title: "TypeScript",
           status: false
         },
         {
-          title: "今天要修复100个bug",
+          title: "Nodejs",
           status: false
         },
         {
-          title: "今天要写100行代码加几个bug吧",
+          title: "Nginx",
           status: false
         },
         {
-          title: "今天要修复100个bug",
+          title: "uni-app",
           status: false
         },
         {
-          title: "今天要修复100个bug",
+          title: "跨域解决方案",
           status: true
         },
         {
-          title: "今天要写100行代码加几个bug吧",
+          title: "Vue性能提升",
           status: true
         }
     ],
     echartColor:"#333",
     fleetBg:"rgb(6,42,88)",
+    imageUrl:"",
 }
 export default state

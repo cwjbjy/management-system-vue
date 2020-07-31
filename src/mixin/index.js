@@ -12,7 +12,8 @@ export const vuexConfig = {
             'userName',
             'todoList',
             'echartColor',
-            'fleetBg'
+            'fleetBg',
+            'imageUrl'
         ]),
         /* 把 `this.user_name` 映射为 `this.$store.getters.user_name`*/
         ...mapGetters([
@@ -26,7 +27,9 @@ export const vuexConfig = {
         ...mapMutations([
             'set_userName',
             'set_echartColor',
-            'set_fleetBg'
+            'set_fleetBg',
+            'set_imageUrl',
+            'set_todoList'
         ]),
         /*将this.setCount(amount) 映射为
          this.$store.dispatch('setCount',amount)*/

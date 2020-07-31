@@ -10,7 +10,7 @@ API.register = (params) =>{
   return HttpClient.instance.post('/register',params)
 }
 
-//获取用户信息
+//获取所有用户信息
 API.user = () =>{
   return HttpClient.instance.get('/user')
 }
@@ -30,5 +30,9 @@ API.getImage = (params) =>{
   return HttpClient.instance.get('/getImage',{params:params})
 }
 
+//获取用户单条信息
+API.getUser = (params) =>{
+  return HttpClient.instance.get('/getUser',{params:params})
+}
 
 export default API

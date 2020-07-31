@@ -141,6 +141,7 @@ export default {
       API.getImage(params).then((res) => {
         let fileName = res.data.Data[0].photo;
         this.imageUrl = `${this.baseURL}${fileName}`;
+        this.set_imageUrl({data:this.imageUrl})
       });
     },
   },

@@ -1,0 +1,125 @@
+<template>
+  <el-card shadow="hover" style="height:406px;">
+    <div slot="header">
+      <span>待办事项</span>
+      <el-button style="float: right; padding: 3px 0" type="text" @click="openDialog(0)">添加</el-button>
+    </div>
+    <el-table :show-header="false" :data="todoList" style="width:100%;" ref="table" height="288px">
+      <el-table-column width="40">
+        <template slot-scope="scope">
+          <el-checkbox v-model="scope.row.status"></el-checkbox>
+        </template>
+      </el-table-column>
+      <el-table-column>
+        <template slot-scope="scope">
+          <div class="todo-item" :class="{'todo-item-del': scope.row.status}">{{scope.row.title}}</div>
+        </template>
+      </el-table-column>
+      <el-table-column width="35">
+        <template slot-scope="scope">
+          <i class="el-icon-edit c_pointer" @click="openDialog(1,scope.row,scope.$index)"></i>
+        </template>
+      </el-table-column>
+      <el-table-column width="35">
+        <template slot-scope="scope">
+          <i class="el-icon-delete c_pointer" @click="deleteRow(scope.$index)"></i>
+        </template>
+      </el-table-column>
+    </el-table>
+    <el-dialog :title="dialogTitle" :visible.sync="dialogFormVisible" center>
+      <el-input v-model="schedule" placeholder="请输入内容"></el-input>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="closeDialog">确 定</el-button>
+      </div>
+    </el-dialog>
+  </el-card>
+</template>
+
+<script>
+import { vuexConfig } from "@/mixin";
+export default {
+  name: "ScheduleComponent",
+  data() {
+    return {
+      dialogFormVisible: false,
+      dialogTitle: "",
+      schedule: "",
+      status: 0, //0增加，1编辑
+      itemIndex: 0,
+    };
+  },
+  mixins: [vuexConfig],
+  created() {
+    this.$nextTick(() => {
+      this.$refs.table.doLayout();
+    });
+  },
+  methods: {
+    openDialog(val, row, index) {
+      this.itemIndex = index;
+      this.status = val;
+      this.dialogFormVisible = true;
+      if (this.status === 0) {
+        this.schedule = "";
+        this.dialogTitle = "增加事项";
+      } else if (this.status === 1) {
+        this.dialogTitle = "编辑事项";
+        this.schedule = row.title;
+      }
+    },
+    closeDialog() {
+      if (this.status === 0) {
+        this.set_todoList({ type: "add", data: this.schedule });
+        this.$message.success("增加成功");
+      } else if (this.status === 1) {
+        this.set_todoList({
+          type: "edit",
+          index: this.itemIndex,
+          data: this.schedule,
+        });
+        this.$message.success("编辑成功");
+      }
+      this.dialogFormVisible = false;
+    },
+    deleteRow(index) {
+      this.$confirm("此操作将永久删除该事项, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.set_todoList({
+            type: "delete",
+            index,
+          });
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.c_pointer {
+  cursor: $c_pointer;
+}
+.todo-item {
+  font-size: 14px;
+  @include themify($themes) {
+    color: themed("card-font");
+  }
+}
+.todo-item-del {
+  text-decoration: line-through;
+}
+</style>

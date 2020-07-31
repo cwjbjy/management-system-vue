@@ -1,7 +1,7 @@
 <template>
   <section class="firstItem">
     <el-row>
-      <el-col :span="8">
+      <el-col :span="8" :lg="8" :xl="6">
         <el-card shadow="hover" class="user">
           <el-row class="user-top">
             <el-col :span="12">
@@ -9,17 +9,16 @@
             </el-col>
             <el-col :span="12" class="user-area">
               <div class="user-name">{{user_name}}</div>
-              <div class="user-info">{{role}}</div>
             </el-col>
           </el-row>
           <el-row class="user-bottom">
             <div class="user-info-list">
               <span>注册时间：</span>
-              <span>{{1595658500|formDate}}</span>
+              <span>{{ registerTime | register }}</span>
             </div>
             <div class="user-info-list">
-              <span>上次登录地点：</span>
-              <span>上海</span>
+              <span>权限等级：</span>
+              <span>{{role}}</span>
             </div>
           </el-row>
         </el-card>
@@ -33,7 +32,7 @@
           <el-progress :percentage="87" color="#f56c6c" :format="format"></el-progress>
         </el-card>
       </el-col>
-      <el-col :span="16">
+      <el-col :span="16" :lg="16" :xl="18">
         <el-row class="icon-area" style="margin-bottom: 20px;">
           <el-col :span="8" class="icon-box">
             <el-card shadow="hover" :body-style="{padding: '0px'}">
@@ -70,33 +69,7 @@
           </el-col>
         </el-row>
         <el-row style="padding:0 10px;margin-bottom: 20px;">
-          <el-card shadow="hover" style="height:406px;">
-            <div slot="header">
-              <span>待办事项</span>
-              <el-button style="float: right; padding: 3px 0" type="text">添加</el-button>
-            </div>
-            <el-table :show-header="false" :data="todoList" style="width:100%;" ref="table">
-              <el-table-column width="40">
-                <template slot-scope="scope">
-                  <el-checkbox v-model="scope.row.status"></el-checkbox>
-                </template>
-              </el-table-column>
-              <el-table-column>
-                <template slot-scope="scope">
-                  <div
-                    class="todo-item"
-                    :class="{'todo-item-del': scope.row.status}"
-                  >{{scope.row.title}}</div>
-                </template>
-              </el-table-column>
-              <el-table-column width="60">
-                <template>
-                  <i class="el-icon-edit"></i>
-                  <i class="el-icon-delete"></i>
-                </template>
-              </el-table-column>
-            </el-table>
-          </el-card>
+          <schedule-component/>
         </el-row>
       </el-col>
     </el-row>
@@ -119,16 +92,18 @@
 import API from "@/services/api";
 import barModel from "@/components/EchartsModel/BarLineModel";
 import radarModel from "@/components/EchartsModel/RadarModel";
-import { getURL, vuexConfig } from "@/mixin";
+import ScheduleComponent from "@/components/TODO/ScheduleComponent"
+import { vuexConfig } from "@/mixin";
 export default {
   name: "HomePage",
   components: {
     barModel,
     radarModel,
+    ScheduleComponent
   },
   data() {
     return {
-      imageUrl: "",
+      registerTime: "",
       options: {},
     };
   },
@@ -137,26 +112,17 @@ export default {
       return this.user_name == "一叶扁舟" ? "管理员" : "普通用户";
     },
   },
-  mixins: [getURL, vuexConfig],
+  mixins: [vuexConfig],
   created() {
-    this.getImage();
-    //解决IE浏览器渲染过慢，表格宽度出现BUG（DOM树生成的太慢，element的js已经开始计算）
-    this.$nextTick(() => {
-      this.$refs.table.doLayout();
-    });
-    //调用Vuex中的action
-    // this.setCount({ data: 4 }).then(() => {
-    //   console.log(this.$store.state.count);
-    // });
+    this.getUser();
   },
   methods: {
-    getImage() {
+    getUser() {
       let params = {
         user_name: this.user_name,
       };
-      API.getImage(params).then((res) => {
-        let fileName = res.data.Data[0].photo;
-        this.imageUrl = `${this.baseURL}${fileName}`;
+      API.getUser(params).then((res) => {
+        this.registerTime = res.data.Data[0].createTime;
       });
     },
     format(percentage) {
@@ -179,7 +145,6 @@ export default {
   padding: 10px 0 0 10px;
   .user {
     height: 252px;
-    // width: 340px;
     display: block;
     margin: 0 10px 20px 10px;
     &-top {
@@ -202,12 +167,11 @@ export default {
       }
       .user-name {
         font-size: 30px;
-      }
-      .user-info {
-        font-size: 14px;
-        @include themify($themes) {
-          color: themed("card-font");
-        }
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-align: center;
       }
     }
     &-bottom {
@@ -265,15 +229,6 @@ export default {
     .grid-con-3 {
       background: rgb(242, 94, 67);
     }
-  }
-  .todo-item {
-    font-size: 14px;
-    @include themify($themes) {
-      color: themed("card-font");
-    }
-  }
-  .todo-item-del {
-    text-decoration: line-through;
   }
   .echarts-box {
     padding: 0 10px;

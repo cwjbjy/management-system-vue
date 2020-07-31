@@ -2,7 +2,7 @@
   <div class="login" v-title="title">
     <!-- <div id="stars" style="position: absolute"></div>
     <div id="stars2" style="position: absolute"></div>
-    <div id="stars3" style="position: absolute"></div> -->
+    <div id="stars3" style="position: absolute"></div>-->
     <div class="login_top">
       <span class="login_title">PC端管理系统</span>
     </div>
@@ -37,10 +37,10 @@
           </div>
           <div class="img_list">
             <div class="icon" @click="thirdLogin">
-              <img src="@/assets/images/login/QQ.png" alt="加载失败"/>
+              <img src="@/assets/images/login/QQ.png" alt="加载失败" />
             </div>
             <div class="icon" @click="thirdLogin">
-              <img src="@/assets/images/login/wb.png" alt="加载失败"/>
+              <img src="@/assets/images/login/wb.png" alt="加载失败" />
             </div>
             <div class="icon" @click="thirdLogin">
               <img src="@/assets/images/login/wx.png" alt="加载失败" />
@@ -85,7 +85,7 @@ import API from "@/services/api";
 import rules from "@/js/rules";
 import comfun from "@/js/comFunc";
 import { route_admin, route_user } from "@/router/routes";
-import {vuexConfig} from "@/mixin"
+import { vuexConfig } from "@/mixin";
 export default {
   name: "Login",
   data() {
@@ -113,28 +113,28 @@ export default {
       authCode: "",
       ruleForm: {
         name: "一叶扁舟",
-        pass: "cwj18351071268"
+        pass: "cwj18351071268",
       },
       reg: {
         reg_name: "",
         verification: "",
         rge_pass: "",
-        rge_passAgain: ""
+        rge_passAgain: "",
       },
       rules: {
         name: [{ required: true, message: "请输入用户名", trigger: "blur" }],
-        pass: [{ required: true, message: "请输入密码", trigger: "blur" }]
+        pass: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
       rules_reg: {
         reg_name: [
-          { required: true, message: "请输入用户名", trigger: "blur" }
+          { required: true, message: "请输入用户名", trigger: "blur" },
         ],
         rge_pass: [{ validator: validatePass, trigger: "blur" }],
-        rge_passAgain: [{ validator: validatePass2, trigger: "blur" }]
-      }
+        rge_passAgain: [{ validator: validatePass2, trigger: "blur" }],
+      },
     };
   },
-  mixins:[vuexConfig],
+  mixins: [vuexConfig],
   created() {
     localStorage.removeItem("user_name");
   },
@@ -153,14 +153,14 @@ export default {
       this.flag = !this.flag;
     },
     login() {
-      this.$refs.ruleForm.validate(valid => {
+      this.$refs.ruleForm.validate((valid) => {
         if (valid) {
           this.status = true;
           let fd = new FormData();
           fd.append("userName", this.ruleForm.name);
           fd.append("passWord", this.ruleForm.pass);
           API.login(fd)
-            .then(res => {
+            .then((res) => {
               if (this.ruleForm.name === "一叶扁舟") {
                 this.$router.addRoutes(route_admin);
               } else {
@@ -169,10 +169,10 @@ export default {
               this.$cookies.set("authMenus", res.data.auth);
               this.$cookies.set("token", res.data.value);
               localStorage.setItem("user_name", this.ruleForm.name);
-              this.set_userName({data: this.ruleForm.name})
+              this.set_userName({ data: this.ruleForm.name });
               this.$router.push("/firstItem");
             })
-            .catch(err => {
+            .catch((err) => {
               if (err.response.status === 400) {
                 this.$message.error("密码错误");
               } else if (err.response.status === 401) {
@@ -186,7 +186,7 @@ export default {
       });
     },
     register() {
-      this.$refs.reg.validate(valid => {
+      this.$refs.reg.validate((valid) => {
         if (valid) {
           var res = this.verifyCode.validate(this.authCode);
           if (res) {
@@ -195,16 +195,16 @@ export default {
               passWord: this.reg.rge_pass,
               authority: "2",
               createTime: comfun.getTime(),
-              photo: "userlogo.png"
+              photo: "userlogo.png",
             };
             API.register(params)
-              .then(res => {
+              .then((res) => {
                 this.$message.success(res.data.message);
                 this.flag = true;
                 this.ruleForm.name = this.reg.reg_name;
                 this.ruleForm.pass = "";
               })
-              .catch(err => {
+              .catch((err) => {
                 if (err.response.status === 403) {
                   this.$message.error("用户名已存在，请重新选择用户名");
                 }
@@ -223,10 +223,14 @@ export default {
     keyDown() {
       let key = window.event.keyCode;
       if (key === 13) {
-        this.login();
+        if (this.flag) {
+          this.login();
+        }else{
+          this.register()
+        }
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -235,7 +239,7 @@ export default {
 .login {
   height: 100vh;
   color: $color-font;
-  background-color: #1e90ff ;
+  background-color: #1e90ff;
   // background: radial-gradient(
   //   220% 105% at top center,
   //   #70a1ff 10%,
@@ -281,7 +285,7 @@ export default {
       text-align: center;
       font-size: 16px;
       color: #999;
-      cursor:$c_pointer;
+      cursor: $c_pointer;
       &:hover {
         color: $color-font_active;
       }

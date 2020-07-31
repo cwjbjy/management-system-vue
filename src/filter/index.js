@@ -7,6 +7,10 @@ let filters = function (Vue) {
         let r = date.getDate(); 
         return year + "-" + month + "-" + r;
     });
+    Vue.filter('register',value=>{
+        let array = value.split(" ")
+        return array[0]
+    })
 }
 
 export default filters
