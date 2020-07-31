@@ -8,12 +8,12 @@
         max-height="500px"
         style="width: 100%"
         border
-        class="special_table"
         id="out-table"
+        header-align="center"
       >
-        <el-table-column label="序号" type="index" width="80"></el-table-column>
-        <el-table-column label="用户名" prop="user_name"></el-table-column>
-        <el-table-column label="头像(查看大图)">
+        <el-table-column label="序号" type="index" width="80" align="center"></el-table-column>
+        <el-table-column label="用户名" prop="user_name" align="center"></el-table-column>
+        <el-table-column label="头像(查看大图)" align="center">
           <template slot-scope="scope">
             <el-image
               class="table-td-thumb"
@@ -22,7 +22,7 @@
             ></el-image>
           </template>
         </el-table-column>
-        <el-table-column label="角色描述">
+        <el-table-column label="角色描述" align="center">
           <template slot-scope="scope">
             <span
               v-html="scope.row.authority == 1 ? '管理员':'普通用户'"
@@ -36,8 +36,9 @@
           sortable
           :filters="filtersData"
           :filter-method="filterHandler"
+          align="center"
         ></el-table-column>
-        <el-table-column>
+        <el-table-column  align="center">
           <template slot="header" slot-scope="scope">
             <el-input v-model="search" size="mini" placeholder="输入用户名搜索" clearable />
           </template>
@@ -187,7 +188,7 @@ export default {
 }
 </style>
 <style lang="scss">
-@import "@/assets/scss/table.scss";
+
 .userDialog {
   .el-dialog {
     width: 35%;

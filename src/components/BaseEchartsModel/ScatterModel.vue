@@ -4,21 +4,23 @@
 </template>
 
 <script>
+import { vuexConfig } from "../../mixin";
 export default {
   watch: {
-    model: function(newData) {
+    model: function (newData) {
       this.prepareDomain(newData);
-    }
+    },
   },
   props: {
     model: {
       type: Object,
-      default: {}
-    }
+      default: {},
+    },
   },
   data() {
     return {};
   },
+  mixins: [vuexConfig],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
@@ -27,13 +29,14 @@ export default {
         this.autoSize();
       }, 400);
     });
-  },
-  activated() {
-    this.autoSize();
+    window.eventBus.$on("update:echartColor", () => {
+      this.prepareDomain(this.model);
+    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
     window.eventBus.$off("collapse");
+    window.eventBus.$off("update:echartColor")
   },
   methods: {
     prepareDomain(model) {
@@ -59,7 +62,7 @@ export default {
           [19349, 69.6, 147568552, "Russia", 1990],
           [10670, 67.3, 53994605, "Turkey", 1990],
           [26424, 75.7, 57110117, "United Kingdom", 1990],
-          [37062, 75.4, 252847810, "United States", 1990]
+          [37062, 75.4, 252847810, "United States", 1990],
         ],
         [
           [44056, 81.8, 23968973, "Australia", 2015],
@@ -80,8 +83,8 @@ export default {
           [23038, 73.13, 143456918, "Russia", 2015],
           [19360, 76.5, 78665830, "Turkey", 2015],
           [38225, 81.4, 64715810, "United Kingdom", 2015],
-          [53354, 79.1, 321773631, "United States", 2015]
-        ]
+          [53354, 79.1, 321773631, "United States", 2015],
+        ],
       ];
       let option = {
         // backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [
@@ -96,43 +99,89 @@ export default {
         // ]),
         title: {
           text: "散点图",
-          left: "center"
+          left: "center",
+          textStyle: {
+            color: this.echartColor,
+          },
         },
         legend: {
           right: 10,
-          data: ["1990", "2015"]
+          data: ["1990", "2015"],
+          textStyle: {
+            color: this.echartColor,
+          },
         },
         xAxis: {
           splitLine: {
             lineStyle: {
-              type: "dashed"
-            }
-          }
+              type: "dashed",
+              color: this.echartColor,
+            },
+          },
+          axisLine: {
+            show: true, //隐藏X轴轴线
+            lineStyle: {
+              color: this.echartColor,
+            },
+          },
+          axisTick: {
+            show: true, //隐藏X轴刻度
+            lineStyle: {
+              color: this.echartColor,
+            },
+          },
+          axisLabel: {
+            show: true,
+            color: this.echartColor,
+          },
+          nameTextStyle: {
+            color: this.echartColor,
+          },
         },
         yAxis: {
           splitLine: {
             lineStyle: {
-              type: "dashed"
-            }
+              type: "dashed",
+              color: this.echartColor,
+            },
           },
-          scale: true
+          scale: true,
+          axisLine: {
+            show: true, //隐藏X轴轴线
+            lineStyle: {
+              color: this.echartColor,
+            },
+          },
+          axisTick: {
+            show: true, //隐藏X轴刻度
+            lineStyle: {
+              color: this.echartColor,
+            },
+          },
+          axisLabel: {
+            show: true,
+            color: this.echartColor,
+          },
+          nameTextStyle: {
+            color: this.echartColor,
+          },
         },
         series: [
           {
             name: "1990",
             data: data[0],
             type: "scatter",
-            symbolSize: function(data) {
+            symbolSize: function (data) {
               return Math.sqrt(data[2]) / 5e2;
             },
             emphasis: {
               label: {
                 show: true,
-                formatter: function(param) {
+                formatter: function (param) {
                   return param.data[3];
                 },
-                position: "top"
-              }
+                position: "top",
+              },
             },
             itemStyle: {
               shadowBlur: 10,
@@ -141,30 +190,30 @@ export default {
               color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
                 {
                   offset: 0,
-                  color: "rgb(251, 118, 123)"
+                  color: "rgb(251, 118, 123)",
                 },
                 {
                   offset: 1,
-                  color: "rgb(204, 46, 72)"
-                }
-              ])
-            }
+                  color: "rgb(204, 46, 72)",
+                },
+              ]),
+            },
           },
           {
             name: "2015",
             data: data[1],
             type: "scatter",
-            symbolSize: function(data) {
+            symbolSize: function (data) {
               return Math.sqrt(data[2]) / 5e2;
             },
             emphasis: {
               label: {
                 show: true,
-                formatter: function(param) {
+                formatter: function (param) {
                   return param.data[3];
                 },
-                position: "top"
-              }
+                position: "top",
+              },
             },
             itemStyle: {
               shadowBlur: 10,
@@ -173,16 +222,16 @@ export default {
               color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
                 {
                   offset: 0,
-                  color: "rgb(129, 227, 238)"
+                  color: "rgb(129, 227, 238)",
                 },
                 {
                   offset: 1,
-                  color: "rgb(25, 183, 207)"
-                }
-              ])
-            }
-          }
-        ]
+                  color: "rgb(25, 183, 207)",
+                },
+              ]),
+            },
+          },
+        ],
       };
       echartsInstance.setOption(option);
     },
@@ -191,8 +240,8 @@ export default {
         let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
         echartsInstance.resize();
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -164,6 +164,9 @@ export default {
         case "blue":
           this.bgColor = "#336ea9";
           break;
+        case "black":
+          this.bgColor = "#303030";
+          break;
         default:
           break;
       }

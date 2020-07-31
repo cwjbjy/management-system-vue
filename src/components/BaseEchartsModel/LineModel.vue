@@ -3,40 +3,41 @@
 </template>
 
 <script>
+import { vuexConfig } from "../../mixin";
 export default {
   name: "LineModel",
   components: {},
   props: {
     model: {
       type: Object,
-      default: function() {}
-    }
+      default: function () {},
+    },
   },
   data() {
     return {};
   },
   watch: {
-    model: function(model) {
+    model: function (model) {
       this.prepareDomain(model);
-    }
+    },
   },
+  mixins: [vuexConfig],
   mounted() {
-    this.prepareDomain();
-    //监听浏览器窗口onsize事件
+    this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
-    //监听element-ui菜单栏收缩动画事件
     window.eventBus.$on("collapse", () => {
       setTimeout(() => {
         this.autoSize();
       }, 400);
     });
-  },
-  activated() {
-    this.autoSize();
+    window.eventBus.$on("update:echartColor", () => {
+      this.prepareDomain(this.model);
+    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
     window.eventBus.$off("collapse");
+    window.eventBus.$off("update:echartColor")
   },
   methods: {
     prepareDomain(model) {
@@ -53,32 +54,44 @@ export default {
           "#5352ed",
           "#2ed573",
           "#1e90ff",
-          "#3742fa"
+          "#3742fa",
         ],
         title: {
           left: "center",
           text: "折线图",
           textStyle: {
-            color: black
+            color: this.echartColor,
           },
-          top: 0
+          top: 0,
         },
         xAxis: {
           type: "category",
           data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
           axisLine: {
-            show: true,
+            show: true, //隐藏X轴轴线
             lineStyle: {
-              width: 1,
-              color: black
-            }
-          }
+              color: this.echartColor,
+            },
+          },
+          axisTick: {
+            show: true, //隐藏X轴刻度
+            lineStyle: {
+              color: this.echartColor,
+            },
+          },
+          axisLabel: {
+            show: true,
+            color: this.echartColor,
+          },
+          nameTextStyle: {
+            color: this.echartColor,
+          },
         },
         tooltip: {
           trigger: "axis",
           axisPointer: {
-            type: "line"
-          }
+            type: "line",
+          },
         },
         // dataZoom: [
         //   {
@@ -122,52 +135,65 @@ export default {
             show: true,
             lineStyle: {
               width: 1,
-              color: black
-            }
+              color: this.echartColor,
+            },
           },
           splitLine: {
             show: true,
             lineStyle: {
-              color: black,
+              color: this.echartColor,
               type: "dashed",
-              opacity: 0.5
-            }
-          }
+              opacity: 0.5,
+            },
+          },
+          axisTick: {
+            show: true, //隐藏X轴刻度
+            lineStyle: {
+              color: this.echartColor,
+            },
+          },
+          axisLabel: {
+            show: true,
+            color: this.echartColor,
+          },
+          nameTextStyle: {
+            color: this.echartColor,
+          },
         },
         legend: {
           data: ["邮件营销", "联盟广告", "视频广告", "直接访问"],
           top: "30",
           left: "right",
           textStyle: {
-            color: black
-          }
+            color: this.echartColor,
+          },
         },
         series: [
           {
             name: "邮件营销",
             type: "line",
             symbol: "circle",
-            data: [120, 132, 101, 134, 90, 230, 210]
+            data: [120, 132, 101, 134, 90, 230, 210],
           },
           {
             name: "联盟广告",
             type: "line",
             symbol: "circle",
-            data: [220, 182, 191, 234, 290, 330, 310]
+            data: [220, 182, 191, 234, 290, 330, 310],
           },
           {
             name: "视频广告",
             type: "line",
             symbol: "circle",
-            data: [150, 232, 201, 154, 190, 330, 410]
+            data: [150, 232, 201, 154, 190, 330, 410],
           },
           {
             name: "直接访问",
             type: "line",
             symbol: "circle",
-            data: [320, 332, 301, 334, 390, 330, 320]
-          }
-        ]
+            data: [320, 332, 301, 334, 390, 330, 320],
+          },
+        ],
       };
       echartsInstance.setOption(option);
     },
@@ -176,8 +202,8 @@ export default {
         let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
         echartsInstance.resize();
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

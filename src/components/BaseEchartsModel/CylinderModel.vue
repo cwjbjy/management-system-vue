@@ -4,21 +4,23 @@
 </template>
 
 <script>
+import { vuexConfig } from "../../mixin";
 export default {
   watch: {
-    model: function(newData) {
+    model: function (newData) {
       this.prepareDomain(newData);
-    }
+    },
   },
   props: {
     model: {
       type: Object,
-      default: {}
-    }
+      default: {},
+    },
   },
   data() {
     return {};
   },
+  mixins: [vuexConfig],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
@@ -27,13 +29,14 @@ export default {
         this.autoSize();
       }, 400);
     });
-  },
-  activated() {
-    this.autoSize();
+    window.eventBus.$on("update:echartColor", () => {
+      this.prepareDomain(this.model);
+    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
     window.eventBus.$off("collapse");
+    window.eventBus.$off("update:echartColor")
   },
   methods: {
     prepareDomain(model) {
@@ -46,60 +49,74 @@ export default {
         tooltip: {
           trigger: "item",
           axisPointer: {
-            type: "shadow"
-          }
+            type: "shadow",
+          },
         },
         title: {
           text: "圆柱图",
           textStyle: {
-            color: black
+            color: this.echartColor,
           },
-          x: "center"
+          x: "center",
           // y: 'center',
         },
         xAxis: [
           {
             type: "category",
             data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-            axisTick: {
-              alignWithLabel: true
-            },
             axisLine: {
+              show: true, //隐藏X轴轴线
               lineStyle: {
-                color: black
-              }
+                color: this.echartColor,
+              },
+            },
+            axisTick: {
+              show: true, //隐藏X轴刻度
+              alignWithLabel: true,
+              lineStyle: {
+                color: this.echartColor,
+              },
             },
             axisLabel: {
-              textStyle: {
-                color: black
-              }
-            }
-          }
+              show: true,
+              color: this.echartColor,
+            },
+            nameTextStyle: {
+              color: this.echartColor,
+            },
+          },
         ],
         yAxis: [
           {
             type: "value",
-            axisLabel: {
-              textStyle: {
-                color: black
-              }
-              // "formatter": "{value}%"
-            },
             splitLine: {
               show: true,
               lineStyle: {
-                color: black,
+                color: this.echartColor,
                 type: "dashed",
-                opacity: 0.5
-              }
+                opacity: 0.5,
+              },
             },
             axisLine: {
-              show: true,
+              show: true, //隐藏X轴轴线
               lineStyle: {
-                color: black
-              }
-            }
-          }
+                color: this.echartColor,
+              },
+            },
+            axisTick: {
+              show: true, //隐藏X轴刻度
+              lineStyle: {
+                color: this.echartColor,
+              },
+            },
+            axisLabel: {
+              show: true,
+              color: this.echartColor,
+            },
+            nameTextStyle: {
+              color: this.echartColor,
+            },
+          },
         ],
         series: [
           {
@@ -111,26 +128,26 @@ export default {
             label: {
               normal: {
                 show: true,
-                position: "top"
+                position: "top",
                 // "formatter": "{c}%"
-              }
+              },
             },
-            data: [60, 70, 80, 90, 60, 70, 80]
+            data: [60, 70, 80, 90, 60, 70, 80],
           },
           {
             type: "pictorialBar",
             symbolSize: [20, 10],
             symbolOffset: [0, 5],
             z: 12,
-            data: [60, 70, 80, 90, 60, 70, 80]
+            data: [60, 70, 80, 90, 60, 70, 80],
           },
           {
             type: "bar",
             itemStyle: {
               normal: {
                 color: ["#5352ed"],
-                opacity: 0.7
-              }
+                opacity: 0.7,
+              },
             },
             barWidth: 20,
             data: [60, 70, 80, 90, 60, 70, 80],
@@ -138,24 +155,24 @@ export default {
               silent: true,
               symbol: "none",
               label: {
-                position: "middle"
+                position: "middle",
               },
               data: [
                 {
                   name: "目标值",
                   yAxis: 80,
                   lineStyle: {
-                    color: "#ffc832"
+                    color: "#ffc832",
                   },
                   label: {
                     position: "end",
-                    formatter: "{b}\n {c}"
-                  }
-                }
-              ]
-            }
-          }
-        ]
+                    formatter: "{b}\n {c}",
+                  },
+                },
+              ],
+            },
+          },
+        ],
       };
       echartsInstance.setOption(option);
     },
@@ -164,8 +181,8 @@ export default {
         let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
         echartsInstance.resize();
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

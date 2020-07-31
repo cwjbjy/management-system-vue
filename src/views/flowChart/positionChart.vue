@@ -75,7 +75,7 @@ export default {
             $(
               go.Shape,
               "RoundedRectangle",
-              { fill: null, stroke: "#7986cb", strokeWidth: 3 } //选中之后节点边框颜色
+              { fill: null, stroke: "#409eff", strokeWidth: 3 } //选中之后节点边框颜色
             ),
             $(go.Placeholder)
           ) // end Adornment
@@ -86,7 +86,7 @@ export default {
           { fill: "#ffffff", strokeWidth: 0 },
           // 搜索时，被搜索到就变色
           new go.Binding("fill", "isHighlighted", function(h) {
-            return h ? "#e8eaf6" : "#ffffff";
+            return h ? "#409eff" : "#ffffff";
           }).ofObject()
         ),
         $(

@@ -68,7 +68,7 @@ export default {
           province: "上海",
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
+          zip: 200333,
         },
         {
           date: "2016-05-02",
@@ -76,7 +76,7 @@ export default {
           province: "北京",
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
+          zip: 200333,
         },
         {
           date: "2016-05-04",
@@ -84,7 +84,7 @@ export default {
           province: "南通",
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
+          zip: 200333,
         },
         {
           date: "2016-05-01",
@@ -92,9 +92,9 @@ export default {
           province: "江苏",
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
-        }
-      ]
+          zip: 200333,
+        },
+      ],
     };
   },
   methods: {
@@ -106,20 +106,24 @@ export default {
       // console.log("event", event);
       if (event.target.dataset.type == "view") {
         //点击span区域
-        let doc = event.target.parentNode;//div cell
+        let doc = event.target.parentNode; //div cell
         doc.setAttribute("class", "cell cell-content-active");
         doc.querySelector("input").focus();
         //ie浏览器input获取焦点光标默认在最左边，这里设置为最右边
         let input = event.target.previousElementSibling.firstElementChild;
-        input.setSelectionRange(input.value.length, input.value.length,"forward")
+        input.setSelectionRange(
+          input.value.length,
+          input.value.length,
+          "forward"
+        );
       }
     },
     inputBlur(row) {
       // console.log(event);
       let doc = event.target.parentNode.parentNode;
       doc.setAttribute("class", "cell");
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -141,7 +145,9 @@ export default {
     padding: 12px;
   }
   .cell-content {
-    border-top: 1px solid #ebeef5;
+    @include themify($themes) {
+      border-top: 1px solid themed("card-border");
+    }
   }
 
   .cell-content:nth-of-type(1) {

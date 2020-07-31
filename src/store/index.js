@@ -6,6 +6,7 @@ import mutations from './Mutation.js'
 import actions from './Action.js'
 import getters from './Getter'
 
+Vue.config.devtools = true
 const store = new Vuex.Store(
 {
     state,

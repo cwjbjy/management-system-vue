@@ -112,7 +112,7 @@ export default {
       verifyCode: null,
       authCode: "",
       ruleForm: {
-        name: "cwj18351071268",
+        name: "一叶扁舟",
         pass: "cwj18351071268"
       },
       reg: {
@@ -142,10 +142,6 @@ export default {
     this.verifyCode = new GVerify("v_container");
     let that = this;
     document.addEventListener("keydown", that.keyDown);
-    //数组去重
-    // let a = [1,2,4,3,3,3]
-    // let b = [...new Set(a)]
-    // console.log(b)
   },
 
   beforeDestroy() {
@@ -165,7 +161,7 @@ export default {
           fd.append("passWord", this.ruleForm.pass);
           API.login(fd)
             .then(res => {
-              if (this.ruleForm.name === "cwj18351071268") {
+              if (this.ruleForm.name === "一叶扁舟") {
                 this.$router.addRoutes(route_admin);
               } else {
                 this.$router.addRoutes(route_user);
@@ -174,7 +170,6 @@ export default {
               this.$cookies.set("token", res.data.value);
               localStorage.setItem("user_name", this.ruleForm.name);
               this.set_userName({data: this.ruleForm.name})
-              // this.$store.commit("set_user_name", { data: this.ruleForm.name });
               this.$router.push("/firstItem");
             })
             .catch(err => {

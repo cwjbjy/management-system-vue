@@ -33,7 +33,7 @@
       </div>
     </el-card>
     <el-dialog title="效果图" :visible.sync="dialogVisible" width="90%" top="2vh" class="chatDialog">
-      <img src="@/assets/images/home/chatShow.png" alt="加载失败"/>
+      <img src="@/assets/images/home/chatShow.png" alt="加载失败" />
     </el-dialog>
   </section>
 </template>
@@ -50,14 +50,14 @@ export default {
       closeFlag: true,
       mess: null,
       show: false,
-      dialogVisible: false
+      dialogVisible: false,
     };
   },
   mounted() {
     this.mess = document.getElementById("mess");
     let that = this;
     document.addEventListener("keydown", that.keyDown);
-    window.eventBus.$on("page1", value => {
+    window.eventBus.$on("page1", (value) => {
       let time = new Date();
       this.$nextTick(() => {
         this.mess.innerHTML += `${time.toUTCString()}<br>${value.name}${
@@ -65,6 +65,24 @@ export default {
         }<br><br>`;
       });
     });
+  },
+  activated() {
+    this.mess = document.getElementById("mess");
+    let that = this;
+    document.addEventListener("keydown", that.keyDown);
+    window.eventBus.$on("page1", (value) => {
+      let time = new Date();
+      this.$nextTick(() => {
+        this.mess.innerHTML += `${time.toUTCString()}<br>${value.name}${
+          value.text
+        }<br><br>`;
+      });
+    });
+  },
+  deactivated() {
+    window.eventBus.$off("page1");
+    let that = this;
+    document.removeEventListener("keydown", that.keyDown);
   },
   beforeDestroy() {
     window.eventBus.$off("page1");
@@ -80,7 +98,7 @@ export default {
       }
       let user = {
         type: "setName",
-        name: this.user
+        name: this.user,
       };
       websocketConnect.websocketFun(user); //连接
       this.connectFlag = true;
@@ -88,7 +106,7 @@ export default {
     },
     close() {
       let close = {
-        type: "close"
+        type: "close",
       };
       window.WsConnect.requestClose(close);
       this.connectFlag = false;
@@ -102,7 +120,7 @@ export default {
       if (this.msg == "") return;
       let message = {
         type: "chat",
-        text: this.msg
+        text: this.msg,
       };
       window.WsConnect.requestMessage(message);
       this.msg = "";
@@ -112,8 +130,8 @@ export default {
       if (key === 13) {
         this.send();
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

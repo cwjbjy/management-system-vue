@@ -11,6 +11,7 @@ module.exports = {
   devServer: {
     open: true, //加载完自动打开浏览器
     host: '127.0.0.1',
+    hot:true,
     port: 8083,
     // proxy: {
     //     '/juhe':{
@@ -19,19 +20,11 @@ module.exports = {
     //         pathRewrite:{
     //           "^/juhe":""
     //         }
-    //     },
-    //     'v1':{
-    //       target:'http://v.juhe.cn',
-    //       changeOrigin:true,
-    //       pathRewrite:{
-    //         "^/v1":""
-    //       }
     //     }
     // }
   },
   // css相关配置
   css: {
-    // 是否分离css（开发时注释掉，否则修改CSS样式无法触发热更新）
     extract: true,
     sourceMap: false,
     // css预设器配置项

@@ -10,7 +10,9 @@ export const vuexConfig = {
         ...mapState([
             'count',
             'userName',
-            'todoList'
+            'todoList',
+            'echartColor',
+            'fleetBg'
         ]),
         /* 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`*/
         ...mapGetters([
@@ -23,6 +25,8 @@ export const vuexConfig = {
         this.$store.commit('set_userName',{data:value})*/
         ...mapMutations([
             'set_userName',
+            'set_echartColor',
+            'set_fleetBg'
         ]),
         /*将this.setCount(amount) 映射为
          this.$store.dispatch('setCount',amount)*/

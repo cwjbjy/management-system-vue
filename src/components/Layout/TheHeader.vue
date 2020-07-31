@@ -14,22 +14,26 @@
           class="fullScreen pointer"
           @click="handleFullScreen"
         />
-      </el-tooltip> -->
+      </el-tooltip>-->
       <!-- 切换主题色 -->
-      <el-dropdown class="user-drop" @command="switchColor">
-        <span>{{themeColor}}</span>
+      <el-dropdown @command="switchColor" trigger="click" class="themeColor">
+        <span class="iconfont icon-zhuti_tiaosepan_o"></span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="gray">浅灰</el-dropdown-item>
-          <el-dropdown-item command="blue">浅蓝</el-dropdown-item>
+          <el-dropdown-item command="gray" :class="[theme === 'gray'?'active':'']">简约灰</el-dropdown-item>
+          <el-dropdown-item command="blue" :class="[theme === 'blue'?'active':'']">胖次蓝</el-dropdown-item>
+          <el-dropdown-item command="black" :class="[theme === 'black'?'active':'']">夜间模式</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <img :src="imageUrl" class="user-img" alt="加载失败"/>
+
       <!-- 用户名下拉菜单 -->
-      <el-dropdown class="user-drop" @command="handleCommand">
-        <span>
-          {{userName}}
-          <i class="el-icon-caret-bottom"></i>
-        </span>
+      <el-dropdown class="user-drop" @command="handleCommand" trigger="click">
+        <div class="userImage">
+          <img :src="imageUrl" class="user-img" alt="加载失败" />
+          <span>
+            {{user_name}}
+            <i class="el-icon-caret-bottom"></i>
+          </span>
+        </div>
         <el-dropdown-menu slot="dropdown">
           <a href="https://github.com/cwjStore/management-system-vue" target="_blank">
             <el-dropdown-item>项目仓库</el-dropdown-item>
@@ -42,7 +46,7 @@
 </template>
 <script>
 import API from "@/services/api";
-import { getURL } from "@/mixin";
+import { getURL,vuexConfig } from "@/mixin";
 export default {
   name: "HomeHeader",
   data() {
@@ -51,15 +55,10 @@ export default {
       fullscreen: false,
       imageUrl: "",
       user_name: "",
-      themeColor: "浅灰"
+      theme: "gray",
     };
   },
-  computed: {
-    userName() {
-      return this.user_name == "cwj18351071268" ? "admin" : "consumer";
-    }
-  },
-  mixins: [getURL],
+  mixins: [getURL,vuexConfig],
   created() {
     this.user_name = localStorage.getItem("user_name");
     this.getImage();
@@ -83,19 +82,26 @@ export default {
     },
     //切换主题色
     switchColor(command) {
+      this.theme = command;
       switch (command) {
         case "gray":
-          this.themeColor = "浅灰";
+          this.set_echartColor({ data: "#333" });
+          this.set_fleetBg({data: "rgb(6,42,88)"})
           break;
         case "blue":
-          this.themeColor = "浅蓝";
+          this.set_echartColor({ data: "#333" });
+          this.set_fleetBg({data: "rgb(6,42,88)"})
+          break;
+        case "black":
+          this.set_echartColor({ data: "#fff" });
+          this.set_fleetBg({data: "#393939"})
           break;
         default:
-          this.themeColor = "浅灰";
           break;
       }
       this.$emit("update:color-change", command);
       window.eventBus.$emit("update:color", command);
+      window.eventBus.$emit("update:echartColor")
     },
     // 侧边栏折叠
     collapseChage() {
@@ -132,14 +138,14 @@ export default {
     //获取用户头像
     getImage() {
       let params = {
-        user_name: this.user_name
+        user_name: this.user_name,
       };
-      API.getImage(params).then(res => {
+      API.getImage(params).then((res) => {
         let fileName = res.data.Data[0].photo;
         this.imageUrl = `${this.baseURL}${fileName}`;
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -173,9 +179,29 @@ export default {
     .user-drop {
       padding: 5px;
     }
+    .userImage {
+      display: inline-flex;
+      > span {
+        line-height: 50px;
+      }
+    }
   }
 }
 </style>
 <style lang="scss">
 @include dropdown;
+.iconfont {
+  font-size: 30px;
+  @include themify($themes) {
+    color: themed("icon-font");
+  }
+}
+.active {
+  background: #ced6e0;
+}
+.el-dropdown-menu__item:focus,
+.el-dropdown-menu__item:not(.is-disabled):hover {
+  background-color: transparent;
+  color: #66b1ff;
+}
 </style>

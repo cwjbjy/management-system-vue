@@ -32,8 +32,21 @@
 export default {
   data() {
     return {
-      tagsList: []
+      tagsList: [],
     };
+  },
+  computed: {
+    showTags() {
+      return this.tagsList.length > 0;
+    },
+  },
+  watch: {
+    $route(newValue, oldValue) {
+      this.setTags(newValue);
+    },
+  },
+  created() {
+    this.setTags(this.$route);
   },
   methods: {
     isActive(path) {
@@ -51,7 +64,7 @@ export default {
     },
     // 关闭其他标签
     closeOther() {
-      const curItem = this.tagsList.filter(item => {
+      const curItem = this.tagsList.filter((item) => {
         return item.path === this.$route.fullPath;
       });
       this.tagsList = curItem;
@@ -59,7 +72,7 @@ export default {
     },
     // 设置标签
     setTags(route) {
-      const isExist = this.tagsList.some(item => {
+      const isExist = this.tagsList.some((item) => {
         return item.path === route.fullPath;
       });
       if (!isExist) {
@@ -69,7 +82,7 @@ export default {
         this.tagsList.push({
           title: route.meta.title,
           path: route.fullPath,
-          name: route.matched[1].components.default.name
+          name: route.matched[1].components.default.name,
         });
         this.$emit("update:change", this.tagsList);
       }
@@ -77,24 +90,11 @@ export default {
     handleTags(command) {
       command === "other" ? this.closeOther() : this.closeAll();
     },
-    routerClick(value){
-      this.$router.push(value)
-      window.eventBus.$emit('update:router',value)
-    }
+    routerClick(value) {
+      this.$router.push(value);
+      window.eventBus.$emit("update:router", value);
+    },
   },
-  computed: {
-    showTags() {
-      return this.tagsList.length > 0;
-    }
-  },
-  watch: {
-    $route(newValue, oldValue) {
-      this.setTags(newValue);
-    }
-  },
-  created() {
-    this.setTags(this.$route);
-  }
 };
 </script>
 
@@ -104,7 +104,7 @@ export default {
   position: relative;
   height: 30px;
   overflow: hidden;
-  ul{
+  ul {
     height: 30px;
   }
   @include themify($themes) {

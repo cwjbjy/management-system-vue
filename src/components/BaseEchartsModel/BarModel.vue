@@ -4,21 +4,23 @@
 </template>
 
 <script>
+import { vuexConfig } from "../../mixin";
 export default {
   watch: {
-    model: function(newData) {
+    model: function (newData) {
       this.prepareDomain(newData);
-    }
+    },
   },
   props: {
     model: {
       type: Object,
-      default: {}
-    }
+      default: {},
+    },
   },
   data() {
     return {};
   },
+  mixins: [vuexConfig],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
@@ -27,13 +29,14 @@ export default {
         this.autoSize();
       }, 400);
     });
-  },
-  activated() {
-    this.autoSize();
+    window.eventBus.$on("update:echartColor", () => {
+      this.prepareDomain(this.model);
+    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
     window.eventBus.$off("collapse");
+    window.eventBus.$off("update:echartColor")
   },
   methods: {
     prepareDomain(model) {
@@ -45,43 +48,82 @@ export default {
         color: ["#3398DB"],
         title: {
           text: "柱状图",
-          left: "center"
+          left: "center",
+          textStyle: {
+            color: this.echartColor,
+          },
         },
         tooltip: {
           trigger: "axis",
           axisPointer: {
             // 坐标轴指示器，坐标轴触发有效
-            type: "shadow" // 默认为直线，可选为：'line' | 'shadow'
-          }
+            type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
+          },
         },
         grid: {
           left: "3%",
           right: "4%",
           bottom: "3%",
-          containLabel: true
+          containLabel: true,
         },
         xAxis: [
           {
             type: "category",
             data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            axisLine: {
+              show: true, //隐藏X轴轴线
+              lineStyle: {
+                color: this.echartColor,
+              },
+            },
             axisTick: {
-              alignWithLabel: true
-            }
-          }
+              show: true, //隐藏X轴刻度
+              alignWithLabel: true,
+              lineStyle: {
+                color: this.echartColor,
+              },
+            },
+            axisLabel: {
+              show: true,
+              color: this.echartColor,
+            },
+            nameTextStyle: {
+              color: this.echartColor,
+            },
+          },
         ],
         yAxis: [
           {
-            type: "value"
-          }
+            type: "value",
+            axisLine: {
+              show: true, //隐藏X轴轴线
+              lineStyle: {
+                color: this.echartColor,
+              },
+            },
+            axisTick: {
+              show: true, //隐藏X轴刻度
+              lineStyle: {
+                color: this.echartColor,
+              },
+            },
+            axisLabel: {
+              show: true,
+              color: this.echartColor,
+            },
+            nameTextStyle: {
+              color: this.echartColor,
+            },
+          },
         ],
         series: [
           {
             name: "直接访问",
             type: "bar",
             barWidth: "60%",
-            data: [10, 52, 200, 334, 390, 330, 220]
-          }
-        ]
+            data: [10, 52, 200, 334, 390, 330, 220],
+          },
+        ],
       };
       echartsInstance.setOption(option);
     },
@@ -90,8 +132,8 @@ export default {
         let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
         echartsInstance.resize();
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

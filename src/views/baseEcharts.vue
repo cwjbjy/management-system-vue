@@ -49,7 +49,7 @@ files.keys().forEach(key => {
   modules[name] = files(key).default || files(key)
 })
 export default {
-  name:'baseEcharts',
+  name:'BaseEcharts',
   components:modules,
   data() {
     return {

@@ -8,13 +8,13 @@
               <img :src="imageUrl" class="user-img" alt="加载失败" />
             </el-col>
             <el-col :span="12" class="user-area">
-              <div class="user-name">{{userName}}</div>
+              <div class="user-name">{{user_name}}</div>
               <div class="user-info">{{role}}</div>
             </el-col>
           </el-row>
           <el-row class="user-bottom">
             <div class="user-info-list">
-              <span>上次登录时间：</span>
+              <span>注册时间：</span>
               <span>{{1595658500|formDate}}</span>
             </div>
             <div class="user-info-list">
@@ -121,7 +121,7 @@ import barModel from "@/components/EchartsModel/BarLineModel";
 import radarModel from "@/components/EchartsModel/RadarModel";
 import { getURL, vuexConfig } from "@/mixin";
 export default {
-  name: "firstItem",
+  name: "HomePage",
   components: {
     barModel,
     radarModel,
@@ -134,11 +134,8 @@ export default {
     };
   },
   computed: {
-    userName() {
-      return this.user_name == "cwj18351071268" ? "admin" : "consumer";
-    },
     role() {
-      return this.userName == "admin" ? "超级管理员" : "普通用户";
+      return this.user_name == "一叶扁舟" ? "管理员" : "普通用户";
     },
   },
   mixins: [getURL, vuexConfig],
@@ -149,9 +146,10 @@ export default {
     this.$nextTick(() => {
       this.$refs.table.doLayout();
     });
-    this.setCount({ data: 4 }).then(() => {
-      console.log(this.$store.state.count);
-    });
+    //调用Vuex中的action
+    // this.setCount({ data: 4 }).then(() => {
+    //   console.log(this.$store.state.count);
+    // });
   },
   activated() {
     this.getImage();
@@ -192,8 +190,10 @@ export default {
     &-top {
       align-items: center;
       padding-bottom: 20px;
-      border-bottom: 2px solid #ccc;
       margin-bottom: 20px;
+      @include themify($themes) {
+        border-bottom: 2px solid themed("card-border");
+      }
       .user-img {
         width: 90%;
         height: 90%;
@@ -273,12 +273,12 @@ export default {
   }
   .todo-item {
     font-size: 14px;
-  }
-  .todo-item-del {
-    text-decoration: line-through;
     @include themify($themes) {
       color: themed("card-font");
     }
+  }
+  .todo-item-del {
+    text-decoration: line-through;
   }
   .echarts-box {
     padding: 0 10px;

@@ -31,6 +31,8 @@ export default {
 
 <style lang="scss" scoped>
 .fleetLine{
-  background-color: rgb(6,42,88);
+   @include themify($themes) {
+      background-color: themed("fleet-bg");
+  }
 }
 </style>

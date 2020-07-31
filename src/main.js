@@ -8,6 +8,7 @@ import VueCookies from 'vue-cookies'
 import 'element-ui/lib/theme-chalk/index.css';
 import { messages } from '../public/utils/i18n';
 import VueI18n from 'vue-i18n';
+import "./assets/icon/iconfont.css"
 Vue.use(VueI18n);
 Vue.use(VueCookies)
 Vue.use(directive)
@@ -20,7 +21,7 @@ const i18n = new VueI18n({
 });
 
 Vue.config.productionTip = false;
-Vue.config.devtools = true;
+Vue.config.devtools = true
 window.eventBus = new Vue();
 
 new Vue({

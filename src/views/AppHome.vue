@@ -32,7 +32,7 @@ export default {
   components: {
     HomeHeader,
     siderBar,
-    Tags
+    Tags,
   },
   data() {
     return {
@@ -40,25 +40,25 @@ export default {
       msg: "Dynamic Themes",
       theme: "gray",
       keepList: [],
-      exList:["fleetLine"]
+      exList: ["HomePage","fleetLine","BaseEcharts"],
     };
   },
   computed: {
     themeClass() {
       return `theme-${this.theme}`;
-    }
+    },
   },
   methods: {
-    colorChange(val){
+    colorChange(val) {
       this.theme = val;
     },
     tagChange(val) {
       this.keepList = [];
-      val.forEach(element => {
+      val.forEach((element) => {
         this.keepList.push(element.name);
       });
     },
-  }
+  },
 };
 </script>
 
@@ -95,6 +95,97 @@ export default {
   }
   .pointer {
     cursor: $c_pointer;
+  }
+}
+/* element-ui样式修改 */
+.el-card {
+  @include themify($themes) {
+    background-color: themed("card-background");
+    color: themed("card-font");
+    border: 1px solid themed("card-border");
+  }
+}
+.el-card__header {
+  @include themify($themes) {
+    border-bottom: 1px solid themed("card-border");
+  }
+}
+.el-progress__text {
+  @include themify($themes) {
+    color: themed("card-font");
+  }
+}
+.el-button--primary {
+  @include themify($themes) {
+    background-color: themed("primary-button");
+    border: 1px solid themed("card-border");
+    color: themed("font-color");
+  }
+}
+.el-input__inner {
+  @include themify($themes) {
+    background-color: themed("card-background");
+    border: 1px solid themed("card-border");
+    color: themed("card-font");
+  }
+}
+
+.el-table th,
+.el-table tr {
+  @include themify($themes) {
+    background-color: themed("card-background");
+  }
+}
+.el-table td,
+.el-table th.is-leaf {
+  @include themify($themes) {
+    border-bottom: 1px solid themed("card-border");
+  }
+}
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  @include themify($themes) {
+    background-color: themed("main-background");
+  }
+}
+.el-table--border::after,
+.el-table--group::after,
+.el-table::before {
+  @include themify($themes) {
+    background-color: themed("card-border");
+  }
+}
+.el-table thead.is-group th {
+  @include themify($themes) {
+    background-color: themed("card-border");
+  }
+}
+.el-table--border,
+.el-table--group {
+  @include themify($themes) {
+    border: 1px solid themed("card-border");
+  }
+}
+.el-table--border td,
+.el-table--border th,
+.el-table__body-wrapper .el-table--border.is-scrolling-left ~ .el-table__fixed {
+  @include themify($themes) {
+    border: 1px solid themed("card-border");
+  }
+}
+.el-table--border th,
+.el-table__fixed-right-patch {
+  @include themify($themes) {
+    border-bottom: 1px solid themed("card-border");
+  }
+}
+.el-table thead {
+  @include themify($themes) {
+    color: themed("card-font");
+  }
+}
+.el-table {
+  @include themify($themes) {
+    color: themed("card-font");
   }
 }
 </style>

@@ -4,21 +4,23 @@
 </template>
 
 <script>
+import { vuexConfig } from "../../mixin";
 export default {
   watch: {
-    model: function(newData) {
+    model: function (newData) {
       this.prepareDomain(newData);
-    }
+    },
   },
   props: {
     model: {
       type: Object,
-      default: {}
-    }
+      default: {},
+    },
   },
   data() {
     return {};
   },
+  mixins: [vuexConfig],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
@@ -27,20 +29,19 @@ export default {
         this.autoSize();
       }, 400);
     });
-  },
-  activated() {
-    this.autoSize();
+    window.eventBus.$on("update:echartColor", () => {
+      this.prepareDomain(this.model);
+    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
     window.eventBus.$off("collapse");
+    window.eventBus.$off("update:echartColor")
   },
   methods: {
     prepareDomain(model) {
       let echartsInstance = echarts.init(this.$refs.echarts);
       echartsInstance.clear();
-      var black = "#2f3542";
-      var blue = "#70a1ff";
       let option = {
         color: [
           "#eccc68",
@@ -54,20 +55,26 @@ export default {
           "#5352ed",
           "#2ed573",
           "#1e90ff",
-          "#3742fa"
+          "#3742fa",
         ],
         title: {
           text: "饼图",
-          left: "center"
+          left: "center",
+          textStyle: {
+            color: this.echartColor,
+          },
         },
         tooltip: {
           trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)"
+          formatter: "{a} <br/>{b} : {c} ({d}%)",
         },
         legend: {
           orient: "vertical",
           left: "left",
-          data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
+          textStyle: {
+            color: this.echartColor,
+          },
+          data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"],
         },
         series: [
           {
@@ -80,17 +87,17 @@ export default {
               { value: 310, name: "邮件营销" },
               { value: 234, name: "联盟广告" },
               { value: 135, name: "视频广告" },
-              { value: 1548, name: "搜索引擎" }
+              { value: 1548, name: "搜索引擎" },
             ],
             emphasis: {
               itemStyle: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
-                shadowColor: "rgba(0, 0, 0, 0.5)"
-              }
-            }
-          }
-        ]
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
       };
       echartsInstance.setOption(option);
     },
@@ -99,8 +106,8 @@ export default {
         let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
         echartsInstance.resize();
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
