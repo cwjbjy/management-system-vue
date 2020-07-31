@@ -14,8 +14,7 @@ export default {
   mixins:[vuexConfig],
   created() {
     if (this.userName == "" && this.$route.path !== '/login' && this.$route.path !== '/') {
-      let user_name = localStorage.getItem("user_name");
-      if (user_name === "一叶扁舟") {
+      if (this.user_name === "一叶扁舟") {
         this.$router.addRoutes(route_admin);
       } else{
         this.$router.addRoutes(route_user);

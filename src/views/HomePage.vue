@@ -128,7 +128,6 @@ export default {
   },
   data() {
     return {
-      user_name: "",
       imageUrl: "",
       options: {},
     };
@@ -140,7 +139,6 @@ export default {
   },
   mixins: [getURL, vuexConfig],
   created() {
-    this.user_name = localStorage.getItem("user_name");
     this.getImage();
     //解决IE浏览器渲染过慢，表格宽度出现BUG（DOM树生成的太慢，element的js已经开始计算）
     this.$nextTick(() => {
@@ -150,9 +148,6 @@ export default {
     // this.setCount({ data: 4 }).then(() => {
     //   console.log(this.$store.state.count);
     // });
-  },
-  activated() {
-    this.getImage();
   },
   methods: {
     getImage() {

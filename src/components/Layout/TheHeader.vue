@@ -54,13 +54,11 @@ export default {
       collapse: false,
       fullscreen: false,
       imageUrl: "",
-      user_name: "",
       theme: "gray",
     };
   },
   mixins: [getURL,vuexConfig],
   created() {
-    this.user_name = localStorage.getItem("user_name");
     this.getImage();
   },
   mounted() {

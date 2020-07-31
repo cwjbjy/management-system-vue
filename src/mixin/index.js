@@ -6,7 +6,7 @@ import {
 } from 'vuex'
 export const vuexConfig = {
     computed: {
-        /*将this.user_name映射为this.$store.state.userName*/
+        /*将this.userName映射为this.$store.state.userName*/
         ...mapState([
             'count',
             'userName',
@@ -14,9 +14,9 @@ export const vuexConfig = {
             'echartColor',
             'fleetBg'
         ]),
-        /* 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`*/
+        /* 把 `this.user_name` 映射为 `this.$store.getters.user_name`*/
         ...mapGetters([
-            'doneTodosCount',
+            'user_name',
             // ...
           ])
     },

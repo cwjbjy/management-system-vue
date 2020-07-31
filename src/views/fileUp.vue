@@ -22,15 +22,12 @@
 
 <script>
 import API from "@/services/api";
-import { getURL } from "@/mixin";
+import { getURL,vuexConfig } from "@/mixin";
 export default {
   name: "fileUp",
   data() {
     return {
       imageUrl: "",
-      user: {
-        user_name: ""
-      },
       headers: {
         Authorization: ""
       }
@@ -51,11 +48,10 @@ export default {
       return baseURL;
     }
   },
-  mixins: [getURL],
+  mixins: [getURL,vuexConfig],
   created() {
     let token = Vue.$cookies.get("token");
     this.headers.Authorization = token;
-    this.user.user_name = localStorage.getItem("user_name");
     this.getImage();
   },
   methods: {
@@ -67,7 +63,7 @@ export default {
     },
     getImage() {
       let params = {
-        user_name: this.user.user_name
+        user_name: this.user_name
       };
       API.getImage(params).then(res => {
         let fileName = res.data.Data[0].photo;

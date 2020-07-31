@@ -1,6 +1,6 @@
 const state = {
     count:1,
-    userName:'',
+    userName:'',//用来判断页面是否刷新
     todoList: [
         {
           title: "今天要修复100个bug",
