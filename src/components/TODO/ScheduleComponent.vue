@@ -51,6 +51,7 @@ export default {
   },
   mixins: [vuexConfig],
   created() {
+    //解决IE浏览器渲染过慢，表格宽度计算错误
     this.$nextTick(() => {
       this.$refs.table.doLayout();
     });

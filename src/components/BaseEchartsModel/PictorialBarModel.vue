@@ -99,7 +99,7 @@ export default {
           show: false, //鼠标放上去显示悬浮数据
         },
         title: {
-          text: "象形柱图",
+          text: "男女比例",
           left: "center",
         },
         legend: {

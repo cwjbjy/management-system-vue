@@ -121,7 +121,7 @@ export default {
     inputBlur(row) {
       // console.log(event);
       let doc = event.target.parentNode.parentNode;
-      doc.setAttribute("class", "cell");
+      doc.setAttribute("class", "cell cell-content");
     },
   },
 };

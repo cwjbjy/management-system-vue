@@ -156,7 +156,7 @@ export default {
 }
 .el-table thead.is-group th {
   @include themify($themes) {
-    background-color: themed("card-border");
+    background-color: themed("table-th");
   }
 }
 .el-table--border,
