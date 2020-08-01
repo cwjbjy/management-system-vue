@@ -1,7 +1,10 @@
 <template>
   <section>
     <el-card shadow="hover">
-      <h4>双击表格中的值可实现修改当前单元格功能（表头不可修改）；</h4>
+      <div slot="header">
+        <span>点击新增，新增一条数据；鼠标移动到单元格上，如果出现手的标志，双击单元格进行填写；原有单元格也可双击修改</span>
+        <el-button style="float: right; padding: 3px 0" type="text" @click="addItem">添加</el-button>
+      </div>
       <el-table
         :data="tableData"
         style="width: 100%"
@@ -64,7 +67,7 @@ export default {
       tableData: [
         {
           date: "2016-05-03",
-          name: ["曹操", "孙权", "刘备"],
+          name: ["曹操", "孙权"],
           province: "上海",
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
@@ -98,6 +101,17 @@ export default {
     };
   },
   methods: {
+    addItem() {
+      let item = {
+        date: "",
+        name: ["", ""],
+        province: "",
+        city: "",
+        address: "",
+        zip: null,
+      };
+      this.tableData.unshift(item)
+    },
     //单元格类名的回调方法，当为特定列时，有特殊的样式
     fSetCellClass({ row, column, rowIndex, columnIndex }) {
       return "cell-p0";
