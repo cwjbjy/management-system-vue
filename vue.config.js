@@ -25,7 +25,7 @@ module.exports = {
   },
   // css相关配置
   css: {
-    extract: false,
+    extract: true,
     sourceMap: false,
     // css预设器配置项
     loaderOptions: {
