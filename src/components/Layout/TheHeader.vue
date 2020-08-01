@@ -46,7 +46,7 @@
 </template>
 <script>
 import API from "@/services/api";
-import { getURL,vuexConfig } from "@/mixin";
+import { getURL,vuexRoot,vuexThemeColor } from "@/mixin";
 export default {
   name: "HomeHeader",
   data() {
@@ -57,7 +57,7 @@ export default {
       theme: "gray",
     };
   },
-  mixins: [getURL,vuexConfig],
+  mixins: [getURL,vuexRoot,vuexThemeColor],
   created() {
     this.getImage();
   },

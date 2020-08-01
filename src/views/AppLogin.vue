@@ -85,7 +85,7 @@ import API from "@/services/api";
 import rules from "@/js/rules";
 import comfun from "@/js/comFunc";
 import { route_admin, route_user } from "@/router/routes";
-import { vuexConfig } from "@/mixin";
+import { vuexRoot } from "@/mixin";
 export default {
   name: "Login",
   data() {
@@ -134,7 +134,7 @@ export default {
       },
     };
   },
-  mixins: [vuexConfig],
+  mixins: [vuexRoot],
   created() {
     localStorage.removeItem("user_name");
   },

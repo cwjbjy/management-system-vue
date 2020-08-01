@@ -22,7 +22,7 @@
 
 <script>
 import API from "@/services/api";
-import { getURL,vuexConfig } from "@/mixin";
+import { getURL,vuexRoot } from "@/mixin";
 export default {
   name: "fileUp",
   data() {
@@ -48,7 +48,7 @@ export default {
       return baseURL;
     }
   },
-  mixins: [getURL,vuexConfig],
+  mixins: [getURL,vuexRoot],
   created() {
     let token = Vue.$cookies.get("token");
     this.headers.Authorization = token;

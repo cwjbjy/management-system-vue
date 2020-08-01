@@ -8,10 +8,10 @@
 
 <script>
 import { route_admin, route_user } from "@/router/routes";
-import {vuexConfig} from "@/mixin"
+import {vuexRoot} from "@/mixin"
 export default {
   name: "App",
-  mixins:[vuexConfig],
+  mixins:[vuexRoot],
   created() {
     if (this.userName == "" && this.$route.path !== '/login' && this.$route.path !== '/') {
       if (this.user_name === "一叶扁舟") {

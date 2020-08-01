@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { vuexConfig } from "../../mixin";
+import { vuexThemeColor } from "../../mixin";
 export default {
   watch: {
     model: function (newData) {
@@ -19,7 +19,7 @@ export default {
   data() {
     return {};
   },
-  mixins: [vuexConfig],
+  mixins: [vuexThemeColor],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);

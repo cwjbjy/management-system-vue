@@ -5,12 +5,6 @@ const mutations = {
     set_count(state, payload) {
         state.count = payload.data
     },
-    set_echartColor(state, payload) {
-        state.echartColor = payload.data
-    },
-    set_fleetBg(state, payload) {
-        state.fleetBg = payload.data
-    },
     set_imageUrl(state, payload) {
         state.imageUrl = payload.data
     },

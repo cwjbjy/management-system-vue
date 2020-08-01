@@ -2,9 +2,11 @@
 Vue.use(Vuex)
 
 import state from './State.js'
-import mutations from './Mutation.js'
-import actions from './Action.js'
-import getters from './Getter'
+import mutations from './Mutations.js'
+import actions from './Actions.js'
+import getters from './Getters'
+
+import themeColor from './ThemeColor'
 
 Vue.config.devtools = true
 const store = new Vuex.Store(
@@ -12,7 +14,10 @@ const store = new Vuex.Store(
     state,
     mutations,
     actions,
-    getters
+    getters,
+    modules:{
+        themeColor
+    }
 }
 )
 export default store;

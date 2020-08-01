@@ -93,7 +93,7 @@ import API from "@/services/api";
 import barModel from "@/components/EchartsModel/BarLineModel";
 import radarModel from "@/components/EchartsModel/RadarModel";
 import ScheduleComponent from "@/components/TODO/ScheduleComponent"
-import { vuexConfig } from "@/mixin";
+import { vuexRoot } from "@/mixin";
 export default {
   name: "HomePage",
   components: {
@@ -112,7 +112,7 @@ export default {
       return this.user_name == "一叶扁舟" ? "管理员" : "普通用户";
     },
   },
-  mixins: [vuexConfig],
+  mixins: [vuexRoot],
   created() {
     this.getUser();
   },

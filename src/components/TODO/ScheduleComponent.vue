@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { vuexConfig } from "@/mixin";
+import { vuexRoot } from "@/mixin";
 export default {
   name: "ScheduleComponent",
   data() {
@@ -49,7 +49,7 @@ export default {
       itemIndex: 0,
     };
   },
-  mixins: [vuexConfig],
+  mixins: [vuexRoot],
   created() {
     //解决IE浏览器渲染过慢，表格宽度计算错误
     this.$nextTick(() => {
