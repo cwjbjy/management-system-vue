@@ -1,7 +1,7 @@
 
 Vue.use(Vuex)
 
-import state from './State.js'
+import state from './Store.js'
 import mutations from './Mutations.js'
 import actions from './Actions.js'
 import getters from './Getters'

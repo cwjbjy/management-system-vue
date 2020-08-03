@@ -1,223 +1,217 @@
-const Login = () => import(/* webpackChunkName: "Login" */'@/views/AppLogin.vue')
-const notFound = () => import(/* webpackChunkName: "notFound" */'@/views/NotFound.vue')
-const Home = () => import(/* webpackChunkName: "Home" */'@/views/AppHome.vue')
+import chartRouter from './modules/chartRouter'
+import dragRouter from './modules/dragRouter'
 
-const firstItem = () => import(/* webpackChunkName: "HomePage" */'@/views/HomePage.vue')
+const Login = () => import( /* webpackChunkName: "Login" */ '@/views/AppLogin.vue')
 
-const Fleet = () => import(/* webpackChunkName: "Fleet" */'@/views/FleetLine.vue')
+const notFound = () => import( /* webpackChunkName: "notFound" */ '@/views/NotFound.vue')
 
-const baseEcharts = () => import(/* webpackChunkName: "baseEcharts" */"@/views/BaseEcharts.vue")
+const AppHome = () => import( /* webpackChunkName: "AppHome" */ '@/views/AppHome.vue')
 
-const baseTable = () =>import(/* webpackChunkName: "baseTable" */"@/views/BaseTable")
+const HomePage = () => import( /* webpackChunkName: "HomePage" */ '@/views/HomePage.vue')
 
-const positionChart = () => import(/* webpackChunkName: "positionChart" */"@/views/FlowChart/PositionChart.vue")
-const commonChart = ()=> import(/* webpackChunkName: "commonChart" */"@/views/FlowChart/CommonChart.vue")
-const foldChart = () => import(/* webpackChunkName: "foldChart" */"@/views/FlowChart/FoldChart.vue")
+const FleetLine = () => import( /* webpackChunkName: "FleetLine" */ '@/views/FleetLine.vue')
 
-const magnifying = () => import(/* webpackChunkName: "magnifying" */"@/views/Magnifying.vue")
-const fileUp = () => import(/* webpackChunkName: "fileUp" */"@/views/FileUp.vue")
+const BaseEcharts = () => import( /* webpackChunkName: "BaseEcharts" */ "@/views/BaseEcharts.vue")
 
-const pdf = () => import(/* webpackChunkName: "pdf.vue" */"@/views/PDFPreview.vue")
+const BaseTable = () => import( /* webpackChunkName: "BaseTable" */ "@/views/BaseTable")
 
-const dragDiv = () =>import(/* webpackChunkName: "dragDiv" */"@/views/DragComponents/DragDiv")
-const dragDialog = () =>import(/* webpackChunkName: "dragDialog" */"@/views/DragComponents/DragDialog")
-const dragList = () => import(/* webpackChunkName: "dragList" */"@/views/DragComponents/DragList")
+const Magnifying = () => import( /* webpackChunkName: "Magnifying" */ "@/views/Magnifying.vue")
 
-const I18n = () => import(/* webpackChunkName: "I18n.vue" */"@/views/I18n.vue")
+const FileUp = () => import( /* webpackChunkName: "FileUp" */ "@/views/FileUp.vue")
 
-const chatRoom = () => import(/* webpackChunkName: "chatRoom.vue" */"@/views/ChatRoom.vue")
+const PDFPreview = () => import( /* webpackChunkName: "PDFPreview" */ "@/views/PDFPreview.vue")
 
-const manage = () => import(/* webpackChunkName: "manage" */"@/views/UserManage.vue")
+const I18n = () => import( /* webpackChunkName: "I18n" */ "@/views/I18n.vue")
 
-export const routes = [
-    {
-        path:'/',
-        redirect:'/firstItem'
+const ChatRoom = () => import( /* webpackChunkName: "ChatRoom" */ "@/views/ChatRoom.vue")
+
+const UserManage = () => import( /* webpackChunkName: "UserManage" */ "@/views/UserManage.vue")
+
+export const routes = [{
+        path: '/',
+        redirect: '/firstItem'
     },
     {
-        path:'/login',
-        meta:{title:'login'},
-        component:Login
+        path: '/login',
+        meta: {
+            title: 'login'
+        },
+        component: Login
     },
     {
-        path:'/404',
-        meta:{title:'404'},
-        component:notFound
+        path: '/404',
+        meta: {
+            title: '404'
+        },
+        component: notFound
     }
 ]
 
-export const route_admin = [
-    {
-        path:'/home',
-        meta:{title:'home'},
-        component:Home,
-        redirect:'/firstItem',
-        children:[
+export const route_admin = [{
+        path: '/home',
+        meta: {
+            title: 'home'
+        },
+        component: AppHome,
+        redirect: '/firstItem',
+        children: [
+            ...chartRouter,
+            ...dragRouter,
             {
-                path:'/firstItem',
-                meta:{title:'系统首页'},
-                component:firstItem
+                path: '/firstItem',
+                meta: {
+                    title: '系统首页'
+                },
+                component: HomePage
             },
             {
-               path:'/fleet',
-               meta:{title:'模拟航线'},
-               component:Fleet
+                path: '/fleet',
+                meta: {
+                    title: '模拟航线'
+                },
+                component: FleetLine
             },
             {
-                path:'/fileUp',
-                meta:{title:'图片上传'},
-                component:fileUp
+                path: '/fileUp',
+                meta: {
+                    title: '图片上传'
+                },
+                component: FileUp
             },
             {
-                path:'/pdf',
-                meta:{title:'文件预览'},
-                component:pdf
+                path: '/pdf',
+                meta: {
+                    title: '文件预览'
+                },
+                component: PDFPreview
             },
             {
-                path:'/baseEcharts',
-                meta:{title:'基础图表'},
-                component:baseEcharts
+                path: '/baseEcharts',
+                meta: {
+                    title: '基础图表'
+                },
+                component: BaseEcharts
             },
             {
-                path:'/baseTable',
-                meta:{title:'基础表格'},
-                component:baseTable
+                path: '/baseTable',
+                meta: {
+                    title: '基础表格'
+                },
+                component: BaseTable
             },
             {
-                path:'/dragDiv',
-                meta:{title:'dragDiv'},
-                component:dragDiv
+                path: '/dragDiv',
+                meta: {
+                    title: 'dragDiv'
+                },
+                component: dragDiv
             },
             {
-                path:'/dragDialog',
-                meta:{title:'拖拽弹框'},
-                component:dragDialog
+                path: '/I18n',
+                meta: {
+                    title: '语言转换'
+                },
+                component: I18n
             },
             {
-                path:'/dragList',
-                meta:{title:'拖拽列表'},
-                component:dragList
+                path: '/magnifying',
+                meta: {
+                    title: '放大镜'
+                },
+                component: Magnifying
             },
             {
-                path:'/I18n',
-                meta:{title:'语言转换'},
-                component:I18n
+                path: '/chatRoom',
+                meta: {
+                    title: '聊天室'
+                },
+                component: ChatRoom
             },
             {
-                path:'/commonChart',
-                meta:{title:'一般流程图'},
-                component:commonChart
-            },
-            {
-                path:'/positionChart',
-                meta:{title:'定位流程图'},
-                component:positionChart
-            },
-            {
-                path:'/foldChart',
-                meta:{title:'折叠流程图'},
-                component:foldChart
-            },
-            {
-                path:'/magnifying',
-                meta:{title:'放大镜'},
-                component:magnifying
-            },
-            {
-                path:'/chatRoom',
-                meta:{title:'聊天室'},
-                component:chatRoom
-            },
-            {
-                path:'/manage',
-                meta:{title:'后台管理'},
-                component:manage
-            },
-        ]
-    },
-    {
-        path:'*',
-        redirect:'/404'
-    },
-]
-
-export const route_user = [
-    {
-        path:'/home',
-        meta:{title:'home'},
-        component:Home,
-        redirect:'/firstItem',
-        children:[
-            {
-                path:'/firstItem',
-                meta:{title:'系统首页'},
-                component:firstItem
-            },
-            {
-               path:'/fleet',
-               meta:{title:'模拟航线'},
-               component:Fleet
-            },
-            {
-                path:'/fileUp',
-                meta:{title:'图片上传'},
-                component:fileUp
-            },
-            {
-                path:'/baseEcharts',
-                meta:{title:'基础图表'},
-                component:baseEcharts
-            },
-            {
-                path:'/baseTable',
-                meta:{title:'基础表格'},
-                component:baseTable
-            },
-            {
-                path:'/dragDialog',
-                meta:{title:'拖拽弹框'},
-                component:dragDialog
-            },
-            {
-                path:'/dragList',
-                meta:{title:'拖拽列表'},
-                component:dragList
-            },
-            {
-                path:'/I18n',
-                meta:{title:'语言转换'},
-                component:I18n
-            },
-            {
-                path:'/commonChart',
-                meta:{title:'一般流程图'},
-                component:commonChart
-            },
-            {
-                path:'/positionChart',
-                meta:{title:'定位流程图'},
-                component:positionChart
-            },
-            {
-                path:'/foldChart',
-                meta:{title:'折叠流程图'},
-                component:foldChart
-            },
-            {
-                path:'/magnifying',
-                meta:{title:'放大镜'},
-                component:magnifying
-            },
-            {
-                path:'/chatRoom',
-                meta:{title:'聊天室'},
-                component:chatRoom
+                path: '/manage',
+                meta: {
+                    title: '后台管理'
+                },
+                component: UserManage
             },
         ]
     },
     {
-        path:'*',
-        redirect:'/404'
+        path: '*',
+        redirect: '/404'
     },
 ]
 
+export const route_user = [{
+        path: '/home',
+        meta: {
+            title: 'home'
+        },
+        component: AppHome,
+        redirect: '/firstItem',
+        children: [
+            ...chartRouter,
+            ...dragRouter,
+            {
+                path: '/firstItem',
+                meta: {
+                    title: '系统首页'
+                },
+                component: HomePage
+            },
+            {
+                path: '/fleet',
+                meta: {
+                    title: '模拟航线'
+                },
+                component: FleetLine
+            },
+            {
+                path: '/fileUp',
+                meta: {
+                    title: '图片上传'
+                },
+                component: FileUp
+            },
+            {
+                path: '/baseEcharts',
+                meta: {
+                    title: '基础图表'
+                },
+                component: BaseEcharts
+            },
+            {
+                path: '/baseTable',
+                meta: {
+                    title: '基础表格'
+                },
+                component: BaseTable
+            },
+            {
+                path: '/I18n',
+                meta: {
+                    title: '语言转换'
+                },
+                component: I18n
+            },
+            {
+                path: '/magnifying',
+                meta: {
+                    title: '放大镜'
+                },
+                component: Magnifying
+            },
+            {
+                path: '/chatRoom',
+                meta: {
+                    title: '聊天室'
+                },
+                component: ChatRoom
+            },
+        ]
+    },
+    {
+        path: '*',
+        redirect: '/404'
+    },
+]

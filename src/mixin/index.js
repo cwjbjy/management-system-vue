@@ -13,8 +13,8 @@ export const vuexRoot = {
             'todoList',
             'imageUrl'
         ]),
-        /* 把 `this.user_name` 映射为
-         `this.$store.getters.user_name`*/
+        /* 把 this.user_name 映射为
+         this.$store.getters.user_name*/
         ...mapGetters([
             'user_name',
             // ...

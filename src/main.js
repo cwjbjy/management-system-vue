@@ -1,7 +1,7 @@
 // import Vue from 'vue';
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import store from './vuex'
 import directive from "./directive"
 import filters from "./filter"
 import VueCookies from 'vue-cookies'
@@ -21,7 +21,6 @@ const i18n = new VueI18n({
 });
 
 Vue.config.productionTip = false;
-Vue.config.devtools = true
 window.eventBus = new Vue();
 
 new Vue({
