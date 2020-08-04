@@ -1,4 +1,4 @@
-# 路由文档
+# router文档
 
 基于Vue-Router
 基于业务模块拆分子路由
@@ -12,7 +12,7 @@ router
 |——index.js (组装并导出router)
 |——routes.js (主路由)
 
-# 模块路由文件命名
+# 文件命名
 
 以小写字母开头 + Router的驼峰命名
 

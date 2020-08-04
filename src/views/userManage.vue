@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import API from "@/services/api";
+import API from "@/service/api";
 import { getURL } from "@/mixin";
 export default {
   name: "userManage",

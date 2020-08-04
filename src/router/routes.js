@@ -100,13 +100,6 @@ export const route_admin = [{
                 component: BaseTable
             },
             {
-                path: '/dragDiv',
-                meta: {
-                    title: 'dragDiv'
-                },
-                component: dragDiv
-            },
-            {
                 path: '/I18n',
                 meta: {
                     title: '语言转换'

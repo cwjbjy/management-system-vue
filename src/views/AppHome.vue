@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import API from "@/services/api";
+import API from "@/service/api";
 import HomeHeader from "@/components/Layout/TheHeader";
 import siderBar from "@/components/Layout/TheSiderBar";
 import Tags from "@/components/Layout/TheTags";

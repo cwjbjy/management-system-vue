@@ -158,7 +158,7 @@ export default {
           question: "Greeting",
           actions: [
             { text: "Sales", figure: "ElectricalHazard", fill: "blue" },
-            { text: "Parts and Services", figure: "FireHazard", fill: "red" },
+            { text: "Parts and service", figure: "FireHazard", fill: "red" },
             {
               text: "Representative",
               figure: "IrritationHazard",
@@ -177,7 +177,7 @@ export default {
         },
         {
           key: 3,
-          question: "Parts and Services",
+          question: "Parts and service",
           actions: [
             { text: "Maintenance", figure: "ElectricalHazard", fill: "blue" },
             { text: "Repairs", figure: "FireHazard", fill: "red" },

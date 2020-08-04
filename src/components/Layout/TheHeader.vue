@@ -45,7 +45,7 @@
   </div>
 </template>
 <script>
-import API from "@/services/api";
+import API from "@/service/api";
 import { getURL,vuexRoot,vuexThemeColor } from "@/mixin";
 export default {
   name: "HomeHeader",

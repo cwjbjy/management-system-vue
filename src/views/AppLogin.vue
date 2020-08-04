@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import API from "@/services/api";
+import API from "@/service/api";
 import rules from "@/js/rules";
 import comfun from "@/js/comFunc";
 import { route_admin, route_user } from "@/router/routes";

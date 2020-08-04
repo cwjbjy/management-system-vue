@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import API from "@/services/api";
+import API from "@/service/api";
 import barModel from "@/components/EchartsModel/BarLineModel";
 import radarModel from "@/components/EchartsModel/RadarModel";
 import ScheduleComponent from "@/components/TODO/ScheduleComponent"
