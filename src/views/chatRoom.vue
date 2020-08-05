@@ -1,13 +1,15 @@
 <template>
   <section>
     <el-card shadow="hover">
-      <span class="title">聊天室功能：使用说明</span>
-      <ol>
-        <li>输入昵称，点击连接；</li>
-        <li>等待另一用户连接；或者打开新窗口，重复步骤1；</li>
-        <li>看到另一用户登录提示；</li>
-        <li>输入消息，点击发送或者回车发送；</li>
-      </ol>
+      <strong>聊天室功能：使用说明</strong>
+      <div class="describle">
+        <ul>
+        <li>1.输入昵称，点击连接；</li>
+        <li>2.等待另一用户连接；或者打开新窗口，重复步骤1；</li>
+        <li>3.看到另一用户登录提示；</li>
+        <li>4.输入消息，点击发送或者回车发送；</li>
+      </ul>
+      </div>
       <el-form :inline="true" class="demo-form-inline">
         <el-form-item label="用户名">
           <el-input v-model.trim="user" placeholder="请输入昵称" center></el-input>
@@ -136,8 +138,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title {
-  font-weight: bold;
+.describle{
+  margin: 15px 0;
 }
 .chat {
   border: 1px solid #000;

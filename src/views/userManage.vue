@@ -1,64 +1,66 @@
 <template>
   <section>
     <el-card shadow="hover">
-      <h4>管理员登陆方可看到后台管理页面；该基础表格包含排序，筛选，搜索，编辑功能；表格中注册时间旁按钮为排序，筛选功能；上述功能均已实现</h4>
-      <el-table
-        :data="tableData.filter(data => !search || data.user_name.toLowerCase().includes(search.toLowerCase()))"
-        :default-sort="{prop: 'createTime', order: 'ascending'}"
-        max-height="500px"
-        style="width: 100%"
-        border
-        id="out-table"
-        header-align="center"
-      >
-        <el-table-column label="序号" type="index" width="80" align="center"></el-table-column>
-        <el-table-column label="用户名" prop="user_name" align="center"></el-table-column>
-        <el-table-column label="头像(查看大图)" align="center">
-          <template slot-scope="scope">
-            <el-image
-              class="table-td-thumb"
-              :src="`${baseURL}${scope.row.photo}`"
-              :preview-src-list="[`${baseURL}${scope.row.photo}`]"
-            ></el-image>
-          </template>
-        </el-table-column>
-        <el-table-column label="角色描述" align="center">
-          <template slot-scope="scope">
-            <span
-              v-html="scope.row.authority == 1 ? '管理员':'普通用户'"
-              :class="[scope.row.authority == 1 ? 'blue':'']"
-            ></span>
-          </template>
-        </el-table-column>
-        <el-table-column
-          label="注册时间"
-          prop="createTime"
-          sortable
-          :filters="filtersData"
-          :filter-method="filterHandler"
-          align="center"
-        ></el-table-column>
-        <el-table-column  align="center">
-          <template slot="header" slot-scope="scope">
-            <el-input v-model="search" size="mini" placeholder="输入用户名搜索" clearable />
-          </template>
-          <template slot-scope="scope">
-            <el-button
-              type="text"
-              icon="el-icon-edit"
-              v-if="scope.row.authority == 1"
-              @click="handleEdit(scope.row)"
-            >编辑</el-button>
-            <el-button
-              type="text"
-              icon="el-icon-delete"
-              class="red"
-              v-if="scope.row.authority != 1"
-              @click="handleDelete(scope.row.id)"
-            >删除</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
+      <strong>管理员登陆方可看到后台管理页面；该基础表格包含排序，筛选，搜索，编辑功能；表格中注册时间旁按钮为排序，筛选功能；上述功能均已实现</strong>
+      <div class="frontArea">
+        <el-table
+          :data="tableData.filter(data => !search || data.user_name.toLowerCase().includes(search.toLowerCase()))"
+          :default-sort="{prop: 'createTime', order: 'ascending'}"
+          max-height="500px"
+          style="width: 100%"
+          border
+          id="out-table"
+          header-align="center"
+        >
+          <el-table-column label="序号" type="index" width="80" align="center"></el-table-column>
+          <el-table-column label="用户名" prop="user_name" align="center"></el-table-column>
+          <el-table-column label="头像(查看大图)" align="center">
+            <template slot-scope="scope">
+              <el-image
+                class="table-td-thumb"
+                :src="`${baseURL}${scope.row.photo}`"
+                :preview-src-list="[`${baseURL}${scope.row.photo}`]"
+              ></el-image>
+            </template>
+          </el-table-column>
+          <el-table-column label="角色描述" align="center">
+            <template slot-scope="scope">
+              <span
+                v-html="scope.row.authority == 1 ? '管理员':'普通用户'"
+                :class="[scope.row.authority == 1 ? 'blue':'']"
+              ></span>
+            </template>
+          </el-table-column>
+          <el-table-column
+            label="注册时间"
+            prop="createTime"
+            sortable
+            :filters="filtersData"
+            :filter-method="filterHandler"
+            align="center"
+          ></el-table-column>
+          <el-table-column align="center">
+            <template slot="header" slot-scope="scope">
+              <el-input v-model="search" size="mini" placeholder="输入用户名搜索" clearable />
+            </template>
+            <template slot-scope="scope">
+              <el-button
+                type="text"
+                icon="el-icon-edit"
+                v-if="scope.row.authority == 1"
+                @click="handleEdit(scope.row)"
+              >编辑</el-button>
+              <el-button
+                type="text"
+                icon="el-icon-delete"
+                class="red"
+                v-if="scope.row.authority != 1"
+                @click="handleDelete(scope.row.id)"
+              >删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
     </el-card>
     <el-dialog title="编辑" :visible.sync="dialogFormVisible" class="userDialog">
       <el-form :model="form" :rules="rules" ref="ruleForm">
@@ -89,14 +91,14 @@ export default {
       dialogFormVisible: false,
       form: {
         name: "",
-        pass: ""
+        pass: "",
       },
       formLabelWidth: "100px",
       row: {},
       rules: {
-        pass: [{ required: true, message: "请输入密码", trigger: "blur" }]
+        pass: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
-      filtersData: []
+      filtersData: [],
     };
   },
   mixins: [getURL],
@@ -104,17 +106,17 @@ export default {
     this.init();
   },
   activated() {
-     this.init();
+    this.init();
   },
   methods: {
     //获取数据
     init() {
-      API.user().then(res => {
+      API.user().then((res) => {
         this.tableData = res.data.data;
-        this.tableData.forEach(item => {
+        this.tableData.forEach((item) => {
           this.filtersData.push({
             text: item.createTime,
-            value: item.createTime
+            value: item.createTime,
           });
         });
       });
@@ -123,16 +125,16 @@ export default {
       this.$confirm("此操作将永久删除该用户, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        type: "warning"
+        type: "warning",
       })
         .then(() => {
           let params = {
-            id: val
+            id: val,
           };
-          API.deleteUser(params).then(res => {
+          API.deleteUser(params).then((res) => {
             this.$message({
               type: "success",
-              message: "删除成功!"
+              message: "删除成功!",
             });
             this.init();
           });
@@ -140,7 +142,7 @@ export default {
         .catch(() => {
           this.$message({
             type: "info",
-            message: "已取消删除"
+            message: "已取消删除",
           });
         });
     },
@@ -150,14 +152,14 @@ export default {
       this.dialogFormVisible = true;
     },
     changeUser() {
-      this.$refs.ruleForm.validate(valid => {
+      this.$refs.ruleForm.validate((valid) => {
         if (valid) {
           let params = {
             id: this.row.id,
             user_name: this.form.name,
-            password: this.form.pass
+            password: this.form.pass,
           };
-          API.updateUser(params).then(res => {
+          API.updateUser(params).then((res) => {
             this.$message.success("修改成功");
             this.dialogFormVisible = false;
             this.init();
@@ -170,12 +172,15 @@ export default {
     filterHandler(value, row, column) {
       const property = column["property"];
       return row[property] === value;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped lang="scss">
+.frontArea {
+  margin-top: 15px;
+}
 .blue {
   color: blue;
 }
@@ -188,7 +193,6 @@ export default {
 }
 </style>
 <style lang="scss">
-
 .userDialog {
   .el-dialog {
     width: 35%;

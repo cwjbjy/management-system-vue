@@ -1,9 +1,9 @@
 <template>
   <section>
     <el-card shadow="hover">
-      <h4>上传头像功能，上传完可点击首页观看效果</h4>
+      <strong>上传头像功能，上传完可点击首页观看效果</strong>
       <el-upload
-        class="avatar-uploader"
+        class="avatar-uploader frontArea"
         :action="getUrl"
         :on-success="onSuccess"
         :show-file-list="false"
@@ -86,6 +86,10 @@ export default {
 </script>
 
 <style>
+
+.frontArea{
+  margin-top: 15px;
+}
 
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;

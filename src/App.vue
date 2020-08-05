@@ -8,19 +8,23 @@
 
 <script>
 import { route_admin, route_user } from "@/router/routes";
-import {vuexRoot} from "@/mixin"
+import { vuexRoot } from "@/mixin";
 export default {
   name: "App",
-  mixins:[vuexRoot],
+  mixins: [vuexRoot],
   created() {
-    if (this.userName == "" && this.$route.path !== '/login' && this.$route.path !== '/') {
+    if (
+      this.userName == "" &&
+      this.$route.path !== "/login" &&
+      this.$route.path !== "/"
+    ) {
       if (this.user_name === "一叶扁舟") {
         this.$router.addRoutes(route_admin);
-      } else{
+      } else {
         this.$router.addRoutes(route_user);
       }
     }
-  }
+  },
 };
 </script>
 
@@ -33,12 +37,7 @@ export default {
   bottom: 0;
   width: 100%;
 }
-body {
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.2s ease;
@@ -47,17 +46,5 @@ body {
 .fade-enter,
 .fade-leave-active {
   opacity: 0;
-}
-
-a {
-    text-decoration: none;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-section{
-  padding: 10px;
 }
 </style>

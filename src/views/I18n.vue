@@ -2,12 +2,18 @@
   <section>
     <el-card shadow="hover">
       <div class="container">
-        <el-button
-          type="primary"
-          @click="$i18n.locale = $i18n.locale === 'zh'?'en':'zh';"
-        >{{$t('i18n.btn')}}</el-button>
-        <h3>{{$t('i18n.title')}}</h3>
-        <h4>{{$t('i18n.title1')}}</h4>
+        <div class="frontArea">
+          <el-button
+            type="primary"
+            @click="$i18n.locale = $i18n.locale === 'zh'?'en':'zh';"
+          >{{$t('i18n.btn')}}</el-button>
+        </div>
+        <div class="frontArea">
+          <strong>{{$t('i18n.title')}}</strong>
+        </div>
+        <div class="frontArea">
+          <em>{{$t('i18n.title1')}}</em>
+        </div>
         <p>{{$t('i18n.p1')}}</p>
         <p>{{$t('i18n.p2')}}</p>
         <p>{{$t('i18n.p3')}}</p>
@@ -18,13 +24,15 @@
 
 <script>
 export default {
-  name:'I18n',
+  name: "I18n",
   data() {
     return {};
-  }
+  },
 };
 </script>
 
 <style scoped>
-
+.frontArea {
+  margin-top: 15px;
+}
 </style>

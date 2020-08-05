@@ -2,7 +2,7 @@
   <section>
     <el-card shadow="hover">
       <div slot="header">
-        <span>点击新增，新增一条数据；鼠标移动到单元格上，如果出现手的标志，双击单元格进行填写；原有单元格也可双击修改</span>
+        <strong>点击新增，新增一条数据；鼠标移动到单元格上，如果出现手的标志，双击单元格进行填写；原有单元格也可双击修改</strong>
         <el-button style="float: right; padding: 3px 0" type="text" @click="addItem">添加</el-button>
       </div>
       <el-table
