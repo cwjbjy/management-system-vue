@@ -55,19 +55,6 @@ export default {
       dialogVisible: false,
     };
   },
-  mounted() {
-    this.mess = document.getElementById("mess");
-    let that = this;
-    document.addEventListener("keydown", that.keyDown);
-    window.eventBus.$on("page1", (value) => {
-      let time = new Date();
-      this.$nextTick(() => {
-        this.mess.innerHTML += `${time.toUTCString()}<br>${value.name}${
-          value.text
-        }<br><br>`;
-      });
-    });
-  },
   activated() {
     this.mess = document.getElementById("mess");
     let that = this;
@@ -82,11 +69,6 @@ export default {
     });
   },
   deactivated() {
-    window.eventBus.$off("page1");
-    let that = this;
-    document.removeEventListener("keydown", that.keyDown);
-  },
-  beforeDestroy() {
     window.eventBus.$off("page1");
     let that = this;
     document.removeEventListener("keydown", that.keyDown);
