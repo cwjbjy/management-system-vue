@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     isActive(path) {
-      return path === this.$route.fullPath;
+      return Object.is(path,this.$route.fullPath)
     },
     // 关闭单个标签
     closeTags(index) {
