@@ -38,10 +38,6 @@ export default {
     window.eventBus.$off("update:echartColor")
   },
   methods: {
-    keyDown() {
-      let key = window.event.keyCode;
-      console.log("key", key);
-    },
     prepareDomain(model) {
       let echartsInstance = echarts.init(this.$refs.echarts);
       echartsInstance.clear();

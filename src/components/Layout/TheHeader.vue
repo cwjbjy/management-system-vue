@@ -82,15 +82,15 @@ export default {
     switchColor(command) {
       this.theme = command;
       switch (command) {
-        case "gray":
+        case this.themes.theme1:
           this.set_echartColor({ data: "#333" });
           this.set_fleetBg({data: "rgb(6,42,88)"})
           break;
-        case "blue":
+        case this.themes.theme2:
           this.set_echartColor({ data: "#333" });
           this.set_fleetBg({data: "rgb(6,42,88)"})
           break;
-        case "black":
+        case this.themes.theme3:
           this.set_echartColor({ data: "#fff" });
           this.set_fleetBg({data: "#393939"})
           break;

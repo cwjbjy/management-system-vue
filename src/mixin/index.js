@@ -43,6 +43,7 @@ export const vuexThemeColor = {
         ...mapState('themeColor', [
             'echartColor',
             'fleetBg',
+            'themes'
         ])
     },
     methods: {

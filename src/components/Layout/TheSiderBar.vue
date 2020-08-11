@@ -14,7 +14,7 @@
       <template v-for="item in newMenus">
         <el-submenu :index="item.name" :key="item.name" v-if="item.children">
           <template slot="title">
-            <img :src="item.icon" class="icon" alt="加载失败"/>
+            <img :src="item.icon" class="icon" alt="加载失败" />
             <span slot="title">{{ item.name }}</span>
           </template>
           <template v-for="item1 in item.children">
@@ -32,7 +32,7 @@
           </template>
         </el-submenu>
         <el-menu-item :index="item.path" :key="item.name" v-else>
-          <img :src="item.icon" class="icon" alt="加载失败"/>
+          <img :src="item.icon" class="icon" alt="加载失败" />
           <span slot="title">{{item.name}}</span>
         </el-menu-item>
       </template>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { vuexThemeColor } from "@/mixin";
 export default {
   name: "menus",
   data() {
@@ -52,37 +53,37 @@ export default {
           name: "系统首页",
           path: "/firstItem",
           key: "firstItem",
-          icon: require("@/assets/images/menus/home.png")
+          icon: require("@/assets/images/menus/home.png"),
         },
         {
           name: "模拟航线",
           path: "/fleet",
           key: "fleet",
-          icon: require("@/assets/images/menus/echarts_heatmap.png")
+          icon: require("@/assets/images/menus/echarts_heatmap.png"),
         },
         {
           name: "图片上传",
           path: "/fileUp",
           key: "fileUp",
-          icon: require("@/assets/images/menus/upload.png")
+          icon: require("@/assets/images/menus/upload.png"),
         },
         {
           name: "文件预览",
           path: "/pdf",
           key: "pdf",
-          icon: require("@/assets/images/menus/pdf.png")
+          icon: require("@/assets/images/menus/pdf.png"),
         },
         {
           name: "基础图表",
           path: "/baseEcharts",
           key: "baseEcharts",
-          icon: require("@/assets/images/menus/echarts.png")
+          icon: require("@/assets/images/menus/echarts.png"),
         },
         {
           name: "基础表格",
           path: "/baseTable",
           key: "baseTable",
-          icon: require("@/assets/images/menus/baseTable.png")
+          icon: require("@/assets/images/menus/baseTable.png"),
         },
         {
           name: "拖拽组件",
@@ -92,20 +93,20 @@ export default {
             {
               name: "拖拽列表",
               path: "/dragList",
-              key: "dragList"
+              key: "dragList",
             },
             {
               name: "拖拽弹框",
               path: "/dragDialog",
-              key: "dragDialog"
-            }
-          ]
+              key: "dragDialog",
+            },
+          ],
         },
         {
           name: "语言转换",
           icon: require("@/assets/images/menus/I18n.png"),
           path: "/I18n",
-          key: "I18n"
+          key: "I18n",
         },
         {
           name: "流程图",
@@ -115,68 +116,69 @@ export default {
             {
               name: "一般流程图",
               path: "/commonChart",
-              key: "commonChart"
+              key: "commonChart",
             },
             {
               name: "定位流程图",
               path: "/positionChart",
-              key: "positionChart"
+              key: "positionChart",
             },
             {
               name: "折叠流程图",
               path: "/foldChart",
-              key: "foldChart"
-            }
-          ]
+              key: "foldChart",
+            },
+          ],
         },
         {
           name: "放大镜",
           path: "/magnifying",
           key: "magnifying",
-          icon: require("@/assets/images/menus/magnifying.png")
+          icon: require("@/assets/images/menus/magnifying.png"),
         },
         {
           name: "聊天室",
           path: "/chatRoom",
           key: "chatRoom",
-          icon: require("@/assets/images/menus/chat.png")
+          icon: require("@/assets/images/menus/chat.png"),
         },
         {
           name: "后台管理",
           icon: require("@/assets/images/menus/manage.png"),
           path: "/manage",
-          key: "manage"
-        }
+          key: "manage",
+        },
       ],
       newMenus: [],
       themeColor: "",
       bgColor: "#545c64",
       textColor: "#fff",
-      activeTextColor: "#ffd04b"
+      activeTextColor: "#ffd04b",
     };
   },
   watch: {
     themeColor(newValue) {
       switch (newValue) {
-        case "gray":
+        case this.themes.theme1:
           this.bgColor = "#545c64";
           break;
-        case "blue":
+        case this.themes.theme2:
           this.bgColor = "#336ea9";
           break;
-        case "black":
+        case this.themes.theme3:
           this.bgColor = "#303030";
           break;
         default:
           break;
       }
-    }
+    },
   },
+  mixins: [vuexThemeColor],
   created() {
-    var ua = navigator.userAgent.toLowerCase();  
-    console.log('ua',ua)
+    var ua = navigator.userAgent.toLowerCase();
+    console.log("ua", ua);
     let authMenus = this.$cookies.get("authMenus").split(",");
-    this.menus.forEach(item => {
+    this.menus.forEach((item) => {
       if (item.key && authMenus.includes(item.key)) {
         this.newMenus.push(item);
       }
@@ -186,26 +188,26 @@ export default {
     this.$router.push(path);
   },
   mounted() {
-    window.eventBus.$on("collapse", value => {
+    window.eventBus.$on("collapse", (value) => {
       this.isCollapse = value;
     });
-    window.eventBus.$on("update:color", value => {
+    window.eventBus.$on("update:color", (value) => {
       this.themeColor = value;
     });
-    window.eventBus.$on("update:router",value =>{
+    window.eventBus.$on("update:router", (value) => {
       this.defaultActive = value;
-    })
+    });
   },
   beforeDestroy() {
     window.eventBus.$off("collapse");
     window.eventBus.$off("update:color");
-    window.eventBus.$off("update:router")
+    window.eventBus.$off("update:router");
   },
   methods: {
     handleSelect(index) {
       this.defaultActive = index;
-    }
-  }
+    },
+  },
 };
 </script>
 

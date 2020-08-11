@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { vuexThemeColor } from "../../mixin";
 export default {
   watch: {
     model: function (newData) {
@@ -18,6 +19,7 @@ export default {
   data() {
     return {};
   },
+    mixins: [vuexThemeColor],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
@@ -181,7 +183,7 @@ export default {
           axisLine: {
             //指向外圈文本的分隔线样式
             lineStyle: {
-              color: "#153269",
+              color: this.echartColor,
             },
           },
           splitLine: {
