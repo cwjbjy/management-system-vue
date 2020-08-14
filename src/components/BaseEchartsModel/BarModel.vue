@@ -125,7 +125,9 @@ export default {
           },
         ],
       };
+      
       echartsInstance.setOption(option);
+      // console.log(echartsInstance.getModel().getComponent("yAxis").axis.scale._extent)
     },
     autoSize() {
       this.$nextTick(() => {
