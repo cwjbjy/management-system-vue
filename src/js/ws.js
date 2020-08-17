@@ -1,3 +1,4 @@
+//websocket通信V1.0版
 export default {
     websocketFun(params) {
         if ("WebSocket" in window){
@@ -15,6 +16,7 @@ export default {
                     break;
             }
             let ws = new WebSocket(baseUrl);
+            console.log(ws)
             ws.onclose = function () {
                 console.error("web channel closed");
             };

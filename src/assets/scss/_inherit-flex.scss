@@ -5,6 +5,12 @@
     justify-content: flex-end;
 }
 
+%main_centerLeft{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 %cross_center {
     display: flex;
     flex-wrap: nowrap;
