@@ -22,53 +22,30 @@
 
 <script>
 import API from "@/service/api";
-import { getURL,vuexRoot } from "@/mixin";
+import { uploadURL,getURL,vuexRoot } from "@/mixin";
 export default {
   name: "fileUp",
   data() {
     return {
-      imageUrl: "",
       headers: {
         Authorization: ""
+      },
+      user:{
+        user_name:""
       }
     };
   },
-  computed: {
-    getUrl() {
-      const env = process.env.NODE_ENV;
-      let baseURL = "";
-      switch (env) {
-        case "development":
-          baseURL = "//127.0.0.1:9000/api/uploadImage";
-          break;
-        case "production":
-          baseURL = "https://wen.cwjbjy.online/api/uploadImage";
-          break;
-      }
-      return baseURL;
-    }
-  },
-  mixins: [getURL,vuexRoot],
+  mixins: [uploadURL,getURL,vuexRoot],
   created() {
     let token = Vue.$cookies.get("token");
     this.headers.Authorization = token;
-    this.getImage();
+    this.user.user_name = this.user_name
   },
   methods: {
     onSuccess(response, file) {
       this.$message.success(response.message);
-      this.getImage();
       //更换头部图片
       window.eventBus.$emit('update:img')
-    },
-    getImage() {
-      let params = {
-        user_name: this.user_name
-      };
-      API.getImage(params).then(res => {
-        let fileName = res.data.Data[0].photo;
-        this.imageUrl = `${this.baseURL}${fileName}`;
-      });
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg" || file.type === "image/png";

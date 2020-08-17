@@ -4,7 +4,7 @@ import {
     mapActions,
     mapGetters
 } from 'vuex'
-export const vuexRoot = {
+const vuexRoot = {
     computed: {
         /*将this.userName映射为this.$store.state.userName*/
         ...mapState([
@@ -36,7 +36,7 @@ export const vuexRoot = {
     }
 }
 
-export const vuexThemeColor = {
+const vuexThemeColor = {
     computed: {
         /* 把 `this.echartFontColor` 映射为 
         `this.$store.state.themeColor.echartFontColor`*/
@@ -56,16 +56,16 @@ export const vuexThemeColor = {
     },
 }
 
-export const getURL = {
+const getURL = {
     computed: {
         baseURL() {
             const env = process.env.NODE_ENV;
             let url = "";
             switch (env) {
-                case "development":
+                case 'development':
                     url = "//127.0.0.1:9000/images/";
                     break;
-                case "production":
+                case 'production':
                     url = "https://wen.cwjbjy.online/images/";
                     break;
                 default:
@@ -74,4 +74,29 @@ export const getURL = {
             return url;
         }
     }
+}
+
+const uploadURL = {
+    computed: {
+        getUrl() {
+            const env = process.env.NODE_ENV;
+            let baseURL = "";
+            switch (env) {
+                case "development":
+                    baseURL = "//127.0.0.1:9000/api/uploadImage";
+                    break;
+                case "production":
+                    baseURL = "https://wen.cwjbjy.online/api/uploadImage";
+                    break;
+            }
+            return baseURL;
+        }
+    },
+}
+
+export {
+    vuexRoot,
+    vuexThemeColor,
+    getURL,
+    uploadURL
 }
