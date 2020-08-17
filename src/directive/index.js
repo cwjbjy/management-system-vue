@@ -1,4 +1,4 @@
-let directive = function (Vue) {
+export default function directive(Vue) {
     Vue.directive('title', {
         inserted: function (el, binding) {
             document.title = binding.value
@@ -82,4 +82,4 @@ let directive = function (Vue) {
     })
 }
 
-export default directive
+ 

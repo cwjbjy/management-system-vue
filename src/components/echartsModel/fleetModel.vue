@@ -5,6 +5,7 @@
 <script>
 // const echarts = require('echarts')
 import { vuexThemeColor } from "../../mixin";
+import {bus} from '@/constants'
 export default {
   name: "fleetModel",
   components: {},
@@ -24,7 +25,7 @@ export default {
   },
   mixins: [vuexThemeColor],
   mounted() {
-    window.eventBus.$on("update:echartColor", () => {
+    window.eventBus.$on(bus.updateEcharts, () => {
       this.prepareDomain(this.model);
     });
   },
@@ -34,7 +35,7 @@ export default {
     if (echartsInstance) {
       echarts.dispose(echartsInstance);
     }
-    window.eventBus.$off("update:echartColor");
+    window.eventBus.$off(bus.updateEcharts);
   },
   methods: {
     prepareDomain(model) {

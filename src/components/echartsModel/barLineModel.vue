@@ -4,6 +4,7 @@
 
 <script>
 import { vuexThemeColor } from "../../mixin";
+import {bus} from '@/constants'
 export default {
   watch: {
     model: function (newData) {
@@ -23,19 +24,19 @@ export default {
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
-    window.eventBus.$on("collapse", () => {
+    window.eventBus.$on(bus.collapse, () => {
       setTimeout(() => {
         this.autoSize();
       }, 400);
     });
-    window.eventBus.$on("update:echartColor", () => {
+    window.eventBus.$on(bus.updateEcharts, () => {
       this.prepareDomain(this.model);
     });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
-    window.eventBus.$off("collapse");
-    window.eventBus.$off("update:echartColor")
+    window.eventBus.$off(bus.collapse);
+    window.eventBus.$off(bus.updateEcharts)
   },
   methods: {
     prepareDomain(model) {

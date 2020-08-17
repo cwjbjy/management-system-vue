@@ -23,6 +23,7 @@
 <script>
 import API from "@/service/api";
 import { uploadURL,getURL,vuexRoot } from "@/mixin";
+import {bus} from "@/constants"
 export default {
   name: "fileUp",
   data() {
@@ -45,7 +46,7 @@ export default {
     onSuccess(response, file) {
       this.$message.success(response.message);
       //更换头部图片
-      window.eventBus.$emit('update:img')
+      window.eventBus.$emit(bus.updateImg)
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg" || file.type === "image/png";

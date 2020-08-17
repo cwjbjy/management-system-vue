@@ -42,6 +42,7 @@
 
 <script>
 import websocketConnect from "@/js/ws";
+import {bus} from '@/constants'
 export default {
   name: "chatRoom",
   data() {
@@ -59,7 +60,7 @@ export default {
     this.mess = document.getElementById("mess");
     let that = this;
     document.addEventListener("keydown", that.keyDown);
-    window.eventBus.$on("page1", (value) => {
+    window.eventBus.$on(bus.updateWs, (value) => {
       let time = new Date();
       this.$nextTick(() => {
         this.mess.innerHTML += `${time.toUTCString()}<br>${value.name}${
@@ -69,7 +70,7 @@ export default {
     });
   },
   deactivated() {
-    window.eventBus.$off("page1");
+    window.eventBus.$off(bus.updateWs);
     let that = this;
     document.removeEventListener("keydown", that.keyDown);
   },

@@ -47,6 +47,7 @@
 <script>
 import API from "@/service/api";
 import { getURL,vuexRoot,vuexThemeColor } from "@/mixin";
+import {echartColor,bus} from '@/constants'
 export default {
   name: "HomeHeader",
   data() {
@@ -62,19 +63,17 @@ export default {
     this.getImage();
   },
   mounted() {
-    //上传完图片后及时更新
-    window.eventBus.$on("update:img", () => {
+    window.eventBus.$on(bus.updateImg, () => {
       this.getImage();
     });
   },
   beforeDestroy() {
-    window.eventBus.$off("update:img");
+    window.eventBus.$off(bus.updateImg);
   },
   methods: {
-    // 用户名下拉菜单选择事件
     handleCommand(command) {
-      if (command == "loginout") {
-        this.$router.push("/login");
+      if (command == 'loginout') {
+        this.$router.push('/login');
         location.reload();
       }
     },
@@ -83,28 +82,28 @@ export default {
       this.theme = command;
       switch (command) {
         case this.themes.theme1:
-          this.set_echartColor({ data: "#333" });
-          this.set_fleetBg({data: "rgb(6,42,88)"})
+          this.set_echartColor({ data: echartColor.gray_font });
+          this.set_fleetBg({data: echartColor.gray_fleetBg})
           break;
         case this.themes.theme2:
-          this.set_echartColor({ data: "#333" });
-          this.set_fleetBg({data: "rgb(6,42,88)"})
+          this.set_echartColor({ data: echartColor.blue_font });
+          this.set_fleetBg({data: echartColor.blue_fleetBg})
           break;
         case this.themes.theme3:
-          this.set_echartColor({ data: "#fff" });
-          this.set_fleetBg({data: "#393939"})
+          this.set_echartColor({ data: echartColor.black_font });
+          this.set_fleetBg({data: echartColor.black_fleetBg})
           break;
         default:
           break;
       }
-      this.$emit("update:color-change", command);
-      window.eventBus.$emit("update:color", command);
-      window.eventBus.$emit("update:echartColor")
+      this.$emit('update:color-change', command);
+      window.eventBus.$emit(bus.updateSiderBar, command);
+      window.eventBus.$emit(bus.updateEcharts)
     },
     // 侧边栏折叠
     collapseChage() {
       this.collapse = !this.collapse;
-      window.eventBus.$emit("collapse", this.collapse);
+      window.eventBus.$emit(bus.collapse, this.collapse);
     },
     // 全屏事件
     handleFullScreen() {

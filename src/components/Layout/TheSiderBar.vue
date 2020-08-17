@@ -42,113 +42,13 @@
 
 <script>
 import { vuexThemeColor } from "@/mixin";
+import {bus,menus} from "@/constants"
 export default {
   name: "menus",
   data() {
     return {
       defaultActive: "/firstItem",
       isCollapse: false,
-      menus: [
-        {
-          name: "系统首页",
-          path: "/firstItem",
-          key: "firstItem",
-          icon: require("@/assets/images/menus/home.png"),
-        },
-        {
-          name: "模拟航线",
-          path: "/fleet",
-          key: "fleet",
-          icon: require("@/assets/images/menus/echarts_heatmap.png"),
-        },
-        {
-          name: "图片上传",
-          path: "/fileUp",
-          key: "fileUp",
-          icon: require("@/assets/images/menus/upload.png"),
-        },
-        {
-          name: "文件预览",
-          path: "/pdf",
-          key: "pdf",
-          icon: require("@/assets/images/menus/pdf.png"),
-        },
-        {
-          name: "基础图表",
-          path: "/baseEcharts",
-          key: "baseEcharts",
-          icon: require("@/assets/images/menus/echarts.png"),
-        },
-        {
-          name: "基础表格",
-          path: "/baseTable",
-          key: "baseTable",
-          icon: require("@/assets/images/menus/baseTable.png"),
-        },
-        {
-          name: "拖拽组件",
-          key: "drag",
-          icon: require("@/assets/images/menus/drag.png"),
-          children: [
-            {
-              name: "拖拽列表",
-              path: "/dragList",
-              key: "dragList",
-            },
-            {
-              name: "拖拽弹框",
-              path: "/dragDialog",
-              key: "dragDialog",
-            },
-          ],
-        },
-        {
-          name: "语言转换",
-          icon: require("@/assets/images/menus/I18n.png"),
-          path: "/I18n",
-          key: "I18n",
-        },
-        {
-          name: "流程图",
-          key: "flowChart",
-          icon: require("@/assets/images/menus/flowChart.png"),
-          children: [
-            {
-              name: "一般流程图",
-              path: "/commonChart",
-              key: "commonChart",
-            },
-            {
-              name: "定位流程图",
-              path: "/positionChart",
-              key: "positionChart",
-            },
-            {
-              name: "折叠流程图",
-              path: "/foldChart",
-              key: "foldChart",
-            },
-          ],
-        },
-        {
-          name: "放大镜",
-          path: "/magnifying",
-          key: "magnifying",
-          icon: require("@/assets/images/menus/magnifying.png"),
-        },
-        {
-          name: "聊天室",
-          path: "/chatRoom",
-          key: "chatRoom",
-          icon: require("@/assets/images/menus/chat.png"),
-        },
-        {
-          name: "后台管理",
-          icon: require("@/assets/images/menus/manage.png"),
-          path: "/manage",
-          key: "manage",
-        },
-      ],
       newMenus: [],
       themeColor: "",
       bgColor: "#545c64",
@@ -178,7 +78,7 @@ export default {
     var ua = navigator.userAgent.toLowerCase();
     console.log("ua", ua);
     let authMenus = this.$cookies.get("authMenus").split(",");
-    this.menus.forEach((item) => {
+    menus.forEach((item) => {
       if (item.key && authMenus.includes(item.key)) {
         this.newMenus.push(item);
       }
@@ -188,20 +88,20 @@ export default {
     this.$router.push(path);
   },
   mounted() {
-    window.eventBus.$on("collapse", (value) => {
+    window.eventBus.$on(bus.collapse, (value) => {
       this.isCollapse = value;
     });
-    window.eventBus.$on("update:color", (value) => {
+    window.eventBus.$on(bus.updateSiderBar, (value) => {
       this.themeColor = value;
     });
-    window.eventBus.$on("update:router", (value) => {
+    window.eventBus.$on(bus.updateRouter, (value) => {
       this.defaultActive = value;
     });
   },
   beforeDestroy() {
-    window.eventBus.$off("collapse");
-    window.eventBus.$off("update:color");
-    window.eventBus.$off("update:router");
+    window.eventBus.$off(bus.collapse);
+    window.eventBus.$off(bus.updateSiderBar);
+    window.eventBus.$off(bus.updateRouter);
   },
   methods: {
     handleSelect(index) {

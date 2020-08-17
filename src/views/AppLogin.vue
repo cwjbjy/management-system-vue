@@ -83,7 +83,7 @@
 <script>
 import API from "@/service/api";
 import rules from "@/js/rules";
-import comfun from "@/js/comFunc";
+import {getTime} from "@/js/comFunc";
 import { route_admin, route_user } from "@/router/routes";
 import { vuexRoot } from "@/mixin";
 export default {
@@ -194,8 +194,8 @@ export default {
               userName: this.reg.reg_name,
               passWord: this.reg.rge_pass,
               authority: "2",
-              createTime: comfun.getTime(),
-              photo: "userlogo.png",
+              createTime: getTime(),
+              photo: 'userlogo.png',
             };
             API.register(params)
               .then((res) => {

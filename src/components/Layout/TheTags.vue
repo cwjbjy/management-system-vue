@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import {bus} from '@/constants'
 export default {
   data() {
     return {
@@ -92,7 +93,7 @@ export default {
     },
     routerClick(value) {
       this.$router.push(value);
-      window.eventBus.$emit("update:router", value);
+      window.eventBus.$emit(bus.updateRouter, value);
     },
   },
 };

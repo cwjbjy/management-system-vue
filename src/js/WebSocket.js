@@ -1,4 +1,5 @@
 //websocket通信v2.0版
+import {bus} from "@/constants";
 const env = process.env.NODE_ENV;
 let baseUrl = "";
 switch (env) {
@@ -11,7 +12,7 @@ switch (env) {
     default:
         break;
 }
-class WebsocketClass {
+export default class WebsocketClass {
     constructor({topic="",closeCallBack=null}={}){
         this.client = null;//客户端WebSocket实例
         this.topic = `${baseUrl}${topic}`
@@ -79,7 +80,7 @@ class WebsocketClass {
                 if (data.name === 'heart') {
                     console.log(data.text)
                 } else {
-                    window.eventBus.$emit('page1', data);
+                    window.eventBus.$emit(bus.updateWs, data);
                 }
                 that.heartCheck.reSet();
             }
@@ -107,4 +108,3 @@ class WebsocketClass {
     }
 }
 
-export default WebsocketClass

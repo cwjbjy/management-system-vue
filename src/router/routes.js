@@ -27,7 +27,7 @@ const ChatRoom = () => import( /* webpackChunkName: "ChatRoom" */ "@/views/ChatR
 
 const UserManage = () => import( /* webpackChunkName: "UserManage" */ "@/views/UserManage.vue")
 
-export const routes = [{
+const routes = [{
         path: '/',
         redirect: '/firstItem'
     },
@@ -47,7 +47,7 @@ export const routes = [{
     }
 ]
 
-export const route_admin = [{
+const route_admin = [{
         path: '/home',
         meta: {
             title: 'home'
@@ -135,7 +135,7 @@ export const route_admin = [{
     },
 ]
 
-export const route_user = [{
+const route_user = [{
         path: '/home',
         meta: {
             title: 'home'
@@ -208,3 +208,5 @@ export const route_user = [{
         redirect: '/404'
     },
 ]
+
+export {routes,route_admin,route_user}
