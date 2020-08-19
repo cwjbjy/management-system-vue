@@ -4,17 +4,7 @@ import {
 
 var HttpClient = {};
 
-const env = process.env.NODE_ENV;
-let baseURL = "";
-
-switch (env) {
-  case 'development':
-    baseURL = "//127.0.0.1:9000/api"
-    break;
-  case 'production':
-    baseURL = "https://wen.cwjbjy.online/api"
-    break;
-}
+let baseURL = process.env.VUE_APP_BASEURL;
 
 /*
  * 创建实例

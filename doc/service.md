@@ -5,9 +5,15 @@
 # 目录结构
 
 service
-|——api.js (后端请求地址)
-|——httpClient.js (基础配置文件)
-|——loaclData.js (本地json数据)
+|——axios
+    |——api.js (后端请求地址)
+    |——httpClient.js (基础配置文件)
+    |——loaclData.js (本地json数据)
+|——fetch
+    |——_auth.js (鉴权模块)
+    |——api.js (请求接口)
+    |——httpClient.js (fetch封装)
+|——insService.js (WebSocket通信接口)
 
 # 文件命名
 

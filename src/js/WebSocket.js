@@ -1,17 +1,8 @@
 //websocket通信v2.0版
 import {bus} from "@/constants";
-const env = process.env.NODE_ENV;
-let baseUrl = "";
-switch (env) {
-    case "development":
-        baseUrl = "ws://127.0.0.1:3999";
-        break;
-    case "production":
-        baseUrl = "wss://wss.cwjbjy.online";
-        break;
-    default:
-        break;
-}
+
+let baseUrl = process.env.VUE_APP_WS;
+
 export default class WebsocketClass {
     constructor({topic="",closeCallBack=null}={}){
         this.client = null;//客户端WebSocket实例

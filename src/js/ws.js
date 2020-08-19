@@ -3,18 +3,7 @@ export default {
     websocketFun(params) {
         if ("WebSocket" in window){
             console.log('您的浏览器支持 WebSocket!')
-            const env = process.env.NODE_ENV;
-            let baseUrl = "";
-            switch (env) {
-                case "development":
-                    baseUrl = "ws://127.0.0.1:3999";
-                    break;
-                case "production":
-                    baseUrl = "wss://wss.cwjbjy.online";
-                    break;
-                default:
-                    break;
-            }
+            let baseUrl = process.env.VUE_APP_WS;
             let ws = new WebSocket(baseUrl);
             console.log(ws)
             ws.onclose = function () {

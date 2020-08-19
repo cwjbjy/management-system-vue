@@ -59,19 +59,7 @@ const vuexThemeColor = {
 const getURL = {
     computed: {
         baseURL() {
-            const env = process.env.NODE_ENV;
-            let url = "";
-            switch (env) {
-                case 'development':
-                    url = "//127.0.0.1:9000/images/";
-                    break;
-                case 'production':
-                    url = "https://wen.cwjbjy.online/images/";
-                    break;
-                default:
-                    break;
-            }
-            return url;
+          return process.env.VUE_APP_IMAGE;
         }
     }
 }
@@ -79,17 +67,7 @@ const getURL = {
 const uploadURL = {
     computed: {
         getUrl() {
-            const env = process.env.NODE_ENV;
-            let baseURL = "";
-            switch (env) {
-                case "development":
-                    baseURL = "//127.0.0.1:9000/api/uploadImage";
-                    break;
-                case "production":
-                    baseURL = "https://wen.cwjbjy.online/api/uploadImage";
-                    break;
-            }
-            return baseURL;
+            return process.env.VUE_APP_UPLOADIMAGE;
         }
     },
 }
