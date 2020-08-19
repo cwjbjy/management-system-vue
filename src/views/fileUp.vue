@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import API from "@/service/api";
+import API from "@/service/axios/api";
 import { uploadURL,getURL,vuexRoot } from "@/mixin";
 import {bus} from "@/constants"
 export default {

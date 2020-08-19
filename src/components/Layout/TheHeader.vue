@@ -45,7 +45,7 @@
   </div>
 </template>
 <script>
-import API from "@/service/api";
+import API from "@/service/axios/api";
 import { getURL,vuexRoot,vuexThemeColor } from "@/mixin";
 import {echartColor,bus} from '@/constants'
 export default {

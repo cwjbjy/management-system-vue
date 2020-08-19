@@ -1,6 +1,6 @@
 import HttpClient from './httpClient'
 
-var API = {};
+let API = {};
 
 API.login = (params) =>{
   return HttpClient.instance.post('/login',params)

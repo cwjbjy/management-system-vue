@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import API from "@/service/api";
+import API from "@/service/axios/api";
 import HomeHeader from "@/components/Layout/TheHeader";
 import siderBar from "@/components/Layout/TheSiderBar";
 import Tags from "@/components/Layout/TheTags";

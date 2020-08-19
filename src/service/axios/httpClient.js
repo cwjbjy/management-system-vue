@@ -1,4 +1,3 @@
-import qs from 'qs'
 import {
   Message
 } from "element-ui";
@@ -66,7 +65,7 @@ HttpClient.instance.interceptors.response.use(config => {
   // }else{
   //   Message.error("网络错误，请稍后重试");
   // }
-  Message.error("网络错误，请稍后重试");
+  // Message.error("网络错误，请稍后重试");
   return Promise.reject(error)
 });
 

@@ -89,7 +89,8 @@
 </template>
 
 <script>
-import API from "@/service/api";
+import API from "@/service/axios/api";
+// import fetchAPI from "@/service/fetch/api"
 import barModel from "@/components/EchartsModel/BarLineModel";
 import radarModel from "@/components/EchartsModel/RadarModel";
 import ScheduleComponent from "@/components/TODO/ScheduleComponent"
@@ -121,6 +122,9 @@ export default {
       let params = {
         user_name: this.user_name,
       };
+      // fetchAPI.getUser(params).then(res=>{
+      //   console.log(res)
+      // })
       API.getUser(params).then((res) => {
         this.registerTime = res.data.Data[0].createTime;
       });

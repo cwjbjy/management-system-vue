@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import API from "@/service/api";
+import API from "@/service/axios/api";
 import rules from "@/js/rules";
 import {getTime} from "@/js/comFunc";
 import { route_admin, route_user } from "@/router/routes";
@@ -113,7 +113,7 @@ export default {
       authCode: "",
       ruleForm: {
         name: "一叶扁舟",
-        pass: "cwj18351071268",
+        pass: "123456zx",
       },
       reg: {
         reg_name: "",

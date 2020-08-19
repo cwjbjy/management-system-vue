@@ -6,7 +6,7 @@
 
 <script>
 import fleetModel from "@/components/EchartsModel/FleetModel";
-import localData from "@/service/localData";
+import localData from "@/service/axios/localData";
 export default {
   name: "fleetLine",
   components: {
