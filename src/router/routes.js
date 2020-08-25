@@ -7,25 +7,25 @@ const notFound = () => import( /* webpackChunkName: "notFound" */ '@/views/NotFo
 
 const AppHome = () => import( /* webpackChunkName: "AppHome" */ '@/views/AppHome.vue')
 
-const HomePage = () => import( /* webpackChunkName: "HomePage" */ '@/views/HomePage.vue')
+const HomePage = () => import( /* webpackChunkName: "HomePage" */ '@/views/homePage.vue')
 
-const FleetLine = () => import( /* webpackChunkName: "FleetLine" */ '@/views/FleetLine.vue')
+const FleetLine = () => import( /* webpackChunkName: "FleetLine" */ '@/views/fleetLine.vue')
 
-const BaseEcharts = () => import( /* webpackChunkName: "BaseEcharts" */ "@/views/BaseEcharts.vue")
+const BaseEcharts = () => import( /* webpackChunkName: "BaseEcharts" */ "@/views/baseEcharts.vue")
 
-const BaseTable = () => import( /* webpackChunkName: "BaseTable" */ "@/views/BaseTable")
+const BaseTable = () => import( /* webpackChunkName: "BaseTable" */ "@/views/baseTable")
 
-const Magnifying = () => import( /* webpackChunkName: "Magnifying" */ "@/views/Magnifying.vue")
+const Magnifying = () => import( /* webpackChunkName: "Magnifying" */ "@/views/magnifying.vue")
 
-const FileUp = () => import( /* webpackChunkName: "FileUp" */ "@/views/FileUp.vue")
+const FileUp = () => import( /* webpackChunkName: "FileUp" */ "@/views/fileUp.vue")
 
-const PDFPreview = () => import( /* webpackChunkName: "PDFPreview" */ "@/views/PDFPreview.vue")
+const PDFPreview = () => import( /* webpackChunkName: "PDFPreview" */ "@/views/pdfPreview.vue")
 
 const I18n = () => import( /* webpackChunkName: "I18n" */ "@/views/I18n.vue")
 
-const ChatRoom = () => import( /* webpackChunkName: "ChatRoom" */ "@/views/ChatRoomV2.0.vue")
+const ChatRoom = () => import( /* webpackChunkName: "ChatRoom" */ "@/views/chatRoomV2.0.vue")
 
-const UserManage = () => import( /* webpackChunkName: "UserManage" */ "@/views/UserManage.vue")
+const UserManage = () => import( /* webpackChunkName: "UserManage" */ "@/views/userManage.vue")
 
 const routes = [{
         path: '/',
