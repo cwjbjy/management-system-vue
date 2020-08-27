@@ -92,7 +92,7 @@
 import API from "@/service/axios/api";
 // import fetchAPI from "@/service/fetch/api"
 import barModel from "@/components/EchartsModel/BarLineModel";
-import radarModel from "@/components/EchartsModel/RadarModel";
+import radarModel from "@/components/EchartsModel/radarModel";
 import ScheduleComponent from "@/components/TODO/ScheduleComponent"
 import { vuexRoot } from "@/mixin";
 export default {

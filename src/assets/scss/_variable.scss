@@ -8,20 +8,29 @@ $color-font_active:#0078dc;
 $c_pointer:pointer;
 
 $themes: (
-  theme-blue: (font-color: #fff,
+  theme-blue: (
+    /* 字体*/
+    font-color: #fff,
+    /* 布局 */
     header-background:#0678be,
     aside-background:#336ea9,
     main-background:#70a1ff,
     box-shadow-color:#001a48,
+    /* card */
     card-background:#fff,
     card-border:#e9eaec,
     card-font:#666,
     card-active-background:#409eff,
     card-active-border:#409eff,
+    /*拖拽*/
     drag-background:#eff1f5,
+    /*按钮*/
     primary-button:#409EFF,
+    /*飞机背景*/
     fleet-bg:rgb(6, 42, 88),
+    /*字体图标*/
     icon-font:#70a1ff,
+    /*表格*/
     table-th:#d2d6de,
   ),
   theme-gray: (font-color: #fff,
