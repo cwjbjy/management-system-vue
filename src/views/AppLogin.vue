@@ -144,7 +144,6 @@ export default {
     document.addEventListener("keydown", that.keyDown);
   },
   beforeDestroy() {
-    this.moreClick = false; //数据请求完恢复
     let that = this;
     document.removeEventListener("keydown", that.keyDown);
   },
