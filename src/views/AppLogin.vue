@@ -26,7 +26,7 @@
               ></el-input>
             </el-form-item>
             <el-form-item label>
-              <el-button type="primary" style="width:100%" @click="login" :loading="status">登录</el-button>
+              <el-button type="primary" style="width:100%" @click="login">登录</el-button>
             </el-form-item>
           </el-form>
           <div class="forget_pass">
@@ -108,8 +108,8 @@ export default {
     return {
       title: "登陆",
       flag: true,
-      status: false,
       verifyCode: null,
+      moreClick:false, //防止重复点击
       authCode: "",
       ruleForm: {
         name: "一叶扁舟",
@@ -143,8 +143,8 @@ export default {
     let that = this;
     document.addEventListener("keydown", that.keyDown);
   },
-
   beforeDestroy() {
+    this.moreClick = false; //数据请求完恢复
     let that = this;
     document.removeEventListener("keydown", that.keyDown);
   },
@@ -155,7 +155,8 @@ export default {
     login() {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
-          this.status = true;
+          if(this.moreClick) return;
+          this.moreClick = true;
           let fd = new FormData();
           fd.append("userName", this.ruleForm.name);
           fd.append("passWord", this.ruleForm.pass);
@@ -173,13 +174,13 @@ export default {
               this.$router.push("/firstItem");
             })
             .catch((err) => {
+              this.moreClick = false;
               if (err.response.status === 400) {
                 this.$message.error("密码错误");
               } else if (err.response.status === 401) {
                 this.$message.error("用户名错误");
               }
             });
-          this.status = false;
         } else {
           this.$message.error("请检查输入内容");
         }
