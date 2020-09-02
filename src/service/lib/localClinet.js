@@ -7,7 +7,6 @@ let PRE = "CWJ_GLOBAL_"; //前缀
 class LocalClient{
     get({url="",uag=""}){
         let fileName = `${PRE}${uag}`;
-        console.log('fileName',fileName)
         return new Promise((resolve,reject)=>{
             if(document.querySelector(`#${fileName}`)){
                 resolve()
