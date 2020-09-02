@@ -1,8 +1,12 @@
-import WebsocketClass from '../js/WebSocket'
+import WebsocketClass from './lib/WebSocket'
 import {
     Message
   } from "element-ui";
 let WSInstance = null;
+
+/**
+ * 聊天室服务接口
+*/
 
 export default {
     joinMeeting({params="",closeCallBack=null}={}){
