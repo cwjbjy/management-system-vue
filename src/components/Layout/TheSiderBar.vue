@@ -11,40 +11,20 @@
       unique-opened
       router
     >
-      <template v-for="item in newMenus">
-        <el-submenu :index="item.name" :key="item.name" v-if="item.children">
-          <template slot="title">
-            <img :src="item.icon" class="icon" alt="加载失败" />
-            <span slot="title">{{ item.name }}</span>
-          </template>
-          <template v-for="item1 in item.children">
-            <el-submenu v-if="item1.children" :key="item1.name" :index="item1.name">
-              <template slot="title">
-                <span slot="title">{{ item1.name }}</span>
-              </template>
-              <el-menu-item
-                :index="item2.path"
-                :key="item2.name"
-                v-for="item2 in item1.children"
-              >{{item2.name}}</el-menu-item>
-            </el-submenu>
-            <el-menu-item v-else :index="item1.path" :key="item1.path">{{item1.name}}</el-menu-item>
-          </template>
-        </el-submenu>
-        <el-menu-item :index="item.path" :key="item.name" v-else>
-          <img :src="item.icon" class="icon" alt="加载失败" />
-          <span slot="title">{{item.name}}</span>
-        </el-menu-item>
-      </template>
+      <menus-item :list="newMenus"></menus-item>
     </el-menu>
   </nav>
 </template>
 
 <script>
 import { vuexThemeColor } from "@/mixin";
-import {bus,menus} from "@/constants"
+import {bus,menus} from "@/constants";
+import menusItem from "../_lib/menusItem"
 export default {
   name: "menus",
+  components:{
+    menusItem
+  },
   data() {
     return {
       defaultActive: "/firstItem",
@@ -122,10 +102,5 @@ nav::-webkit-scrollbar {
 }
 .sidebar-el-menu:not(.el-menu--collapse) {
   width: 250px;
-}
-.icon {
-  margin-right: 10px;
-  width: 18px;
-  height: 18px;
 }
 </style>
