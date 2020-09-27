@@ -1,4 +1,5 @@
 <template>
+<!-- 适配所有级别菜单 || 一级二级三级等等... -->
   <nav>
     <el-menu
       :default-active="defaultActive"
@@ -19,7 +20,7 @@
 <script>
 import { vuexThemeColor } from "@/mixin";
 import {bus,menus} from "@/constants";
-import menusItem from "../_lib/menusItem"
+import menusItem from "./menusItem";
 export default {
   name: "menus",
   components:{
