@@ -5,7 +5,7 @@ const Login = () => import( /* webpackChunkName: "Login" */ '@/views/AppLogin.vu
 
 const notFound = () => import( /* webpackChunkName: "notFound" */ '@/views/NotFound.vue')
 
-const AppHome = () => import( /* webpackChunkName: "AppHome" */ '@/views/AppHome.vue')
+const wrapper = () => import( /* webpackChunkName: "wrapper" */ '@/components/Layout/wrapper.vue')
 
 const HomePage = () => import( /* webpackChunkName: "HomePage" */ '@/views/homePage.vue')
 
@@ -52,7 +52,7 @@ const route_admin = [{
         meta: {
             title: 'home'
         },
-        component: AppHome,
+        component: wrapper,
         redirect: '/firstItem',
         children: [
             ...chartRouter,
@@ -140,7 +140,7 @@ const route_user = [{
         meta: {
             title: 'home'
         },
-        component: AppHome,
+        component: wrapper,
         redirect: '/firstItem',
         children: [
             ...chartRouter,

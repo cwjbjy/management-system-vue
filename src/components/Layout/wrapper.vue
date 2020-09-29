@@ -15,18 +15,20 @@
               <router-view />
             </keep-alive>
           </transition>
-          <el-backtop target=".app-content" :bottom="100"></el-backtop>
         </article>
       </main>
+      <footer>
+        <el-backtop target=".app-content" :bottom="100"></el-backtop>
+      </footer>
     </div>
   </div>
 </template>
 
 <script>
 import API from "@/service/axios/api";
-import HomeHeader from "@/components/Layout/TheHeader";
+import HomeHeader from "@/components/Layout/header";
 import siderBar from "@/components/_lib/menus";
-import Tags from "@/components/Layout/TheTags";
+import Tags from "@/components/Layout/tags";
 export default {
   name: "home",
   components: {
@@ -40,7 +42,7 @@ export default {
       msg: "Dynamic Themes",
       theme: "gray",
       keepList: [],
-      exList: ["HomePage","fleetLine","BaseEcharts"],
+      exList: ["HomePage", "fleetLine", "BaseEcharts"],
     };
   },
   computed: {
