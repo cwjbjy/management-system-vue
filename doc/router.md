@@ -6,9 +6,6 @@
 # 目录结构
 
 router
-|——modules (模块路由)
-   |——chartRouter.js (流程图模块)
-   |——dragRouter.js (拖拽组件模块)
 |——index.js (组装并导出router)
 |——routes.js (主路由)
 

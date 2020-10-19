@@ -1,31 +1,31 @@
-import chartRouter from './modules/chartRouter'
-import dragRouter from './modules/dragRouter'
+import chartRouter from '@/views/flowChart/routes'
+import dragRouter from '@/views/drag/routes'
 
-const Login = () => import( /* webpackChunkName: "Login" */ '@/views/AppLogin.vue')
+const Login = () => import( /* webpackChunkName: "Login" */ '@/views/login/index.vue')
 
-const notFound = () => import( /* webpackChunkName: "notFound" */ '@/views/NotFound.vue')
+const notFound = () => import( /* webpackChunkName: "notFound" */ '@/views/notFound/index.vue')
 
-const wrapper = () => import( /* webpackChunkName: "wrapper" */ '@/components/Layout/wrapper.vue')
+const AppHome = () => import( /* webpackChunkName: "AppHome" */ '@/components/Layout/AppHome.vue')
 
-const HomePage = () => import( /* webpackChunkName: "HomePage" */ '@/views/homePage.vue')
+const HomePage = () => import( /* webpackChunkName: "HomePage" */ '@/views/homePage/index.vue')
 
-const FleetLine = () => import( /* webpackChunkName: "FleetLine" */ '@/views/fleetLine.vue')
+const FleetLine = () => import( /* webpackChunkName: "FleetLine" */ '@/views/fleetLine/index.vue')
 
-const BaseEcharts = () => import( /* webpackChunkName: "BaseEcharts" */ "@/views/baseEcharts.vue")
+const BaseEcharts = () => import( /* webpackChunkName: "BaseEcharts" */ "@/views/baseEcharts/index.vue")
 
-const BaseTable = () => import( /* webpackChunkName: "BaseTable" */ "@/views/baseTable")
+const BaseTable = () => import( /* webpackChunkName: "BaseTable" */ "@/views/baseTable/index.vue")
 
-const Magnifying = () => import( /* webpackChunkName: "Magnifying" */ "@/views/magnifying.vue")
+const Magnifying = () => import( /* webpackChunkName: "Magnifying" */ "@/views/magnify/index.vue")
 
-const FileUp = () => import( /* webpackChunkName: "FileUp" */ "@/views/fileUp.vue")
+const FileUp = () => import( /* webpackChunkName: "FileUp" */ "@/views/fileUpload/index.vue")
 
-const PDFPreview = () => import( /* webpackChunkName: "PDFPreview" */ "@/views/pdfPreview.vue")
+const PDFPreview = () => import( /* webpackChunkName: "PDFPreview" */ "@/views/pdfPreview/index.vue")
 
-const I18n = () => import( /* webpackChunkName: "I18n" */ "@/views/I18n.vue")
+const I18n = () => import( /* webpackChunkName: "I18n" */ "@/views/I18n/index.vue")
 
-const ChatRoom = () => import( /* webpackChunkName: "ChatRoom" */ "@/views/chatRoomV2.0.vue")
+const ChatRoom = () => import( /* webpackChunkName: "ChatRoom" */ "@/views/chatRoom/chatRoomV2.0.vue")
 
-const UserManage = () => import( /* webpackChunkName: "UserManage" */ "@/views/userManage.vue")
+const UserManage = () => import( /* webpackChunkName: "UserManage" */ "@/views/userManage/index.vue")
 
 const routes = [{
         path: '/',
@@ -52,7 +52,7 @@ const route_admin = [{
         meta: {
             title: 'home'
         },
-        component: wrapper,
+        component: AppHome,
         redirect: '/firstItem',
         children: [
             ...chartRouter,
@@ -140,7 +140,7 @@ const route_user = [{
         meta: {
             title: 'home'
         },
-        component: wrapper,
+        component: AppHome,
         redirect: '/firstItem',
         children: [
             ...chartRouter,
