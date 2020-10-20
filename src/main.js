@@ -9,8 +9,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import { messages } from '../public/utils/i18n';
 import VueI18n from 'vue-i18n';
 import "./assets/icon/iconfont.css";
-
 // import {getGlobalRequestUrl} from './service/enterService'
+import cwjTable from '@wj.cao/table' //基于element-ui封装的递归表格，在个人npm包中
+Vue.use(cwjTable)
 
 Vue.use(VueI18n);
 Vue.use(VueCookies)

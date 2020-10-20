@@ -12,18 +12,19 @@
           >添加</el-button
         >
       </div>
-      <w-table :tableData="tableData" :tableHeader="tableHeader" />
+      <cwj-table :tableData="tableData" :tableHeader="tableHeader" />
+      <!-- <w-table :tableData="tableData" :tableHeader="tableHeader" /> -->
     </el-card>
   </section>
 </template>
 
 <script>
-import WTable from "@/components/_lib/CwjTable";
+// import WTable from "@/components/_lib/CwjTable";
 export default {
   name: "baseTable",
-  components: {
-    WTable,
-  },
+  // components: {
+  //   WTable,
+  // },
   data() {
     return {
       tableHeader: [
