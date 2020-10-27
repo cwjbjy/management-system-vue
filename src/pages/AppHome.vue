@@ -26,9 +26,9 @@
 
 <script>
 import API from "@/service/axios/api";
-import HomeHeader from "@/components/Layout/header";
-import siderBar from "@/components/_lib/menus";
-import Tags from "@/components/Layout/tags";
+import HomeHeader from "@/Layout/header";
+import siderBar from "@/Layout/menus";
+import Tags from "@/Layout/tags";
 export default {
   name: "home",
   components: {
