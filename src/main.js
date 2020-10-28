@@ -6,10 +6,10 @@ import directive from "./directive"
 import filters from "./filter"
 import VueCookies from 'vue-cookies'
 import 'element-ui/lib/theme-chalk/index.css';
-import { messages } from '../public/utils/i18n';
+import { messages } from '../public/static/i18n';
 import VueI18n from 'vue-i18n';
 import "./assets/icon/iconfont.css";
-// import {getGlobalRequestUrl} from './service/enterService'
+// import {getGlobalRequestUrl} from '@/utils/localSource'
 import cwjTable from '@wj.cao/table' //基于element-ui封装的递归表格，在个人npm包中
 Vue.use(cwjTable)
 

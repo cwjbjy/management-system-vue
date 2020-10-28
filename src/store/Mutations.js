@@ -29,6 +29,9 @@ const mutations = {
                 break;
         }
 
+    },
+    SET_STARS(state,data){
+        state.stars = data
     }
 }
 

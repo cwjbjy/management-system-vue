@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import insService from "@/service/insService";
+import insService from "@/service/websocket";
 import { vuexRoot } from "@/mixin";
 import {bus} from '@/constants'
 export default {

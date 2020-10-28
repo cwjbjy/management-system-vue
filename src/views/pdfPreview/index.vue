@@ -17,7 +17,7 @@ export default {
   name: "pdf",
   data() {
     return {
-      src: "/utils/cwj.pdf",
+      src: "/static/cwj.pdf",
       dialogFormVisible: false,
     };
   },

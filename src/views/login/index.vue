@@ -82,8 +82,8 @@
 
 <script>
 import API from "@/service/axios/api";
-import rules from "@/js/rules";
-import {getTime} from "@/js/comFunc";
+import rules from "@/utils/rules";
+import {getTime} from "@/utils/comFunc";
 import { route_admin, route_user } from "@/router/routes";
 import { vuexRoot } from "@/mixin";
 export default {

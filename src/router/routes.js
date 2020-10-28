@@ -1,11 +1,11 @@
 import chartRouter from '@/views/flowChart/routes'
 import dragRouter from '@/views/drag/routes'
 
-const Login = () => import( /* webpackChunkName: "Login" */ '@/pages/login/index.vue')
+const Login = () => import( /* webpackChunkName: "Login" */ '@/views/login/index.vue')
 
 const notFound = () => import( /* webpackChunkName: "notFound" */ '@/views/notFound/index.vue')
 
-const AppHome = () => import( /* webpackChunkName: "AppHome" */ '@/pages/AppHome.vue')
+const AppHome = () => import( /* webpackChunkName: "AppHome" */ '@/layout/AppHome.vue')
 
 const HomePage = () => import( /* webpackChunkName: "HomePage" */ '@/views/homePage/index.vue')
 
