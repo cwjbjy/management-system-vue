@@ -6,18 +6,18 @@
 
 # 目录结构
 
-vuex
-|——ThemeColor (主题色模块)
+store
+|——themeColor (主题色模块)
    |——index.js (组装主题色模块并导出)
    |——mutations.js (主题色模块的 mutations)
-   |——store.js (主题色模块的数据仓库)
+   |——state.js (主题色模块的数据仓库)
    |——...
 |——...(模块2)
 |——Actions.js (根级别的 action)
 |——Getters.js (根级别的 Getter)
 |——index.js (组装模块并导出 store)
 |——Mutations.js (根级别 mutation)
-|——Store.js (根级别数据仓库)
+|——State.js (根级别数据仓库)
 
 # 文件命名
 

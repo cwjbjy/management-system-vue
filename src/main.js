@@ -1,7 +1,7 @@
 // import Vue from 'vue';
 import App from './App.vue'
 import router from './router'
-import store from './vuex'
+import store from './store'
 import directive from "./directive"
 import filters from "./filter"
 import VueCookies from 'vue-cookies'
