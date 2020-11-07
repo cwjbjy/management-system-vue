@@ -1,6 +1,6 @@
-const dragDiv = () => import( /* webpackChunkName: "dragDiv:drag" */ "../dragDiv")
-const dragDialog = () => import( /* webpackChunkName: "dragDialog:drag" */ "../dragDialog")
-const dragList = () => import( /* webpackChunkName: "dragList:drag" */ "../dragList")
+const dragDiv = () => import( /* webpackChunkName: "dragDiv" */ "../dragDiv")
+const dragDialog = () => import( /* webpackChunkName: "dragDialog" */ "../dragDialog")
+const dragList = () => import( /* webpackChunkName: "dragList" */ "../dragList")
 
 export default [{
         path: '/dragDialog',

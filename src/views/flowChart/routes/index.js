@@ -1,7 +1,7 @@
 //流程图路由模块
-const positionChart = () => import( /* webpackChunkName: "positionChart:chart" */ "../positionChart")
-const commonChart = () => import( /* webpackChunkName: "commonChart:chart" */ "../commonChart")
-const foldChart = () => import( /* webpackChunkName: "foldChart:chart" */ "../foldChart")
+const positionChart = () => import( /* webpackChunkName: "positionChart" */ "../positionChart")
+const commonChart = () => import( /* webpackChunkName: "commonChart" */ "../commonChart")
+const foldChart = () => import( /* webpackChunkName: "foldChart" */ "../foldChart")
 
 export default [{
         path: '/commonChart',

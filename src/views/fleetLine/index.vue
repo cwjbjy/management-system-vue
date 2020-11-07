@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import fleetModel from "@/components/EchartsModel/FleetModel";
+import fleetModel from "@/components/echartsModel/fleetModel";
 import localData from "@/service/axios/localData";
 export default {
   name: "fleetLine",
