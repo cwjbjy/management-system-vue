@@ -29,9 +29,9 @@
               <el-button type="primary" style="width:100%" @click="login">登录</el-button>
             </el-form-item>
           </el-form>
-          <div class="forget_pass">
+          <!-- <div class="forget_pass">
             <span>忘记密码</span>
-          </div>
+          </div> -->
           <div class="other-acc-hd">
             <h3>第三方账号登录</h3>
           </div>
@@ -306,12 +306,12 @@ export default {
     }
     .other-acc-hd {
       width: 65%;
-      height: 28px;
+      height: 20px;
       margin: 0 auto 30px auto;
       border-bottom: 1px solid #e6e6e6;
       text-align: center;
+       position: relative;
       h3 {
-        display: inline-block;
         height: 30px;
         line-height: 30px;
         padding: 0 10px;
@@ -320,6 +320,9 @@ export default {
         font-weight: normal;
         color: #999;
         background: #fff;
+        position: absolute;
+        left: 22%;
+        top: 5px;
       }
     }
     .img_list {
