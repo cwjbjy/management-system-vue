@@ -36,7 +36,7 @@ class FetchClient {
             break;
         }
 
-        if( method == 'GET' || method == 'HEAD' || method == 'DELETE'){
+        if( method === 'GET' || method === 'HEAD' || method === 'DELETE'){
             //fetch对GET请求等，不支持将参数传在body上，只能拼接url (axios可以)
             data = qs.stringify(data,{arrayFormat: 'brackets'});
             url = `${url}?${data}`
