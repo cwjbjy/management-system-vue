@@ -70,7 +70,7 @@
             </el-form-item>
           </el-form>
           <div class="verification_class">
-            <el-input v-model="authCode" placeholder="请输入验证码"></el-input>
+            <el-input v-model="authCode" placeholder="验证码区分大小写"></el-input>
             <div id="v_container" style="width: 200px;height: 50px;"></div>
           </div>
           <el-button type="primary" style="width:100%" @click="register">注册</el-button>
@@ -193,7 +193,7 @@ export default {
             let params = {
               userName: this.reg.reg_name,
               passWord: this.reg.rge_pass,
-              authority: "2",
+              authority: 2,
               createTime: getTime(),
               photo: 'userlogo.png',
             };
