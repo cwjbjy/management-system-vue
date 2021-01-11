@@ -1,10 +1,10 @@
 <template>
   <div class="header">
     <div class="header_left">
-      <div @click="collapseChage" class="pointer">
+      <!-- <div @click="collapseChage" class="pointer">
         <i v-if="!collapse" class="el-icon-s-fold"></i>
         <i v-else class="el-icon-s-unfold"></i>
-      </div>
+      </div> -->
       <span style="margin-left:10px">PC端后台管理系统</span>
     </div>
     <div class="header_right">
