@@ -4,7 +4,7 @@
 
 <script>
 import { vuexThemeColor } from "../../mixin";
-import {bus} from '@/constants'
+import { bus } from "@/constants";
 export default {
   watch: {
     model: function (newData) {
@@ -20,7 +20,7 @@ export default {
   data() {
     return {};
   },
-    mixins: [vuexThemeColor],
+  mixins: [vuexThemeColor],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
@@ -36,7 +36,7 @@ export default {
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
     window.eventBus.$off(bus.collapse);
-    window.eventBus.$off(bus.updateEcharts)
+    window.eventBus.$off(bus.updateEcharts);
   },
   methods: {
     prepareDomain(model) {
@@ -170,6 +170,9 @@ export default {
         color: colorArr,
         legend: {
           orient: "vertical",
+          textStyle: {
+            color: this.echartColor,
+          },
           data: legendData,
           bottom: 0,
           right: 0,
