@@ -45,9 +45,6 @@ export default {
       exList: ["HomePage", "fleetLine", "BaseEcharts"],
     };
   },
-  created(){
-    console.log(this.$store)
-  },
   computed: {
     themeClass() {
       return `theme-${this.theme}`;
