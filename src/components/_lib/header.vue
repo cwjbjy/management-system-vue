@@ -5,7 +5,7 @@
         <i v-if="!collapse" class="el-icon-s-fold"></i>
         <i v-else class="el-icon-s-unfold"></i>
       </div> -->
-      <span style="margin-left:10px">PC端后台管理系统</span>
+      <span style="margin-left:10px">PC端后台管理系统(Vue版)</span>
     </div>
     <div class="header_right">
       <!-- <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">

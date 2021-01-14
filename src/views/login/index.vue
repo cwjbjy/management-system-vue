@@ -4,7 +4,7 @@
     <div id="stars2" style="position: absolute"></div>
     <div id="stars3" style="position: absolute"></div>-->
     <div class="login_top">
-      <span class="login_title">PC端管理系统</span>
+      <span class="login_title">PC端管理系统(Vue版)</span>
     </div>
     <div class="login_main">
       <div class="login_form">
