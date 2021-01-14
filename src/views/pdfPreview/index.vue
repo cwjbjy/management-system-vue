@@ -6,7 +6,7 @@
         <el-button type="primary" @click="dialogFormVisible = true">点我弹框</el-button>
       </div>
     </el-card>
-    <el-dialog title="简历预览" :visible.sync="dialogFormVisible" width="90%" top="2vh">
+    <el-dialog title="pdf预览" :visible.sync="dialogFormVisible" width="90%" top="2vh">
       <iframe :src="src" frameborder="0" class="pdf"></iframe>
     </el-dialog>
   </section>

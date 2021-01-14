@@ -26,9 +26,9 @@
           <div slot="header" class="clearfix">
             <span>语言详情</span>
           </div>Vue
-          <el-progress :percentage="95" color="#42b983" :format="format"></el-progress>JavaScript
-          <el-progress :percentage="85" color="#f1e05a" :format="format"></el-progress>CSS
-          <el-progress :percentage="88" :format="format"></el-progress>HTML
+          <el-progress :percentage="98" color="#42b983" :format="format"></el-progress>uni-app
+          <el-progress :percentage="89" color="#f1e05a" :format="format"></el-progress>React
+          <el-progress :percentage="88" :format="format"></el-progress>Nuxt
           <el-progress :percentage="87" color="#f56c6c" :format="format"></el-progress>
         </el-card>
       </el-col>
