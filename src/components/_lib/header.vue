@@ -16,7 +16,7 @@
         />
       </el-tooltip>-->
       <!-- 切换主题色 -->
-      <el-dropdown @command="switchColor" trigger="click" class="themeColor">
+      <el-dropdown @command="switchColor"  class="themeColor">
         <span class="iconfont icon-zhuti_tiaosepan_o"></span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="gray" :class="[theme === 'gray'?'active':'']">简约灰</el-dropdown-item>
@@ -26,7 +26,7 @@
       </el-dropdown>
 
       <!-- 用户名下拉菜单 -->
-      <el-dropdown class="user-drop" @command="handleCommand" trigger="click">
+      <el-dropdown class="user-drop" @command="handleCommand" >
         <div class="userImage">
           <img :src="imageUrl" class="user-img" alt="加载失败" />
           <span>
