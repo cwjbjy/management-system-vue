@@ -112,11 +112,9 @@ export default {
   methods: {
     //获取数据
     init() {
-      // fetchAPI.user().then(res=>{
-      //   console.log('res',res)
-      // })
       API.user().then((res) => {
         this.tableData = res.data.data;
+        this.filtersData = [];
         this.tableData.forEach((item) => {
           this.filtersData.push({
             text: item.createTime,
