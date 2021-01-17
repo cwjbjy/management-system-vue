@@ -14,7 +14,7 @@
         >
           <el-table-column label="序号" type="index" width="80" align="center"></el-table-column>
           <el-table-column label="用户名" prop="user_name" align="center"></el-table-column>
-          <el-table-column label="头像(查看大图)" align="center">
+          <el-table-column label="单击图像可以放大" align="center">
             <template slot-scope="scope">
               <el-image
                 class="table-td-thumb"
