@@ -19,16 +19,6 @@ export default {
       geoData: {},
     };
   },
-
-  /* 在导航完成前获取数据 */
-  // beforeRouteEnter(to, from, next) {
-  //   localData.getAirData().then((res) => {
-  //      next((vm) => {
-  //        vm.$data.geoData = res.data;
-  //      });
-  //   });
-  // },
-
   /* 在导航完成后获取数据 */
   created() {
     localData.getAirData().then((res) => {

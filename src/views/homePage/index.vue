@@ -19,12 +19,12 @@
     <el-row style="margin-bottom: 20px">
       <el-col :span="12" class="echarts-box">
         <el-card shadow="hover">
-          <bar-model :model="options"></bar-model>
+          <bar-model></bar-model>
         </el-card>
       </el-col>
       <el-col :span="12" class="echarts-box">
         <el-card shadow="hover">
-          <radar-model :model="options"></radar-model>
+          <radar-model></radar-model>
         </el-card>
       </el-col>
     </el-row>
@@ -48,11 +48,6 @@ export default {
     barModel,
     radarModel,
     ScheduleComponent,
-  },
-  data() {
-    return {
-      options: {},
-    };
   },
 };
 </script>
