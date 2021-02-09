@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import API from "@/service/axios/api";
 import HomeHeader from "@/components/_lib/header";
 import siderBar from "@/components/_lib/menus";
 import Tags from "@/components/_lib/tags";

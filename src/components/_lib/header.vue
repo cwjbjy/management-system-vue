@@ -1,20 +1,9 @@
 <template>
   <div class="header">
     <div class="header_left">
-      <!-- <div @click="collapseChage" class="pointer">
-        <i v-if="!collapse" class="el-icon-s-fold"></i>
-        <i v-else class="el-icon-s-unfold"></i>
-      </div> -->
       <span style="margin-left:10px">PC端后台管理系统(Vue版)</span>
     </div>
     <div class="header_right">
-      <!-- <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
-        <img
-          src="@/assets/images/home/fullScreen.png"
-          class="fullScreen pointer"
-          @click="handleFullScreen"
-        />
-      </el-tooltip>-->
       <!-- 切换主题色 -->
       <el-dropdown @command="switchColor"  class="themeColor">
         <span class="iconfont icon-zhuti_tiaosepan_o"></span>
@@ -24,7 +13,6 @@
           <el-dropdown-item command="black" :class="[theme === 'black'?'active':'']">夜间模式</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-
       <!-- 用户名下拉菜单 -->
       <el-dropdown class="user-drop" @command="handleCommand" >
         <div class="userImage">
@@ -99,38 +87,6 @@ export default {
       this.$emit('update:color-change', command);
       window.eventBus.$emit(bus.updateSiderBar, command);
       window.eventBus.$emit(bus.updateEcharts)
-    },
-    // 侧边栏折叠
-    collapseChage() {
-      this.collapse = !this.collapse;
-      window.eventBus.$emit(bus.collapse, this.collapse);
-    },
-    // 全屏事件
-    handleFullScreen() {
-      let element = document.documentElement;
-      if (this.fullscreen) {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitCancelFullScreen) {
-          document.webkitCancelFullScreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
-      } else {
-        if (element.requestFullscreen) {
-          element.requestFullscreen();
-        } else if (element.webkitRequestFullScreen) {
-          element.webkitRequestFullScreen();
-        } else if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen();
-        } else if (element.msRequestFullscreen) {
-          // IE11
-          element.msRequestFullscreen();
-        }
-      }
-      this.fullscreen = !this.fullscreen;
     },
     //获取用户头像
     getImage() {

@@ -110,7 +110,6 @@ export default {
   }
   @include themify($themes) {
     background-color: themed("card-background");
-    // box-shadow: 0 5px 10px themed("box-shadow-color");
   }
   &-li {
     display: inline-flex;
