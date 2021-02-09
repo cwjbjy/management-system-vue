@@ -3,9 +3,16 @@
 //字体css设置
 $color-font:#FFF;
 $color-font_active:#0078dc;
+$color-gray:#999;
 
 //悬浮图标样式
 $c_pointer:pointer;
+
+//登录样式
+$login_bg:#1e90ff;
+$form_bg:#fff;
+$box-shadow:rgba(0, 0, 0, 0.3);
+$border-active:#0078dc;
 
 $themes: (
   theme-blue: (
