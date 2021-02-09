@@ -2,8 +2,6 @@ import enumAuth from './_auth'
 import qs from 'qs'
 import {Message} from "element-ui";
 
-let baseURL = process.env.VUE_APP_BASEURL;
-
 class FetchClient {
     constructor(){
         this.headers = {};
@@ -38,7 +36,7 @@ class FetchClient {
 
         if( method === 'GET' || method === 'HEAD' || method === 'DELETE'){
             //fetch对GET请求等，不支持将参数传在body上，只能拼接url (axios可以)
-            data = qs.stringify(data,{arrayFormat: 'brackets'});
+            data = qs.stringify(data,{arrayFormat: 'repeat'});
             url = `${url}?${data}`
         }else{
             if(Object.prototype.toString.call(data) !== '[object FormData]'){
@@ -81,23 +79,23 @@ class FetchClient {
     }
 
     async get(url,params){
-        return await this.httpFactory(`${baseURL}${url}`,{...params,method:'GET'})
+        return await this.httpFactory(url,{...params,method:'GET'})
     }
     
     async post(url,params){
-        return await this.httpFactory(`${baseURL}${url}`,{...params,method:'POST'})
+        return await this.httpFactory(url,{...params,method:'POST'})
     }
 
     async put(url,params){
-        return await this.httpFactory(`${baseURL}${url}`,{...params,method:'PUT'})
+        return await this.httpFactory(url,{...params,method:'PUT'})
     }
 
     async delete(url,params){
-        return await this.httpFactory(`${baseURL}${url}`,{...params,method:'DELETE'})
+        return await this.httpFactory(url,{...params,method:'DELETE'})
     }
 
     async patch(url,params){
-        return await this.httpFactory(`${baseURL}${url}`,{...params,method:'PATCH'})
+        return await this.httpFactory(url,{...params,method:'PATCH'})
     }
 }
 
