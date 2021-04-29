@@ -5,6 +5,9 @@ const mutations = {
     SET_FLEET(state, payload) {
         state.fleetBg = payload.data
     },
+    SET_THEME(state, payload) {
+        state.theme = payload.data
+    },
 }
 
 export default mutations

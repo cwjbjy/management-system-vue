@@ -3,14 +3,7 @@ export const bus = {
     /**
      * 切换主题色事件
      */
-    updateSiderBar:'update:color', //通知侧边栏主题
     updateEcharts:'update:echartColor',//更新echarts颜色
-
-    /**
-     * 伸缩菜单栏事件
-     */
-    collapse:'collapse',
-
     /**
      * 上传图片事件
      */

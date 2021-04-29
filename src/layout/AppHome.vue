@@ -1,7 +1,7 @@
 <template>
   <div v-title="title" :class="themeClass">
     <div class="app-container">
-      <app-header @update:color-change="colorChange"></app-header>
+      <app-header @theme="colorChange"></app-header>
       <main class="app-main">
         <aside>
           <menus />
@@ -187,4 +187,5 @@ export default {
     color: themed("card-font");
   }
 }
+
 </style>

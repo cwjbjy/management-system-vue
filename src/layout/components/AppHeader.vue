@@ -5,7 +5,7 @@
     </div>
     <div class="header_right">
       <!-- 切换主题色 -->
-      <el-dropdown class="themeColor" @command="switchColor"> 
+      <el-dropdown class="themeColor" @command="switchColor">
         <span class="iconfont icon-zhuti_tiaosepan_o"></span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="gray" :class="active('gray')"
@@ -57,8 +57,8 @@ export default {
   },
   computed: {
     active() {
-      return function(color){
-        return this.theme === color ? "active" : ""
+      return function (color) {
+        return this.theme === color ? "dropdownActive" : "";
       };
     },
   },
@@ -86,9 +86,9 @@ export default {
       /* 策略模式 */
       this.SET_COLOR({ data: echartColor[command].font });
       this.SET_FLEET({ data: echartColor[command].fleetBg });
-      
-      this.$emit("update:color-change", command);
-      window.eventBus.$emit(bus.updateSiderBar, command);
+      this.SET_THEME({ data: command });
+
+      this.$emit("theme", command);
       window.eventBus.$emit(bus.updateEcharts);
     },
 
@@ -152,5 +152,8 @@ export default {
 .el-dropdown-menu__item:not(.is-disabled):hover {
   background-color: transparent;
   color: #66b1ff;
+}
+.dropdownActive {
+  background-color: rgba(84, 92, 100, 0.5);
 }
 </style>

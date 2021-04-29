@@ -41,13 +41,14 @@ const vuexThemeColor = {
         ...mapState('themeColor', [
             'echartColor',
             'fleetBg',
-            'themes'
+            'theme'
         ])
     },
     methods: {
         ...mapMutations('themeColor', [
             'SET_COLOR',
             'SET_FLEET',
+            'SET_THEME'
         ]),
     },
 }

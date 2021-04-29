@@ -5,7 +5,6 @@
       :default-active="defaultActive"
       class="sidebar-el-menu"
       @select="handleSelect"
-      :collapse="isCollapse"
       :background-color="bgColor"
       :text-color="textColor"
       :active-text-color="activeTextColor"
@@ -30,18 +29,16 @@ export default {
   data() {
     return {
       defaultActive: "/firstItem",
-      isCollapse: false,
       newMenus: [],
-      themeColor: "",
       bgColor: "#545c64",
       textColor: "#fff",
       activeTextColor: "#ffd04b",
     };
   },
   watch: {
-    themeColor(newValue) {
-      this.bgColor = echartColor[newValue].menuBg
-    },
+    theme(newVal){
+      this.bgColor = echartColor[newVal].menuBg
+    }
   },
   mixins: [vuexThemeColor],
   created() {
@@ -56,19 +53,11 @@ export default {
     this.$router.push(path);
   },
   mounted() {
-    window.eventBus.$on(bus.collapse, (value) => {
-      this.isCollapse = value;
-    });
-    window.eventBus.$on(bus.updateSiderBar, (value) => {
-      this.themeColor = value;
-    });
     window.eventBus.$on(bus.updateRouter, (value) => {
       this.defaultActive = value;
     });
   },
   beforeDestroy() {
-    window.eventBus.$off(bus.collapse);
-    window.eventBus.$off(bus.updateSiderBar);
     window.eventBus.$off(bus.updateRouter);
   },
   methods: {
