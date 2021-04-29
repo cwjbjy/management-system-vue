@@ -64,12 +64,12 @@ export default {
 <style lang="scss">
 .app-container {
   @include themify($themes) {
-    color: themed("font-color");
-    background-color: themed("main-background");
+    color: themed("color-font");
+    background-color: themed("background-main");
   }
   header {
     @include themify($themes) {
-      background-color: themed("header-background");
+      background-color: themed("background-header");
     }
     height: 70px;
     width: 100%;
@@ -84,7 +84,7 @@ export default {
   aside {
     height: inherit;
     @include themify($themes) {
-      background-color: themed("aside-background");
+      background-color: themed("background-aside");
     }
   }
   .app-content {
@@ -116,9 +116,9 @@ export default {
 }
 .el-button--primary {
   @include themify($themes) {
-    background-color: themed("primary-button");
+    background-color: themed("button-primary");
     border: 1px solid themed("card-border");
-    color: themed("font-color");
+    color: themed("color-font");
   }
 }
 .el-input__inner {
@@ -143,7 +143,7 @@ export default {
 }
 .el-table--enable-row-hover .el-table__body tr:hover > td {
   @include themify($themes) {
-    background-color: themed("main-background");
+    background-color: themed("background-main");
   }
 }
 .el-table--border::after,

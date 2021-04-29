@@ -127,7 +127,7 @@ export default {
     margin-right: 16px;
     border-radius: 6px;
     @include themify($themes) {
-      background-color: themed("drag-background");
+      background-color: themed("background-drag");
       border: 1px solid themed("card-border");
     }
   }
@@ -158,7 +158,7 @@ export default {
 }
 .drag-list:hover {
   @include themify($themes) {
-    border: 1px solid themed("card-active-border");
+    border: 1px solid themed("card-border-active");
   }
 }
 .drag-title {

@@ -126,13 +126,13 @@ export default {
   }
   &-li.active {
     @include themify($themes) {
-      background: themed("card-active-background");
-      border: 1px solid themed("card-active-border");
-      color: themed("font-color");
+      background: themed("card-background-active");
+      border: 1px solid themed("card-border-active");
+      color: themed("color-font");
     }
     .tags-li-title {
       @include themify($themes) {
-        color: themed("font-color");
+        color: themed("color-font");
       }
     }
   }
