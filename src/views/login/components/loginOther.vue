@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <footer>
     <div class="other-acc-hd">
       <h3>第三方账号登录</h3>
     </div>
@@ -14,7 +14,7 @@
         <img src="@/assets/images/login/wx.png" alt="加载失败" />
       </div>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>

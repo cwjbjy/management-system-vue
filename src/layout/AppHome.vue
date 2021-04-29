@@ -1,12 +1,10 @@
 <template>
   <div v-title="title" :class="themeClass">
     <div class="app-container">
-      <header>
-        <home-header @update:color-change="colorChange"></home-header>
-      </header>
+      <app-header @update:color-change="colorChange"></app-header>
       <main class="app-main">
         <aside>
-          <sider-bar />
+          <menus />
         </aside>
         <article class="app-content">
           <tags @update:change="tagChange"></tags>
@@ -25,14 +23,14 @@
 </template>
 
 <script>
-import HomeHeader from "@/components/_lib/header";
-import siderBar from "@/components/_lib/menus";
+import AppHeader from "./components/AppHeader";
+import Menus from "@/components/_lib/menus";
 import Tags from "@/components/_lib/tags";
 export default {
-  name: "home",
+  name: "AppHome",
   components: {
-    HomeHeader,
-    siderBar,
+    AppHeader,
+    Menus,
     Tags,
   },
   data() {
@@ -95,7 +93,7 @@ export default {
     overflow: auto;
   }
   .pointer {
-    cursor: $c_pointer;
+    cursor: $cursor-pointer;
   }
 }
 /* element-ui样式修改 */

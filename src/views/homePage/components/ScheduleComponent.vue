@@ -112,7 +112,7 @@ export default {
 
 <style lang="scss" scoped>
 .c_pointer {
-  cursor: $c_pointer;
+  cursor: $cursor-pointer;
 }
 .todo-item {
   font-size: 14px;

@@ -1,4 +1,3 @@
-// const CompressionPlugin = require('compression-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 new HtmlWebpackPlugin({
   inject:'body'
@@ -7,9 +6,9 @@ module.exports = {
   productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
   publicPath: './',
   assetsDir: 'static',
-  lintOnSave: false, //eslint代码检测
+  lintOnSave: false,
   devServer: {
-    open: true, //加载完自动打开浏览器
+    open: true, 
     host: '127.0.0.1',
     hot:true,
     port: 8083,

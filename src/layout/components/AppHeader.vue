@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <header class="header">
     <div class="header_left">
       <span style="margin-left:10px">PC端后台管理系统(Vue版)</span>
     </div>
@@ -30,14 +30,14 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-  </div>
+  </header>
 </template>
 <script>
 import API from "@/service/axios/api";
 import { getURL,vuexRoot,vuexThemeColor } from "@/mixin";
 import {echartColor,bus} from '@/constants'
 export default {
-  name: "HomeHeader",
+  name: "AppHeader",
   data() {
     return {
       collapse: false,

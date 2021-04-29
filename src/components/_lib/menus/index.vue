@@ -22,7 +22,7 @@ import { vuexThemeColor } from "@/mixin";
 import {bus,menus} from "@/constants";
 import menusItem from "./menusItem";
 export default {
-  name: "menus",
+  name: "Menus",
   components:{
     menusItem
   },

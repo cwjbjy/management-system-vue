@@ -1,43 +1,51 @@
 <template>
   <div class="login" v-title="title">
-    <div class="top">
+    <header class="top">
       <span class="title">PC端管理系统(Vue版)</span>
-    </div>
-    <div class="main">
-      <div class="form">
-        <div class="tab">
-          <div :class="{ tab_active: flag }" class="tab_title" @click="flag = !flag">
+    </header>
+    <main class="main">
+      <article class="form">
+        <nav class="tab">
+          <div
+            :class="{ tab_active: flag }"
+            class="tab_title"
+            @click="flag = !flag"
+          >
             用户登录
           </div>
-          <div :class="{ tab_active: !flag }" class="tab_title" @click="flag = !flag">
+          <div
+            :class="{ tab_active: !flag }"
+            class="tab_title"
+            @click="flag = !flag"
+          >
             用户注册
           </div>
-        </div>
-        <div v-show="flag">
+        </nav>
+        <section v-show="flag">
           <!-- 登录表单 -->
           <login-form ref="loginForm" />
           <!-- 第三方登录 -->
-          <other-login />
-        </div>
-        <div v-show="!flag">
+          <login-other />
+        </section>
+        <section v-show="!flag">
           <!-- 注册组件 -->
-          <register @update:register="register" ref="register" />
-        </div>
-      </div>
-    </div>
+          <login-register @update:register="register" ref="register" />
+        </section>
+      </article>
+    </main>
   </div>
 </template>
 
 <script>
-import loginForm from "./components/loginForm";
-import otherLogin from "./components/otherLogin";
-import register from "./components/register";
+import LoginForm from "./components/loginForm";
+import LoginOther from "./components/loginOther";
+import LoginRegister from "./components/loginRegister";
 export default {
   name: "Login",
   components: {
-    loginForm,
-    otherLogin,
-    register,
+    LoginForm,
+    LoginOther,
+    LoginRegister,
   },
   data() {
     return {
@@ -80,7 +88,7 @@ export default {
 .login {
   height: 100vh;
   color: $color-font;
-  background-color: $login_bg;
+  background-color: $background-login;
   .top {
     width: 100%;
     height: 20vh;
@@ -99,8 +107,8 @@ export default {
     width: 400px;
     min-height: 370px;
     padding: 30px;
-    background: $form_bg;
-    box-shadow: 0 0 80px $box-shadow;
+    background: $background-form;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     box-sizing: border-box;
     position: relative;
@@ -118,14 +126,14 @@ export default {
         text-align: center;
         font-size: 16px;
         color: $color-gray;
-        cursor: $c_pointer;
+        cursor: $cursor-pointer;
         &:hover {
-          color: $color-font_active;
+          color: $color-font-active;
         }
       }
       &_active {
-        color: $color-font_active;
-        border-bottom: 2px solid $border-active;
+        color: $color-font-active;
+        border-bottom: 2px solid $background-login;
       }
     }
   }
