@@ -31,6 +31,7 @@
 <script>
 import {bus} from '@/constants'
 export default {
+  name:'AppTags',
   data() {
     return {
       tagsList: [],

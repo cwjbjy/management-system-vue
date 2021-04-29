@@ -43,19 +43,6 @@ HttpClient.instance.interceptors.request.use(config => {
 HttpClient.instance.interceptors.response.use(config => {
   return config
 }, error => {
-  // let regular = /^\/login$/;
-  // if (regular.test(error.response.config.url)) {
-  //   switch (error.response.status) {
-  //     case 400:
-  //       Message.error("密码错误")
-  //       break;
-  //     case 401:
-  //       Message.error("账号错误")
-  //   }
-  // }else{
-  //   Message.error("网络错误，请稍后重试");
-  // }
-  // Message.error("网络错误，请稍后重试");
   return Promise.reject(error)
 });
 

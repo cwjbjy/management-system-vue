@@ -7,7 +7,7 @@
           <menus />
         </aside>
         <article class="app-content">
-          <tags @update:change="tagChange"></tags>
+          <app-tags @update:change="tagChange"></app-tags>
           <transition name="fade" mode="out-in">
             <keep-alive :include="keepList" :exclude="exList" :max="8">
               <router-view />
@@ -24,14 +24,14 @@
 
 <script>
 import AppHeader from "./components/AppHeader";
-import Menus from "@/components/_lib/menus";
-import Tags from "@/components/_lib/tags";
+import AppTags from "./components/AppTags";
+import Menus from "@/components/menus";
 export default {
   name: "AppHome",
   components: {
     AppHeader,
+    AppTags,
     Menus,
-    Tags,
   },
   data() {
     return {

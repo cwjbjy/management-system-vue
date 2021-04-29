@@ -1,8 +1,8 @@
 const mutations = {
-    set_echartColor(state, payload) {
+    SET_COLOR(state, payload) {
         state.echartColor = payload.data
     },
-    set_fleetBg(state, payload) {
+    SET_FLEET(state, payload) {
         state.fleetBg = payload.data
     },
 }

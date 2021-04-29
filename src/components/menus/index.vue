@@ -19,8 +19,9 @@
 
 <script>
 import { vuexThemeColor } from "@/mixin";
-import {bus,menus} from "@/constants";
+import {bus,menus,echartColor} from "@/constants";
 import menusItem from "./menusItem";
+
 export default {
   name: "Menus",
   components:{
@@ -39,25 +40,11 @@ export default {
   },
   watch: {
     themeColor(newValue) {
-      switch (newValue) {
-        case this.themes.theme1:
-          this.bgColor = "#545c64";
-          break;
-        case this.themes.theme2:
-          this.bgColor = "#336ea9";
-          break;
-        case this.themes.theme3:
-          this.bgColor = "#303030";
-          break;
-        default:
-          break;
-      }
+      this.bgColor = echartColor[newValue].menuBg
     },
   },
   mixins: [vuexThemeColor],
   created() {
-    var ua = navigator.userAgent.toLowerCase();
-    console.log("ua", ua);
     let authMenus = this.$cookies.get("authMenus").split(",");
     menus.forEach((item) => {
       if (item.key && authMenus.includes(item.key)) {

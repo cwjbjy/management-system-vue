@@ -38,8 +38,6 @@ const vuexRoot = {
 
 const vuexThemeColor = {
     computed: {
-        /* 把 `this.echartFontColor` 映射为 
-        `this.$store.state.themeColor.echartFontColor`*/
         ...mapState('themeColor', [
             'echartColor',
             'fleetBg',
@@ -47,11 +45,9 @@ const vuexThemeColor = {
         ])
     },
     methods: {
-        /*将this.set_echartColor({data:value}) 映射为 
-        this.$store.commit('themeColor/set_echartColor',{data:value})*/
         ...mapMutations('themeColor', [
-            'set_echartColor',
-            'set_fleetBg',
+            'SET_COLOR',
+            'SET_FLEET',
         ]),
     },
 }
