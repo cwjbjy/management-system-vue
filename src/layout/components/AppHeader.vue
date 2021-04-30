@@ -84,7 +84,6 @@ export default {
     switchColor(command) {
       this.theme = command;
       this.$emit("theme", command);
-      window.eventBus.$emit(bus.updateEcharts);
       /* 策略模式 */
       this.SET_COLOR({ data: echartColor[command].font });
       this.SET_FLEET({ data: echartColor[command].fleetBg });

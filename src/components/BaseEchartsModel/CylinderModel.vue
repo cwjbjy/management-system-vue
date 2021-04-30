@@ -5,114 +5,54 @@
 
 <script>
 import { vuexTheme } from "../../mixin";
-import {bus} from '@/constants'
+import * as base from "@/config/echarts/base";
 export default {
-  watch: {
-    model: function (newData) {
-      this.prepareDomain(newData);
-    },
-  },
+  name:'CylinderModel',
   props: {
     model: {
       type: Object,
       default: {},
     },
   },
-  data() {
-    return {};
+  watch: {
+    model(newData) {
+      this.prepareDomain(newData);
+    },
+    echartColor() {
+      this.prepareDomain();
+    },
   },
   mixins: [vuexTheme],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
-    window.eventBus.$on(bus.updateEcharts, () => {
-      this.prepareDomain(this.model);
-    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
-    window.eventBus.$off(bus.updateEcharts)
   },
   methods: {
     prepareDomain(model) {
       let echartsInstance = echarts.init(this.$refs.echarts);
       echartsInstance.clear();
-      var black = "#2f3542";
-      var blue = "#70a1ff";
       let option = {
         color: ["#70a1ff", "#70a1ff"],
-        tooltip: {
-          trigger: "item",
-          axisPointer: {
-            type: "shadow",
-          },
-        },
-        title: {
-          text: "圆柱图",
-          textStyle: {
-            color: this.echartColor,
-          },
-          x: "center",
-          // y: 'center',
-        },
-        xAxis: [
-          {
-            type: "category",
-            data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-            axisLine: {
-              show: true, //隐藏X轴轴线
-              lineStyle: {
-                color: this.echartColor,
-              },
-            },
-            axisTick: {
-              show: true, //隐藏X轴刻度
-              alignWithLabel: true,
-              lineStyle: {
-                color: this.echartColor,
-              },
-            },
-            axisLabel: {
-              show: true,
+        title: base.title({ text: "圆柱图", color: this.echartColor }),
+        grid: base.grid(),
+        tooltip: base.tooltip("item"),
+        xAxis: base.xAxis({
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          color: this.echartColor,
+        }),
+        yAxis: Object.assign(base.yAxis(this.echartColor), {
+          splitLine: {
+            show: true,
+            lineStyle: {
               color: this.echartColor,
-            },
-            nameTextStyle: {
-              color: this.echartColor,
+              type: "dashed",
+              opacity: 0.5,
             },
           },
-        ],
-        yAxis: [
-          {
-            type: "value",
-            splitLine: {
-              show: true,
-              lineStyle: {
-                color: this.echartColor,
-                type: "dashed",
-                opacity: 0.5,
-              },
-            },
-            axisLine: {
-              show: true, //隐藏X轴轴线
-              lineStyle: {
-                color: this.echartColor,
-              },
-            },
-            axisTick: {
-              show: true, //隐藏X轴刻度
-              lineStyle: {
-                color: this.echartColor,
-              },
-            },
-            axisLabel: {
-              show: true,
-              color: this.echartColor,
-            },
-            nameTextStyle: {
-              color: this.echartColor,
-            },
-          },
-        ],
+        }),
         series: [
           {
             type: "pictorialBar",

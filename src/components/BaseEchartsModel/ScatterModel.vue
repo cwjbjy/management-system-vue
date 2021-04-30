@@ -5,17 +5,20 @@
 
 <script>
 import { vuexTheme } from "../../mixin";
-import {bus} from '@/constants'
+import * as base from "@/config/echarts/base";
 export default {
-  watch: {
-    model: function (newData) {
-      this.prepareDomain(newData);
-    },
-  },
   props: {
     model: {
       type: Object,
       default: {},
+    },
+  },
+  watch: {
+    model(newData) {
+      this.prepareDomain(newData);
+    },
+    echartColor() {
+      this.prepareDomain();
     },
   },
   data() {
@@ -25,13 +28,9 @@ export default {
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
-    window.eventBus.$on(bus.updateEcharts, () => {
-      this.prepareDomain(this.model);
-    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
-    window.eventBus.$off(bus.updateEcharts)
   },
   methods: {
     prepareDomain(model) {
@@ -82,85 +81,25 @@ export default {
         ],
       ];
       let option = {
-        // backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [
-        //   {
-        //     offset: 0,
-        //     color: "#f7f8fa"
-        //   },
-        //   {
-        //     offset: 1,
-        //     color: "#cdd0d5"
-        //   }
-        // ]),
-        title: {
-          text: "散点图",
-          left: "center",
-          textStyle: {
-            color: this.echartColor,
-          },
-        },
-        legend: {
-          right: 10,
-          data: ["1990", "2015"],
-          textStyle: {
-            color: this.echartColor,
-          },
-        },
-        xAxis: {
+        title: base.title({ text: "散点图", color: this.echartColor }),
+        legend: base.legend(this.echartColor),
+        grid: base.grid(),
+        xAxis: Object.assign(base.xAxis({ color: this.echartColor }), {
           splitLine: {
             lineStyle: {
               type: "dashed",
               color: this.echartColor,
             },
           },
-          axisLine: {
-            show: true, //隐藏X轴轴线
-            lineStyle: {
-              color: this.echartColor,
-            },
-          },
-          axisTick: {
-            show: true, //隐藏X轴刻度
-            lineStyle: {
-              color: this.echartColor,
-            },
-          },
-          axisLabel: {
-            show: true,
-            color: this.echartColor,
-          },
-          nameTextStyle: {
-            color: this.echartColor,
-          },
-        },
-        yAxis: {
+        }),
+        yAxis: Object.assign(base.yAxis(this.echartColor), {
           splitLine: {
             lineStyle: {
               type: "dashed",
               color: this.echartColor,
             },
           },
-          scale: true,
-          axisLine: {
-            show: true, //隐藏X轴轴线
-            lineStyle: {
-              color: this.echartColor,
-            },
-          },
-          axisTick: {
-            show: true, //隐藏X轴刻度
-            lineStyle: {
-              color: this.echartColor,
-            },
-          },
-          axisLabel: {
-            show: true,
-            color: this.echartColor,
-          },
-          nameTextStyle: {
-            color: this.echartColor,
-          },
-        },
+        }),
         series: [
           {
             name: "1990",

@@ -5,33 +5,29 @@
 
 <script>
 import { vuexTheme } from "../../mixin";
-import {bus} from '@/constants'
+import * as base from "@/config/echarts/base";
 export default {
-  watch: {
-    model: function (newData) {
-      this.prepareDomain(newData);
-    },
-  },
   props: {
     model: {
       type: Object,
       default: {},
     },
   },
-  data() {
-    return {};
+  watch: {
+    model(newData) {
+      this.prepareDomain(newData);
+    },
+    echartColor() {
+      this.prepareDomain();
+    },
   },
   mixins: [vuexTheme],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
-    window.eventBus.$on(bus.updateEcharts, () => {
-      this.prepareDomain(this.model);
-    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
-    window.eventBus.$off(bus.updateEcharts)
   },
   methods: {
     prepareDomain(model) {
@@ -52,13 +48,7 @@ export default {
           "#1e90ff",
           "#3742fa",
         ],
-        title: {
-          text: "饼图",
-          left: "center",
-          textStyle: {
-            color: this.echartColor,
-          },
-        },
+        title: base.title({ text: "饼图", color: this.echartColor }),
         tooltip: {
           trigger: "item",
           formatter: "{a} <br/>{b} : {c} ({d}%)",

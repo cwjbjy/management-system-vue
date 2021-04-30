@@ -42,7 +42,7 @@
 <script>
 /* 基础组件的自动化全局注册 */
 const path = require('path')
-const files = require.context('@/components/BaseEchartsModel', false, /\.vue$/)
+const files = require.context('@/components/baseEchartsModel', false, /\.vue$/)
 const modules = {}
 files.keys().forEach(key => {
   const name = path.basename(key, '.vue')

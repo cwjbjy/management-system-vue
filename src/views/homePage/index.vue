@@ -15,7 +15,7 @@
     <el-row style="margin-bottom: 20px">
       <el-col :span="12" class="echarts-box">
         <el-card shadow="hover">
-          <bar-model></bar-model>
+          <bar-line-model></bar-line-model>
         </el-card>
       </el-col>
       <el-col :span="12" class="echarts-box">
@@ -32,8 +32,8 @@ import userInfo from "./components/userInfo";
 import language from "./components/language";
 import iconArea from "./components/iconArea";
 import ScheduleComponent from "./components/ScheduleComponent";
-import barModel from "@/components/echartsModel/barLineModel";
-import radarModel from "@/components/echartsModel/radarModel";
+import BarLineModel from "@/components/echartsModel/barLineModel";
+import RadarModel from "@/components/echartsModel/radarModel";
 
 export default {
   name: "HomePage",
@@ -41,9 +41,9 @@ export default {
     userInfo,
     language,
     iconArea,
-    barModel,
-    radarModel,
-    ScheduleComponent,
+    BarLineModel,
+    RadarModel,
+    ScheduleComponent
   },
 };
 </script>

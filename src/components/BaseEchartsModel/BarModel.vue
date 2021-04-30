@@ -1,37 +1,33 @@
 <template>
-  <!-- 柱状图 -->
   <div ref="echarts" class="myChart"></div>
 </template>
 
 <script>
 import { vuexTheme } from "../../mixin";
-import {bus} from '@/constants'
+import * as base from "@/config/echarts/base";
 export default {
-  watch: {
-    model: function (newData) {
-      this.prepareDomain(newData);
-    },
-  },
+  name:'BarModel',
   props: {
     model: {
       type: Object,
       default: {},
     },
   },
-  data() {
-    return {};
+  watch: {
+    model(newData) {
+      this.prepareDomain(newData);
+    },
+    echartColor() {
+      this.prepareDomain();
+    },
   },
   mixins: [vuexTheme],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
-    window.eventBus.$on(bus.updateEcharts, () => {
-      this.prepareDomain(this.model);
-    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
-    window.eventBus.$off(bus.updateEcharts)
   },
   methods: {
     prepareDomain(model) {
@@ -39,76 +35,14 @@ export default {
       echartsInstance.clear();
       var option = {
         color: ["#3398DB"],
-        title: {
-          text: "柱状图",
-          left: "center",
-          textStyle: {
-            color: this.echartColor,
-          },
-        },
-        tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
-          },
-        },
-        grid: {
-          left: "3%",
-          right: "4%",
-          bottom: "3%",
-          containLabel: true,
-        },
-        xAxis: [
-          {
-            type: "category",
-            data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-            axisLine: {
-              show: true, //隐藏X轴轴线
-              lineStyle: {
-                color: this.echartColor,
-              },
-            },
-            axisTick: {
-              show: true, //隐藏X轴刻度
-              alignWithLabel: true,
-              lineStyle: {
-                color: this.echartColor,
-              },
-            },
-            axisLabel: {
-              show: true,
-              color: this.echartColor,
-            },
-            nameTextStyle: {
-              color: this.echartColor,
-            },
-          },
-        ],
-        yAxis: [
-          {
-            type: "value",
-            axisLine: {
-              show: true, //隐藏X轴轴线
-              lineStyle: {
-                color: this.echartColor,
-              },
-            },
-            axisTick: {
-              show: true, //隐藏X轴刻度
-              lineStyle: {
-                color: this.echartColor,
-              },
-            },
-            axisLabel: {
-              show: true,
-              color: this.echartColor,
-            },
-            nameTextStyle: {
-              color: this.echartColor,
-            },
-          },
-        ],
+        title: base.title({ text: "柱状图", color: this.echartColor }),
+        tooltip: base.tooltip("axis"),
+        grid: base.grid(),
+        xAxis: base.xAxis({
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          color: this.echartColor,
+        }),
+        yAxis: base.yAxis(this.echartColor),
         series: [
           {
             name: "直接访问",
@@ -118,7 +52,6 @@ export default {
           },
         ],
       };
-      
       echartsInstance.setOption(option);
       // console.log(echartsInstance.getModel().getComponent("yAxis").axis.scale._extent)
     },

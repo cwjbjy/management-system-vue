@@ -4,64 +4,44 @@
 
 <script>
 import { vuexTheme } from "../../mixin";
-import {bus} from '@/constants'
+import * as base from "@/config/echarts/base";
 export default {
-  watch: {
-    model: function (newData) {
-      this.prepareDomain(newData);
-    },
-  },
+  name:'BarLineModel',
   props: {
     model: {
       type: Object,
       default: {},
     },
   },
-  data() {
-    return {};
+  watch: {
+    model(newData) {
+      this.prepareDomain(newData);
+    },
+    echartColor() {
+      this.prepareDomain();
+    },
   },
   mixins: [vuexTheme],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);
-    window.eventBus.$on(bus.updateEcharts, () => {
-      this.prepareDomain(this.model);
-    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.autoSize, false);
-    window.eventBus.$off(bus.updateEcharts)
   },
   methods: {
     prepareDomain(model) {
       let echartsInstance = echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       let option = {
-        title: {
+        title: base.title({
           text: "2019年销售水量和主营业务收入对比",
-          left: "center",
-          textStyle: {
-            color: this.echartColor,
-          },
-        },
-        tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            type: "shadow",
-            label: {
-              show: true,
-            },
-          },
-        },
-        legend: {
-          data: ["销售水量", "主营业务"],
-          top: "10%",
-          left: "center",
-          textStyle: {
-            color: this.echartColor,
-          },
-        },
-        xAxis: {
+          color: this.echartColor,
+        }),
+        grid: base.grid(),
+        tooltip: base.tooltip("axis"),
+        legend: base.legend(this.echartColor),
+        xAxis: base.xAxis({
           data: [
             "当年完成水量",
             "去年同期水量",
@@ -72,26 +52,8 @@ export default {
             "滚动目标金额",
             "全年目标值",
           ],
-          axisLine: {
-            show: true, //隐藏X轴轴线
-            lineStyle: {
-              color: this.echartColor,
-            },
-          },
-          axisTick: {
-            show: true, //隐藏X轴刻度
-            lineStyle: {
-              color: this.echartColor,
-            },
-          },
-          axisLabel: {
-            show: true,
-            color: this.echartColor,
-          },
-          nameTextStyle: {
-            color: this.echartColor,
-          },
-        },
+          color: this.echartColor,
+        }),
         yAxis: [
           {
             type: "value",

@@ -3,11 +3,9 @@
 </template>
 
 <script>
-// const echarts = require('echarts')
 import { vuexTheme } from "../../mixin";
-import {bus} from '@/constants'
 export default {
-  name: "fleetModel",
+  name: "FleetModel",
   components: {},
   props: {
     model: {
@@ -15,31 +13,24 @@ export default {
       default: {},
     },
   },
-  data() {
-    return {};
-  },
   watch: {
-    model: function (newData) {
+    model(newData) {
       this.prepareDomain(newData);
+    },
+    echartColor() {
+      this.prepareDomain(this.model);
     },
   },
   mixins: [vuexTheme],
-  mounted() {
-    window.eventBus.$on(bus.updateEcharts, () => {
-      this.prepareDomain(this.model);
-    });
-  },
   beforeDestroy() {
     //销毁实例，释放内存
     let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
     if (echartsInstance) {
       echarts.dispose(echartsInstance);
     }
-    window.eventBus.$off(bus.updateEcharts);
   },
   methods: {
     prepareDomain(model) {
-      // console.log('vue',echarts)
       var echartsInstance = echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       var geoCoordMap = model.geoCoordMap;
@@ -83,24 +74,6 @@ export default {
             fontSize: 24,
           },
         },
-        // tooltip: {
-        //   trigger: "item",
-        //   formatter: function(params, ticket, callback) {
-        //     if (params.seriesType == "effectScatter") {
-        //       return "线路：" + params.data.name + "" + params.data.value[2];
-        //     } else if (params.seriesType == "lines") {
-        //       return (
-        //         params.data.fromName +
-        //         ">" +
-        //         params.data.toName +
-        //         "<br />" +
-        //         params.data.value
-        //       );
-        //     } else {
-        //       return params.name;
-        //     }
-        //   }
-        // },
         geo: {
           map: "china",
           layoutSize: "128%",
@@ -144,7 +117,6 @@ export default {
             },
             //coordinateSystem:"geo"只会取数组的前两位当做点坐标数据
             data: convertData(apiData),
-            //其中第一个参数 value 为 data 中的数据值。第二个参数params 是其它的数据项参数
             symbolSize: function (value) {
               return value[2] / 10;
             },
@@ -184,8 +156,6 @@ export default {
           ...this.buildLines(apiData, geoCoordMap),
         ],
       };
-      // console.log("option", option);
-      //调用setOption将option输入echarts，然后echarts渲染图表
       echartsInstance.setOption(option);
       window.onresize = function () {
         echartsInstance.resize();
@@ -247,12 +217,6 @@ export default {
       });
       return arr;
     },
-    // autoSize() {
-    //   this.$nextTick(() => {
-    //     let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
-    //     echartsInstance.resize();
-    //   });
-    // }
   },
 };
 </script>
