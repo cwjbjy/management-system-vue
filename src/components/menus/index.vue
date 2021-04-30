@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { vuexThemeColor } from "@/mixin";
+import { vuexTheme } from "@/mixin";
 import {bus,menus,echartColor} from "@/constants";
 import menusItem from "./menusItem";
 
@@ -40,7 +40,7 @@ export default {
       this.bgColor = echartColor[newVal].menuBg
     }
   },
-  mixins: [vuexThemeColor],
+  mixins: [vuexTheme],
   created() {
     let authMenus = this.$cookies.get("authMenus").split(",");
     menus.forEach((item) => {

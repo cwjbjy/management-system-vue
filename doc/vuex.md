@@ -37,7 +37,7 @@ store
 
 不允许除actions之外的代码调用;
 
-使用set开头以下划线分割 (set_userName)
+使用set开头以下划线分割 (SET_USERNAME)
  
 # actions
 

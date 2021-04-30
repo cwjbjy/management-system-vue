@@ -45,7 +45,7 @@
 </template>
 <script>
 import API from "@/service/axios/api";
-import { getURL, vuexRoot, vuexThemeColor } from "@/mixin";
+import { getURL, vuexRoot, vuexTheme } from "@/mixin";
 import { echartColor, bus } from "@/constants";
 export default {
   name: "AppHeader",
@@ -62,7 +62,7 @@ export default {
       };
     },
   },
-  mixins: [getURL, vuexRoot, vuexThemeColor],
+  mixins: [getURL, vuexRoot, vuexTheme],
   created() {
     this.getImage();
   },
@@ -83,13 +83,12 @@ export default {
     },
     switchColor(command) {
       this.theme = command;
+      this.$emit("theme", command);
+      window.eventBus.$emit(bus.updateEcharts);
       /* 策略模式 */
       this.SET_COLOR({ data: echartColor[command].font });
       this.SET_FLEET({ data: echartColor[command].fleetBg });
       this.SET_THEME({ data: command });
-
-      this.$emit("theme", command);
-      window.eventBus.$emit(bus.updateEcharts);
     },
 
     getImage() {
@@ -99,7 +98,7 @@ export default {
       API.getImage(params).then((res) => {
         let fileName = res.data.Data[0].photo;
         this.imageUrl = `${this.baseURL}${fileName}`;
-        this.set_imageUrl({ data: this.imageUrl });
+        this.SET_IMAGEURL({ data: this.imageUrl });
       });
     },
   },

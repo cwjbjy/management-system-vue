@@ -2,7 +2,7 @@ const actions = {
     setCount({commit},payload){
       return new Promise((resolve,reject)=>{
         setTimeout(()=>{
-          commit('set_count',payload);
+          commit('SET_COUNT',payload);
           resolve();
         },1000)
       })

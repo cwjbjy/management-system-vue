@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { vuexThemeColor } from "../../mixin";
+import { vuexTheme } from "../../mixin";
 import {bus} from '@/constants'
 export default {
   name: "LineModel",
@@ -22,7 +22,7 @@ export default {
       this.prepareDomain(model);
     },
   },
-  mixins: [vuexThemeColor],
+  mixins: [vuexTheme],
   mounted() {
     this.prepareDomain(this.model);
     window.addEventListener("resize", this.autoSize, false);

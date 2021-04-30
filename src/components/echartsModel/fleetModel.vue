@@ -4,7 +4,7 @@
 
 <script>
 // const echarts = require('echarts')
-import { vuexThemeColor } from "../../mixin";
+import { vuexTheme } from "../../mixin";
 import {bus} from '@/constants'
 export default {
   name: "fleetModel",
@@ -23,7 +23,7 @@ export default {
       this.prepareDomain(newData);
     },
   },
-  mixins: [vuexThemeColor],
+  mixins: [vuexTheme],
   mounted() {
     window.eventBus.$on(bus.updateEcharts, () => {
       this.prepareDomain(this.model);

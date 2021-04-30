@@ -71,10 +71,10 @@ export default {
     },
     closeDialog() {
       if (this.status === 0) {
-        this.set_todoList({ type: "add", data: this.schedule });
+        this.SET_TODO({ type: "add", data: this.schedule });
         this.$message.success("增加成功");
       } else if (this.status === 1) {
-        this.set_todoList({
+        this.SET_TODO({
           type: "edit",
           index: this.itemIndex,
           data: this.schedule,
@@ -90,7 +90,7 @@ export default {
         type: "warning",
       })
         .then(() => {
-          this.set_todoList({
+          this.SET_TODO({
             type: "delete",
             index,
           });

@@ -13,20 +13,18 @@ const vuexRoot = {
             'todoList',
             'imageUrl'
         ]),
-        /* 把 this.user_name 映射为
-         this.$store.getters.user_name*/
+        /* 把 this.user_name 映射为 this.$store.getters.user_name*/
         ...mapGetters([
             'user_name',
-            // ...
         ]),
     },
     methods: {
-        /*将this.set_userName({data:value}) 映射为 
-        this.$store.commit('set_userName',{data:value})*/
+        /*将this.SET_USERNAME({data:value}) 映射为 
+        this.$store.commit('SET_USERNAME',{data:value})*/
         ...mapMutations([
-            'set_userName',
-            'set_imageUrl',
-            'set_todoList'
+            'SET_USERNAME',
+            'SET_IMAGEURL',
+            'SET_TODO'
         ]),
         /*将this.setCount(amount) 映射为
          this.$store.dispatch('setCount',amount)*/
@@ -36,7 +34,7 @@ const vuexRoot = {
     }
 }
 
-const vuexThemeColor = {
+const vuexTheme = {
     computed: {
         ...mapState('themeColor', [
             'echartColor',
@@ -56,7 +54,7 @@ const vuexThemeColor = {
 const getURL = {
     computed: {
         baseURL() {
-          return process.env.VUE_APP_IMAGE;
+            return process.env.VUE_APP_IMAGE;
         }
     }
 }
@@ -71,7 +69,7 @@ const uploadURL = {
 
 export {
     vuexRoot,
-    vuexThemeColor,
+    vuexTheme,
     getURL,
     uploadURL
 }

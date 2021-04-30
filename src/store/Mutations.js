@@ -1,14 +1,14 @@
 const mutations = {
-    set_userName(state, payload) {
+    SET_USERNAME(state, payload) {
         state.userName = payload.data
     },
-    set_count(state, payload) {
+    SET_COUNT(state, payload) {
         state.count = payload.data
     },
-    set_imageUrl(state, payload) {
+    SET_IMAGEURL(state, payload) {
         state.imageUrl = payload.data
     },
-    set_todoList(state, payload) {
+    SET_TODO(state, payload) {
         switch (payload.type) {
             case "add":
                 state.todoList.unshift({
