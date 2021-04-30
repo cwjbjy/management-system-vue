@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "positionChart",
+  name: "PositionChart",
   data() {
     return {
        myDiagram: null

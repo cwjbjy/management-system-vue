@@ -37,8 +37,6 @@ export default {
     prepareDomain(model) {
       let echartsInstance = echarts.init(this.$refs.echarts);
       echartsInstance.clear();
-      var black = "#2f3542";
-      var blue = "#70a1ff";
       var option = {
         color: ["#3398DB"],
         title: {

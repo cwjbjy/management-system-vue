@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "foldChart",
+  name: "FoldChart",
   data() {
     return {};
   },

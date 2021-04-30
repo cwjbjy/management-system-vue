@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "commonChart",
+  name: "CommonChart",
   data() {
     return {};
   },

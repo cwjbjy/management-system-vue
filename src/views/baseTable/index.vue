@@ -20,7 +20,7 @@
 <script>
 
 export default {
-  name: "baseTable",
+  name: "BaseTable",
   data() {
     return {
       tableHeader: [

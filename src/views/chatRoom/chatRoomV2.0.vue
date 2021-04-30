@@ -63,7 +63,7 @@ import insService from "@/service/websocket";
 import { vuexRoot } from "@/mixin";
 import {bus} from '@/constants'
 export default {
-  name: "chatRoom",
+  name: "ChatRoom",
   data() {
     return {
       systePrompt: "",

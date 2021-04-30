@@ -2,16 +2,12 @@
   <section class="firstItem">
     <el-row>
       <el-col :span="8" :lg="8" :xl="6">
-        <!-- 用户信息 -->
         <userInfo />
-        <!-- 语言详情 -->
         <language />
       </el-col>
       <el-col :span="16" :lg="16" :xl="18">
-        <!-- 消息 -->
         <icon-area />
         <el-row style="padding: 0 10px; margin-bottom: 20px">
-          <!-- 待办事项 -->
           <schedule-component />
         </el-row>
       </el-col>

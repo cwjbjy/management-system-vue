@@ -14,7 +14,7 @@
  
 <script>
 export default {
-  name: "pdf",
+  name: "PDFPreview",
   data() {
     return {
       src: "/static/cwj.pdf",

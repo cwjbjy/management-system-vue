@@ -19,7 +19,6 @@ export default {
       geoData: {},
     };
   },
-  /* 在导航完成后获取数据 */
   created() {
     localData.getAirData().then((res) => {
       this.geoData = res.data;

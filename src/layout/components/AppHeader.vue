@@ -90,7 +90,6 @@ export default {
       this.SET_FLEET({ data: echartColor[command].fleetBg });
       this.SET_THEME({ data: command });
     },
-
     getImage() {
       let params = {
         user_name: this.user_name,

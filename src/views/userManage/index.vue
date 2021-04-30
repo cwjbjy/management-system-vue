@@ -82,9 +82,8 @@
 <script>
 import API from "@/service/axios/api";
 import { getURL } from "@/mixin";
-// import fetchAPI from "@/service/fetch/api";
 export default {
-  name: "userManage",
+  name: "UserManage",
   data() {
     return {
       tableData: [],
@@ -110,7 +109,6 @@ export default {
     this.init();
   },
   methods: {
-    //获取数据
     init() {
       API.user().then((res) => {
         this.tableData = res.data.data;

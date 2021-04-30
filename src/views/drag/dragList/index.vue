@@ -50,7 +50,7 @@
 <script>
 import draggable from "vuedraggable";
 export default {
-  name: "dragList",
+  name: "DragList",
   data() {
     return {
       todo: [
@@ -108,7 +108,6 @@ export default {
   },
   methods: {
     removeHandle(event) {
-      // console.log(event);
       this.$message.success(`从 ${event.from.id} 移动到 ${event.to.id} `);
     }
   }

@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "dragDialog",
+  name: "DragDialog",
   data() {
     return {
       visible: false,

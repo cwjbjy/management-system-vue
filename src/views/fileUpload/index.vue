@@ -21,11 +21,10 @@
 </template>
 
 <script>
-import API from "@/service/axios/api";
 import { uploadURL,getURL,vuexRoot } from "@/mixin";
 import {bus} from "@/constants"
 export default {
-  name: "fileUp",
+  name: "FileUp",
   data() {
     return {
       headers: {

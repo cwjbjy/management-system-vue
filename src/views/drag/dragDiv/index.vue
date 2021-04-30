@@ -1,13 +1,13 @@
 <template>
   <!-- 移动圆形 -->
   <div>
- <div id="dv"></div>
+    <div id="dv"></div>
   </div>
- 
 </template>
 
 <script>
 export default {
+  name:'DragDiv',
   data() {
     return {};
   },
@@ -18,7 +18,7 @@ export default {
       var y = 0;
       var l = 0;
       var t = 0;
-      dv.onmousedown = function(e) {
+      dv.onmousedown = function (e) {
         //获取x坐标和y坐标
         x = e.clientX;
         y = e.clientY;
@@ -34,7 +34,7 @@ export default {
           dv.setCapture();
         }
         //这里一定要用文档监听，因为很容易移出所选的区域
-        document.onmousemove = function(e) {
+        document.onmousemove = function (e) {
           var nx = e.clientX;
           var ny = e.clientY;
           //计算移动后的左偏移量和顶部的偏移量
@@ -43,18 +43,18 @@ export default {
           dv.style.left = nl + "px";
           dv.style.top = nt + "px";
         };
-        document.onmouseup = function() {
+        document.onmouseup = function () {
           document.onmousemove = document.onmouseup = null;
           if (dv.releaseCapture) {
             dv.releaseCapture();
           }
         };
       };
-    }
+    },
   },
   mounted() {
     this.divMove();
-  }
+  },
 };
 </script>
 
