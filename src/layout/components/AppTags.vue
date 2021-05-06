@@ -43,7 +43,7 @@ export default {
     },
   },
   watch: {
-    $route(newValue, oldValue) {
+    $route(newValue) {
       this.setTags(newValue);
     },
   },

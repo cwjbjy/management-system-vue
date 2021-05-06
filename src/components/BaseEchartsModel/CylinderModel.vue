@@ -5,7 +5,7 @@
 
 <script>
 import { vuexTheme } from "../../mixin";
-import * as base from "@/config/echarts/base";
+import * as base from "@/utils/echartsBase";
 export default {
   name:'CylinderModel',
   props: {

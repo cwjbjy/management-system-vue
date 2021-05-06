@@ -1,7 +1,4 @@
-export function title({
-    text,
-    color
-}) {
+export function title({text,color}) {
     return {
         text,
         left: "center",
@@ -26,10 +23,7 @@ export function tooltip(type, mode) {
     }
 }
 
-export function xAxis({
-    data,
-    color
-}) {
+export function xAxis({data,color}) {
     return {
         type: "category",
         data,

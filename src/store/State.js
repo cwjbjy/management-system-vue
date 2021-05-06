@@ -27,6 +27,5 @@ const state = () => ({
     }
   ],
   imageUrl: "",
-  stars:"",
 })
 export default state
