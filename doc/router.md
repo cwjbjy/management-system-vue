@@ -11,7 +11,7 @@ router
 
 # 文件命名
 
-以小写字母开头 + Router的驼峰命名
+以小写字母开头的驼峰命名
 
 # route_admin
 

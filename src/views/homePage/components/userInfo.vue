@@ -68,7 +68,7 @@ export default {
       width: 90%;
       height: 90%;
       max-width: 120px;
-      max-width: 120px;
+      max-height: 120px;
       border-radius: 50%;
     }
     .user-area {
