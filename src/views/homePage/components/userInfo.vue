@@ -65,10 +65,8 @@ export default {
       border-bottom: 2px solid themed("card-border");
     }
     .user-img {
-      width: 90%;
-      height: 90%;
-      max-width: 120px;
-      max-height: 120px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
     }
     .user-area {
