@@ -2,7 +2,7 @@
 <!-- 适配所有级别菜单 || 一级二级三级等等... -->
   <nav>
     <el-menu
-      :default-active="defaultActive"
+      :default-active="$route.path"
       class="sidebar-el-menu"
       @select="handleSelect"
       :background-color="bgColor"
@@ -49,8 +49,8 @@ export default {
       }
     });
     //刷新时，定位到系统首页
-    let path = this.newMenus[0].path;
-    this.$router.push(path);
+    // let path = this.newMenus[0].path;
+    // this.$router.push(path);
   },
   mounted() {
     window.eventBus.$on(bus.updateRouter, (value) => {
