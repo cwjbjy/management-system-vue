@@ -45,6 +45,12 @@ module.exports = {
     config.plugin('webpack-bundle-analyzer')
       .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
   },
+  pwa: {
+    workboxOptions: {
+      skipWaiting: true,
+      clientsClaim: true,
+    },
+  },
 
   configureWebpack: {
     //externals中的key是用于import，value表示在全局中访问到该对象，就是window.echarts

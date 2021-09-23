@@ -11,6 +11,7 @@ import VueI18n from 'vue-i18n';
 import "./assets/icon/iconfont.css";
 //基于element-ui封装的递归表格，在个人npm包中
 import cwjTable from '@wj.cao/table' 
+import './registerServiceWorker'
 
 Vue.use(cwjTable)
 Vue.use(VueI18n);
