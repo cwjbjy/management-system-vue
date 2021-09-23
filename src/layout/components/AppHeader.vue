@@ -4,6 +4,19 @@
       <span style="margin-left: 10px">PC端后台管理系统(Vue版)</span>
     </div>
     <div class="header_right">
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="安装桌面快捷方式"
+        placement="bottom"
+        v-if="show"
+      >
+        <img
+          src="@/assets/images/home/pc.png"
+          style="margin-right: 6px;cursor: pointer;width: 30px;"
+          @click="installPwa"
+        />
+      </el-tooltip>
       <!-- 切换主题色 -->
       <el-dropdown class="themeColor" @command="switchColor">
         <span class="iconfont icon-zhuti_tiaosepan_o"></span>
@@ -47,6 +60,7 @@
 import API from "@/service/axios/api";
 import { getURL, vuexRoot, vuexTheme } from "@/mixin";
 import { echartColor, bus } from "@/constants";
+import pwa from "@/utils/pwa.js";
 export default {
   name: "AppHeader",
   data() {
@@ -57,9 +71,12 @@ export default {
   },
   computed: {
     active() {
-      return function (color) {
+      return function(color) {
         return this.theme === color ? "dropdownActive" : "";
       };
+    },
+    show() {
+      return process.env.NODE_ENV === "production";
     },
   },
   mixins: [getURL, vuexRoot, vuexTheme],
@@ -75,6 +92,9 @@ export default {
     window.eventBus.$off(bus.updateImg);
   },
   methods: {
+    installPwa() {
+      pwa.event.prompt();
+    },
     handleCommand(command) {
       if (command == "loginout") {
         this.$router.push("/login");
