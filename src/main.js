@@ -4,7 +4,7 @@ import store from './store'
 import directive from "./directive"
 import filters from "./filter"
 import VueCookies from 'vue-cookies'
-import ElementUI from 'element-ui';
+// import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import { messages } from '../public/static/i18n';
 import VueI18n from 'vue-i18n';
@@ -18,7 +18,7 @@ Vue.use(VueI18n);
 Vue.use(VueCookies)
 Vue.use(directive)
 Vue.use(filters) 
-Vue.use(ElementUI);
+Vue.use(ELEMENT);
 
 const i18n = new VueI18n({
   locale: 'zh',
