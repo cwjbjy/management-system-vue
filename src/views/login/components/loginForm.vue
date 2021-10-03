@@ -30,8 +30,9 @@
 
 <script>
 import API from "@/service/axios/api";
-import { route_admin, route_user } from "@/router/routes";
+import { vuexRoot } from "@/mixin";
 export default {
+  mixins: [vuexRoot],
   data() {
     return {
       moreClick: false, //防止重复点击
@@ -56,23 +57,21 @@ export default {
           fd.append("passWord", this.ruleForm.pass);
           API.login(fd)
             .then((res) => {
-              if (this.ruleForm.name === "一叶扁舟") {
-                this.$router.addRoutes(route_admin);
-              } else {
-                this.$router.addRoutes(route_user);
-              }
               this.$cookies.set("authMenus", res.data.auth);
               this.$cookies.set("token", res.data.value);
+              this.SET_USERNAME({ data: this.ruleForm.name });
               localStorage.setItem("user_name", this.ruleForm.name);
               this.$router.push("/firstItem");
             })
             .catch((err) => {
-              this.moreClick = false;
               if (err.response.status === 400) {
                 this.$message.error("密码错误");
               } else if (err.response.status === 401) {
                 this.$message.error("用户名错误");
               }
+            })
+            .finally(() => {
+              this.moreClick = false;
             });
         } else {
           this.$message.error("请检查输入内容");

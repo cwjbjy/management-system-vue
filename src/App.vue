@@ -12,18 +12,17 @@ import { vuexRoot } from "@/mixin";
 export default {
   name: "App",
   mixins: [vuexRoot],
-  created() {
-    if (
-      this.userName == "" &&
-      this.$route.path !== "/login" &&
-      this.$route.path !== "/"
-    ) {
-      if (this.user_name === "一叶扁舟") {
-        this.$router.addRoutes(route_admin);
-      } else {
-        this.$router.addRoutes(route_user);
-      }
-    }
+  watch: {
+    user_name: {
+      handler(newVal) {
+        if (newVal === "一叶扁舟") {
+          this.$router.addRoutes(route_admin);
+        } else {
+          this.$router.addRoutes(route_user);
+        }
+      },
+      immediate:true
+    },
   },
 };
 </script>
