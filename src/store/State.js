@@ -1,6 +1,5 @@
 const state = () => ({
-  count: 1,
-  userName: '', //用来判断页面是否刷新
+  userName: '',
   todoList: [{
       title: "TypeScript",
       status: false

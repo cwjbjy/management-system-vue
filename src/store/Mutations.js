@@ -2,9 +2,6 @@ const mutations = {
     SET_USERNAME(state, payload) {
         state.userName = payload.data
     },
-    SET_COUNT(state, payload) {
-        state.count = payload.data
-    },
     SET_IMAGEURL(state, payload) {
         state.imageUrl = payload.data
     },
