@@ -87,6 +87,7 @@ export default {
 <style scoped lang="scss">
 .login {
   height: 100vh;
+  min-width: 600px;
   color: $color-font;
   background-color: $background-login;
   .top {
