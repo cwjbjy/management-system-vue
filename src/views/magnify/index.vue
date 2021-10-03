@@ -1,7 +1,7 @@
 <template>
   <section>
     <el-card shadow="hover">
-      <strong>请将鼠标移动到图片上，体验效果 <br/><br/> IE、Edge浏览器无法正常体验，请更换其他浏览器体验该效果 </strong>
+      <strong>请将鼠标移动到图片上，体验效果 <br/><br/> IE浏览器无法正常体验，请更换其他浏览器体验该效果 </strong>
       <div class="block frontArea" id="small_Box">
         <img :src="src" class="imageBox" alt="加载失败"/>
       </div>

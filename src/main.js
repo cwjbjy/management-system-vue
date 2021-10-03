@@ -4,7 +4,6 @@ import store from './store'
 import directive from "./directive"
 import filters from "./filter"
 import VueCookies from 'vue-cookies'
-// import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import { messages } from '../public/static/i18n';
 import VueI18n from 'vue-i18n';

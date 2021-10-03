@@ -48,9 +48,6 @@ export default {
         this.newMenus.push(item);
       }
     });
-    //刷新时，定位到系统首页
-    // let path = this.newMenus[0].path;
-    // this.$router.push(path);
   },
   mounted() {
     window.eventBus.$on(bus.updateRouter, (value) => {

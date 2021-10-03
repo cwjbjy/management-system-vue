@@ -1,5 +1,5 @@
 //获取当前时间
-function getTime() {
+export function getTime() {
     var date = new Date(); //实例一个时间对象；
     var year = date.getFullYear(); //获取系统的年；
     var month = date.getMonth() + 1; //获取系统月份，由于月份是从0开始计算，所以要加1
@@ -26,8 +26,22 @@ function getTime() {
     return time
 }
 
+//深拷贝
+export function deepCopy(obj){
+    let newObj;
+    if(typeof obj === 'object' && obj !== null){
+        newObj = Array.isArray(obj) ? []:{}
+        for(let key in obj){
+            newObj[key] = deepCopy(obj[key])
+        }
+    }else{
+        newObj = obj
+    }
+    return newObj
+}
+
 //判断对象是否为空
-function getIsObjectEmpty(obj) {
+export function getIsObjectEmpty(obj) {
     //json对象都有单引号，所以判断的时候，也要加上单引号
     if (JSON.stringify(obj) !== '{}') {
         return true; //不为空对象
@@ -36,12 +50,10 @@ function getIsObjectEmpty(obj) {
 }
 
 //判断字符是否为空
-function getIsStringEmpty(obj) {
+export function getIsStringEmpty(obj) {
     //判断是否为null时，两个等号即可,否则无法判断
     if (obj === "undefined" || obj == null || obj === "") {
         return true; //返回true，为空
     }
     return false; //返回false，不为空
 }
-
-export {getTime,getIsObjectEmpty,getIsStringEmpty}
