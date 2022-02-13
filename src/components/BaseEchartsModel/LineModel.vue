@@ -3,10 +3,11 @@
 </template>
 
 <script>
-import { vuexTheme } from "../../mixin";
-import * as base from "@/utils/echartsBase";
+import { vuexTheme } from '../../mixin';
+import resize from '../../mixin/resize';
+import * as base from '@/utils/echartsBase';
 export default {
-  name: "LineModel",
+  name: 'LineModel',
   props: {
     model: {
       type: Object,
@@ -21,72 +22,53 @@ export default {
       this.prepareDomain();
     },
   },
-  mixins: [vuexTheme],
+  mixins: [vuexTheme, resize],
   mounted() {
     this.prepareDomain(this.model);
-    window.addEventListener("resize", this.autoSize, false);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.autoSize, false);
   },
   methods: {
     prepareDomain(model) {
       var echartsInstance = echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       var option = {
-        color: [
-          "#eccc68",
-          "#ff7f50",
-          "#7bed9f",
-          "#70a1ff",
-          "#5352ed",
-          "#2ed573",
-          "#1e90ff",
-          "#3742fa",
-        ],
-        title: base.title({ text: "折线图", color: this.echartColor }),
+        color: ['#eccc68', '#ff7f50', '#7bed9f', '#70a1ff', '#5352ed', '#2ed573', '#1e90ff', '#3742fa'],
+        title: base.title({ text: '折线图', color: this.echartColor }),
         grid: base.grid(),
         xAxis: base.xAxis({
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           color: this.echartColor,
         }),
-        tooltip: base.tooltip("axis", "line"),
+        tooltip: base.tooltip('axis', 'line'),
         yAxis: base.yAxis(this.echartColor),
         legend: base.legend(this.echartColor),
         series: [
           {
-            name: "邮件营销",
-            type: "line",
-            symbol: "circle",
+            name: '邮件营销',
+            type: 'line',
+            symbol: 'circle',
             data: [120, 132, 101, 134, 90, 230, 210],
           },
           {
-            name: "联盟广告",
-            type: "line",
-            symbol: "circle",
+            name: '联盟广告',
+            type: 'line',
+            symbol: 'circle',
             data: [220, 182, 191, 234, 290, 330, 310],
           },
           {
-            name: "视频广告",
-            type: "line",
-            symbol: "circle",
+            name: '视频广告',
+            type: 'line',
+            symbol: 'circle',
             data: [150, 232, 201, 154, 190, 330, 410],
           },
           {
-            name: "直接访问",
-            type: "line",
-            symbol: "circle",
+            name: '直接访问',
+            type: 'line',
+            symbol: 'circle',
             data: [320, 332, 301, 334, 390, 330, 320],
           },
         ],
       };
       echartsInstance.setOption(option);
-    },
-    autoSize() {
-      this.$nextTick(() => {
-        let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
-        echartsInstance.resize();
-      });
     },
   },
 };

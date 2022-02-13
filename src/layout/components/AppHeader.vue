@@ -34,7 +34,8 @@
 </template>
 <script>
 import { getImage } from '@/api/user';
-import { getURL, vuexRoot, vuexTheme } from '@/mixin';
+import { vuexApp, vuexTheme } from '@/mixin';
+import { getURL } from '@/mixin/url';
 import { echartColor, bus } from '@/constants';
 
 export default {
@@ -55,7 +56,7 @@ export default {
       return process.env.NODE_ENV === 'production';
     },
   },
-  mixins: [getURL, vuexRoot, vuexTheme],
+  mixins: [getURL, vuexApp, vuexTheme],
   created() {
     this.getPortrait();
   },

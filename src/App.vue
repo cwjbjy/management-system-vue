@@ -8,10 +8,10 @@
 
 <script>
 import { route_admin, route_user } from '@/router/routes';
-import { vuexRoot } from '@/mixin';
+import { vuexApp } from '@/mixin';
 export default {
   name: 'App',
-  mixins: [vuexRoot],
+  mixins: [vuexApp],
   watch: {
     user_name: {
       handler(newVal) {

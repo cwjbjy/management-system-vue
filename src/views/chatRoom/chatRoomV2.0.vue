@@ -19,18 +19,18 @@
         <div class="chat-content" ref="infoListContent">
           <div>
             <dl
-              v-for="(item,index) in historyInfos"
+              v-for="(item, index) in historyInfos"
               :key="index"
-              :class="[item.name == user_name? 'info-right':'info-left']"
+              :class="[item.name == user_name ? 'info-right' : 'info-left']"
             >
               <dt>
                 <img v-if="item.image" :src="item.image" class="headPortrait" alt="图片加载失败" />
-                <img v-else src="@/assets/images/chartRoom/root.png"  class="headPortrait"/>
+                <img v-else src="@/assets/images/chartRoom/root.png" class="headPortrait" />
               </dt>
               <dd>
-                <div class="txt-name">{{item.name}}</div>
+                <div class="txt-name">{{ item.name }}</div>
                 <div>
-                  <span class="txt-content">{{item.text}}</span>
+                  <span class="txt-content">{{ item.text }}</span>
                 </div>
               </dd>
             </dl>
@@ -59,15 +59,15 @@
 </template>
 
 <script>
-import insService from "@/service/websocket";
-import { vuexRoot } from "@/mixin";
-import {bus} from '@/constants'
+import insService from '@/service/websocket';
+import { vuexApp } from '@/mixin';
+import { bus } from '@/constants';
 export default {
-  name: "ChatRoom",
+  name: 'ChatRoom',
   data() {
     return {
-      systePrompt: "",
-      msg: "",
+      systePrompt: '',
+      msg: '',
       connectFlag: false,
       closeFlag: true,
       mess: null,
@@ -77,28 +77,28 @@ export default {
       historyInfos: [],
     };
   },
-  mixins: [vuexRoot],
+  mixins: [vuexApp],
   activated() {
     let that = this;
-    document.addEventListener("keydown", that.keyDown);
+    document.addEventListener('keydown', that.keyDown);
     window.eventBus.$on(bus.updateWs, (value) => {
       this.historyInfos.push(value);
-      this.$nextTick(()=>{
+      this.$nextTick(() => {
         this.$refs.infoListContent.scrollTop = 9999999;
-      })
+      });
     });
   },
   deactivated() {
     window.eventBus.$off(bus.updateWs);
     let that = this;
-    document.removeEventListener("keydown", that.keyDown);
+    document.removeEventListener('keydown', that.keyDown);
   },
   methods: {
     connect() {
       let user = {
-        type: "setName",
+        type: 'setName',
         name: this.user_name,
-        image:this.imageUrl
+        image: this.imageUrl,
       };
       insService.joinMeeting({
         params: user,
@@ -109,7 +109,7 @@ export default {
     },
     close() {
       let close = {
-        type: "close",
+        type: 'close',
       };
       insService.close(close);
       this.connectFlag = false;
@@ -117,15 +117,15 @@ export default {
     },
     send() {
       if (!this.connectFlag) {
-        this.$message.error("请先连接");
+        this.$message.error('请先连接');
       }
-      if (this.msg == "") return;
+      if (this.msg == '') return;
       let message = {
-        type: "chat",
+        type: 'chat',
         text: this.msg,
       };
       insService.sendMessage(message);
-      this.msg = "";
+      this.msg = '';
     },
     keyDown() {
       let key = window.event.keyCode;
@@ -134,7 +134,7 @@ export default {
       }
     },
     _closeCallBack() {
-      this.historyInfos = []
+      this.historyInfos = [];
     },
   },
 };
@@ -178,7 +178,7 @@ export default {
     padding-left: 47px;
     dt {
       left: 0;
-      @extend %main_centerLeft
+      @extend %main_centerLeft;
     }
   }
   dl {

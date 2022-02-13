@@ -14,9 +14,9 @@
 
 <script>
 import { login } from '@/api/user';
-import { vuexRoot } from '@/mixin';
+import { vuexApp } from '@/mixin';
 export default {
-  mixins: [vuexRoot],
+  mixins: [vuexApp],
   data() {
     return {
       moreClick: false, //防止重复点击

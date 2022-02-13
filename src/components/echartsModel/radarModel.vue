@@ -3,9 +3,10 @@
 </template>
 
 <script>
-import { vuexTheme } from "../../mixin";
+import { vuexTheme } from '../../mixin';
+import resize from '../../mixin/resize';
 export default {
-  name:'RadarModel',
+  name: 'RadarModel',
   props: {
     model: {
       type: Object,
@@ -13,20 +14,16 @@ export default {
     },
   },
   watch: {
-    model (newData) {
+    model(newData) {
       this.prepareDomain(newData);
     },
     echartColor() {
       this.prepareDomain();
     },
   },
-  mixins: [vuexTheme],
+  mixins: [vuexTheme, resize],
   mounted() {
     this.prepareDomain(this.model);
-    window.addEventListener("resize", this.autoSize, false);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.autoSize, false);
   },
   methods: {
     prepareDomain(model) {
@@ -34,27 +31,27 @@ export default {
       echartsInstance.clear();
       var indicator = [
         {
-          text: "小型车",
+          text: '小型车',
           max: 6000,
         },
         {
-          text: "中型车",
+          text: '中型车',
           max: 5000,
         },
         {
-          text: "大型车",
+          text: '大型车',
           max: 5000,
         },
         {
-          text: "货车",
+          text: '货车',
           max: 5000,
         },
         {
-          text: "特种车",
+          text: '特种车',
           max: 5000,
         },
         {
-          text: "贵宾车",
+          text: '贵宾车',
           max: 5000,
         },
       ];
@@ -65,16 +62,16 @@ export default {
           itemStyle: {
             normal: {
               lineStyle: {
-                color: "#4A99FF",
+                color: '#4A99FF',
               },
-              shadowColor: "#4A99FF",
+              shadowColor: '#4A99FF',
               shadowBlur: 10,
             },
           },
           areaStyle: {
             normal: {
               color: {
-                type: "linear",
+                type: 'linear',
                 x: 0, //右
                 y: 0, //下
                 x2: 1, //左
@@ -82,15 +79,15 @@ export default {
                 colorStops: [
                   {
                     offset: 0,
-                    color: "#4A99FF",
+                    color: '#4A99FF',
                   },
                   {
                     offset: 0.5,
-                    color: "rgba(0,0,0,0)",
+                    color: 'rgba(0,0,0,0)',
                   },
                   {
                     offset: 1,
-                    color: "#4A99FF",
+                    color: '#4A99FF',
                   },
                 ],
                 globalCoord: false,
@@ -105,16 +102,16 @@ export default {
           itemStyle: {
             normal: {
               lineStyle: {
-                color: "#4BFFFC",
+                color: '#4BFFFC',
               },
-              shadowColor: "#4BFFFC",
+              shadowColor: '#4BFFFC',
               shadowBlur: 10,
             },
           },
           areaStyle: {
             normal: {
               color: {
-                type: "linear",
+                type: 'linear',
                 x: 0, //右
                 y: 0, //下
                 x2: 1, //左
@@ -122,15 +119,15 @@ export default {
                 colorStops: [
                   {
                     offset: 0,
-                    color: "#4BFFFC",
+                    color: '#4BFFFC',
                   },
                   {
                     offset: 0.5,
-                    color: "rgba(0,0,0,0)",
+                    color: 'rgba(0,0,0,0)',
                   },
                   {
                     offset: 1,
-                    color: "#4BFFFC",
+                    color: '#4BFFFC',
                   },
                 ],
                 globalCoord: false,
@@ -141,9 +138,9 @@ export default {
         },
       ];
       var option = {
-        color: ["#4A99FF", "#4BFFFC"],
+        color: ['#4A99FF', '#4BFFFC'],
         legend: {
-          orient: "vertical",
+          orient: 'vertical',
           textStyle: {
             color: this.echartColor,
           },
@@ -163,26 +160,20 @@ export default {
           },
           splitLine: {
             lineStyle: {
-              color: "#113865", 
-              width: 1, 
+              color: '#113865',
+              width: 1,
             },
           },
         },
         series: [
           {
-            type: "radar",
+            type: 'radar',
             symbolSize: 8,
             data: dataArr,
           },
         ],
       };
       echartsInstance.setOption(option);
-    },
-    autoSize() {
-      this.$nextTick(() => {
-        let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
-        echartsInstance.resize();
-      });
     },
   },
 };

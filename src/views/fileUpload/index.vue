@@ -12,7 +12,7 @@
         :before-upload="beforeAvatarUpload"
         :on-change="onChange"
       >
-        <img v-if="imageUrl" :src="imageUrl" class="avatar" alt="加载失败"/>
+        <img v-if="imageUrl" :src="imageUrl" class="avatar" alt="加载失败" />
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过2MB</div>
       </el-upload>
@@ -21,50 +21,50 @@
 </template>
 
 <script>
-import { uploadURL,getURL,vuexRoot } from "@/mixin";
-import {bus} from "@/constants"
+import { vuexApp } from '@/mixin';
+import { uploadURL, getURL } from '@/mixin/url';
+import { bus } from '@/constants';
 export default {
-  name: "FileUp",
+  name: 'FileUp',
   data() {
     return {
       headers: {
-        Authorization: ""
+        Authorization: '',
       },
-      user:{
-        user_name:""
-      }
+      user: {
+        user_name: '',
+      },
     };
   },
-  mixins: [uploadURL,getURL,vuexRoot],
+  mixins: [uploadURL, getURL, vuexApp],
   created() {
-    let token = Vue.$cookies.get("token");
+    let token = Vue.$cookies.get('token');
     this.headers.Authorization = token;
-    this.user.user_name = this.user_name
+    this.user.user_name = this.user_name;
   },
   methods: {
     onSuccess(response, file) {
       this.$message.success(response.message);
       //更换头部图片
-      window.eventBus.$emit(bus.updateImg)
+      window.eventBus.$emit(bus.updateImg);
     },
     beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg" || file.type === "image/png";
+      const isJPG = file.type === 'image/jpeg' || file.type === 'image/png';
       const isLt2M = file.size / 1024 / 1024 < 2;
       if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG/PNG 格式!");
+        this.$message.error('上传头像图片只能是 JPG/PNG 格式!');
       }
       if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
+        this.$message.error('上传头像图片大小不能超过 2MB!');
       }
       return isJPG && isLt2M;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
-
-.frontArea{
+.frontArea {
   margin-top: 15px;
 }
 
@@ -92,4 +92,3 @@ export default {
   display: block;
 }
 </style>
-

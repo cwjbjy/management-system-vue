@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import { vuexRoot } from '@/mixin';
+import { vuexApp } from '@/mixin';
 import { getUser } from '@/api/user';
 export default {
-  mixins: [vuexRoot],
+  mixins: [vuexApp],
   data() {
     return {
       registerTime: '',

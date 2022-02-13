@@ -81,7 +81,7 @@
 
 <script>
 import { user, deleteUser, updateUser } from '@/api/user';
-import { getURL } from '@/mixin';
+import { getURL } from '@/mixin/url';
 export default {
   name: 'UserManage',
   data() {

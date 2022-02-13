@@ -4,10 +4,11 @@
 </template>
 
 <script>
-import { vuexTheme } from "../../mixin";
-import * as base from "@/utils/echartsBase";
+import { vuexTheme } from '../../mixin';
+import resize from '../../mixin/resize';
+import * as base from '@/utils/echartsBase';
 export default {
-  name:'CylinderModel',
+  name: 'CylinderModel',
   props: {
     model: {
       type: Object,
@@ -22,25 +23,21 @@ export default {
       this.prepareDomain();
     },
   },
-  mixins: [vuexTheme],
+  mixins: [vuexTheme, resize],
   mounted() {
     this.prepareDomain(this.model);
-    window.addEventListener("resize", this.autoSize, false);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.autoSize, false);
   },
   methods: {
     prepareDomain(model) {
       let echartsInstance = echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       let option = {
-        color: ["#70a1ff", "#70a1ff"],
-        title: base.title({ text: "圆柱图", color: this.echartColor }),
+        color: ['#70a1ff', '#70a1ff'],
+        title: base.title({ text: '圆柱图', color: this.echartColor }),
         grid: base.grid(),
-        tooltip: base.tooltip("item"),
+        tooltip: base.tooltip('item'),
         xAxis: base.xAxis({
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           color: this.echartColor,
         }),
         yAxis: Object.assign(base.yAxis(this.echartColor), {
@@ -48,39 +45,39 @@ export default {
             show: true,
             lineStyle: {
               color: this.echartColor,
-              type: "dashed",
+              type: 'dashed',
               opacity: 0.5,
             },
           },
         }),
         series: [
           {
-            type: "pictorialBar",
+            type: 'pictorialBar',
             symbolSize: [20, 10],
             symbolOffset: [0, -5],
-            symbolPosition: "end",
+            symbolPosition: 'end',
             z: 12,
             label: {
               normal: {
                 show: true,
-                position: "top",
+                position: 'top',
                 // "formatter": "{c}%"
               },
             },
             data: [60, 70, 80, 90, 60, 70, 80],
           },
           {
-            type: "pictorialBar",
+            type: 'pictorialBar',
             symbolSize: [20, 10],
             symbolOffset: [0, 5],
             z: 12,
             data: [60, 70, 80, 90, 60, 70, 80],
           },
           {
-            type: "bar",
+            type: 'bar',
             itemStyle: {
               normal: {
-                color: ["#5352ed"],
+                color: ['#5352ed'],
                 opacity: 0.7,
               },
             },
@@ -88,20 +85,20 @@ export default {
             data: [60, 70, 80, 90, 60, 70, 80],
             markLine: {
               silent: true,
-              symbol: "none",
+              symbol: 'none',
               label: {
-                position: "middle",
+                position: 'middle',
               },
               data: [
                 {
-                  name: "目标值",
+                  name: '目标值',
                   yAxis: 80,
                   lineStyle: {
-                    color: "#ffc832",
+                    color: '#ffc832',
                   },
                   label: {
-                    position: "end",
-                    formatter: "{b}\n {c}",
+                    position: 'end',
+                    formatter: '{b}\n {c}',
                   },
                 },
               ],
@@ -110,12 +107,6 @@ export default {
         ],
       };
       echartsInstance.setOption(option);
-    },
-    autoSize() {
-      this.$nextTick(() => {
-        let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
-        echartsInstance.resize();
-      });
     },
   },
 };

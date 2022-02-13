@@ -1,5 +1,5 @@
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex';
-export const vuexRoot = {
+export const vuexApp = {
   computed: {
     /*将this.userName映射为this.$store.state.userName*/
     ...mapState('app', ['count', 'userName', 'todoList', 'imageUrl']),
@@ -22,21 +22,5 @@ export const vuexTheme = {
   },
   methods: {
     ...mapMutations('themeColor', ['SET_COLOR', 'SET_FLEET', 'SET_THEME']),
-  },
-};
-
-export const getURL = {
-  computed: {
-    baseURL() {
-      return process.env.VUE_APP_IMAGE;
-    },
-  },
-};
-
-export const uploadURL = {
-  computed: {
-    getUrl() {
-      return process.env.VUE_APP_UPLOADIMAGE;
-    },
   },
 };

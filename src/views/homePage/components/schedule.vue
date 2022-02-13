@@ -2,20 +2,9 @@
   <el-card shadow="hover" style="height: 406px">
     <div slot="header">
       <span>待办事项</span>
-      <el-button
-        style="float: right; padding: 3px 0"
-        type="text"
-        @click="openDialog('add')"
-        >添加</el-button
-      >
+      <el-button style="float: right; padding: 3px 0" type="text" @click="openDialog('add')">添加</el-button>
     </div>
-    <el-table
-      :show-header="false"
-      :data="todoList"
-      style="width: 100%"
-      ref="table"
-      height="288px"
-    >
+    <el-table :show-header="false" :data="todoList" style="width: 100%" ref="table" height="288px">
       <el-table-column width="40">
         <template slot-scope="scope">
           <el-checkbox v-model="scope.row.status"></el-checkbox>
@@ -30,18 +19,12 @@
       </el-table-column>
       <el-table-column width="35">
         <template slot-scope="scope">
-          <i
-            class="el-icon-edit c_pointer"
-            @click="openDialog('edit', scope.row, scope.$index)"
-          ></i>
+          <i class="el-icon-edit c_pointer" @click="openDialog('edit', scope.row, scope.$index)"></i>
         </template>
       </el-table-column>
       <el-table-column width="35">
         <template slot-scope="scope">
-          <i
-            class="el-icon-delete c_pointer"
-            @click="deleteRow(scope.$index)"
-          ></i>
+          <i class="el-icon-delete c_pointer" @click="deleteRow(scope.$index)"></i>
         </template>
       </el-table-column>
     </el-table>
@@ -56,19 +39,19 @@
 </template>
 
 <script>
-import { vuexRoot } from "@/mixin";
+import { vuexApp } from '@/mixin';
 export default {
-  name: "Schedule",
+  name: 'Schedule',
   data() {
     return {
       dialogFormVisible: false,
-      dialogTitle: "",
-      schedule: "",
+      dialogTitle: '',
+      schedule: '',
       status: 0, //0增加，1编辑
       itemIndex: 0,
     };
   },
-  mixins: [vuexRoot],
+  mixins: [vuexApp],
   created() {
     //解决IE浏览器渲染过慢，表格宽度计算错误
     this.$nextTick(() => {
@@ -81,12 +64,12 @@ export default {
       this.status = val;
       this.dialogFormVisible = true;
       switch (this.status) {
-        case "add":
-          this.schedule = "";
-          this.dialogTitle = "增加事项";
+        case 'add':
+          this.schedule = '';
+          this.dialogTitle = '增加事项';
           return;
-        case "edit":
-          this.dialogTitle = "编辑事项";
+        case 'edit':
+          this.dialogTitle = '编辑事项';
           this.schedule = row.title;
           return;
         default:
@@ -95,18 +78,18 @@ export default {
     },
     closeDialog() {
       switch (this.status) {
-        case "add":
-          this.SET_TODO({ type: "add", data: this.schedule });
-          this.$message.success("增加成功");
+        case 'add':
+          this.SET_TODO({ type: 'add', data: this.schedule });
+          this.$message.success('增加成功');
           this.dialogFormVisible = false;
           return;
-        case "edit":
+        case 'edit':
           this.SET_TODO({
-            type: "edit",
+            type: 'edit',
             index: this.itemIndex,
             data: this.schedule,
           });
-          this.$message.success("编辑成功");
+          this.$message.success('编辑成功');
           this.dialogFormVisible = false;
           return;
         default:
@@ -114,25 +97,25 @@ export default {
       }
     },
     deleteRow(index) {
-      this.$confirm("此操作将永久删除该事项, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
+      this.$confirm('此操作将永久删除该事项, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
       })
         .then(() => {
           this.SET_TODO({
-            type: "delete",
+            type: 'delete',
             index,
           });
           this.$message({
-            type: "success",
-            message: "删除成功!",
+            type: 'success',
+            message: '删除成功!',
           });
         })
         .catch(() => {
           this.$message({
-            type: "info",
-            message: "已取消删除",
+            type: 'info',
+            message: '已取消删除',
           });
         });
     },
@@ -147,7 +130,7 @@ export default {
 .todo-item {
   font-size: 14px;
   @include themify($themes) {
-    color: themed("card-font");
+    color: themed('card-font');
   }
 }
 .todo-item-del {
