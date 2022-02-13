@@ -8,15 +8,9 @@
       <el-dropdown class="themeColor" @command="switchColor">
         <span class="iconfont icon-zhuti_tiaosepan_o"></span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="gray" :class="active('gray')"
-            >简约灰</el-dropdown-item
-          >
-          <el-dropdown-item command="blue" :class="active('blue')"
-            >胖次蓝</el-dropdown-item
-          >
-          <el-dropdown-item command="black" :class="active('black')"
-            >夜间模式</el-dropdown-item
-          >
+          <el-dropdown-item command="gray" :class="active('gray')">简约灰</el-dropdown-item>
+          <el-dropdown-item command="blue" :class="active('blue')">胖次蓝</el-dropdown-item>
+          <el-dropdown-item command="black" :class="active('black')">夜间模式</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <!-- 用户名下拉菜单 -->
@@ -29,50 +23,45 @@
           </span>
         </div>
         <el-dropdown-menu slot="dropdown">
-          <a
-            href="https://github.com/cwjbjy/management-system-vue"
-            target="_blank"
-          >
+          <a href="https://github.com/cwjbjy/management-system-vue" target="_blank">
             <el-dropdown-item>项目仓库</el-dropdown-item>
           </a>
-          <el-dropdown-item divided command="loginout"
-            >退出登录</el-dropdown-item
-          >
+          <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
   </header>
 </template>
 <script>
-import API from "@/service/axios/api";
-import { getURL, vuexRoot, vuexTheme } from "@/mixin";
-import { echartColor, bus } from "@/constants";
+import { getImage } from '@/api/user';
+import { getURL, vuexRoot, vuexTheme } from '@/mixin';
+import { echartColor, bus } from '@/constants';
 
 export default {
-  name: "AppHeader",
+  name: 'AppHeader',
   data() {
     return {
-      imageUrl: "",
-      theme: "gray",
+      imageUrl: '',
+      theme: 'gray',
     };
   },
   computed: {
     active() {
-      return function(color) {
-        return this.theme === color ? "dropdownActive" : "";
+      return function (color) {
+        return this.theme === color ? 'dropdownActive' : '';
       };
     },
     show() {
-      return process.env.NODE_ENV === "production";
+      return process.env.NODE_ENV === 'production';
     },
   },
   mixins: [getURL, vuexRoot, vuexTheme],
   created() {
-    this.getImage();
+    this.getPortrait();
   },
   mounted() {
     window.eventBus.$on(bus.updateImg, () => {
-      this.getImage();
+      this.getPortrait();
     });
   },
   beforeDestroy() {
@@ -80,24 +69,24 @@ export default {
   },
   methods: {
     handleCommand(command) {
-      if (command == "loginout") {
-        this.$router.push("/login");
+      if (command == 'loginout') {
+        this.$router.push('/login');
         location.reload();
       }
     },
     switchColor(command) {
       this.theme = command;
-      this.$emit("theme", command);
+      this.$emit('theme', command);
       /* 策略模式 */
       this.SET_COLOR({ data: echartColor[command].font });
       this.SET_FLEET({ data: echartColor[command].fleetBg });
       this.SET_THEME({ data: command });
     },
-    getImage() {
+    getPortrait() {
       let params = {
         user_name: this.user_name,
       };
-      API.getImage(params).then((res) => {
+      getImage(params).then((res) => {
         let fileName = res.data.Data[0].photo;
         this.imageUrl = `${this.baseURL}${fileName}`;
         this.SET_IMAGEURL({ data: this.imageUrl });
@@ -146,7 +135,7 @@ export default {
 .iconfont {
   font-size: 30px;
   @include themify($themes) {
-    color: themed("icon-font");
+    color: themed('icon-font');
   }
 }
 .el-dropdown-menu__item:focus,

@@ -1,75 +1,42 @@
-import {
-    mapState,
-    mapMutations,
-    mapActions,
-    mapGetters
-} from 'vuex'
-const vuexRoot = {
-    computed: {
-        /*将this.userName映射为this.$store.state.userName*/
-        ...mapState([
-            'count',
-            'userName',
-            'todoList',
-            'imageUrl'
-        ]),
-        /* 把 this.user_name 映射为 this.$store.getters.user_name*/
-        ...mapGetters([
-            'user_name',
-        ]),
-    },
-    methods: {
-        /*将this.SET_USERNAME({data:value}) 映射为 
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex';
+export const vuexRoot = {
+  computed: {
+    /*将this.userName映射为this.$store.state.userName*/
+    ...mapState('app', ['count', 'userName', 'todoList', 'imageUrl']),
+    /* 把 this.user_name 映射为 this.$store.getters.user_name*/
+    ...mapGetters('app', ['user_name']),
+  },
+  methods: {
+    /*将this.SET_USERNAME({data:value}) 映射为 
         this.$store.commit('SET_USERNAME',{data:value})*/
-        ...mapMutations([
-            'SET_USERNAME',
-            'SET_IMAGEURL',
-            'SET_TODO'
-        ]),
-        /*将this.setCount(amount) 映射为
+    ...mapMutations('app', ['SET_USERNAME', 'SET_IMAGEURL', 'SET_TODO']),
+    /*将this.setCount(amount) 映射为
          this.$store.dispatch('setCount',amount)*/
-        ...mapActions([
-            'setCount',
-        ]),
-    }
-}
+    ...mapActions('app', ['setCount']),
+  },
+};
 
-const vuexTheme = {
-    computed: {
-        ...mapState('themeColor', [
-            'echartColor',
-            'fleetBg',
-            'theme'
-        ])
+export const vuexTheme = {
+  computed: {
+    ...mapState('themeColor', ['echartColor', 'fleetBg', 'theme']),
+  },
+  methods: {
+    ...mapMutations('themeColor', ['SET_COLOR', 'SET_FLEET', 'SET_THEME']),
+  },
+};
+
+export const getURL = {
+  computed: {
+    baseURL() {
+      return process.env.VUE_APP_IMAGE;
     },
-    methods: {
-        ...mapMutations('themeColor', [
-            'SET_COLOR',
-            'SET_FLEET',
-            'SET_THEME'
-        ]),
+  },
+};
+
+export const uploadURL = {
+  computed: {
+    getUrl() {
+      return process.env.VUE_APP_UPLOADIMAGE;
     },
-}
-
-const getURL = {
-    computed: {
-        baseURL() {
-            return process.env.VUE_APP_IMAGE;
-        }
-    }
-}
-
-const uploadURL = {
-    computed: {
-        getUrl() {
-            return process.env.VUE_APP_UPLOADIMAGE;
-        }
-    },
-}
-
-export {
-    vuexRoot,
-    vuexTheme,
-    getURL,
-    uploadURL
-}
+  },
+};

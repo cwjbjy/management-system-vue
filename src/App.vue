@@ -7,21 +7,21 @@
 </template>
 
 <script>
-import { route_admin, route_user } from "@/router/routes";
-import { vuexRoot } from "@/mixin";
+import { route_admin, route_user } from '@/router/routes';
+import { vuexRoot } from '@/mixin';
 export default {
-  name: "App",
+  name: 'App',
   mixins: [vuexRoot],
   watch: {
     user_name: {
       handler(newVal) {
-        if (newVal === "一叶扁舟") {
+        if (newVal === '一叶扁舟') {
           this.$router.addRoutes(route_admin);
         } else {
           this.$router.addRoutes(route_user);
         }
       },
-      immediate:true
+      immediate: true,
     },
   },
 };
@@ -29,8 +29,8 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial,
+    sans-serif;
   position: absolute;
   top: 0;
   bottom: 0;

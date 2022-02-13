@@ -1,16 +1,16 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 new HtmlWebpackPlugin({
-  inject:'body'
-})
+  inject: 'body',
+});
 module.exports = {
   productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
   publicPath: './',
   assetsDir: 'static',
   lintOnSave: false,
   devServer: {
-    open: true, 
+    open: true,
     host: '127.0.0.1',
-    hot:true,
+    hot: true,
     port: 8083,
     // proxy: {
     //     '/juhe':{
@@ -29,21 +29,20 @@ module.exports = {
     // css预设器配置项
     loaderOptions: {
       sass: {
-        prependData: `@import "@/assets/scss/index.scss";`
+        prependData: `@import "@/styles/index.scss";`,
       },
       postcss: {
-        plugins: []
-      }
+        plugins: [],
+      },
     },
     // 是否启用 CSS modules for all css / pre-processor files.
-    requireModuleExtension: true
+    requireModuleExtension: true,
   },
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     // 移除 prefetch 插件,取消预加载，启动懒加载
-    config.plugins.delete('prefetch')
-    config.plugins.delete('preload')
-    config.plugin('webpack-bundle-analyzer')
-      .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+    config.plugins.delete('prefetch');
+    config.plugins.delete('preload');
+    config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin);
   },
   pwa: {
     workboxOptions: {
@@ -55,12 +54,12 @@ module.exports = {
   configureWebpack: {
     //externals中的key是用于import，value表示在全局中访问到该对象，就是window.echarts
     externals: {
-      'echarts': 'echarts',
+      echarts: 'echarts',
       'element-ui': 'ELEMENT',
-      'axios':'axios',
-      'vue':'Vue',
-      'vuex':'Vuex',
-      'vue-router':'VueRouter'
-    }
+      axios: 'axios',
+      vue: 'Vue',
+      vuex: 'Vuex',
+      'vue-router': 'VueRouter',
+    },
   },
-}
+};

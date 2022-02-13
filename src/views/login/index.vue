@@ -6,20 +6,8 @@
     <main class="main">
       <article class="form">
         <nav class="tab">
-          <div
-            :class="{ tab_active: flag }"
-            class="tab_title"
-            @click="flag = !flag"
-          >
-            用户登录
-          </div>
-          <div
-            :class="{ tab_active: !flag }"
-            class="tab_title"
-            @click="flag = !flag"
-          >
-            用户注册
-          </div>
+          <div :class="{ tab_active: flag }" class="tab_title" @click="flag = !flag">用户登录</div>
+          <div :class="{ tab_active: !flag }" class="tab_title" @click="flag = !flag">用户注册</div>
         </nav>
         <section v-show="flag">
           <!-- 登录表单 -->
@@ -37,11 +25,11 @@
 </template>
 
 <script>
-import LoginForm from "./components/loginForm";
-import LoginOther from "./components/loginOther";
-import LoginRegister from "./components/loginRegister";
+import LoginForm from './components/loginForm';
+import LoginOther from './components/loginOther';
+import LoginRegister from './components/loginRegister';
 export default {
-  name: "Login",
+  name: 'Login',
   components: {
     LoginForm,
     LoginOther,
@@ -49,20 +37,20 @@ export default {
   },
   data() {
     return {
-      title: "登陆",
+      title: '登录',
       flag: true,
     };
   },
   created() {
-    localStorage.removeItem("user_name");
+    localStorage.removeItem('user_name');
   },
   mounted() {
     let that = this;
-    document.addEventListener("keydown", that.keyDown);
+    document.addEventListener('keydown', that.keyDown);
   },
   beforeDestroy() {
     let that = this;
-    document.removeEventListener("keydown", that.keyDown);
+    document.removeEventListener('keydown', that.keyDown);
   },
   methods: {
     register(params) {
@@ -140,4 +128,3 @@ export default {
   }
 }
 </style>
-

@@ -1,11 +1,13 @@
 <template>
   <section>
     <el-card shadow="hover">
-      <strong>管理员登陆方可看到后台管理页面；该基础表格包含排序，筛选，搜索，编辑功能；表格中注册时间旁按钮为排序，筛选功能；上述功能均已实现</strong>
+      <strong
+        >管理员登录方可看到后台管理页面；该基础表格包含排序，筛选，搜索，编辑功能；表格中注册时间旁按钮为排序，筛选功能；上述功能均已实现</strong
+      >
       <div class="frontArea">
         <el-table
-          :data="tableData.filter(data => !search || data.user_name.toLowerCase().includes(search.toLowerCase()))"
-          :default-sort="{prop: 'createTime', order: 'ascending'}"
+          :data="tableData.filter((data) => !search || data.user_name.toLowerCase().includes(search.toLowerCase()))"
+          :default-sort="{ prop: 'createTime', order: 'ascending' }"
           max-height="500px"
           style="width: 100%"
           border
@@ -26,8 +28,8 @@
           <el-table-column label="角色描述" align="center">
             <template slot-scope="scope">
               <span
-                v-html="scope.row.authority == 1 ? '管理员':'普通用户'"
-                :class="[scope.row.authority == 1 ? 'blue':'']"
+                v-html="scope.row.authority == 1 ? '管理员' : '普通用户'"
+                :class="[scope.row.authority == 1 ? 'blue' : '']"
               ></span>
             </template>
           </el-table-column>
@@ -44,19 +46,17 @@
               <el-input v-model="search" size="mini" placeholder="输入用户名搜索" clearable />
             </template>
             <template slot-scope="scope">
-              <el-button
-                type="text"
-                icon="el-icon-edit"
-                v-if="scope.row.authority == 1"
-                @click="handleEdit(scope.row)"
-              >编辑</el-button>
+              <el-button type="text" icon="el-icon-edit" v-if="scope.row.authority == 1" @click="handleEdit(scope.row)"
+                >编辑</el-button
+              >
               <el-button
                 type="text"
                 icon="el-icon-delete"
                 class="red"
                 v-if="scope.row.authority != 1"
                 @click="handleDelete(scope.row.id)"
-              >删除</el-button>
+                >删除</el-button
+              >
             </template>
           </el-table-column>
         </el-table>
@@ -80,23 +80,23 @@
 </template>
 
 <script>
-import API from "@/service/axios/api";
-import { getURL } from "@/mixin";
+import { user, deleteUser, updateUser } from '@/api/user';
+import { getURL } from '@/mixin';
 export default {
-  name: "UserManage",
+  name: 'UserManage',
   data() {
     return {
       tableData: [],
-      search: "",
+      search: '',
       dialogFormVisible: false,
       form: {
-        name: "",
-        pass: "",
+        name: '',
+        pass: '',
       },
-      formLabelWidth: "100px",
+      formLabelWidth: '100px',
       row: {},
       rules: {
-        pass: [{ required: true, message: "请输入密码", trigger: "blur" }],
+        pass: [{ required: true, message: '请输入密码', trigger: 'blur' }],
       },
       filtersData: [],
     };
@@ -110,7 +110,7 @@ export default {
   },
   methods: {
     init() {
-      API.user().then((res) => {
+      user().then((res) => {
         this.tableData = res.data.data;
         this.filtersData = [];
         this.tableData.forEach((item) => {
@@ -122,27 +122,27 @@ export default {
       });
     },
     handleDelete(val) {
-      this.$confirm("此操作将永久删除该用户, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
+      this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
       })
         .then(() => {
           let params = {
             id: val,
           };
-          API.deleteUser(params).then((res) => {
+          deleteUser(params).then((res) => {
             this.$message({
-              type: "success",
-              message: "删除成功!",
+              type: 'success',
+              message: '删除成功!',
             });
             this.init();
           });
         })
         .catch(() => {
           this.$message({
-            type: "info",
-            message: "已取消删除",
+            type: 'info',
+            message: '已取消删除',
           });
         });
     },
@@ -159,18 +159,18 @@ export default {
             user_name: this.form.name,
             password: this.form.pass,
           };
-          API.updateUser(params).then((res) => {
-            this.$message.success("修改成功");
+          updateUser(params).then((res) => {
+            this.$message.success('修改成功');
             this.dialogFormVisible = false;
             this.init();
           });
         } else {
-          this.$message.error("请检查输入内容");
+          this.$message.error('请检查输入内容');
         }
       });
     },
     filterHandler(value, row, column) {
-      const property = column["property"];
+      const property = column['property'];
       return row[property] === value;
     },
   },

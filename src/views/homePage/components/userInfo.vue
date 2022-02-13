@@ -22,29 +22,29 @@
 </template>
 
 <script>
-import { vuexRoot } from "@/mixin";
-import API from "@/service/axios/api";
+import { vuexRoot } from '@/mixin';
+import { getUser } from '@/api/user';
 export default {
   mixins: [vuexRoot],
   data() {
     return {
-      registerTime: "",
+      registerTime: '',
     };
   },
   computed: {
     role() {
-      return this.user_name == "一叶扁舟" ? "管理员" : "普通用户";
+      return this.user_name == '一叶扁舟' ? '管理员' : '普通用户';
     },
   },
   created() {
-    this.getUser();
+    this.getRegisterTime();
   },
   methods: {
-    getUser() {
+    getRegisterTime() {
       let params = {
         user_name: this.user_name,
       };
-      API.getUser(params).then((res) => {
+      getUser(params).then((res) => {
         this.registerTime = res.data.Data[0].createTime;
       });
     },
@@ -62,7 +62,7 @@ export default {
     padding-bottom: 20px;
     margin-bottom: 20px;
     @include themify($themes) {
-      border-bottom: 2px solid themed("card-border");
+      border-bottom: 2px solid themed('card-border');
     }
     .user-img {
       width: 120px;
@@ -87,7 +87,7 @@ export default {
       font-size: 14px;
       line-height: 25px;
       @include themify($themes) {
-        color: themed("card-font");
+        color: themed('card-font');
       }
       @extend %space_between;
     }

@@ -1,23 +1,18 @@
+Vue.use(Vuex);
 
-Vue.use(Vuex)
+Vue.config.devtools = true;
 
-import state from './State.js'
-import mutations from './Mutations.js'
-import actions from './Actions.js'
-import getters from './Getters'
+const modulesFiles = require.context('./modules', true, /\.js$/);
 
-import themeColor from './themeColor'
+const modules = modulesFiles.keys().reduce((modules, modulePath) => {
+  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1');
+  const value = modulesFiles(modulePath);
+  modules[moduleName] = value.default;
+  return modules;
+}, {});
 
-Vue.config.devtools = true
-const store = new Vuex.Store(
-{
-    state,
-    mutations,
-    actions,
-    getters,
-    modules:{
-        themeColor
-    }
-}
-)
+const store = new Vuex.Store({
+  modules,
+});
+
 export default store;

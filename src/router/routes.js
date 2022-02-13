@@ -1,64 +1,49 @@
-import { deepCopy } from "@/utils/comFunc.js";
-import chartRouter from "@/views/flowChart/routes";
-import dragRouter from "@/views/drag/routes";
+import { deepCopy } from '@/utils/comFunc.js';
+import chartRouter from './modules/flowChart';
+import dragRouter from './modules/drag';
 
-const Login = () =>
-  import(/* webpackChunkName: "Login" */ "@/views/login/index.vue");
+const Login = () => import(/* webpackChunkName: "Login" */ '@/views/login/index.vue');
 
-const notFound = () =>
-  import(/* webpackChunkName: "notFound" */ "@/views/notFound/index.vue");
+const notFound = () => import(/* webpackChunkName: "notFound" */ '@/views/notFound/index.vue');
 
-const AppHome = () =>
-  import(/* webpackChunkName: "AppHome" */ "@/layout/AppHome.vue");
+const AppHome = () => import(/* webpackChunkName: "AppHome" */ '@/layout/AppHome.vue');
 
-const HomePage = () =>
-  import(/* webpackChunkName: "HomePage" */ "@/views/homePage/index.vue");
+const HomePage = () => import(/* webpackChunkName: "HomePage" */ '@/views/homePage/index.vue');
 
-const FleetLine = () =>
-  import(/* webpackChunkName: "FleetLine" */ "@/views/fleetLine/index.vue");
+const FleetLine = () => import(/* webpackChunkName: "FleetLine" */ '@/views/fleetLine/index.vue');
 
-const BaseEcharts = () =>
-  import(/* webpackChunkName: "BaseEcharts" */ "@/views/baseEcharts/index.vue");
+const BaseEcharts = () => import(/* webpackChunkName: "BaseEcharts" */ '@/views/baseEcharts/index.vue');
 
-const BaseTable = () =>
-  import(/* webpackChunkName: "BaseTable" */ "@/views/baseTable/index.vue");
+const BaseTable = () => import(/* webpackChunkName: "BaseTable" */ '@/views/baseTable/index.vue');
 
-const Magnifying = () =>
-  import(/* webpackChunkName: "Magnifying" */ "@/views/magnify/index.vue");
+const Magnifying = () => import(/* webpackChunkName: "Magnifying" */ '@/views/magnify/index.vue');
 
-const FileUp = () =>
-  import(/* webpackChunkName: "FileUp" */ "@/views/fileUpload/index.vue");
+const FileUp = () => import(/* webpackChunkName: "FileUp" */ '@/views/fileUpload/index.vue');
 
-const PDFPreview = () =>
-  import(/* webpackChunkName: "PDFPreview" */ "@/views/pdfPreview/index.vue");
+const PDFPreview = () => import(/* webpackChunkName: "PDFPreview" */ '@/views/pdfPreview/index.vue');
 
-const I18n = () =>
-  import(/* webpackChunkName: "I18n" */ "@/views/I18n/index.vue");
+const I18n = () => import(/* webpackChunkName: "I18n" */ '@/views/I18n/index.vue');
 
-const ChatRoom = () =>
-  import(
-    /* webpackChunkName: "ChatRoom" */ "@/views/chatRoom/chatRoomV2.0.vue"
-  );
+const ChatRoom = () => import(/* webpackChunkName: "ChatRoom" */ '@/views/chatRoom/chatRoomV2.0.vue');
 
-const UserManage = () =>
-  import(/* webpackChunkName: "UserManage" */ "@/views/userManage/index.vue");
+const UserManage = () => import(/* webpackChunkName: "UserManage" */ '@/views/userManage/index.vue');
 
 const routes = [
   {
-    path: "/",
-    redirect: "/firstItem",
+    path: '/',
+    redirect: '/firstItem',
   },
   {
-    path: "/login",
+    path: '/login',
     meta: {
-      title: "login",
+      title: 'login',
     },
     component: Login,
   },
   {
-    path: "/404",
+    path: '/404',
     meta: {
-      title: "404",
+      title: '404',
     },
     component: notFound,
   },
@@ -66,83 +51,83 @@ const routes = [
 
 const route_user = [
   {
-    path: "/home",
+    path: '/home',
     meta: {
-      title: "home",
+      title: 'home',
     },
     component: AppHome,
-    redirect: "/firstItem",
+    redirect: '/firstItem',
     children: [
       ...chartRouter,
       ...dragRouter,
       {
-        path: "/firstItem",
+        path: '/firstItem',
         meta: {
-          title: "系统首页",
+          title: '系统首页',
         },
         component: HomePage,
       },
       {
-        path: "/fleet",
+        path: '/fleet',
         meta: {
-          title: "模拟航线",
+          title: '模拟航线',
         },
         component: FleetLine,
       },
       {
-        path: "/fileUp",
+        path: '/fileUp',
         meta: {
-          title: "图片上传",
+          title: '图片上传',
         },
         component: FileUp,
       },
       {
-        path: "/pdf",
+        path: '/pdf',
         meta: {
-          title: "文件预览",
+          title: '文件预览',
         },
         component: PDFPreview,
       },
       {
-        path: "/baseEcharts",
+        path: '/baseEcharts',
         meta: {
-          title: "基础图表",
+          title: '基础图表',
         },
         component: BaseEcharts,
       },
       {
-        path: "/baseTable",
+        path: '/baseTable',
         meta: {
-          title: "基础表格",
+          title: '基础表格',
         },
         component: BaseTable,
       },
       {
-        path: "/I18n",
+        path: '/I18n',
         meta: {
-          title: "语言转换",
+          title: '语言转换',
         },
         component: I18n,
       },
       {
-        path: "/magnifying",
+        path: '/magnifying',
         meta: {
-          title: "放大镜",
+          title: '放大镜',
         },
         component: Magnifying,
       },
       {
-        path: "/chatRoom",
+        path: '/chatRoom',
         meta: {
-          title: "聊天室",
+          title: '聊天室',
         },
         component: ChatRoom,
       },
     ],
   },
   {
-    path: "*",
-    redirect: "/404",
+    path: '*',
+    redirect: '/404',
   },
 ];
 
@@ -150,9 +135,9 @@ const route_admin = deepCopy(route_user);
 
 const admin = [
   {
-    path: "/manage",
+    path: '/manage',
     meta: {
-      title: "后台管理",
+      title: '后台管理',
     },
     component: UserManage,
   },

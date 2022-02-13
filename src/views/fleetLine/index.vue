@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import fleetModel from "@/components/echartsModel/fleetModel";
-import localData from "@/service/axios/localData";
+import fleetModel from '@/components/echartsModel/fleetModel';
+import { getAirData } from '@/api/local';
 export default {
-  name: "fleetLine",
+  name: 'fleetLine',
   components: {
     fleetModel,
   },
@@ -20,7 +20,7 @@ export default {
     };
   },
   created() {
-    localData.getAirData().then((res) => {
+    getAirData().then((res) => {
       this.geoData = res.data;
       this.tableData = res.data.apiData;
     });
@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 .fleetLine {
   @include themify($themes) {
-    background-color: themed("background-fleet");
+    background-color: themed('background-fleet');
   }
 }
 </style>

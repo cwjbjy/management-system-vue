@@ -20,7 +20,7 @@
       </el-col>
       <el-col :span="12" class="echarts-box">
         <el-card shadow="hover">
-           <pictorial-bar-model :model="options"></pictorial-bar-model>
+          <pictorial-bar-model :model="options"></pictorial-bar-model>
         </el-card>
       </el-col>
     </el-row>
@@ -41,21 +41,21 @@
 
 <script>
 /* 基础组件的自动化全局注册 */
-const path = require('path')
-const files = require.context('@/components/BaseEchartsModel', false, /\.vue$/)
-const modules = {}
-files.keys().forEach(key => {
-  const name = path.basename(key, '.vue')
-  modules[name] = files(key).default || files(key)
-})
+const path = require('path');
+const files = require.context('@/components/BaseEchartsModel', false, /\.vue$/);
+const modules = {};
+files.keys().forEach((key) => {
+  const name = path.basename(key, '.vue');
+  modules[name] = files(key).default || files(key);
+});
 export default {
-  name:'BaseEcharts',
-  components:modules,
+  name: 'BaseEcharts',
+  components: modules,
   data() {
     return {
-      options: {}
+      options: {},
     };
-  }
+  },
 };
 </script>
 
