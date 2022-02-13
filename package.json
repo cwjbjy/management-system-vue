@@ -23,6 +23,7 @@
     "@wj.cao/table": "^0.1.1",
     "core-js": "^3.6.4",
     "element-ui": "2.14.1",
+    "nprogress": "^0.2.0",
     "register-service-worker": "^1.7.2",
     "vue-cookies": "^1.7.0",
     "vue-i18n": "^8.18.2",
