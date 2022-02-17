@@ -236,6 +236,6 @@ export default {
 <style scoped>
 .mygoChart {
   width: 100%;
-  height: inherit;
+  height: calc(100vh - 120px);
 }
 </style>

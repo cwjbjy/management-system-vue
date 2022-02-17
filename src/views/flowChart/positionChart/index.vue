@@ -420,7 +420,7 @@ export default {
           name: '乡镇卫生院消毒处置',
           nation: 'Russia',
           title: 'Technical/Legal Issues Head',
-          headOf: 'Technical/Legal Issues',
+          headOf: '社会防控工作流程图',
         },
       ];
 
@@ -431,11 +431,11 @@ export default {
       });
 
       // Overview
-      // var myOverview = $(
-      //   go.Overview,
-      //   'myOverviewDiv', // the HTML DIV element for the Overview
-      //   { observed: this.myDiagram, contentAlignment: go.Spot.Center },
-      // );
+      $(
+        go.Overview,
+        'myOverviewDiv', // the HTML DIV element for the Overview
+        { observed: this.myDiagram, contentAlignment: go.Spot.Center },
+      );
     },
     searchDiagram() {
       var input = document.getElementById('mySearch');
