@@ -10,7 +10,6 @@
         :data="user"
         :headers="headers"
         :before-upload="beforeAvatarUpload"
-        :on-change="onChange"
       >
         <img v-if="imageUrl" :src="imageUrl" class="avatar" alt="加载失败" />
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
