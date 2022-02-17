@@ -11,7 +11,7 @@ export default {
   props: {
     model: {
       type: Object,
-      default: {},
+      default: () => {},
     },
   },
   watch: {

@@ -1,9 +1,10 @@
-Vue.use(VueRouter);
-
+import Vue from 'vue';
 import { routes } from './routes';
 import NProgress from 'nprogress'; // progress bar
 import 'nprogress/nprogress.css'; // progress bar style
+import VueRouter from 'vue-router';
 
+Vue.use(VueRouter);
 NProgress.configure({ showSpinner: false });
 
 const originalPush = VueRouter.prototype.push;

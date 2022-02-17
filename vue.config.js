@@ -53,13 +53,41 @@ module.exports = {
 
   configureWebpack: {
     //externals中的key是用于import，value表示在全局中访问到该对象，就是window.echarts
-    externals: {
-      echarts: 'echarts',
-      'element-ui': 'ELEMENT',
-      axios: 'axios',
-      vue: 'Vue',
-      vuex: 'Vuex',
-      'vue-router': 'VueRouter',
+    externals: {},
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        name: 'vendor',
+        cacheGroups: {
+          vue: {
+            name: 'vue',
+            test: /[\\/]node_modules[\\/]vue[\\/]/,
+            chunks: 'all',
+          },
+          vuex: {
+            name: 'vuex',
+            test: /[\\/]node_modules[\\/]vuex[\\/]/,
+            chunks: 'all',
+          },
+          'vue-router': {
+            name: 'vue-router',
+            test: /[\\/]node_modules[\\/]vue-router[\\/]/,
+            chunks: 'all',
+          },
+          'element-ui': {
+            name: 'element-ui',
+            test: /[\\/]node_modules[\\/]element-ui[\\/]/,
+            priority: 40,
+            chunks: 'all',
+          },
+          commons: {
+            name: 'commons',
+            chunks: 'all',
+            minChunks: 2,
+            priority: 20,
+          },
+        },
+      },
     },
   },
 };

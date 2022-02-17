@@ -40,12 +40,6 @@ import { echartColor, bus } from '@/constants';
 
 export default {
   name: 'AppHeader',
-  data() {
-    return {
-      imageUrl: '',
-      theme: 'gray',
-    };
-  },
   computed: {
     active() {
       return function (color) {
@@ -76,7 +70,6 @@ export default {
       }
     },
     switchColor(command) {
-      this.theme = command;
       this.$emit('theme', command);
       /* 策略模式 */
       this.SET_COLOR({ data: echartColor[command].font });
@@ -89,8 +82,7 @@ export default {
       };
       getImage(params).then((res) => {
         let fileName = res.data.Data[0].photo;
-        this.imageUrl = `${this.baseURL}${fileName}`;
-        this.SET_IMAGEURL({ data: this.imageUrl });
+        this.SET_IMAGEURL({ data: `${this.baseURL}${fileName}` });
       });
     },
   },
