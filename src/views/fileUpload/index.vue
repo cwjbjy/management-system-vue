@@ -44,7 +44,7 @@ export default {
     this.user.user_name = this.user_name;
   },
   methods: {
-    onSuccess(response, file) {
+    onSuccess(response) {
       this.$message.success(response.message);
       //更换头部图片
       window.eventBus.$emit(bus.updateImg);
