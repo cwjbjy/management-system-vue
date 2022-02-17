@@ -9,12 +9,6 @@ import resize from '../../mixin/resize';
 import * as base from '@/utils/echartsBase';
 export default {
   name: 'CylinderModel',
-  props: {
-    model: {
-      type: Object,
-      default: {},
-    },
-  },
   watch: {
     model(newData) {
       this.prepareDomain(newData);
@@ -25,11 +19,11 @@ export default {
   },
   mixins: [vuexTheme, resize],
   mounted() {
-    this.prepareDomain(this.model);
+    this.prepareDomain();
   },
   methods: {
-    prepareDomain(model) {
-      let echartsInstance = echarts.init(this.$refs.echarts);
+    prepareDomain() {
+      let echartsInstance = window.echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       let option = {
         color: ['#70a1ff', '#70a1ff'],

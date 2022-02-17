@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     prepareDomain() {
-      let echartsInstance = echarts.init(this.$refs.echarts);
+      let echartsInstance = window.echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       let option = {
         title: base.title({

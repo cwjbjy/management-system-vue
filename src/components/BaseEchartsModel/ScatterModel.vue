@@ -8,12 +8,6 @@ import { vuexTheme } from '../../mixin';
 import resize from '../../mixin/resize';
 import * as base from '@/utils/echartsBase';
 export default {
-  props: {
-    model: {
-      type: Object,
-      default: {},
-    },
-  },
   watch: {
     model(newData) {
       this.prepareDomain(newData);
@@ -24,11 +18,11 @@ export default {
   },
   mixins: [vuexTheme, resize],
   mounted() {
-    this.prepareDomain(this.model);
+    this.prepareDomain();
   },
   methods: {
-    prepareDomain(model) {
-      let echartsInstance = echarts.init(this.$refs.echarts);
+    prepareDomain() {
+      let echartsInstance = window.echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       var data = [
         [
@@ -115,7 +109,7 @@ export default {
               shadowBlur: 10,
               shadowColor: 'rgba(120, 36, 50, 0.5)',
               shadowOffsetY: 5,
-              color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
+              color: new window.echarts.graphic.RadialGradient(0.4, 0.3, 1, [
                 {
                   offset: 0,
                   color: 'rgb(251, 118, 123)',
@@ -147,7 +141,7 @@ export default {
               shadowBlur: 10,
               shadowColor: 'rgba(25, 100, 150, 0.5)',
               shadowOffsetY: 5,
-              color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
+              color: new window.echarts.graphic.RadialGradient(0.4, 0.3, 1, [
                 {
                   offset: 0,
                   color: 'rgb(129, 227, 238)',

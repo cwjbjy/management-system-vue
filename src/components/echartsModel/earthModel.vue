@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     prepareDomain() {
-      var echartsInstance = echarts.init(this.$refs.echarts);
+      var echartsInstance = window.echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       var option = {
         backgroundColor: '#000',

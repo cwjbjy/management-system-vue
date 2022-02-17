@@ -26,8 +26,8 @@ export default {
     this.prepareDomain(this.model);
   },
   methods: {
-    prepareDomain(model) {
-      let echartsInstance = echarts.init(this.$refs.echarts);
+    prepareDomain() {
+      let echartsInstance = window.echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       var indicator = [
         {

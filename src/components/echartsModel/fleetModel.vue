@@ -10,7 +10,7 @@ export default {
   props: {
     model: {
       type: Object,
-      default: {},
+      default: () => {},
     },
   },
   watch: {
@@ -24,14 +24,14 @@ export default {
   mixins: [vuexTheme],
   beforeDestroy() {
     //销毁实例，释放内存
-    let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
+    let echartsInstance = window.echarts.getInstanceByDom(this.$refs.echarts);
     if (echartsInstance) {
-      echarts.dispose(echartsInstance);
+      window.echarts.dispose(echartsInstance);
     }
   },
   methods: {
     prepareDomain(model) {
-      var echartsInstance = echarts.init(this.$refs.echarts);
+      var echartsInstance = window.echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       var geoCoordMap = model.geoCoordMap;
 

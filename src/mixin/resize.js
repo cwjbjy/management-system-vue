@@ -8,7 +8,7 @@ export default {
   methods: {
     autoSize() {
       this.$nextTick(() => {
-        let echartsInstance = echarts.getInstanceByDom(this.$refs.echarts);
+        let echartsInstance = window.echarts.getInstanceByDom(this.$refs.echarts);
         echartsInstance.resize();
       });
     },

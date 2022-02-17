@@ -27,8 +27,8 @@ export default {
     this.prepareDomain(this.model);
   },
   methods: {
-    prepareDomain(model) {
-      var echartsInstance = echarts.init(this.$refs.echarts);
+    prepareDomain() {
+      var echartsInstance = window.echarts.init(this.$refs.echarts);
       echartsInstance.clear();
       var option = {
         color: ['#eccc68', '#ff7f50', '#7bed9f', '#70a1ff', '#5352ed', '#2ed573', '#1e90ff', '#3742fa'],
