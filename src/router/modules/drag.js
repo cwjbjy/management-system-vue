@@ -1,4 +1,4 @@
-const DragDiv = () => import(/* webpackChunkName: "DragDiv" */ '@/views/drag/dragDiv');
+// const DragDiv = () => import(/* webpackChunkName: "DragDiv" */ '@/views/drag/dragDiv');
 const DragDialog = () => import(/* webpackChunkName: "DragDialog" */ '@/views/drag/dragDialog');
 const DragList = () => import(/* webpackChunkName: "dragList" */ '@/views/drag/dragList');
 

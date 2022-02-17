@@ -6,11 +6,11 @@
           <img v-if="item.icon" :src="item.icon" class="icon" alt="加载失败" />
           <span slot="title">{{ item.name }}</span>
         </template>
-         <menus-item :list="item.children"></menus-item>
+        <menus-item :list="item.children"></menus-item>
       </el-submenu>
       <el-menu-item :index="item.path" :key="item.name" v-else>
         <img v-if="item.icon" :src="item.icon" class="icon" alt="加载失败" />
-        <span slot="title">{{item.name}}</span>
+        <span slot="title">{{ item.name }}</span>
       </el-menu-item>
     </template>
   </div>
@@ -18,14 +18,14 @@
 
 <script>
 export default {
-    name:'menusItem',
-    props:{
-        list:{
-            type:Array,
-            default:[]
-        }
+  name: 'menusItem',
+  props: {
+    list: {
+      type: Array,
+      default: () => [],
     },
-}
+  },
+};
 </script>
 
 <style scoped>

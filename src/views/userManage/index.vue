@@ -2,7 +2,7 @@
   <section>
     <el-card shadow="hover">
       <strong
-        >管理员登录方可看到后台管理页面；该基础表格包含排序，筛选，搜索，编辑功能；表格中注册时间旁按钮为排序，筛选功能；上述功能均已实现</strong
+        >管理员登录方可看到后台管理页面；该基础表格包含排序，筛选，编辑功能；表格中注册时间旁按钮为排序，筛选功能；上述功能均已实现</strong
       >
       <div class="frontArea">
         <el-table
@@ -41,10 +41,7 @@
             :filter-method="filterHandler"
             align="center"
           ></el-table-column>
-          <el-table-column align="center">
-            <template slot="header" slot-scope="scope">
-              <el-input v-model="search" size="mini" placeholder="输入用户名搜索" clearable />
-            </template>
+          <el-table-column align="center" label="操作">
             <template slot-scope="scope">
               <el-button type="text" icon="el-icon-edit" v-if="scope.row.authority == 1" @click="handleEdit(scope.row)"
                 >编辑</el-button
@@ -131,7 +128,7 @@ export default {
           let params = {
             id: val,
           };
-          deleteUser(params).then((res) => {
+          deleteUser(params).then(() => {
             this.$message({
               type: 'success',
               message: '删除成功!',
@@ -159,7 +156,7 @@ export default {
             user_name: this.form.name,
             password: this.form.pass,
           };
-          updateUser(params).then((res) => {
+          updateUser(params).then(() => {
             this.$message.success('修改成功');
             this.dialogFormVisible = false;
             this.init();

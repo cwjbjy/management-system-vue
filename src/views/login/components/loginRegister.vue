@@ -68,7 +68,7 @@ export default {
     };
   },
   mounted() {
-    this.verifyCode = new GVerify('v_container');
+    this.verifyCode = new window.GVerify('v_container');
   },
   methods: {
     handleRegister() {

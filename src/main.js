@@ -13,6 +13,7 @@ import './assets/icon/iconfont.css';
 //基于element-ui封装的递归表格，在个人npm包中
 import cwjTable from '@wj.cao/table';
 import './registerServiceWorker';
+import Meta from 'vue-meta';
 
 Vue.use(cwjTable);
 Vue.use(VueI18n);
@@ -20,6 +21,7 @@ Vue.use(VueCookies);
 Vue.use(directive);
 Vue.use(filters);
 Vue.use(ELEMENT);
+Vue.use(Meta);
 
 const i18n = new VueI18n({
   locale: 'zh',

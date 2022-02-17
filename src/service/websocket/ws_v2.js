@@ -48,7 +48,7 @@ export default class WebsocketClass {
   connect(params) {
     let that = this; //当前WebsocketClass类
     this.client = new WebSocket(this.topic);
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.client.onopen = function () {
         if (this.readyState === this.OPEN) {
           that.heartCheck.bounce();
@@ -92,7 +92,7 @@ export default class WebsocketClass {
    * 断开连接
    */
   close(params) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.sendMessage({ msg: params });
       this.client.close();
       resolve();

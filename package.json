@@ -31,6 +31,7 @@
     "vue": "2.6.11",
     "vue-cookies": "^1.7.0",
     "vue-i18n": "^8.18.2",
+    "vue-meta": "^2.4.0",
     "vue-router": "3.1.6",
     "vuedraggable": "^2.17.0",
     "vuex": "3.0.1"

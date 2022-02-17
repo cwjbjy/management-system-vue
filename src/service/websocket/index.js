@@ -10,7 +10,7 @@ export default {
   joinMeeting({ params = '', closeCallBack = null } = {}) {
     WSInstance = new WebsocketClass({ closeCallBack });
     WSInstance.connect(params)
-      .then((res) => {
+      .then(() => {
         console.log('connect success');
         Message.success('连接成功');
       })

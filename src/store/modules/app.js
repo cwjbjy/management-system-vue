@@ -53,6 +53,7 @@ const mutations = {
         break;
       case 'delete':
         state.todoList.splice(payload.index, 1);
+        break;
       default:
         break;
     }
@@ -61,7 +62,7 @@ const mutations = {
 
 const actions = {
   setCount({ commit }, payload) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         commit('SET_COUNT', payload);
         resolve();
