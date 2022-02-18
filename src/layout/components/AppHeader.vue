@@ -110,6 +110,7 @@ export default {
       height: 40px;
       border-radius: 50%;
       padding: 5px;
+      object-fit: cover;
     }
     .user-drop {
       padding: 5px;

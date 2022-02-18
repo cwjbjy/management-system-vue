@@ -22,6 +22,7 @@
                 class="table-td-thumb"
                 :src="`${baseURL}${scope.row.photo}`"
                 :preview-src-list="[`${baseURL}${scope.row.photo}`]"
+                fit="cover"
               ></el-image>
             </template>
           </el-table-column>
