@@ -5,5 +5,14 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   presets: ['@vue/cli-plugin-babel/preset', ['@babel/preset-env', { modules: false }]],
-  plugins: [...transformRemoveConsolePlugin],
+  plugins: [
+    ...transformRemoveConsolePlugin,
+    [
+      'component',
+      {
+        libraryName: 'element-ui',
+        styleLibraryName: 'theme-chalk',
+      },
+    ],
+  ],
 };
