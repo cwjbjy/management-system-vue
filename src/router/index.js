@@ -3,6 +3,7 @@ import { routes } from './routes';
 import NProgress from 'nprogress'; // progress bar
 import 'nprogress/nprogress.css'; // progress bar style
 import VueRouter from 'vue-router';
+import track from '../utils/track';
 
 Vue.use(VueRouter);
 NProgress.configure({ showSpinner: false });
@@ -35,6 +36,8 @@ router.beforeEach((to, from, next) => {
       path: '/login',
     });
   } else {
+    //追踪
+    router.app.$options.store.commit('batch/ADD_BATCH', { data: track(from, to) });
     next();
   }
 });

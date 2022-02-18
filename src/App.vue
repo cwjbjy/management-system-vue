@@ -9,6 +9,7 @@
 <script>
 import { route_admin, route_user } from '@/router/routes';
 import { vuexApp } from '@/mixin';
+import { trackUser } from './api/role';
 export default {
   name: 'App',
   mixins: [vuexApp],
@@ -23,6 +24,33 @@ export default {
       },
       immediate: true,
     },
+  },
+  data() {
+    return {
+      myInterval: null,
+    };
+  },
+  methods: {
+    //监听全局点击事件
+    handleGlobalClick(e) {
+      const data = {
+        type: 'click',
+        url: e.target.formAction,
+        target: e.target.outerText,
+      };
+      this.$store.commit('batch/ADD_BATCH', { data: data });
+    },
+  },
+  mounted() {
+    this.myInterval = window.setInterval(() => {
+      trackUser(this.$store.state.batch);
+      //上报后清空
+      this.$store.commit('batch/CLEAR_BATCH');
+    }, 5000);
+    window.addEventListener('click', this.handleGlobalClick);
+  },
+  beforeDestroy() {
+    window.removeEventListener('click', this.handleGlobalClick);
   },
 };
 </script>

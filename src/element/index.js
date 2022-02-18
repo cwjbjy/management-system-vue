@@ -9,6 +9,9 @@ import {
   MenuItemGroup,
   Input,
   Button,
+  Checkbox,
+  CheckboxButton,
+  CheckboxGroup,
   Table,
   TableColumn,
   Form,
@@ -38,6 +41,9 @@ export default {
     Vue.use(Input);
     Vue.use(Button);
     Vue.use(Table);
+    Vue.use(Checkbox);
+    Vue.use(CheckboxButton);
+    Vue.use(CheckboxGroup);
     Vue.use(TableColumn);
     Vue.use(Form);
     Vue.use(FormItem);
