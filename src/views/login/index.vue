@@ -21,6 +21,11 @@
         </section>
       </article>
     </main>
+    <footer class="footer">
+      个人小样项目，用于展示自己的技术栈
+      <br />
+      <span @click="handlerClick" style="cursor: pointer">苏ICP备20022574号-1</span>
+    </footer>
   </div>
 </template>
 
@@ -68,6 +73,9 @@ export default {
         }
       }
     },
+    handlerClick() {
+      window.open('https://beian.miit.gov.cn');
+    },
   },
 };
 </script>
@@ -91,6 +99,13 @@ export default {
     width: 100%;
     min-height: 450px;
     @extend %center;
+  }
+  .footer {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
   }
   .form {
     width: 400px;

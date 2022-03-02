@@ -21,7 +21,7 @@
 export default {
   methods: {
     thirdLogin() {
-      this.$message.warning("功能未开发，请使用用户注册");
+      this.$message.warning('功能未开发，请使用用户注册');
     },
   },
 };
@@ -51,5 +51,11 @@ export default {
 }
 .img_list {
   @extend %space_around;
+  .icon {
+    img {
+      width: 64px;
+      height: 64px;
+    }
+  }
 }
 </style>
