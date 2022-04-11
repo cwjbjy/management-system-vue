@@ -24,7 +24,7 @@
     <footer class="footer">
       个人小样项目，用于展示自己的技术栈
       <br />
-      <span @click="handlerClick" style="cursor: pointer">苏ICP备20022574号-1</span>
+      <span @click="handlerClick" style="cursor: pointer">苏ICP备20022574号-2</span>
     </footer>
   </div>
 </template>
