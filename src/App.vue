@@ -46,7 +46,7 @@ export default {
       trackUser(this.$store.state.batch);
       //上报后清空
       this.$store.commit('batch/CLEAR_BATCH');
-    }, 5000);
+    }, 300000);
     window.addEventListener('click', this.handleGlobalClick);
   },
   beforeDestroy() {

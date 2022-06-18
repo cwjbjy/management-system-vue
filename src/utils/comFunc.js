@@ -1,12 +1,12 @@
 //获取当前时间
 export function getTime() {
-  var date = new Date(); //实例一个时间对象；
-  var year = date.getFullYear(); //获取系统的年；
+  var date = new Date();
+  var year = date.getFullYear();
   var month = date.getMonth() + 1; //获取系统月份，由于月份是从0开始计算，所以要加1
-  var day = date.getDate(); //获取系统日
-  var hour = date.getHours(); //获取系统时间
-  var minute = date.getMinutes(); //分
-  var second = date.getSeconds(); //秒
+  var day = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
   if (month < 10) {
     month = '0' + month;
   }
@@ -46,8 +46,7 @@ export function deepCopy(target, map = new WeakMap()) {
 
 //判断对象是否为空
 export function getIsObjectEmpty(target) {
-  //json对象都有单引号，所以判断的时候，也要加上单引号
-  if (JSON.stringify(target) !== '{}') {
+  if (Object.keys(target).length > 0) {
     return true; //不为空对象
   }
   return false; //为空对象
@@ -55,8 +54,7 @@ export function getIsObjectEmpty(target) {
 
 //判断字符是否为空
 export function getIsStringEmpty(target) {
-  //判断是否为null时，两个等号即可,否则无法判断
-  if (target === 'undefined' || target == null || target === '') {
+  if ((target ?? '') !== '') {
     return true; //返回true，为空
   }
   return false; //返回false，不为空

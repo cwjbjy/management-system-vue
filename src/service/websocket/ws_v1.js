@@ -5,7 +5,7 @@ export default {
       console.log('您的浏览器支持 WebSocket!');
       let baseUrl = process.env.VUE_APP_WS;
       let ws = new WebSocket(baseUrl);
-      console.log(ws);
+
       ws.onclose = function () {
         console.error('web channel closed');
       };
@@ -32,6 +32,7 @@ export default {
         }
       };
 
+      // eslint-disable-next-line no-inner-declarations
       function WsConnect() {
         (this.requestMessage = function (msg) {
           if (ws.readyState === 0) {
