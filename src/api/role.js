@@ -27,9 +27,3 @@ export const updateUser = (params) => {
     data: params,
   });
 };
-
-export const trackUser = (data) => {
-  return HttpClient.post(`${baseURL}/getVueInfo`, {
-    data: data,
-  });
-};

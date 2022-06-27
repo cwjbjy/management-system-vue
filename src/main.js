@@ -14,6 +14,7 @@ import './assets/icon/iconfont.css';
 import './registerServiceWorker';
 //基于element-ui封装的递归表格，在个人npm包中
 import cwjTable from '@wj.cao/table';
+import tracing from './utils/tracking';
 
 Vue.use(cwjTable);
 Vue.use(VueI18n);
@@ -23,23 +24,22 @@ Vue.use(filters);
 Vue.use(ELEMENT);
 Vue.use(Meta);
 
+/* 数据埋点 */
+Vue.use(tracing, {
+  requestUrl: `${process.env.VUE_APP_BASEURL}/trackweb`,
+  appName: 'PC管理系统',
+  event: true,
+  performance: true,
+  pv: true,
+  error: true,
+});
+
 const i18n = new VueI18n({
   locale: 'zh',
   messages,
 });
 
 Vue.config.productionTip = false;
-
-Vue.config.errorHandler = function (err, vm, info) {
-  console.error(err); //抛出错误，方便开发环境调试
-  let data = {
-    type: 'error',
-    err: decodeURIComponent(encodeURIComponent(err)),
-    url: vm.$route.path,
-    info,
-  };
-  store.commit('batch/ADD_BATCH', { data: data });
-};
 
 window.eventBus = new Vue();
 
