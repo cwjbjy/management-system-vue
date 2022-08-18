@@ -67,7 +67,7 @@ export default {
       let key = window.event.keyCode;
       if (key === 13) {
         if (this.flag) {
-          this.$refs.loginForm.login();
+          this.$refs.loginForm.handleLogin();
         } else {
           this.$refs.register.register();
         }
