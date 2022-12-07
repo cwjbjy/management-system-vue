@@ -1,5 +1,5 @@
 <template>
-<!-- 适配所有级别菜单 || 一级二级三级等等... -->
+  <!-- 适配所有级别菜单 || 一级二级三级等等... -->
   <nav>
     <el-menu
       :default-active="$route.path"
@@ -17,32 +17,33 @@
 </template>
 
 <script>
-import { vuexTheme } from "@/mixin";
-import {bus,menus,echartColor} from "@/constants";
-import menusItem from "./menusItem";
+import menusItem from './menusItem';
+
+import { bus, menus, echartColor } from '@/constants';
+import { vuexTheme } from '@/mixin';
 
 export default {
-  name: "Menus",
-  components:{
-    menusItem
+  name: 'Menus',
+  components: {
+    menusItem,
   },
   data() {
     return {
-      defaultActive: "/firstItem",
+      defaultActive: '/firstItem',
       newMenus: [],
-      bgColor: "#545c64",
-      textColor: "#fff",
-      activeTextColor: "#ffd04b",
+      bgColor: '#545c64',
+      textColor: '#fff',
+      activeTextColor: '#ffd04b',
     };
   },
   watch: {
-    theme(newVal){
-      this.bgColor = echartColor[newVal].menuBg
-    }
+    theme(newVal) {
+      this.bgColor = echartColor[newVal].menuBg;
+    },
   },
   mixins: [vuexTheme],
   created() {
-    let authMenus = this.$cookies.get("authMenus").split(",");
+    let authMenus = this.$cookies.get('authMenus').split(',');
     menus.forEach((item) => {
       if (item.key && authMenus.includes(item.key)) {
         this.newMenus.push(item);

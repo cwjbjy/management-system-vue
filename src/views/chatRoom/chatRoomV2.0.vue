@@ -59,9 +59,9 @@
 </template>
 
 <script>
-import insService from '@/service/websocket';
-import { vuexApp } from '@/mixin';
 import { bus } from '@/constants';
+import { vuexApp } from '@/mixin';
+import insService from '@/service/websocket';
 export default {
   name: 'ChatRoom',
   data() {

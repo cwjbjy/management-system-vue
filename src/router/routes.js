@@ -1,6 +1,7 @@
-import { deepCopy } from '@/utils/comFunc.js';
-import chartRouter from './modules/flowChart';
 import dragRouter from './modules/drag';
+import chartRouter from './modules/flowChart';
+
+import { deepCopy } from '@/utils/comFunc.js';
 
 const Login = () => import(/* webpackChunkName: "Login" */ '@/views/login/index.vue');
 

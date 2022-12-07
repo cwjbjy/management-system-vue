@@ -6,6 +6,7 @@
 
 <script>
 import fleetModel from '@/components/echartsModel/fleetModel';
+
 import { getAirData } from '@/api/local';
 export default {
   name: 'fleetLine',

@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import { route_admin, route_user } from '@/router/routes';
 import { vuexApp } from '@/mixin';
+import { route_admin, route_user } from '@/router/routes';
 
 export default {
   name: 'App',

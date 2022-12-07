@@ -1,6 +1,6 @@
-import { uuid, sendBeacon, dealType, nextTime } from '../utils/methods';
-import device from '../utils/device';
 import { MAX_CACHE_LEN, MAX_WAITING_TIME } from '../utils/constant';
+import device from '../utils/device';
+import { uuid, sendBeacon, dealType, nextTime } from '../utils/methods';
 
 const pageId = uuid();
 

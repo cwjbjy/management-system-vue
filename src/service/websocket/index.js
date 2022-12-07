@@ -1,5 +1,6 @@
-import WebsocketClass from './ws_v2';
 import { Message } from 'element-ui';
+
+import WebsocketClass from './ws_v2';
 let WSInstance = null;
 
 /**

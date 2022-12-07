@@ -28,22 +28,22 @@
 </template>
 
 <script>
-import userInfo from "./components/userInfo";
-import language from "./components/language";
-import iconArea from "./components/iconArea";
-import Schedule from "./components/schedule";
-import BarLineModel from "@/components/echartsModel/barLineModel";
-import RadarModel from "@/components/echartsModel/radarModel";
+import iconArea from './components/iconArea';
+import language from './components/language';
+import Schedule from './components/schedule';
+import userInfo from './components/userInfo';
+import BarLineModel from '@/components/echartsModel/barLineModel';
+import RadarModel from '@/components/echartsModel/radarModel';
 
 export default {
-  name: "HomePage",
+  name: 'HomePage',
   components: {
     userInfo,
     language,
     iconArea,
     BarLineModel,
     RadarModel,
-    Schedule
+    Schedule,
   },
 };
 </script>

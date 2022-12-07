@@ -1,9 +1,9 @@
 import * as base from './lib/base';
-import pv from './lib/pv';
-import http from './lib/http-request';
 import err from './lib/err';
 import event from './lib/event';
+import http from './lib/http-request';
 import performance from './lib/performance';
+import pv from './lib/pv';
 
 const methods = {
   traceError: err.traceError,

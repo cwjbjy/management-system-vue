@@ -1,7 +1,8 @@
-import enumAuth from './auth';
-import qs from 'qs';
 import { Message } from 'element-ui';
+import qs from 'qs';
 import Vue from 'vue';
+
+import enumAuth from './auth';
 class FetchClient {
   constructor() {
     this.headers = {};

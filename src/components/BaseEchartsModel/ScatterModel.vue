@@ -6,6 +6,7 @@
 <script>
 import { vuexTheme } from '../../mixin';
 import resize from '../../mixin/resize';
+
 import * as base from '@/utils/echartsBase';
 export default {
   watch: {

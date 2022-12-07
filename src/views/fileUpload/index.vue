@@ -20,10 +20,11 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
+import { bus } from '@/constants';
 import { vuexApp } from '@/mixin';
 import { uploadURL, getURL } from '@/mixin/url';
-import { bus } from '@/constants';
-import Vue from 'vue';
 export default {
   name: 'FileUp',
   data() {

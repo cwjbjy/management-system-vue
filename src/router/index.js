@@ -1,8 +1,10 @@
-import Vue from 'vue';
-import { routes } from './routes';
 import NProgress from 'nprogress'; // progress bar
-import 'nprogress/nprogress.css'; // progress bar style
+import Vue from 'vue';
 import VueRouter from 'vue-router';
+
+import { routes } from './routes';
+
+import 'nprogress/nprogress.css'; // progress bar style
 
 Vue.use(VueRouter);
 NProgress.configure({ showSpinner: false });

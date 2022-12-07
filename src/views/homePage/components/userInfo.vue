@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import { vuexApp } from '@/mixin';
 import { getUser } from '@/api/user';
+import { vuexApp } from '@/mixin';
 export default {
   mixins: [vuexApp],
   data() {

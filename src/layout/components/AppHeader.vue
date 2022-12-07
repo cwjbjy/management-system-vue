@@ -34,9 +34,9 @@
 </template>
 <script>
 import { getImage } from '@/api/user';
+import { echartColor, bus } from '@/constants';
 import { vuexApp, vuexTheme } from '@/mixin';
 import { getURL } from '@/mixin/url';
-import { echartColor, bus } from '@/constants';
 
 export default {
   name: 'AppHeader',

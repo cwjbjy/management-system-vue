@@ -31,8 +31,8 @@
 
 <script>
 import { register } from '@/api/user';
-import rules from '@/utils/rules';
 import { getTime } from '@/utils/comFunc';
+import rules from '@/utils/rules';
 export default {
   data() {
     var validatePass = (rule, value, callback) => {
