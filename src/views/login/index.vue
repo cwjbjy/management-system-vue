@@ -59,8 +59,7 @@ export default {
   },
   methods: {
     register(params) {
-      let { flag, name, pass } = params;
-      this.flag = flag;
+      let { name, pass } = params;
       this.$refs.loginForm.onRegister(name, pass);
     },
     keyDown() {

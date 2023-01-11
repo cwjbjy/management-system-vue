@@ -65,6 +65,7 @@ export default {
     onRegister(name, pass) {
       this.ruleForm.name = name;
       this.ruleForm.pass = pass;
+      this.handleLogin();
     },
   },
 };

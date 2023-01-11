@@ -87,7 +87,6 @@ export default {
               .then((res) => {
                 this.$message.success(res.data.message);
                 this.$emit('update:register', {
-                  flag: true,
                   name: this.reg.reg_name,
                   pass: this.reg.rge_pass,
                 });
