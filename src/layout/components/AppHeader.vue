@@ -81,7 +81,7 @@ export default {
         user_name: this.user_name,
       };
       getImage(params).then((res) => {
-        let fileName = res.data.Data[0].photo;
+        let fileName = res.data.data[0].photo;
         this.SET_IMAGEURL({ data: `${this.baseURL}${fileName}` });
       });
     },

@@ -45,7 +45,7 @@ export default {
         user_name: this.user_name,
       };
       getUser(params).then((res) => {
-        this.registerTime = res.data.Data[0].createTime;
+        this.registerTime = res.data.data[0].createTime;
       });
     },
   },

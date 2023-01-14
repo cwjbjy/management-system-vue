@@ -3,6 +3,7 @@
     <el-card shadow="hover">
       <strong>上传头像功能，上传完可点击首页观看效果</strong>
       <el-upload
+        name="file"
         class="avatar-uploader frontArea"
         :action="getUrl"
         :on-success="onSuccess"
@@ -45,7 +46,7 @@ export default {
   },
   methods: {
     onSuccess(response) {
-      this.$message.success(response.message);
+      this.$message.success(response.msg);
       //更换头部图片
       window.eventBus.$emit(bus.updateImg);
     },

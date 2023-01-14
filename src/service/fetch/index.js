@@ -27,7 +27,7 @@ class FetchClient {
         break;
       case enumAuth.Level02: //前端固定token
         headers = Object.assign({}, this.headers, {
-          Authorization: `Basic ${process.env.VUE_APP_TOKEN}`,
+          Authorization: `Basic defvsdf`,
         });
         break;
       case enumAuth.Level03: //不需要token

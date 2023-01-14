@@ -120,29 +120,16 @@ export default {
       });
     },
     handleDelete(val) {
-      this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-      })
-        .then(() => {
-          let params = {
-            id: val,
-          };
-          deleteUser(params).then(() => {
-            this.$message({
-              type: 'success',
-              message: '删除成功!',
-            });
-            this.init();
-          });
-        })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除',
-          });
+      let params = {
+        id: val,
+      };
+      deleteUser(params).then(() => {
+        this.$message({
+          type: 'success',
+          message: '删除成功!',
         });
+        this.init();
+      });
     },
     handleEdit(val) {
       this.row = val;
@@ -193,7 +180,10 @@ export default {
 <style lang="scss">
 .userDialog {
   .el-dialog {
-    width: 35%;
+    width: 40%;
+    .el-dialog__body {
+      padding-right: 50px;
+    }
   }
 }
 .table-td-thumb {

@@ -36,22 +36,20 @@ export default {
         if (valid) {
           if (this.moreClick) return;
           this.moreClick = true;
-          let fd = new FormData();
+          let fd = new URLSearchParams();
           fd.append('userName', this.ruleForm.name);
           fd.append('passWord', this.ruleForm.pass);
           login(fd)
             .then((res) => {
-              this.$cookies.set('authMenus', res.data.auth);
-              this.$cookies.set('token', res.data.value);
+              this.$cookies.set('authMenus', res.data.data.auth);
+              this.$cookies.set('token', res.data.data.token);
               this.SET_USERNAME({ data: this.ruleForm.name });
               localStorage.setItem('user_name', this.ruleForm.name);
               this.$router.push('/firstItem');
             })
             .catch((err) => {
               if (err.response.status === 400) {
-                this.$message.error('密码错误');
-              } else if (err.response.status === 401) {
-                this.$message.error('用户名错误');
+                this.$message.error('用户名或密码错误');
               }
             })
             .finally(() => {

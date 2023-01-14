@@ -8,7 +8,7 @@ export default function filters(Vue) {
     return year + '-' + month + '-' + r;
   });
   Vue.filter('register', (value) => {
-    let array = value.split(' ');
-    return array[0];
+    if (!value) return '';
+    return value.substring(0, 10);
   });
 }

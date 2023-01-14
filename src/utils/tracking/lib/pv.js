@@ -12,7 +12,7 @@ function tracePageView({ currentUrl, delay }) {
       url: window.location.href,
       referer: currentUrl,
       title: document.title,
-      triggerTime: Date.now(),
+      triggerTime: getTime(),
       delay,
     });
   }, 17);
@@ -60,6 +60,34 @@ function init({ pv }) {
     tracePageView({ currentUrl, delay: Date.now() - visitTime });
     currentUrl = window.location.href;
   });
+}
+
+//获取当前时间
+export function getTime() {
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1; //获取系统月份，由于月份是从0开始计算，所以要加1
+  var day = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  if (month < 10) {
+    month = '0' + month;
+  }
+  if (day < 10) {
+    day = '0' + day;
+  }
+  if (hour < 10) {
+    hour = '0' + hour;
+  }
+  if (minute < 10) {
+    minute = '0' + minute;
+  }
+  if (second < 10) {
+    second = '0' + second;
+  }
+  let time = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+  return time;
 }
 
 export default {

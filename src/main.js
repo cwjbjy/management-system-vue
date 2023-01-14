@@ -31,11 +31,11 @@ Vue.use(Meta);
 /* 数据埋点 */
 Vue.use(tracing, {
   requestUrl: `${process.env.VUE_APP_BASEURL}/trackweb`,
-  appName: 'PC管理系统',
-  event: true,
-  performance: true,
+  appName: 'vue2-manage',
+  event: false,
+  performance: false,
   pv: true,
-  error: true,
+  error: false,
 });
 
 const i18n = new VueI18n({
