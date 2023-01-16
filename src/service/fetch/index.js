@@ -22,12 +22,12 @@ class FetchClient {
     switch (auth) {
       case enumAuth.Level01: //需要token
         headers = Object.assign({}, this.headers, {
-          Authorization: `Bearer ${Vue.$cookies.get('token')}`,
+          authorization: `Bearer ${Vue.$cookies.get('token')}`,
         });
         break;
       case enumAuth.Level02: //前端固定token
         headers = Object.assign({}, this.headers, {
-          Authorization: `Basic defvsdf`,
+          authorization: `Basic defvsdf`,
         });
         break;
       case enumAuth.Level03: //不需要token
