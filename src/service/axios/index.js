@@ -30,7 +30,7 @@ HttpClient.instance.interceptors.request.use(
     if (!config.headers) {
       config.headers = {};
     }
-    config.headers['Authorization'] = 'Bearer ' + token;
+    config.headers['authorization'] = 'Bearer ' + token;
     return config;
   },
   (error) => {
@@ -48,6 +48,16 @@ HttpClient.instance.interceptors.response.use(
     return config;
   },
   (error) => {
+    if (error && error.response) {
+      switch (error.response.status) {
+        case 401:
+          //token过期错误统一处理
+          window.location.href = '/login';
+          break;
+        default:
+          break;
+      }
+    }
     return Promise.reject(error);
   },
 );
