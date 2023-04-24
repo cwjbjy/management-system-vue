@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       headers: {
-        Authorization: '',
+        authorization: '',
       },
       user: {
         user_name: '',
@@ -41,7 +41,7 @@ export default {
   mixins: [uploadURL, getURL, vuexApp],
   created() {
     let token = Vue.$cookies.get('token');
-    this.headers.Authorization = token;
+    this.headers.authorization = 'Bearer ' + token;
     this.user.user_name = this.user_name;
   },
   methods: {
