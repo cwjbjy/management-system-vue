@@ -1,26 +1,12 @@
-# notebook
+## 技术栈
 
-## Project setup
-```
-npm install
-```
+vue2全家桶 + gojs + echarts + element
 
-### Compiles and hot-reloads for development
-```
-npm run dev
-```
+## 环境要求
 
-### Compiles and minifies for production
-```
-npm run build
-```
+node-v14
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-## axios
+## 接口
 
 下载后台node服务 https://github.com/cwjbjy/express-api
 
