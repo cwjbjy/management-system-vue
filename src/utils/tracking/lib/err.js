@@ -1,5 +1,5 @@
-import { map, filter } from '../utils/methods';
 import { emit } from './base';
+import { map, filter } from '../utils/methods';
 
 function setFullErrInfo(errorInfo) {
   const info = {
