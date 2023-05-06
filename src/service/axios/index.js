@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { Message } from 'element-ui';
-import Vue from 'vue';
 
 let HttpClient = {};
 
@@ -26,11 +25,10 @@ HttpClient.instance1 = axios.create({});
  */
 HttpClient.instance.interceptors.request.use(
   (config) => {
-    let token = Vue.$cookies.get('token');
     if (!config.headers) {
       config.headers = {};
     }
-    config.headers['authorization'] = 'Bearer ' + token;
+    config.headers['authorization'] = 'Bearer ' + localStorage.getItem('token');
     return config;
   },
   (error) => {

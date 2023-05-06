@@ -15,7 +15,7 @@ const FleetLine = () => import(/* webpackChunkName: "FleetLine" */ '@/views/flee
 
 const BaseEcharts = () => import(/* webpackChunkName: "BaseEcharts" */ '@/views/baseEcharts/index.vue');
 
-const BaseTable = () => import(/* webpackChunkName: "BaseTable" */ '@/views/baseTable/index.vue');
+// const BaseTable = () => import(/* webpackChunkName: "BaseTable" */ '@/views/baseTable/index.vue');
 
 const Magnifying = () => import(/* webpackChunkName: "Magnifying" */ '@/views/magnify/index.vue');
 
@@ -96,13 +96,13 @@ const route_user = [
         },
         component: BaseEcharts,
       },
-      {
-        path: '/baseTable',
-        meta: {
-          title: '基础表格',
-        },
-        component: BaseTable,
-      },
+      // {
+      //   path: '/baseTable',
+      //   meta: {
+      //     title: '基础表格',
+      //   },
+      //   component: BaseTable,
+      // },
       {
         path: '/I18n',
         meta: {

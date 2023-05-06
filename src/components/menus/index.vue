@@ -43,7 +43,7 @@ export default {
   },
   mixins: [vuexTheme],
   created() {
-    let authMenus = this.$cookies.get('authMenus').split(',');
+    const authMenus = localStorage.getItem('authMenus');
     menus.forEach((item) => {
       if (item.key && authMenus.includes(item.key)) {
         this.newMenus.push(item);

@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import VueCookies from 'vue-cookies';
 import VueI18n from 'vue-i18n';
 import Meta from 'vue-meta';
 
@@ -14,16 +13,11 @@ import store from './store';
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/icon/iconfont.css';
 import './registerServiceWorker';
-//基于element-ui封装的递归表格，在个人npm包中
-// eslint-disable-next-line import/order
-// import cwjTable from '@wj.cao/table';
 
 import tracing from './utils/tracking';
 import { messages } from '../public/static/i18n';
 
-// Vue.use(cwjTable);
 Vue.use(VueI18n);
-Vue.use(VueCookies);
 Vue.use(directive);
 Vue.use(filters);
 Vue.use(ELEMENT);

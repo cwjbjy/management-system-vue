@@ -1,6 +1,5 @@
 import { Message } from 'element-ui';
 import qs from 'qs';
-import Vue from 'vue';
 
 import enumAuth from './auth';
 class FetchClient {
@@ -22,7 +21,7 @@ class FetchClient {
     switch (auth) {
       case enumAuth.Level01: //需要token
         headers = Object.assign({}, this.headers, {
-          authorization: `Bearer ${Vue.$cookies.get('token')}`,
+          authorization: `Bearer ${localStorage.getItem('token')}`,
         });
         break;
       case enumAuth.Level02: //前端固定token

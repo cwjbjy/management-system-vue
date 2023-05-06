@@ -41,8 +41,8 @@ export default {
           fd.append('passWord', this.ruleForm.pass);
           login(fd)
             .then((res) => {
-              this.$cookies.set('authMenus', res.data.data.auth);
-              this.$cookies.set('token', res.data.data.token);
+              localStorage.setItem('authMenus', res.data.data.auth);
+              localStorage.setItem('token', res.data.data.token);
               this.SET_USERNAME({ data: this.ruleForm.name });
               localStorage.setItem('user_name', this.ruleForm.name);
               this.$router.push('/firstItem');

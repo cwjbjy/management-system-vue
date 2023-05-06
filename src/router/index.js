@@ -27,10 +27,12 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   NProgress.start();
   if (to.path === '/login') {
-    Vue.$cookies.keys().forEach((item) => Vue.$cookies.remove(item));
+    localStorage.removeItem('token');
+    localStorage.removeItem('authMenus');
+    localStorage.removeItem('user_name');
     next();
   }
-  let token = Vue.$cookies.get('token');
+  const token = localStorage.getItem('token');
 
   if (!token && to.path !== '/login') {
     next({
