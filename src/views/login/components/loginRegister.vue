@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import CryptoJS from 'crypto-js';
+
 import { register } from '@/api/user';
 import { getTime } from '@/utils/comFunc';
 import rules from '@/utils/rules';
@@ -78,7 +80,7 @@ export default {
           if (res) {
             let params = {
               userName: this.reg.reg_name,
-              passWord: this.reg.rge_pass,
+              passWord: CryptoJS.MD5(this.reg.rge_pass).toString(),
               authority: 2,
               createTime: getTime(),
               photo: 'userlogo.png',

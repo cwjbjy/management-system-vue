@@ -78,6 +78,8 @@
 </template>
 
 <script>
+import CryptoJS from 'crypto-js';
+
 import { user, deleteUser, updateUser } from '@/api/user';
 import { getURL } from '@/mixin/url';
 export default {
@@ -142,7 +144,7 @@ export default {
           let params = {
             id: this.row.id,
             user_name: this.form.name,
-            password: this.form.pass,
+            password: CryptoJS.MD5(this.form.pass).toString(),
           };
           updateUser(params).then(() => {
             this.$message.success('修改成功');
