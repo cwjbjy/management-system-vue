@@ -22,7 +22,7 @@ export function getTime() {
   if (second < 10) {
     second = '0' + second;
   }
-  let time = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+  let time = year + '-' + month + '-' + day;
   return time;
 }
 

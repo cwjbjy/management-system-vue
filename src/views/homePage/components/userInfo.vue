@@ -11,7 +11,7 @@
     <el-row class="user-bottom">
       <div class="user-info-list">
         <span>注册时间：</span>
-        <span>{{ registerTime | register }}</span>
+        <span>{{ registerTime }}</span>
       </div>
       <div class="user-info-list">
         <span>权限等级：</span>
@@ -45,7 +45,7 @@ export default {
         user_name: this.user_name,
       };
       getUser(params).then((res) => {
-        this.registerTime = res.data.data[0].createTime;
+        this.registerTime = res.data.data;
       });
     },
   },
