@@ -8,3 +8,6 @@ vue2全家桶 + gojs + echarts + element
 
 接口文档：https://wen.caowj.top/api/swagger-ui
 
+## Web展示地址
+
+https://vue.caowj.top/login
