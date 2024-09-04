@@ -15,7 +15,7 @@
           header-align="center"
         >
           <el-table-column label="序号" type="index" width="80" align="center"></el-table-column>
-          <el-table-column label="用户名" prop="user_name" align="center"></el-table-column>
+          <el-table-column label="用户名" prop="userName" align="center"></el-table-column>
           <el-table-column label="单击图像可以放大" align="center">
             <template slot-scope="scope">
               <el-image
@@ -143,7 +143,7 @@ export default {
         if (valid) {
           let params = {
             id: this.row.id,
-            user_name: this.form.name,
+            userName: this.form.name,
             password: CryptoJS.MD5(this.form.pass).toString(),
           };
           updateUser(params).then(() => {

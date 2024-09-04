@@ -25,7 +25,7 @@ Vue.use(Meta);
 
 /* 数据埋点 */
 Vue.use(tracing, {
-  requestUrl: `${process.env.VUE_APP_BASEURL}/trackweb`,
+  requestUrl: `${process.env.VUE_APP_BASEURL}/track/web`,
   appName: 'vue2-manage',
   event: false,
   performance: false,

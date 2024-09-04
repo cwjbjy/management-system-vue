@@ -40,7 +40,7 @@ export default {
           this.moreClick = true;
           let fd = new URLSearchParams();
           fd.append('userName', this.ruleForm.name);
-          fd.append('passWord', CryptoJS.MD5(this.ruleForm.pass).toString());
+          fd.append('password', CryptoJS.MD5(this.ruleForm.pass).toString());
           login(fd)
             .then((res) => {
               localStorage.setItem('authMenus', res.data.data.auth);

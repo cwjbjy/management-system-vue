@@ -42,7 +42,7 @@ export default {
   methods: {
     getRegisterTime() {
       let params = {
-        user_name: this.user_name,
+        userName: this.user_name,
       };
       getUser(params).then((res) => {
         this.registerTime = res.data.data;

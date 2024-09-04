@@ -80,7 +80,7 @@ export default {
           if (res) {
             let params = {
               userName: this.reg.reg_name,
-              passWord: CryptoJS.MD5(this.reg.rge_pass).toString(),
+              password: CryptoJS.MD5(this.reg.rge_pass).toString(),
               authority: 2,
               createTime: getTime(),
               photo: 'userlogo.png',

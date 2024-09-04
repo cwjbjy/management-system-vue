@@ -10,7 +10,7 @@ export const register = (params) => {
 
 //获取所有用户信息
 export const user = () => {
-  return HttpClient.instance.get('/user');
+  return HttpClient.instance.get('/users');
 };
 
 //删除普通用户 /Query String Parameters拼接在URL上 通常用于get与delete
@@ -30,5 +30,5 @@ export const getImage = (params) => {
 
 //获取用户单条信息
 export const getUser = (params) => {
-  return HttpClient.instance.get('/getUser', { params: params });
+  return HttpClient.instance.get('/findUser', { params: params });
 };

@@ -39,7 +39,7 @@ export default {
   mixins: [uploadURL, getURL, vuexApp],
   created() {
     this.headers.authorization = 'Bearer ' + localStorage.getItem('token');
-    this.user.user_name = this.user_name;
+    this.user.userName = this.user_name;
   },
   methods: {
     onSuccess(response) {

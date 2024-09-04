@@ -78,7 +78,7 @@ export default {
     },
     getPortrait() {
       let params = {
-        user_name: this.user_name,
+        userName: this.user_name,
       };
       getImage(params).then((res) => {
         let fileName = res.data.data[0].photo;
