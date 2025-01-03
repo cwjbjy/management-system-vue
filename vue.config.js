@@ -42,7 +42,7 @@ module.exports = {
     // 移除 prefetch 插件,取消预加载，启动懒加载
     config.plugins.delete('prefetch');
     config.plugins.delete('preload');
-    config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin);
+    // config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin);
   },
   pwa: {
     workboxOptions: {
