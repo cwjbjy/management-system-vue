@@ -22,6 +22,7 @@ jobs:
       # 打包  
       - name: Run build task
         run: npm run build --if-present 
+      # 检查rsync版本  
       - name: Check rsync installation
         run: |
           which rsync || echo "Rsync is not in PATH"
@@ -30,8 +31,9 @@ jobs:
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v5.0.3
         env:
-            SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-            SOURCE: "dist/" # 这是要复制到阿里云静态服务器的文件夹名称            
-            REMOTE_HOST: ${{ secrets.REMOTE_HOST }} # 你的阿里云公网地址
-            REMOTE_USER: "root" # 阿里云登录后默认为 root 用户
-            TARGET: "/static/vue-manage" # 打包后的 dist 文件夹将放在 /static
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rlgoDzvc -i --delete"
+          SOURCE: "dist/" # 这是要复制到阿里云静态服务器的文件夹名称            
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }} # 你的阿里云公网地址
+          REMOTE_USER: "root" # 阿里云登录后默认为 root 用户
+          TARGET: "/static/vue-manage" # 打包后的 dist 文件夹将放在 /static
