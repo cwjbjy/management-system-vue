@@ -1,7 +1,8 @@
 <template>
   <div class="login" v-title="title">
     <header class="top">
-      <span class="title">PC端管理系统(Vue版)</span>
+      <div class="title">PC端管理系统(Vue版)</div>
+      <div class="subTitle">已通过Github Actions实现自动化打包+部署</div>
     </header>
     <main class="main">
       <article class="form">
@@ -88,10 +89,17 @@ export default {
   .top {
     width: 100%;
     height: 20vh;
+    flex-direction: column;
     @extend %center;
     .title {
       font-size: 50px;
       letter-spacing: 5px;
+    }
+    .subTitle {
+      padding-top: 6px;
+      .flow {
+        cursor: pointer;
+      }
     }
   }
   .main {
