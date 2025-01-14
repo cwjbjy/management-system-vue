@@ -1,6 +1,6 @@
 ## 技术栈
 
-vue2全家桶 + gojs + echarts + element
+Vue2全家桶 + Gojs + Echarts + Element-UI + Fetch + WebSocket
 
 ## 接口
 
