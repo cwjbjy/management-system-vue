@@ -25,7 +25,7 @@ const PDFPreview = () => import(/* webpackChunkName: "PDFPreview" */ '@/views/pd
 
 const I18n = () => import(/* webpackChunkName: "I18n" */ '@/views/I18n/index.vue');
 
-const ChatRoom = () => import(/* webpackChunkName: "ChatRoom" */ '@/views/chatRoom/chatRoomV2.0.vue');
+const ChatRoom = () => import(/* webpackChunkName: "ChatRoom" */ '@/views/chatRoom/chatRoomV3.0.vue');
 
 const UserManage = () => import(/* webpackChunkName: "UserManage" */ '@/views/userManage/index.vue');
 
