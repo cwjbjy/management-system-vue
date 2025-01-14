@@ -25,6 +25,8 @@ const PDFPreview = () => import(/* webpackChunkName: "PDFPreview" */ '@/views/pd
 
 const I18n = () => import(/* webpackChunkName: "I18n" */ '@/views/I18n/index.vue');
 
+const OpenAI = () => import(/* webpackChunkName: "ChatRoom" */ '@/views/openai/openai.vue');
+
 const ChatRoom = () => import(/* webpackChunkName: "ChatRoom" */ '@/views/chatRoom/chatRoomV3.0.vue');
 
 const UserManage = () => import(/* webpackChunkName: "UserManage" */ '@/views/userManage/index.vue');
@@ -116,6 +118,13 @@ const route_user = [
           title: '放大镜',
         },
         component: Magnifying,
+      },
+      {
+        path: '/openai',
+        meta: {
+          title: '智能对话',
+        },
+        component: OpenAI,
       },
       {
         path: '/chatRoom',

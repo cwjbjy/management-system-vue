@@ -87,6 +87,12 @@ export const menus = [
     icon: require('@/assets/images/menus/magnifying.png'),
   },
   {
+    name: '智能对话',
+    path: '/openai',
+    key: 'openai',
+    icon: require('@/assets/images/menus/ai.png'),
+  },
+  {
     name: '聊天室',
     path: '/chatRoom',
     key: 'chatRoom',

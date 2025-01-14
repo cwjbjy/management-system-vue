@@ -116,9 +116,9 @@ export default {
       });
       this.msg = '';
     },
-    keyDown() {
-      let key = window.event.keyCode;
-      if (key === 13) {
+    keyDown(e) {
+      const key = e.key;
+      if (key === 'Enter') {
         this.send();
       }
     },

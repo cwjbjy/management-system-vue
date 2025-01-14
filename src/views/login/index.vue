@@ -63,9 +63,9 @@ export default {
       let { name, pass } = params;
       this.$refs.loginForm.onRegister(name, pass);
     },
-    keyDown() {
-      let key = window.event.keyCode;
-      if (key === 13) {
+    keyDown(e) {
+      const key = e.key;
+      if (key === 'Enter') {
         if (this.flag) {
           this.$refs.loginForm.handleLogin();
         } else {

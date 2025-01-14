@@ -21,11 +21,15 @@
     ]
   },
   "dependencies": {
+    "@microsoft/fetch-event-source": "^2.0.1",
     "axios": "^0.26.0",
     "core-js": "^3.6.4",
     "crypto-js": "^4.1.1",
     "echarts": "4.8.0",
     "element-ui": "2.14.1",
+    "highlight.js": "^11.11.1",
+    "lodash-es": "^4.17.21",
+    "markdown-it": "^14.1.0",
     "nprogress": "^0.2.0",
     "register-service-worker": "^1.7.2",
     "sass": "^1.62.1",

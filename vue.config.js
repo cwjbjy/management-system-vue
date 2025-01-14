@@ -52,6 +52,15 @@ module.exports = {
   },
 
   configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: 'javascript/auto',
+        },
+      ],
+    },
     //externals中的key是用于import，value表示在全局中访问到该对象，就是window.echarts
     externals: {},
     optimization: {
