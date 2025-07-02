@@ -44,14 +44,14 @@
           ></el-table-column>
           <el-table-column align="center" label="操作">
             <template slot-scope="scope">
-              <el-button type="text" icon="el-icon-edit" v-if="scope.row.authority == 1" @click="handleEdit(scope.row)"
+              <el-button type="text" icon="el-icon-edit" v-if="scope.row.authority !== 1" @click="handleEdit(scope.row)"
                 >编辑</el-button
               >
               <el-button
                 type="text"
                 icon="el-icon-delete"
                 class="red"
-                v-if="scope.row.authority != 1"
+                v-if="scope.row.authority !== 1"
                 @click="handleDelete(scope.row.id)"
                 >删除</el-button
               >
@@ -135,7 +135,7 @@ export default {
     },
     handleEdit(val) {
       this.row = val;
-      this.form.name = this.row.user_name;
+      this.form.name = this.row.userName;
       this.dialogFormVisible = true;
     },
     changeUser() {
